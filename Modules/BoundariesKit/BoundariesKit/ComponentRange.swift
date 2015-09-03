@@ -28,5 +28,5 @@ public func ==(lhs: ComponentRange, rhs: ComponentRange) -> Bool {
     return lhs.startLine == rhs.startLine &&
         lhs.startColumn == rhs.startColumn &&
         lhs.endLine == rhs.endLine &&
-        rhs.endLine == rhs.endLine
+        lhs.endColumn == rhs.endColumn
 }

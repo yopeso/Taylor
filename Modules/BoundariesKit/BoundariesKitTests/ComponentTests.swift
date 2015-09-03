@@ -70,6 +70,10 @@ class ComponentTests: QuickSpec {
                     
                     let componentWithNoName = Component(type: .Function, range: getTestRange(), components: [])
                     expect(self.component).toNot(equal(componentWithNoName))
+                    
+                    let range = ComponentRange(sl: 0, sc: 0, el: 0, ec: 4)
+                    let componentWithDifferentRnage = Component(type: .Class, range: range, components: [])
+                    expect(self.component).notTo(equal(componentWithDifferentRnage))
                 }
             }
             
