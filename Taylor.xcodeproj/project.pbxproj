@@ -1,0 +1,607 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A33033921B982605000E683F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33033911B982605000E683F /* main.swift */; };
+		A33D61FB1B983D6400C6F3C3 /* Scissors.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33D61F71B983D4A00C6F3C3 /* Scissors.framework */; };
+		A33D61FC1B983D6400C6F3C3 /* Scissors.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A33D61F71B983D4A00C6F3C3 /* Scissors.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A33D62471B98442A00C6F3C3 /* Temper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33D62421B98435400C6F3C3 /* Temper.framework */; };
+		A33D62481B98442A00C6F3C3 /* Temper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A33D62421B98435400C6F3C3 /* Temper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A33D62871B984AF700C6F3C3 /* BoundariesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33D62861B984AF700C6F3C3 /* BoundariesKit.framework */; settings = {ASSET_TAGS = (); }; };
+		A33D628D1B984B0100C6F3C3 /* BoundariesKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A33D62861B984AF700C6F3C3 /* BoundariesKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A36B2F0A1B98244F0049F590 /* TaylorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B2F091B98244F0049F590 /* TaylorTests.swift */; };
+		A3E4811D1B98315000451D20 /* Finder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3E480F11B982EFC00451D20 /* Finder.framework */; };
+		A3E4811E1B98315000451D20 /* Finder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A3E480F11B982EFC00451D20 /* Finder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A33D61F61B983D4A00C6F3C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A33D61EF1B983D4A00C6F3C3 /* Scissors.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A33D61CB1B983CAF00C6F3C3;
+			remoteInfo = Scissors;
+		};
+		A33D61F81B983D4A00C6F3C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A33D61EF1B983D4A00C6F3C3 /* Scissors.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A33D61D41B983CAF00C6F3C3;
+			remoteInfo = ScissorsTests;
+		};
+		A33D61FD1B983D6400C6F3C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A33D61EF1B983D4A00C6F3C3 /* Scissors.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A33D61CA1B983CAF00C6F3C3;
+			remoteInfo = Scissors;
+		};
+		A33D62411B98435400C6F3C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A33D62391B98435400C6F3C3 /* Temper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A33D620C1B98424600C6F3C3;
+			remoteInfo = Temper;
+		};
+		A33D62431B98435400C6F3C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A33D62391B98435400C6F3C3 /* Temper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A33D62151B98424600C6F3C3;
+			remoteInfo = TemperTests;
+		};
+		A33D62491B98442A00C6F3C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A33D62391B98435400C6F3C3 /* Temper.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A33D620B1B98424600C6F3C3;
+			remoteInfo = Temper;
+		};
+		A36B2F061B98244F0049F590 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A36B2EEE1B98244F0049F590 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A36B2EF51B98244F0049F590;
+			remoteInfo = Taylor;
+		};
+		A3E480F01B982EFC00451D20 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3E480EB1B982EFC00451D20 /* Finder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2457162F1B8DBCC800446507;
+			remoteInfo = Finder;
+		};
+		A3E480F21B982EFC00451D20 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3E480EB1B982EFC00451D20 /* Finder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2457163D1B8DC6A600446507;
+			remoteInfo = FinderTests;
+		};
+		A3E4811F1B98315000451D20 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3E480EB1B982EFC00451D20 /* Finder.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A3E480F81B98302500451D20;
+			remoteInfo = Finder;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A36B2F4A1B9828670049F590 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A33D61FC1B983D6400C6F3C3 /* Scissors.framework in Embed Frameworks */,
+				A33D62481B98442A00C6F3C3 /* Temper.framework in Embed Frameworks */,
+				A33D628D1B984B0100C6F3C3 /* BoundariesKit.framework in Embed Frameworks */,
+				A3E4811E1B98315000451D20 /* Finder.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A33033911B982605000E683F /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		A33D61EF1B983D4A00C6F3C3 /* Scissors.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Scissors.xcodeproj; path = Modules/scissors/Scissors.xcodeproj; sourceTree = "<group>"; };
+		A33D62391B98435400C6F3C3 /* Temper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Temper.xcodeproj; path = Modules/temper/Temper/Temper.xcodeproj; sourceTree = "<group>"; };
+		A33D62861B984AF700C6F3C3 /* BoundariesKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BoundariesKit.framework; sourceTree = "<group>"; };
+		A36B2EF61B98244F0049F590 /* Taylor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taylor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A36B2F001B98244F0049F590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A36B2F051B98244F0049F590 /* TaylorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaylorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A36B2F091B98244F0049F590 /* TaylorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaylorTests.swift; sourceTree = "<group>"; };
+		A36B2F0B1B98244F0049F590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A384595B1B987ED800175BFA /* Caprices.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Caprices.xcodeproj; path = Modules/caprices/Caprices/Caprices.xcodeproj; sourceTree = "<group>"; };
+		A3E480EB1B982EFC00451D20 /* Finder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Finder.xcodeproj; path = Modules/finder/Finder.xcodeproj; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A36B2EF31B98244F0049F590 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3E4811D1B98315000451D20 /* Finder.framework in Frameworks */,
+				A33D62471B98442A00C6F3C3 /* Temper.framework in Frameworks */,
+				A33D62871B984AF700C6F3C3 /* BoundariesKit.framework in Frameworks */,
+				A33D61FB1B983D6400C6F3C3 /* Scissors.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A36B2F021B98244F0049F590 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A33033931B982629000E683F /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				A384595B1B987ED800175BFA /* Caprices.xcodeproj */,
+				A3E480EB1B982EFC00451D20 /* Finder.xcodeproj */,
+				A33D61EF1B983D4A00C6F3C3 /* Scissors.xcodeproj */,
+				A33D62391B98435400C6F3C3 /* Temper.xcodeproj */,
+			);
+			name = Modules;
+			sourceTree = "<group>";
+		};
+		A33D61F01B983D4A00C6F3C3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A33D61F71B983D4A00C6F3C3 /* Scissors.framework */,
+				A33D61F91B983D4A00C6F3C3 /* ScissorsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A33D623A1B98435400C6F3C3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A33D62421B98435400C6F3C3 /* Temper.framework */,
+				A33D62441B98435400C6F3C3 /* TemperTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A36B2EED1B98244F0049F590 = {
+			isa = PBXGroup;
+			children = (
+				A36B2EF81B98244F0049F590 /* Taylor */,
+				A36B2F081B98244F0049F590 /* TaylorTests */,
+				A33033931B982629000E683F /* Modules */,
+				A36B2EF71B98244F0049F590 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A36B2EF71B98244F0049F590 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A36B2EF61B98244F0049F590 /* Taylor.app */,
+				A36B2F051B98244F0049F590 /* TaylorTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A36B2EF81B98244F0049F590 /* Taylor */ = {
+			isa = PBXGroup;
+			children = (
+				A33D62861B984AF700C6F3C3 /* BoundariesKit.framework */,
+				A33033911B982605000E683F /* main.swift */,
+				A36B2F001B98244F0049F590 /* Info.plist */,
+			);
+			path = Taylor;
+			sourceTree = "<group>";
+		};
+		A36B2F081B98244F0049F590 /* TaylorTests */ = {
+			isa = PBXGroup;
+			children = (
+				A36B2F091B98244F0049F590 /* TaylorTests.swift */,
+				A36B2F0B1B98244F0049F590 /* Info.plist */,
+			);
+			path = TaylorTests;
+			sourceTree = "<group>";
+		};
+		A384595C1B987ED800175BFA /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A3E480EC1B982EFC00451D20 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A3E480F11B982EFC00451D20 /* Finder.framework */,
+				A3E480F31B982EFC00451D20 /* FinderTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A36B2EF51B98244F0049F590 /* Taylor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A36B2F0E1B98244F0049F590 /* Build configuration list for PBXNativeTarget "Taylor" */;
+			buildPhases = (
+				A36B2EF21B98244F0049F590 /* Sources */,
+				A36B2EF31B98244F0049F590 /* Frameworks */,
+				A36B2EF41B98244F0049F590 /* Resources */,
+				A36B2F4A1B9828670049F590 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A3E481201B98315000451D20 /* PBXTargetDependency */,
+				A33D61FE1B983D6400C6F3C3 /* PBXTargetDependency */,
+				A33D624A1B98442A00C6F3C3 /* PBXTargetDependency */,
+			);
+			name = Taylor;
+			productName = Taylor;
+			productReference = A36B2EF61B98244F0049F590 /* Taylor.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A36B2F041B98244F0049F590 /* TaylorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A36B2F111B98244F0049F590 /* Build configuration list for PBXNativeTarget "TaylorTests" */;
+			buildPhases = (
+				A36B2F011B98244F0049F590 /* Sources */,
+				A36B2F021B98244F0049F590 /* Frameworks */,
+				A36B2F031B98244F0049F590 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A36B2F071B98244F0049F590 /* PBXTargetDependency */,
+			);
+			name = TaylorTests;
+			productName = TaylorTests;
+			productReference = A36B2F051B98244F0049F590 /* TaylorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A36B2EEE1B98244F0049F590 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = YOPESO;
+				TargetAttributes = {
+					A36B2EF51B98244F0049F590 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					A36B2F041B98244F0049F590 = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = A36B2EF51B98244F0049F590;
+					};
+				};
+			};
+			buildConfigurationList = A36B2EF11B98244F0049F590 /* Build configuration list for PBXProject "Taylor" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A36B2EED1B98244F0049F590;
+			productRefGroup = A36B2EF71B98244F0049F590 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = A384595C1B987ED800175BFA /* Products */;
+					ProjectRef = A384595B1B987ED800175BFA /* Caprices.xcodeproj */;
+				},
+				{
+					ProductGroup = A3E480EC1B982EFC00451D20 /* Products */;
+					ProjectRef = A3E480EB1B982EFC00451D20 /* Finder.xcodeproj */;
+				},
+				{
+					ProductGroup = A33D61F01B983D4A00C6F3C3 /* Products */;
+					ProjectRef = A33D61EF1B983D4A00C6F3C3 /* Scissors.xcodeproj */;
+				},
+				{
+					ProductGroup = A33D623A1B98435400C6F3C3 /* Products */;
+					ProjectRef = A33D62391B98435400C6F3C3 /* Temper.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				A36B2EF51B98244F0049F590 /* Taylor */,
+				A36B2F041B98244F0049F590 /* TaylorTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		A33D61F71B983D4A00C6F3C3 /* Scissors.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Scissors.framework;
+			remoteRef = A33D61F61B983D4A00C6F3C3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A33D61F91B983D4A00C6F3C3 /* ScissorsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ScissorsTests.xctest;
+			remoteRef = A33D61F81B983D4A00C6F3C3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A33D62421B98435400C6F3C3 /* Temper.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Temper.framework;
+			remoteRef = A33D62411B98435400C6F3C3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A33D62441B98435400C6F3C3 /* TemperTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = TemperTests.xctest;
+			remoteRef = A33D62431B98435400C6F3C3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A3E480F11B982EFC00451D20 /* Finder.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Finder.framework;
+			remoteRef = A3E480F01B982EFC00451D20 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A3E480F31B982EFC00451D20 /* FinderTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = FinderTests.xctest;
+			remoteRef = A3E480F21B982EFC00451D20 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A36B2EF41B98244F0049F590 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A36B2F031B98244F0049F590 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A36B2EF21B98244F0049F590 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A33033921B982605000E683F /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A36B2F011B98244F0049F590 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A36B2F0A1B98244F0049F590 /* TaylorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A33D61FE1B983D6400C6F3C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Scissors;
+			targetProxy = A33D61FD1B983D6400C6F3C3 /* PBXContainerItemProxy */;
+		};
+		A33D624A1B98442A00C6F3C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Temper;
+			targetProxy = A33D62491B98442A00C6F3C3 /* PBXContainerItemProxy */;
+		};
+		A36B2F071B98244F0049F590 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A36B2EF51B98244F0049F590 /* Taylor */;
+			targetProxy = A36B2F061B98244F0049F590 /* PBXContainerItemProxy */;
+		};
+		A3E481201B98315000451D20 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Finder;
+			targetProxy = A3E4811F1B98315000451D20 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A36B2F0C1B98244F0049F590 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DEBUG,
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-D DEBUG";
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A36B2F0D1B98244F0049F590 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_SWIFT_FLAGS = "-D DEBUG";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		A36B2F0F1B98244F0049F590 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Taylor",
+				);
+				INFOPLIST_FILE = Taylor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.Taylor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A36B2F101B98244F0049F590 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Taylor",
+				);
+				INFOPLIST_FILE = Taylor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.Taylor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		A36B2F121B98244F0049F590 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = TaylorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.TaylorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Taylor.app/Contents/MacOS/Taylor";
+			};
+			name = Debug;
+		};
+		A36B2F131B98244F0049F590 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = TaylorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.TaylorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Taylor.app/Contents/MacOS/Taylor";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A36B2EF11B98244F0049F590 /* Build configuration list for PBXProject "Taylor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A36B2F0C1B98244F0049F590 /* Debug */,
+				A36B2F0D1B98244F0049F590 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A36B2F0E1B98244F0049F590 /* Build configuration list for PBXNativeTarget "Taylor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A36B2F0F1B98244F0049F590 /* Debug */,
+				A36B2F101B98244F0049F590 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A36B2F111B98244F0049F590 /* Build configuration list for PBXNativeTarget "TaylorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A36B2F121B98244F0049F590 /* Debug */,
+				A36B2F131B98244F0049F590 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A36B2EEE1B98244F0049F590 /* Project object */;
+}

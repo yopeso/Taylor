@@ -1,0 +1,10 @@
+framework module BoundariesKit {
+  umbrella header "BoundariesKit.h"
+
+  export *
+  module * { export * }
+}
+
+module BoundariesKit.Swift {
+    header "BoundariesKit-Swift.h"
+}
