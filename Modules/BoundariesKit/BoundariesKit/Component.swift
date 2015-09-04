@@ -11,6 +11,8 @@ public enum ComponentType {
     case Function
     case Comment
     case EmptyLines
+    case Struct
+    case Enum
 }
 
 public struct Component {
