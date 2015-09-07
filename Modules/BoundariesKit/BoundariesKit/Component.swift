@@ -13,6 +13,14 @@ public enum ComponentType {
     case EmptyLines
     case Struct
     case Enum
+    case If
+    case Else
+    case For
+    case Do
+    case Catch
+    case While
+    case Switch
+    case Case
 }
 
 public struct Component {
