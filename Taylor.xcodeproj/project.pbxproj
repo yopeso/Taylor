@@ -12,11 +12,13 @@
 		A33D61FC1B983D6400C6F3C3 /* Scissors.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A33D61F71B983D4A00C6F3C3 /* Scissors.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A33D62471B98442A00C6F3C3 /* Temper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33D62421B98435400C6F3C3 /* Temper.framework */; };
 		A33D62481B98442A00C6F3C3 /* Temper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A33D62421B98435400C6F3C3 /* Temper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A33D62871B984AF700C6F3C3 /* BoundariesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33D62861B984AF700C6F3C3 /* BoundariesKit.framework */; settings = {ASSET_TAGS = (); }; };
-		A33D628D1B984B0100C6F3C3 /* BoundariesKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A33D62861B984AF700C6F3C3 /* BoundariesKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A33F089F1B98AD9C00950857 /* Caprice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33F08941B98A9BC00950857 /* Caprice.framework */; };
+		A33F08A01B98AD9C00950857 /* Caprice.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A33F08941B98A9BC00950857 /* Caprice.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A36B2F0A1B98244F0049F590 /* TaylorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B2F091B98244F0049F590 /* TaylorTests.swift */; };
 		A3E4811D1B98315000451D20 /* Finder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3E480F11B982EFC00451D20 /* Finder.framework */; };
 		A3E4811E1B98315000451D20 /* Finder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A3E480F11B982EFC00451D20 /* Finder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A3E54CED1B9DA97300B83273 /* BoundariesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3E54CEB1B9DA96300B83273 /* BoundariesKit.framework */; };
+		A3E54CEE1B9DA97300B83273 /* BoundariesKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A3E54CEB1B9DA96300B83273 /* BoundariesKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +40,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = A33D61EF1B983D4A00C6F3C3 /* Scissors.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = A33D61CA1B983CAF00C6F3C3;
+			remoteGlobalIDString = FFDF4CC41B97760C00D11DAB;
 			remoteInfo = Scissors;
 		};
 		A33D62411B98435400C6F3C3 /* PBXContainerItemProxy */ = {
@@ -59,8 +61,36 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = A33D62391B98435400C6F3C3 /* Temper.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = A33D620B1B98424600C6F3C3;
+			remoteGlobalIDString = 17E2CF781B983AF10018A48C;
 			remoteInfo = Temper;
+		};
+		A33F088F1B98A9BC00950857 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A384595B1B987ED800175BFA /* Caprices.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A36B2F181B9826A20049F590;
+			remoteInfo = Caprice;
+		};
+		A33F08931B98A9BC00950857 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A384595B1B987ED800175BFA /* Caprices.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A36B2F191B9826A20049F590;
+			remoteInfo = Caprice;
+		};
+		A33F08951B98A9BC00950857 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A384595B1B987ED800175BFA /* Caprices.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A36B2F221B9826A20049F590;
+			remoteInfo = CapriceTests;
+		};
+		A33F08A11B98AD9C00950857 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A384595B1B987ED800175BFA /* Caprices.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A36B2F181B9826A20049F590;
+			remoteInfo = Caprice;
 		};
 		A36B2F061B98244F0049F590 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -87,8 +117,29 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = A3E480EB1B982EFC00451D20 /* Finder.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = A3E480F81B98302500451D20;
+			remoteGlobalIDString = B1E3919F1B9861B000F3EB83;
 			remoteInfo = Finder;
+		};
+		A3E54CD11B9DA24B00B83273 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3E54CCC1B9DA24B00B83273 /* BoundariesKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A33D62551B98462400C6F3C3;
+			remoteInfo = BoundariesKit;
+		};
+		A3E54CD31B9DA24B00B83273 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3E54CCC1B9DA24B00B83273 /* BoundariesKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A33D625F1B98462400C6F3C3;
+			remoteInfo = BoundariesKitTests;
+		};
+		A3E54CD91B9DA27700B83273 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3E54CCC1B9DA24B00B83273 /* BoundariesKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A33D62541B98462400C6F3C3;
+			remoteInfo = BoundariesKit;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -100,8 +151,9 @@
 			dstSubfolderSpec = 10;
 			files = (
 				A33D61FC1B983D6400C6F3C3 /* Scissors.framework in Embed Frameworks */,
+				A33F08A01B98AD9C00950857 /* Caprice.framework in Embed Frameworks */,
+				A3E54CEE1B9DA97300B83273 /* BoundariesKit.framework in Embed Frameworks */,
 				A33D62481B98442A00C6F3C3 /* Temper.framework in Embed Frameworks */,
-				A33D628D1B984B0100C6F3C3 /* BoundariesKit.framework in Embed Frameworks */,
 				A3E4811E1B98315000451D20 /* Finder.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -113,7 +165,6 @@
 		A33033911B982605000E683F /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		A33D61EF1B983D4A00C6F3C3 /* Scissors.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Scissors.xcodeproj; path = Modules/scissors/Scissors.xcodeproj; sourceTree = "<group>"; };
 		A33D62391B98435400C6F3C3 /* Temper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Temper.xcodeproj; path = Modules/temper/Temper/Temper.xcodeproj; sourceTree = "<group>"; };
-		A33D62861B984AF700C6F3C3 /* BoundariesKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BoundariesKit.framework; sourceTree = "<group>"; };
 		A36B2EF61B98244F0049F590 /* Taylor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taylor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A36B2F001B98244F0049F590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A36B2F051B98244F0049F590 /* TaylorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaylorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +172,8 @@
 		A36B2F0B1B98244F0049F590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A384595B1B987ED800175BFA /* Caprices.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Caprices.xcodeproj; path = Modules/caprices/Caprices/Caprices.xcodeproj; sourceTree = "<group>"; };
 		A3E480EB1B982EFC00451D20 /* Finder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Finder.xcodeproj; path = Modules/finder/Finder.xcodeproj; sourceTree = "<group>"; };
+		A3E54CCC1B9DA24B00B83273 /* BoundariesKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BoundariesKit.xcodeproj; path = Modules/BoundariesKit/BoundariesKit.xcodeproj; sourceTree = "<group>"; };
+		A3E54CEB1B9DA96300B83273 /* BoundariesKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BoundariesKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,8 +182,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3E4811D1B98315000451D20 /* Finder.framework in Frameworks */,
+				A33F089F1B98AD9C00950857 /* Caprice.framework in Frameworks */,
+				A3E54CED1B9DA97300B83273 /* BoundariesKit.framework in Frameworks */,
 				A33D62471B98442A00C6F3C3 /* Temper.framework in Frameworks */,
-				A33D62871B984AF700C6F3C3 /* BoundariesKit.framework in Frameworks */,
 				A33D61FB1B983D6400C6F3C3 /* Scissors.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,6 +206,7 @@
 				A3E480EB1B982EFC00451D20 /* Finder.xcodeproj */,
 				A33D61EF1B983D4A00C6F3C3 /* Scissors.xcodeproj */,
 				A33D62391B98435400C6F3C3 /* Temper.xcodeproj */,
+				A3E54CCC1B9DA24B00B83273 /* BoundariesKit.xcodeproj */,
 			);
 			name = Modules;
 			sourceTree = "<group>";
@@ -179,6 +234,7 @@
 			children = (
 				A36B2EF81B98244F0049F590 /* Taylor */,
 				A36B2F081B98244F0049F590 /* TaylorTests */,
+				A3E54CEA1B9DA96300B83273 /* Common */,
 				A33033931B982629000E683F /* Modules */,
 				A36B2EF71B98244F0049F590 /* Products */,
 			);
@@ -196,7 +252,6 @@
 		A36B2EF81B98244F0049F590 /* Taylor */ = {
 			isa = PBXGroup;
 			children = (
-				A33D62861B984AF700C6F3C3 /* BoundariesKit.framework */,
 				A33033911B982605000E683F /* main.swift */,
 				A36B2F001B98244F0049F590 /* Info.plist */,
 			);
@@ -214,6 +269,10 @@
 		};
 		A384595C1B987ED800175BFA /* Products */ = {
 			isa = PBXGroup;
+			children = (
+				A33F08941B98A9BC00950857 /* Caprice.framework */,
+				A33F08961B98A9BC00950857 /* CapriceTests.xctest */,
+			);
 			name = Products;
 			sourceTree = "<group>";
 		};
@@ -224,6 +283,23 @@
 				A3E480F31B982EFC00451D20 /* FinderTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A3E54CCD1B9DA24B00B83273 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A3E54CD21B9DA24B00B83273 /* BoundariesKit.framework */,
+				A3E54CD41B9DA24B00B83273 /* BoundariesKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A3E54CEA1B9DA96300B83273 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A3E54CEB1B9DA96300B83273 /* BoundariesKit.framework */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,9 +317,12 @@
 			buildRules = (
 			);
 			dependencies = (
+				A33F08901B98A9BC00950857 /* PBXTargetDependency */,
 				A3E481201B98315000451D20 /* PBXTargetDependency */,
 				A33D61FE1B983D6400C6F3C3 /* PBXTargetDependency */,
 				A33D624A1B98442A00C6F3C3 /* PBXTargetDependency */,
+				A33F08A21B98AD9C00950857 /* PBXTargetDependency */,
+				A3E54CDA1B9DA27700B83273 /* PBXTargetDependency */,
 			);
 			name = Taylor;
 			productName = Taylor;
@@ -279,6 +358,7 @@
 				TargetAttributes = {
 					A36B2EF51B98244F0049F590 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = H6QX82RNU5;
 					};
 					A36B2F041B98244F0049F590 = {
 						CreatedOnToolsVersion = 7.0;
@@ -298,6 +378,10 @@
 			productRefGroup = A36B2EF71B98244F0049F590 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = A3E54CCD1B9DA24B00B83273 /* Products */;
+					ProjectRef = A3E54CCC1B9DA24B00B83273 /* BoundariesKit.xcodeproj */;
+				},
 				{
 					ProductGroup = A384595C1B987ED800175BFA /* Products */;
 					ProjectRef = A384595B1B987ED800175BFA /* Caprices.xcodeproj */;
@@ -352,6 +436,20 @@
 			remoteRef = A33D62431B98435400C6F3C3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		A33F08941B98A9BC00950857 /* Caprice.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Caprice.framework;
+			remoteRef = A33F08931B98A9BC00950857 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A33F08961B98A9BC00950857 /* CapriceTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CapriceTests.xctest;
+			remoteRef = A33F08951B98A9BC00950857 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		A3E480F11B982EFC00451D20 /* Finder.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -364,6 +462,20 @@
 			fileType = wrapper.cfbundle;
 			path = FinderTests.xctest;
 			remoteRef = A3E480F21B982EFC00451D20 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A3E54CD21B9DA24B00B83273 /* BoundariesKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = BoundariesKit.framework;
+			remoteRef = A3E54CD11B9DA24B00B83273 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A3E54CD41B9DA24B00B83273 /* BoundariesKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = BoundariesKitTests.xctest;
+			remoteRef = A3E54CD31B9DA24B00B83273 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -415,6 +527,16 @@
 			name = Temper;
 			targetProxy = A33D62491B98442A00C6F3C3 /* PBXContainerItemProxy */;
 		};
+		A33F08901B98A9BC00950857 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Caprice;
+			targetProxy = A33F088F1B98A9BC00950857 /* PBXContainerItemProxy */;
+		};
+		A33F08A21B98AD9C00950857 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Caprice;
+			targetProxy = A33F08A11B98AD9C00950857 /* PBXContainerItemProxy */;
+		};
 		A36B2F071B98244F0049F590 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A36B2EF51B98244F0049F590 /* Taylor */;
@@ -424,6 +546,11 @@
 			isa = PBXTargetDependency;
 			name = Finder;
 			targetProxy = A3E4811F1B98315000451D20 /* PBXContainerItemProxy */;
+		};
+		A3E54CDA1B9DA27700B83273 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BoundariesKit;
+			targetProxy = A3E54CD91B9DA27700B83273 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -519,6 +646,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Taylor",
+					"$(PROJECT_DIR)/Common",
 				);
 				INFOPLIST_FILE = Taylor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -537,9 +665,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Taylor",
+					"$(PROJECT_DIR)/Common",
 				);
 				INFOPLIST_FILE = Taylor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.Taylor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
