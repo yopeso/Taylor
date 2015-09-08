@@ -109,13 +109,6 @@ class ComponentTests: QuickSpec {
                     expect(component2).to(equal(component1))
                 }
                 
-                it("should not be equal to a component with different parent") {
-                    let component1 = component.makeComponent(type: .Class, range: getTestRange())
-                    let parentForComponent2 = Component(type: .If, range: getTestRange())
-                    let component2 = parentForComponent2.makeComponent(type: .Class, range: getTestRange())
-                    expect(component2).notTo(equal(component1))
-                }
-                
                 it("should not be equal with a diffent component") {
                     let functionComponent = Component(type: .Function, range: getTestRange(), name: "Test")
                     expect(component).toNot(equal(functionComponent))

@@ -50,7 +50,6 @@ public class Component {
 extension Component : Equatable {}
 
 public func ==(lhs: Component, rhs: Component) -> Bool {
-    if lhs.parent != rhs.parent { return false }
     if lhs.range != rhs.range { return false }
     if lhs.type != rhs.type { return false }
     if lhs.name !~== lhs.name { return false }
