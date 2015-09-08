@@ -14,6 +14,7 @@ public enum ComponentType {
     case Struct
     case Enum
     case If
+    case ElseIf
     case Else
     case For
     case Do
