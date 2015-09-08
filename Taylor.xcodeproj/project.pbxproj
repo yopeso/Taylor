@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A31402CF1B9DF72A00AE011B /* Temper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33D62421B98435400C6F3C3 /* Temper.framework */; };
+		A31402D01B9DF72A00AE011B /* Temper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A33D62421B98435400C6F3C3 /* Temper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A31402DA1B9DF74A00AE011B /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A3CB26501B9DF6FA00802E80 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A31402DB1B9DF74A00AE011B /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A3CB26511B9DF6FA00802E80 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A33033921B982605000E683F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33033911B982605000E683F /* main.swift */; };
 		A33D61FB1B983D6400C6F3C3 /* Scissors.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33D61F71B983D4A00C6F3C3 /* Scissors.framework */; };
 		A33D61FC1B983D6400C6F3C3 /* Scissors.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A33D61F71B983D4A00C6F3C3 /* Scissors.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A33D62471B98442A00C6F3C3 /* Temper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33D62421B98435400C6F3C3 /* Temper.framework */; };
-		A33D62481B98442A00C6F3C3 /* Temper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A33D62421B98435400C6F3C3 /* Temper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A33F089F1B98AD9C00950857 /* Caprice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33F08941B98A9BC00950857 /* Caprice.framework */; };
 		A33F08A01B98AD9C00950857 /* Caprice.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A33F08941B98A9BC00950857 /* Caprice.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A36B2F0A1B98244F0049F590 /* TaylorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B2F091B98244F0049F590 /* TaylorTests.swift */; };
+		A3CB26521B9DF6FA00802E80 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CB26501B9DF6FA00802E80 /* Nimble.framework */; settings = {ASSET_TAGS = (); }; };
+		A3CB26531B9DF6FA00802E80 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CB26511B9DF6FA00802E80 /* Quick.framework */; settings = {ASSET_TAGS = (); }; };
 		A3E4811D1B98315000451D20 /* Finder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3E480F11B982EFC00451D20 /* Finder.framework */; };
 		A3E4811E1B98315000451D20 /* Finder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A3E480F11B982EFC00451D20 /* Finder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A3E54CED1B9DA97300B83273 /* BoundariesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3E54CEB1B9DA96300B83273 /* BoundariesKit.framework */; };
@@ -22,6 +26,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A31402D11B9DF72A00AE011B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A33D62391B98435400C6F3C3 /* Temper.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 17E2CF781B983AF10018A48C;
+			remoteInfo = Temper;
+		};
 		A33D61F61B983D4A00C6F3C3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A33D61EF1B983D4A00C6F3C3 /* Scissors.xcodeproj */;
@@ -56,13 +67,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = A33D62151B98424600C6F3C3;
 			remoteInfo = TemperTests;
-		};
-		A33D62491B98442A00C6F3C3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A33D62391B98435400C6F3C3 /* Temper.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 17E2CF781B983AF10018A48C;
-			remoteInfo = Temper;
 		};
 		A33F088F1B98A9BC00950857 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -144,6 +148,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		A31402D91B9DF74200AE011B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A31402DA1B9DF74A00AE011B /* Nimble.framework in CopyFiles */,
+				A31402DB1B9DF74A00AE011B /* Quick.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A36B2F4A1B9828670049F590 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -152,8 +167,8 @@
 			files = (
 				A33D61FC1B983D6400C6F3C3 /* Scissors.framework in Embed Frameworks */,
 				A33F08A01B98AD9C00950857 /* Caprice.framework in Embed Frameworks */,
+				A31402D01B9DF72A00AE011B /* Temper.framework in Embed Frameworks */,
 				A3E54CEE1B9DA97300B83273 /* BoundariesKit.framework in Embed Frameworks */,
-				A33D62481B98442A00C6F3C3 /* Temper.framework in Embed Frameworks */,
 				A3E4811E1B98315000451D20 /* Finder.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -171,6 +186,8 @@
 		A36B2F091B98244F0049F590 /* TaylorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaylorTests.swift; sourceTree = "<group>"; };
 		A36B2F0B1B98244F0049F590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A384595B1B987ED800175BFA /* Caprices.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Caprices.xcodeproj; path = Modules/caprices/Caprices/Caprices.xcodeproj; sourceTree = "<group>"; };
+		A3CB26501B9DF6FA00802E80 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Nimble.framework; sourceTree = "<group>"; };
+		A3CB26511B9DF6FA00802E80 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Quick.framework; sourceTree = "<group>"; };
 		A3E480EB1B982EFC00451D20 /* Finder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Finder.xcodeproj; path = Modules/finder/Finder.xcodeproj; sourceTree = "<group>"; };
 		A3E54CCC1B9DA24B00B83273 /* BoundariesKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BoundariesKit.xcodeproj; path = Modules/BoundariesKit/BoundariesKit.xcodeproj; sourceTree = "<group>"; };
 		A3E54CEB1B9DA96300B83273 /* BoundariesKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BoundariesKit.framework; sourceTree = "<group>"; };
@@ -183,8 +200,8 @@
 			files = (
 				A3E4811D1B98315000451D20 /* Finder.framework in Frameworks */,
 				A33F089F1B98AD9C00950857 /* Caprice.framework in Frameworks */,
+				A31402CF1B9DF72A00AE011B /* Temper.framework in Frameworks */,
 				A3E54CED1B9DA97300B83273 /* BoundariesKit.framework in Frameworks */,
-				A33D62471B98442A00C6F3C3 /* Temper.framework in Frameworks */,
 				A33D61FB1B983D6400C6F3C3 /* Scissors.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -193,6 +210,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3CB26531B9DF6FA00802E80 /* Quick.framework in Frameworks */,
+				A3CB26521B9DF6FA00802E80 /* Nimble.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,6 +254,7 @@
 				A36B2EF81B98244F0049F590 /* Taylor */,
 				A36B2F081B98244F0049F590 /* TaylorTests */,
 				A3E54CEA1B9DA96300B83273 /* Common */,
+				A3CB264F1B9DF6FA00802E80 /* CommonTestsSources */,
 				A33033931B982629000E683F /* Modules */,
 				A36B2EF71B98244F0049F590 /* Products */,
 			);
@@ -274,6 +294,15 @@
 				A33F08961B98A9BC00950857 /* CapriceTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A3CB264F1B9DF6FA00802E80 /* CommonTestsSources */ = {
+			isa = PBXGroup;
+			children = (
+				A3CB26501B9DF6FA00802E80 /* Nimble.framework */,
+				A3CB26511B9DF6FA00802E80 /* Quick.framework */,
+			);
+			path = CommonTestsSources;
 			sourceTree = "<group>";
 		};
 		A3E480EC1B982EFC00451D20 /* Products */ = {
@@ -320,9 +349,9 @@
 				A33F08901B98A9BC00950857 /* PBXTargetDependency */,
 				A3E481201B98315000451D20 /* PBXTargetDependency */,
 				A33D61FE1B983D6400C6F3C3 /* PBXTargetDependency */,
-				A33D624A1B98442A00C6F3C3 /* PBXTargetDependency */,
 				A33F08A21B98AD9C00950857 /* PBXTargetDependency */,
 				A3E54CDA1B9DA27700B83273 /* PBXTargetDependency */,
+				A31402D21B9DF72A00AE011B /* PBXTargetDependency */,
 			);
 			name = Taylor;
 			productName = Taylor;
@@ -336,6 +365,7 @@
 				A36B2F011B98244F0049F590 /* Sources */,
 				A36B2F021B98244F0049F590 /* Frameworks */,
 				A36B2F031B98244F0049F590 /* Resources */,
+				A31402D91B9DF74200AE011B /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -517,15 +547,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		A31402D21B9DF72A00AE011B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Temper;
+			targetProxy = A31402D11B9DF72A00AE011B /* PBXContainerItemProxy */;
+		};
 		A33D61FE1B983D6400C6F3C3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Scissors;
 			targetProxy = A33D61FD1B983D6400C6F3C3 /* PBXContainerItemProxy */;
-		};
-		A33D624A1B98442A00C6F3C3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Temper;
-			targetProxy = A33D62491B98442A00C6F3C3 /* PBXContainerItemProxy */;
 		};
 		A33F08901B98A9BC00950857 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -680,6 +710,10 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CommonTestsSources",
+				);
 				INFOPLIST_FILE = TaylorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.TaylorTests;
@@ -693,6 +727,10 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CommonTestsSources",
+				);
 				INFOPLIST_FILE = TaylorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.TaylorTests;

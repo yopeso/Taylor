@@ -29,7 +29,7 @@ func run () {
         }
         temper.finishTempering()
     } catch _ {
-        
+
     }
 }
 
