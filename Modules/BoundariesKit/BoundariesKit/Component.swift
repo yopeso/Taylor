@@ -24,23 +24,26 @@ public enum ComponentType {
     case Case
 }
 
-public struct Component {
+public class Component {
+    public var parent: Component?
     public let type: ComponentType
     public let range: ComponentRange
     public var name: String?
-    public let components: [Component]
+    public var components = [Component]()
     
-    public init(type:ComponentType, range: ComponentRange, components:[Component], name: String) {
+    public init(type: ComponentType, range: ComponentRange, name: String? = nil) {
         self.type = type
         self.range = range
-        self.components = components
         self.name = name
     }
     
-    public init(type:ComponentType, range: ComponentRange, components:[Component]) {
-        self.type = type
-        self.range = range
-        self.components = components
+    public func makeComponent(type type: ComponentType, range: ComponentRange, name: String? = nil) -> Component {
+        let component = Component(type: type, range: range, name: name)
+        
+        component.parent = self
+        self.components.append(component)
+        
+        return component
     }
 }
 
