@@ -10,6 +10,11 @@
 		A31E327D1BA1C6DD005E3D0F /* Printer.h in Headers */ = {isa = PBXBuildFile; fileRef = A31E327C1BA1C6DD005E3D0F /* Printer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A31E32841BA1C6DD005E3D0F /* Printer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31E32791BA1C6DD005E3D0F /* Printer.framework */; settings = {ASSET_TAGS = (); }; };
 		A31E32891BA1C6DD005E3D0F /* PrinterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31E32881BA1C6DD005E3D0F /* PrinterTests.swift */; };
+		A31E32971BA1C850005E3D0F /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31E32951BA1C850005E3D0F /* Quick.framework */; settings = {ASSET_TAGS = (); }; };
+		A31E32A01BA1C96D005E3D0F /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31E329F1BA1C96D005E3D0F /* Nimble.framework */; settings = {ASSET_TAGS = (); }; };
+		A31E32A31BA1C9DA005E3D0F /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A31E329F1BA1C96D005E3D0F /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A31E32A41BA1C9DA005E3D0F /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A31E32951BA1C850005E3D0F /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A31E32B61BA1D34C005E3D0F /* Printer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31E32B51BA1D34C005E3D0F /* Printer.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -22,6 +27,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		A31E32A21BA1C9D2005E3D0F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A31E32A31BA1C9DA005E3D0F /* Nimble.framework in CopyFiles */,
+				A31E32A41BA1C9DA005E3D0F /* Quick.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		A31E32791BA1C6DD005E3D0F /* Printer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Printer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A31E327C1BA1C6DD005E3D0F /* Printer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Printer.h; sourceTree = "<group>"; };
@@ -29,6 +48,9 @@
 		A31E32831BA1C6DD005E3D0F /* PrinterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PrinterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A31E32881BA1C6DD005E3D0F /* PrinterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterTests.swift; sourceTree = "<group>"; };
 		A31E328A1BA1C6DD005E3D0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A31E32951BA1C850005E3D0F /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Quick.framework; sourceTree = "<group>"; };
+		A31E329F1BA1C96D005E3D0F /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Nimble.framework; sourceTree = "<group>"; };
+		A31E32B51BA1D34C005E3D0F /* Printer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Printer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +65,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A31E32A01BA1C96D005E3D0F /* Nimble.framework in Frameworks */,
 				A31E32841BA1C6DD005E3D0F /* Printer.framework in Frameworks */,
+				A31E32971BA1C850005E3D0F /* Quick.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				A31E327C1BA1C6DD005E3D0F /* Printer.h */,
+				A31E32B51BA1D34C005E3D0F /* Printer.swift */,
 				A31E327E1BA1C6DD005E3D0F /* Info.plist */,
 			);
 			path = Printer;
@@ -80,10 +105,29 @@
 		A31E32871BA1C6DD005E3D0F /* PrinterTests */ = {
 			isa = PBXGroup;
 			children = (
+				A31E32931BA1C850005E3D0F /* CommonTestsSources */,
 				A31E32881BA1C6DD005E3D0F /* PrinterTests.swift */,
 				A31E328A1BA1C6DD005E3D0F /* Info.plist */,
 			);
 			path = PrinterTests;
+			sourceTree = "<group>";
+		};
+		A31E32931BA1C850005E3D0F /* CommonTestsSources */ = {
+			isa = PBXGroup;
+			children = (
+				A31E32A51BA1C9EA005E3D0F /* Frameworks */,
+			);
+			name = CommonTestsSources;
+			path = ../../../CommonTestsSources;
+			sourceTree = "<group>";
+		};
+		A31E32A51BA1C9EA005E3D0F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A31E329F1BA1C96D005E3D0F /* Nimble.framework */,
+				A31E32951BA1C850005E3D0F /* Quick.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +169,7 @@
 				A31E327F1BA1C6DD005E3D0F /* Sources */,
 				A31E32801BA1C6DD005E3D0F /* Frameworks */,
 				A31E32811BA1C6DD005E3D0F /* Resources */,
+				A31E32A21BA1C9D2005E3D0F /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -142,6 +187,7 @@
 		A31E32701BA1C6DD005E3D0F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = YOPESO;
 				TargetAttributes = {
@@ -193,6 +239,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A31E32B61BA1D34C005E3D0F /* Printer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +349,7 @@
 		A31E328E1BA1C6DD005E3D0F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -314,12 +362,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.Printer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		A31E328F1BA1C6DD005E3D0F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -339,6 +389,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../../CommonTestsSources",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = PrinterTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.PrinterTests;
@@ -350,6 +404,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../../CommonTestsSources",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = PrinterTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.PrinterTests;

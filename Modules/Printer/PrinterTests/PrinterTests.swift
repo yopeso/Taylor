@@ -7,30 +7,131 @@
 //
 
 import XCTest
+import Quick
+import Nimble
 @testable import Printer
 
-class PrinterTests: XCTestCase {
+class FakeReporter : Printing {
+    var printedText: String?
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    init() {}
+    
+    func printMessage(text: String) {
+        printedText = text
     }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
+}
+
+class VerbosityLevelTests: QuickSpec {
+    override func spec() {
+        describe("Verbosity Level") {
+            it("should contain Info, Warning and Error") {
+                expect(VerbosityLevel.Info).toNot(beNil())
+                expect(VerbosityLevel.Warning).toNot(beNil())
+                expect(VerbosityLevel.Error).toNot(beNil())
+            }
         }
     }
+}
+
+let infoMessage = "Here is an info message"
+let warningMessage = "This is an warning"
+let errorMessage = "This is an error"
+
+class PrinterTests: QuickSpec {
     
+    override func spec() {
+        describe("Printer") {
+            
+            context("when initialized with verbosity level and a reporter") {
+                
+                let printer = Printer(verbosityLevel:.Info, reporter: FakeReporter())
+                
+                it("should not be nil") {
+                    expect(printer).toNot(beNil())
+                }
+                
+                it("should remember the verbosity level") {
+                    expect(printer.verbosity).to(equal(VerbosityLevel.Info))
+                }
+            }
+            
+            context("when verbosity is set to .Info") {
+                var reporter: FakeReporter!
+                var printer: Printer!
+                
+                beforeEach {
+                    reporter = FakeReporter()
+                    printer = Printer(verbosityLevel:.Info, reporter: reporter)
+                }
+                
+                it("should output the info messages") {
+                    printer.printInfo(infoMessage)
+                    expect(reporter.printedText).to(equal(infoMessage))
+                }
+                
+                it("should not output the warning messages") {
+                    printer.printWarning(warningMessage)
+                    expect(reporter.printedText).to(beNil())
+                }
+                
+                it("should not output the error messages") {
+                    printer.printError(errorMessage)
+                    expect(reporter.printedText).to(beNil())
+                }
+            }
+            
+            context("when verbosity is set to .Warning") {
+                
+                var reporter: FakeReporter!
+                var printer: Printer!
+                
+                beforeEach {
+                    reporter = FakeReporter()
+                    printer = Printer(verbosityLevel:.Warning, reporter: reporter)
+                }
+                
+                it("should output the info messages") {
+                    printer.printInfo(infoMessage)
+                    expect(reporter.printedText).to(equal(infoMessage))
+                }
+                
+                it("should output the warning messages") {
+                    printer.printWarning(warningMessage)
+                    expect(reporter.printedText).to(equal(warningMessage))
+                }
+                
+                it("should not output the error messages") {
+                    printer.printError(errorMessage)
+                    expect(reporter.printedText).to(beNil())
+                }
+            }
+            
+            context("when verbosity is set to .Error") {
+                
+                var reporter: FakeReporter!
+                var printer: Printer!
+                
+                beforeEach {
+                    reporter = FakeReporter()
+                    printer = Printer(verbosityLevel:.Error, reporter: reporter)
+                }
+                
+                it("should output the info messages") {
+                    printer.printInfo(infoMessage)
+                    expect(reporter.printedText).to(equal(infoMessage))
+                }
+                
+                it("should output the warning messages") {
+                    printer.printWarning(warningMessage)
+                    expect(reporter.printedText).to(equal(warningMessage))
+                }
+                
+                it("should output the error messages") {
+                    printer.printError(errorMessage)
+                    expect(reporter.printedText).to(equal(errorMessage))
+                }
+            }
+            
+        }
+    }
 }
