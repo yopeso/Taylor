@@ -1,6 +1,8 @@
-- “TaylorTests/*”
-- “Modules/caprices/Caprices/CapriceTests/*”
-- “Modules/finder/FinderTests/*”
-- “Modules/scissors/ScissorsTests/*”
-- “Modules/temper/Temper/TemperTests/*”
-- “Modules/BoundariesKit/BoundariesKitTests”
+- "TaylorTests/*"
+- "Modules/caprices/Caprices/CapriceTests/*"
+- "Modules/finder/FinderTests/*"
+- "Modules/scissors/ScissorsTests/*"
+- "Modules/temper/Temper/TemperTests/*"
+- "Modules/BoundariesKit/BoundariesKitTests"
+- "Common/*"
+- "CommonTestsSources/*"
