@@ -152,6 +152,7 @@
 				A31E32751BA1C6DD005E3D0F /* Frameworks */,
 				A31E32761BA1C6DD005E3D0F /* Headers */,
 				A31E32771BA1C6DD005E3D0F /* Resources */,
+				A31E32B71BA1E5A4005E3D0F /* Copy Framework */,
 			);
 			buildRules = (
 			);
@@ -233,6 +234,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A31E32B71BA1E5A4005E3D0F /* Copy Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "FRAMEWORK_PATH=\"${BUILD_DIR}/${CONFIGURATION}/${FULL_PRODUCT_NAME}\"\nDESTINATION_PATH=\"${SRCROOT}/../../Common/\"\n\ncp -r ${FRAMEWORK_PATH} ${DESTINATION_PATH}\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A31E32741BA1C6DD005E3D0F /* Sources */ = {
@@ -434,6 +452,7 @@
 				A31E328F1BA1C6DD005E3D0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A31E32901BA1C6DD005E3D0F /* Build configuration list for PBXNativeTarget "PrinterTests" */ = {
 			isa = XCConfigurationList;
@@ -442,6 +461,7 @@
 				A31E32921BA1C6DD005E3D0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
