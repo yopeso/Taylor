@@ -12,7 +12,7 @@ import Nimble
 @testable import BoundariesKit
 
 func getTestRange() -> ComponentRange {
-    return ComponentRange(sl: 0, sc: 0, el: 0, ec: 0);
+    return ComponentRange(sl: 0, el: 0);
 }
 
 class ComponentTests: QuickSpec {
@@ -116,7 +116,7 @@ class ComponentTests: QuickSpec {
                     let componentWithNoName = Component(type: .Function, range: getTestRange())
                     expect(component).toNot(equal(componentWithNoName))
                     
-                    let range = ComponentRange(sl: 0, sc: 0, el: 0, ec: 4)
+                    let range = ComponentRange(sl: 0, el: 1)
                     let componentWithDifferentRange = Component(type: .Class, range: range)
                     expect(component).notTo(equal(componentWithDifferentRange))
                 }

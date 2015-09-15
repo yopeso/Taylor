@@ -8,20 +8,24 @@
 
 public enum ComponentType {
     case Class
-    case Function
-    case Comment
-    case EmptyLines
     case Struct
     case Enum
+    case Protocol
+    case Function
+    case Parameter
+    case Comment
+    case EmptyLines
+    case Repeat
+    case While
     case If
-    case ElseIf
     case Else
-    case For
     case Do
     case Catch
-    case While
+    case For
     case Switch
     case Case
+    
+    case Other
 }
 
 public class Component {

@@ -8,15 +8,11 @@
 
 public struct ComponentRange {
     public let startLine: Int
-    public let startColumn: Int
     public let endLine: Int
-    public let endColumn: Int
     
-    public init(sl:Int, sc: Int, el: Int, ec: Int) {
+    public init(sl:Int, el: Int) {
         startLine = sl
-        startColumn = sc
         endLine = el
-        endColumn = ec
     }
 }
 
@@ -26,7 +22,5 @@ extension ComponentRange: Equatable {
 
 public func ==(lhs: ComponentRange, rhs: ComponentRange) -> Bool {
     return lhs.startLine == rhs.startLine &&
-        lhs.startColumn == rhs.startColumn &&
-        lhs.endLine == rhs.endLine &&
-        lhs.endColumn == rhs.endColumn
+        lhs.endLine == rhs.endLine
 }
