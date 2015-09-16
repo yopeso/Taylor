@@ -11,6 +11,7 @@ public enum ComponentType {
     case Struct
     case Enum
     case Protocol
+    case Extension
     case Function
     case Parameter
     case Comment
@@ -24,6 +25,7 @@ public enum ComponentType {
     case For
     case Switch
     case Case
+    case Brace
     
     case Other
 }
