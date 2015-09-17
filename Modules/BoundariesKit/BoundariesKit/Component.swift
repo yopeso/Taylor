@@ -19,9 +19,8 @@ public enum ComponentType {
     case Repeat
     case While
     case If
+    case ElseIf
     case Else
-    case Do
-    case Catch
     case For
     case Switch
     case Case
