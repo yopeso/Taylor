@@ -25,6 +25,10 @@ public enum ComponentType {
     case Switch
     case Case
     case Brace
+    case And
+    case Or
+    case NilCoalescing
+    case Ternary
     
     case Other
 }
