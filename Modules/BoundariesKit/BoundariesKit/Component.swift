@@ -24,6 +24,7 @@ public enum ComponentType {
     case For
     case Switch
     case Case
+    case Brace
     
     case Other
 }
