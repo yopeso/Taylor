@@ -35,19 +35,19 @@ public class Printer {
     }
     
     public func printInfo(text: String) {
-        reporter.printMessage(text)
+        if verbosity == .Info {
+            reporter.printMessage(text)
+        }
     }
     
     public func printWarning(text: String) {
-        if [.Warning, .Error].contains(verbosity) {
+        if [.Warning, .Info].contains(verbosity) {
             reporter.printMessage(text)
         }
     }
     
     public func printError(text: String) {
-        if verbosity == .Error {
-            reporter.printMessage(text)
-        }
+        reporter.printMessage(text)
     }
 }
 
