@@ -18,14 +18,13 @@
 		A33F08A01B98AD9C00950857 /* Caprice.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A33F08941B98A9BC00950857 /* Caprice.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A36B2F0A1B98244F0049F590 /* TaylorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B2F091B98244F0049F590 /* TaylorTests.swift */; };
 		A370D4BB1BAC137B00C5DE95 /* Printer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A37E1BB51BA98C0D00C56372 /* Printer.framework */; };
-		A370D4BC1BAC137B00C5DE95 /* Printer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A37E1BB51BA98C0D00C56372 /* Printer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A37E1BBC1BA98C1B00C56372 /* Printer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A37E1BB51BA98C0D00C56372 /* Printer.framework */; };
 		A3CB26521B9DF6FA00802E80 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CB26501B9DF6FA00802E80 /* Nimble.framework */; settings = {ASSET_TAGS = (); }; };
 		A3CB26531B9DF6FA00802E80 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CB26511B9DF6FA00802E80 /* Quick.framework */; settings = {ASSET_TAGS = (); }; };
 		A3E4811D1B98315000451D20 /* Finder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3E480F11B982EFC00451D20 /* Finder.framework */; };
 		A3E4811E1B98315000451D20 /* Finder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A3E480F11B982EFC00451D20 /* Finder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A3E54CED1B9DA97300B83273 /* BoundariesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3E54CEB1B9DA96300B83273 /* BoundariesKit.framework */; };
 		A3E54CEE1B9DA97300B83273 /* BoundariesKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A3E54CEB1B9DA96300B83273 /* BoundariesKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A3F76B621BB298C800520A31 /* Printer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A370D4B61BAC135900C5DE95 /* Printer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +168,13 @@
 			remoteGlobalIDString = A33D62541B98462400C6F3C3;
 			remoteInfo = BoundariesKit;
 		};
+		A3F76B631BB298C800520A31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A370D4B01BAC135900C5DE95 /* Printer.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A31E32781BA1C6DD005E3D0F;
+			remoteInfo = Printer;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -190,7 +196,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				A33D61FC1B983D6400C6F3C3 /* Scissors.framework in Embed Frameworks */,
-				A370D4BC1BAC137B00C5DE95 /* Printer.framework in Embed Frameworks */,
+				A3F76B621BB298C800520A31 /* Printer.framework in Embed Frameworks */,
 				A33F08A01B98AD9C00950857 /* Caprice.framework in Embed Frameworks */,
 				A31402D01B9DF72A00AE011B /* Temper.framework in Embed Frameworks */,
 				A3E54CEE1B9DA97300B83273 /* BoundariesKit.framework in Embed Frameworks */,
@@ -227,7 +233,6 @@
 			files = (
 				A3E4811D1B98315000451D20 /* Finder.framework in Frameworks */,
 				A370D4BB1BAC137B00C5DE95 /* Printer.framework in Frameworks */,
-				A37E1BBC1BA98C1B00C56372 /* Printer.framework in Frameworks */,
 				A33F089F1B98AD9C00950857 /* Caprice.framework in Frameworks */,
 				A31402CF1B9DF72A00AE011B /* Temper.framework in Frameworks */,
 				A3E54CED1B9DA97300B83273 /* BoundariesKit.framework in Frameworks */,
@@ -382,7 +387,6 @@
 				A36B2EF31B98244F0049F590 /* Frameworks */,
 				A36B2EF41B98244F0049F590 /* Resources */,
 				A36B2F4A1B9828670049F590 /* Embed Frameworks */,
-				A3DD01D91BAB03C800BCAE24 /* ShellScript */,
 				A370D4AF1BABF86400C5DE95 /* App Deploy */,
 			);
 			buildRules = (
@@ -395,6 +399,7 @@
 				A33F08A21B98AD9C00950857 /* PBXTargetDependency */,
 				A3E54CDA1B9DA27700B83273 /* PBXTargetDependency */,
 				A31402D21B9DF72A00AE011B /* PBXTargetDependency */,
+				A3F76B641BB298C800520A31 /* PBXTargetDependency */,
 			);
 			name = Taylor;
 			productName = Taylor;
@@ -601,20 +606,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "FRAMEWORK_PATH=\"${BUILD_DIR}/${CONFIGURATION}/${FULL_PRODUCT_NAME}\"\n. scripts/install.sh ${BUILD_DIR}/${CONFIGURATION}/${FULL_PRODUCT_NAME}";
-		};
-		A3DD01D91BAB03C800BCAE24 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "FRAMEWORK_PATH=\"${BUILD_DIR}/${CONFIGURATION}/${FULL_PRODUCT_NAME}\"\necho $FRAMEWORK_PATH\nIDENTITY=\"Developer ID Application: Your Personal Software RO s.r.l.\"\n\nfind $FRAMEWORK_PATH -type d -name \"framework\" -exec sh -c '\nfor i do\necho \"$i\"\ndone' sh {} +\n\n\n#find $FRAMEWORK_PATH -name \".framework\" -type d -exec echo {} \\;\n#find $FRAMEWORK_PATH -name \".framework\" -type d | while read file; echo $file; done;\n#codesign --verbose --force --sign \"$IDENTITY\" {} \\;\n";
+			shellScript = "#FRAMEWORK_PATH=\"${BUILD_DIR}/${CONFIGURATION}/${FULL_PRODUCT_NAME}\"\n#. scripts/install.sh ${BUILD_DIR}/${CONFIGURATION}/${FULL_PRODUCT_NAME}";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -677,6 +669,11 @@
 			isa = PBXTargetDependency;
 			name = BoundariesKit;
 			targetProxy = A3E54CD91B9DA27700B83273 /* PBXContainerItemProxy */;
+		};
+		A3F76B641BB298C800520A31 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Printer;
+			targetProxy = A3F76B631BB298C800520A31 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
