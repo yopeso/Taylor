@@ -33,7 +33,7 @@ public enum ComponentType {
     case Other
 }
 
-public class Component{
+public class Component {
     public var parent: Component?
     public let type: ComponentType
     public let range: ComponentRange
@@ -58,9 +58,7 @@ public class Component{
 
 extension Component : Hashable {
     public var hashValue: Int {
-        return self.range.startLine +
-            self.range.endLine +
-            self.type.hashValue
+        return components.reduce(range.startLine.hashValue + range.endLine.hashValue + type.hashValue) { $0 + $1.hashValue }
     }
 }
 
