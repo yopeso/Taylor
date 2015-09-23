@@ -17,6 +17,9 @@
 		A33F089F1B98AD9C00950857 /* Caprice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33F08941B98A9BC00950857 /* Caprice.framework */; };
 		A33F08A01B98AD9C00950857 /* Caprice.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A33F08941B98A9BC00950857 /* Caprice.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A36B2F0A1B98244F0049F590 /* TaylorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B2F091B98244F0049F590 /* TaylorTests.swift */; };
+		A370D4BB1BAC137B00C5DE95 /* Printer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A37E1BB51BA98C0D00C56372 /* Printer.framework */; };
+		A370D4BC1BAC137B00C5DE95 /* Printer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A37E1BB51BA98C0D00C56372 /* Printer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A37E1BBC1BA98C1B00C56372 /* Printer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A37E1BB51BA98C0D00C56372 /* Printer.framework */; };
 		A3CB26521B9DF6FA00802E80 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CB26501B9DF6FA00802E80 /* Nimble.framework */; settings = {ASSET_TAGS = (); }; };
 		A3CB26531B9DF6FA00802E80 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CB26511B9DF6FA00802E80 /* Quick.framework */; settings = {ASSET_TAGS = (); }; };
 		A3E4811D1B98315000451D20 /* Finder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3E480F11B982EFC00451D20 /* Finder.framework */; };
@@ -103,6 +106,27 @@
 			remoteGlobalIDString = A36B2EF51B98244F0049F590;
 			remoteInfo = Taylor;
 		};
+		A370D4B51BAC135900C5DE95 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A370D4B01BAC135900C5DE95 /* Printer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A31E32791BA1C6DD005E3D0F;
+			remoteInfo = Printer;
+		};
+		A370D4B71BAC135900C5DE95 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A370D4B01BAC135900C5DE95 /* Printer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A31E32831BA1C6DD005E3D0F;
+			remoteInfo = PrinterTests;
+		};
+		A370D4B91BAC136200C5DE95 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A370D4B01BAC135900C5DE95 /* Printer.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A31E32781BA1C6DD005E3D0F;
+			remoteInfo = Printer;
+		};
 		A3E480F01B982EFC00451D20 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A3E480EB1B982EFC00451D20 /* Finder.xcodeproj */;
@@ -166,6 +190,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				A33D61FC1B983D6400C6F3C3 /* Scissors.framework in Embed Frameworks */,
+				A370D4BC1BAC137B00C5DE95 /* Printer.framework in Embed Frameworks */,
 				A33F08A01B98AD9C00950857 /* Caprice.framework in Embed Frameworks */,
 				A31402D01B9DF72A00AE011B /* Temper.framework in Embed Frameworks */,
 				A3E54CEE1B9DA97300B83273 /* BoundariesKit.framework in Embed Frameworks */,
@@ -185,6 +210,8 @@
 		A36B2F051B98244F0049F590 /* TaylorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaylorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A36B2F091B98244F0049F590 /* TaylorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaylorTests.swift; sourceTree = "<group>"; };
 		A36B2F0B1B98244F0049F590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A370D4B01BAC135900C5DE95 /* Printer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Printer.xcodeproj; path = Modules/Printer/Printer.xcodeproj; sourceTree = "<group>"; };
+		A37E1BB51BA98C0D00C56372 /* Printer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Printer.framework; sourceTree = "<group>"; };
 		A384595B1B987ED800175BFA /* Caprices.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Caprices.xcodeproj; path = Modules/caprices/Caprices/Caprices.xcodeproj; sourceTree = "<group>"; };
 		A3CB26501B9DF6FA00802E80 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Nimble.framework; sourceTree = "<group>"; };
 		A3CB26511B9DF6FA00802E80 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Quick.framework; sourceTree = "<group>"; };
@@ -199,6 +226,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3E4811D1B98315000451D20 /* Finder.framework in Frameworks */,
+				A370D4BB1BAC137B00C5DE95 /* Printer.framework in Frameworks */,
+				A37E1BBC1BA98C1B00C56372 /* Printer.framework in Frameworks */,
 				A33F089F1B98AD9C00950857 /* Caprice.framework in Frameworks */,
 				A31402CF1B9DF72A00AE011B /* Temper.framework in Frameworks */,
 				A3E54CED1B9DA97300B83273 /* BoundariesKit.framework in Frameworks */,
@@ -221,6 +250,7 @@
 		A33033931B982629000E683F /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				A370D4B01BAC135900C5DE95 /* Printer.xcodeproj */,
 				A384595B1B987ED800175BFA /* Caprices.xcodeproj */,
 				A3E480EB1B982EFC00451D20 /* Finder.xcodeproj */,
 				A33D61EF1B983D4A00C6F3C3 /* Scissors.xcodeproj */,
@@ -287,6 +317,15 @@
 			path = TaylorTests;
 			sourceTree = "<group>";
 		};
+		A370D4B11BAC135900C5DE95 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A370D4B61BAC135900C5DE95 /* Printer.framework */,
+				A370D4B81BAC135900C5DE95 /* PrinterTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		A384595C1B987ED800175BFA /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,6 +365,7 @@
 		A3E54CEA1B9DA96300B83273 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A37E1BB51BA98C0D00C56372 /* Printer.framework */,
 				A3E54CEB1B9DA96300B83273 /* BoundariesKit.framework */,
 			);
 			path = Common;
@@ -342,10 +382,13 @@
 				A36B2EF31B98244F0049F590 /* Frameworks */,
 				A36B2EF41B98244F0049F590 /* Resources */,
 				A36B2F4A1B9828670049F590 /* Embed Frameworks */,
+				A3DD01D91BAB03C800BCAE24 /* ShellScript */,
+				A370D4AF1BABF86400C5DE95 /* App Deploy */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A370D4BA1BAC136200C5DE95 /* PBXTargetDependency */,
 				A33F08901B98A9BC00950857 /* PBXTargetDependency */,
 				A3E481201B98315000451D20 /* PBXTargetDependency */,
 				A33D61FE1B983D6400C6F3C3 /* PBXTargetDependency */,
@@ -421,6 +464,10 @@
 					ProjectRef = A3E480EB1B982EFC00451D20 /* Finder.xcodeproj */;
 				},
 				{
+					ProductGroup = A370D4B11BAC135900C5DE95 /* Products */;
+					ProjectRef = A370D4B01BAC135900C5DE95 /* Printer.xcodeproj */;
+				},
+				{
 					ProductGroup = A33D61F01B983D4A00C6F3C3 /* Products */;
 					ProjectRef = A33D61EF1B983D4A00C6F3C3 /* Scissors.xcodeproj */;
 				},
@@ -480,6 +527,20 @@
 			remoteRef = A33F08951B98A9BC00950857 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		A370D4B61BAC135900C5DE95 /* Printer.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Printer.framework;
+			remoteRef = A370D4B51BAC135900C5DE95 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A370D4B81BAC135900C5DE95 /* PrinterTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = PrinterTests.xctest;
+			remoteRef = A370D4B71BAC135900C5DE95 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		A3E480F11B982EFC00451D20 /* Finder.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -527,6 +588,36 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A370D4AF1BABF86400C5DE95 /* App Deploy */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "App Deploy";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "FRAMEWORK_PATH=\"${BUILD_DIR}/${CONFIGURATION}/${FULL_PRODUCT_NAME}\"\n. scripts/install.sh ${BUILD_DIR}/${CONFIGURATION}/${FULL_PRODUCT_NAME}";
+		};
+		A3DD01D91BAB03C800BCAE24 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "FRAMEWORK_PATH=\"${BUILD_DIR}/${CONFIGURATION}/${FULL_PRODUCT_NAME}\"\necho $FRAMEWORK_PATH\nIDENTITY=\"Developer ID Application: Your Personal Software RO s.r.l.\"\n\nfind $FRAMEWORK_PATH -type d -name \"framework\" -exec sh -c '\nfor i do\necho \"$i\"\ndone' sh {} +\n\n\n#find $FRAMEWORK_PATH -name \".framework\" -type d -exec echo {} \\;\n#find $FRAMEWORK_PATH -name \".framework\" -type d | while read file; echo $file; done;\n#codesign --verbose --force --sign \"$IDENTITY\" {} \\;\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A36B2EF21B98244F0049F590 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -571,6 +662,11 @@
 			isa = PBXTargetDependency;
 			target = A36B2EF51B98244F0049F590 /* Taylor */;
 			targetProxy = A36B2F061B98244F0049F590 /* PBXContainerItemProxy */;
+		};
+		A370D4BA1BAC136200C5DE95 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Printer;
+			targetProxy = A370D4B91BAC136200C5DE95 /* PBXContainerItemProxy */;
 		};
 		A3E481201B98315000451D20 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -671,6 +767,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -690,6 +787,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (

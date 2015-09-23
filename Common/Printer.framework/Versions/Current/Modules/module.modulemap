@@ -1,0 +1,10 @@
+framework module Printer {
+  umbrella header "Printer.h"
+
+  export *
+  module * { export * }
+}
+
+module Printer.Swift {
+    header "Printer-Swift.h"
+}

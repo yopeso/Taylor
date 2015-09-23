@@ -1,25 +1,28 @@
 #!/bin/sh
 
-APP_PATH="$1"
-DESTINATION_DIR="/usr/local/bin"
+APPPATH="$1"
+LOCALDIR="/usr/local/bin"
 BASH_PROFILE=~/.bash_profile
-EXEPATH="$DESTINATION_DIR/Taylor.app/Contents/MacOS"
+APPNAME=$(basename "$APPPATH" ".app")
+EXEPATH="$LOCALDIR/$APPNAME.app/Contents/MacOS"
 ALIASNAME="taylor"
 
 # Create /usr/local/bin if not exist
-if [ ! -d $DESTINATION_DIR ]
+if [ ! -d $LOCALDIR ]
 then
-    echo "Creating folder: $DESTINATION_DIR"
-    sudo mkdir -p $DESTINATION_DIR
+    echo "Make Dir $LOCALDIR"
+    sudo mkdir -p $LOCALDIR
 fi
 
 # Copy application to /usr/local/bin
-echo "Copy $ALIASNAME to $DESTINATION_DIR"
-sudo cp -R $APP_PATH $DESTINATION_DIR
+echo "Copy $ALIASNAME to $LOCALDIR"
+sudo rm -rf "$LOCALDIR/$APPNAME.app"
+sudo cp -R $APPPATH $LOCALDIR
 
 # Make shortcut from /usr/local/bin/Taylor/Contents/MacOS/Taylor to /usr/local/bin
-echo "Make $ALIASNAME shortcut to $DESTINATION_DIR"
-cd $DESTINATION_DIR
+echo "Make $ALIASNAME shortcut to $LOCALDIR"
+cd $LOCALDIR
+sudo rm $LOCALDIR/$ALIASNAME
 sudo ln -s "$EXEPATH/$ALIASNAME"
 
 # Create ~/.bash_profile if not exist
@@ -33,9 +36,9 @@ fi
 sed -i -e "s/alias $ALIASNAME=\/usr\/local\/bin\/$ALIASNAME//g" $BASH_PROFILE
 
 # Write alias in ~/.bash_profile
-echo "Make alias with Name $ALIASNAME"
-echo "alias $ALIASNAME=$DESTINATION_DIR/$ALIASNAME" >> $BASH_PROFILE
+echo "Make $ALIASNAME alias"
+echo "alias $ALIASNAME=$LOCALDIR/$ALIASNAME" >> $BASH_PROFILE
 
 # Reload alias from ~/.bash_profile
-echo "Reload alias"
+echo "Update bash profile"
 source $BASH_PROFILE

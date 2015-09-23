@@ -69,14 +69,14 @@ class PrinterTests: QuickSpec {
                     expect(reporter.printedText).to(equal(infoMessage))
                 }
                 
-                it("should not output the warning messages") {
+                it("should output the warning messages") {
                     printer.printWarning(warningMessage)
-                    expect(reporter.printedText).to(beNil())
+                    expect(reporter.printedText).to(equal(warningMessage))
                 }
                 
-                it("should not output the error messages") {
+                it("should output the error messages") {
                     printer.printError(errorMessage)
-                    expect(reporter.printedText).to(beNil())
+                    expect(reporter.printedText).to(equal(errorMessage))
                 }
             }
             
@@ -90,9 +90,9 @@ class PrinterTests: QuickSpec {
                     printer = Printer(verbosityLevel:.Warning, reporter: reporter)
                 }
                 
-                it("should output the info messages") {
+                it("should not output the info messages") {
                     printer.printInfo(infoMessage)
-                    expect(reporter.printedText).to(equal(infoMessage))
+                    expect(reporter.printedText).to(beNil())
                 }
                 
                 it("should output the warning messages") {
@@ -100,9 +100,9 @@ class PrinterTests: QuickSpec {
                     expect(reporter.printedText).to(equal(warningMessage))
                 }
                 
-                it("should not output the error messages") {
+                it("should output the error messages") {
                     printer.printError(errorMessage)
-                    expect(reporter.printedText).to(beNil())
+                    expect(reporter.printedText).to(equal(errorMessage))
                 }
             }
             
@@ -116,14 +116,14 @@ class PrinterTests: QuickSpec {
                     printer = Printer(verbosityLevel:.Error, reporter: reporter)
                 }
                 
-                it("should output the info messages") {
+                it("should not output the info messages") {
                     printer.printInfo(infoMessage)
-                    expect(reporter.printedText).to(equal(infoMessage))
+                    expect(reporter.printedText).to(beNil())
                 }
                 
-                it("should output the warning messages") {
+                it("should not output the warning messages") {
                     printer.printWarning(warningMessage)
-                    expect(reporter.printedText).to(equal(warningMessage))
+                    expect(reporter.printedText).to(beNil())
                 }
                 
                 it("should output the error messages") {
