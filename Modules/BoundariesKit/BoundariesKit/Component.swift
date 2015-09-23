@@ -33,7 +33,7 @@ public enum ComponentType {
     case Other
 }
 
-public class Component {
+public class Component{
     public var parent: Component?
     public let type: ComponentType
     public let range: ComponentRange
@@ -56,13 +56,21 @@ public class Component {
     }
 }
 
+extension Component : Hashable {
+    public var hashValue: Int {
+        return self.range.startLine +
+            self.range.endLine +
+            self.type.hashValue
+    }
+}
+
 extension Component : Equatable {}
 
 public func ==(lhs: Component, rhs: Component) -> Bool {
     if lhs.range != rhs.range { return false }
     if lhs.type != rhs.type { return false }
     if lhs.name !~== lhs.name { return false }
-    if rhs.components != lhs.components { return false }
+    if !(Set(lhs.components) == Set(rhs.components)) { return false }
     
     return true
 }
