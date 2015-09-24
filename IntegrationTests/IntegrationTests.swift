@@ -1,23 +1,24 @@
 //
-//  TaylorTests.swift
-//  TaylorTests
+//  IntegrationTests.swift
+//  IntegrationTests
 //
-//  Created by Andrei Raifura on 9/3/15.
+//  Created by Andrei Raifura on 9/24/15.
 //  Copyright © 2015 YOPESO. All rights reserved.
 //
 
-import XCTest
 import Quick
 import Nimble
+import Temper
+import Scissors
+import BoundariesKit
 
-@testable import Taylor
-
-class TaylorTests: QuickSpec {
+class IntegrationTests: QuickSpec {
     override func spec() {
-        describe("Tests") {
+        describe("Integration tests") {
             it("should pass") {
                 expect(true).to(beTruthy())
             }
         }
     }
 }
+
