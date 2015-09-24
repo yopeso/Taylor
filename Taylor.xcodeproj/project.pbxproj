@@ -993,6 +993,7 @@
 				A368A4101BB3F5FC0029BDF7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A36B2EF11B98244F0049F590 /* Build configuration list for PBXProject "Taylor" */ = {
 			isa = XCConfigurationList;
