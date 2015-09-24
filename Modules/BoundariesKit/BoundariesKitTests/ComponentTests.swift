@@ -120,6 +120,19 @@ class ComponentTests: QuickSpec {
                     let componentWithDifferentRange = Component(type: .Class, range: range)
                     expect(component).notTo(equal(componentWithDifferentRange))
                 }
+                
+                it("should be equal if they have same components but in different order") {
+                    let component1 = Component(type: .Function, range: getTestRange(), name: "Test")
+                    let component2 = Component(type: .Class, range: getTestRange(), name: "Test")
+                    component.makeComponent(type: component1.type, range: component1.range)
+                    component.makeComponent(type: component2.type, range: component2.range)
+                    
+                    let testComponent = Component(type: .Class, range: getTestRange())
+                    testComponent.makeComponent(type: component2.type, range: component2.range)
+                    testComponent.makeComponent(type: component1.type, range: component1.range)
+                    
+                    expect(testComponent).to(equal(component))
+                }
             }
         }
     }

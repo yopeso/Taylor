@@ -56,13 +56,19 @@ public class Component {
     }
 }
 
+extension Component : Hashable {
+    public var hashValue: Int {
+        return components.reduce(range.startLine.hashValue + range.endLine.hashValue + type.hashValue) { $0 + $1.hashValue }
+    }
+}
+
 extension Component : Equatable {}
 
 public func ==(lhs: Component, rhs: Component) -> Bool {
     if lhs.range != rhs.range { return false }
     if lhs.type != rhs.type { return false }
     if lhs.name !~== lhs.name { return false }
-    if rhs.components != lhs.components { return false }
+    if !(Set(lhs.components) == Set(rhs.components)) { return false }
     
     return true
 }
