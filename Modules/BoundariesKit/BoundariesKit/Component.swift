@@ -29,6 +29,8 @@ public enum ComponentType {
     case Or
     case NilCoalescing
     case Ternary
+    case Variable
+    case Closure
     
     case Other
 }
