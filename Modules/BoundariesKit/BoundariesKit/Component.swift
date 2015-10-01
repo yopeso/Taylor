@@ -30,6 +30,7 @@ public enum ComponentType {
     case NilCoalescing
     case Ternary
     case Variable
+    case Closure
     
     case Other
 }
