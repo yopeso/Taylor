@@ -11,6 +11,10 @@
 		A31402D01B9DF72A00AE011B /* Temper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A33D62421B98435400C6F3C3 /* Temper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A31402DA1B9DF74A00AE011B /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A3CB26501B9DF6FA00802E80 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A31402DB1B9DF74A00AE011B /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A3CB26511B9DF6FA00802E80 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A31BF35E1BBE81B900756EB7 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31BF35D1BBE81B900756EB7 /* Array+Extensions.swift */; settings = {ASSET_TAGS = (); }; };
+		A31BF3661BBE857000756EB7 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31BF3651BBE857000756EB7 /* Timer.swift */; settings = {ASSET_TAGS = (); }; };
+		A31BF3681BBE8C1100756EB7 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31BF3671BBE8C1100756EB7 /* Parameters.swift */; settings = {ASSET_TAGS = (); }; };
+		A31BF3801BBED60F00756EB7 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31BF37F1BBED60F00756EB7 /* Version.swift */; settings = {ASSET_TAGS = (); }; };
 		A33033921B982605000E683F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33033911B982605000E683F /* main.swift */; };
 		A33D61FB1B983D6400C6F3C3 /* Scissors.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33D61F71B983D4A00C6F3C3 /* Scissors.framework */; };
 		A33D61FC1B983D6400C6F3C3 /* Scissors.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A33D61F71B983D4A00C6F3C3 /* Scissors.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -247,6 +251,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A31BF35D1BBE81B900756EB7 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		A31BF3651BBE857000756EB7 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		A31BF3671BBE8C1100756EB7 /* Parameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parameters.swift; sourceTree = "<group>"; };
+		A31BF37F1BBED60F00756EB7 /* Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		A33033911B982605000E683F /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		A33D61EF1B983D4A00C6F3C3 /* Scissors.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Scissors.xcodeproj; path = Modules/scissors/Scissors.xcodeproj; sourceTree = "<group>"; };
 		A33D62391B98435400C6F3C3 /* Temper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Temper.xcodeproj; path = Modules/temper/Temper/Temper.xcodeproj; sourceTree = "<group>"; };
@@ -373,6 +381,10 @@
 			isa = PBXGroup;
 			children = (
 				A33033911B982605000E683F /* main.swift */,
+				A31BF37F1BBED60F00756EB7 /* Version.swift */,
+				A31BF3671BBE8C1100756EB7 /* Parameters.swift */,
+				A31BF3651BBE857000756EB7 /* Timer.swift */,
+				A31BF35D1BBE81B900756EB7 /* Array+Extensions.swift */,
 				A36B2F001B98244F0049F590 /* Info.plist */,
 			);
 			path = Taylor;
@@ -718,7 +730,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A31BF3661BBE857000756EB7 /* Timer.swift in Sources */,
+				A31BF3801BBED60F00756EB7 /* Version.swift in Sources */,
 				A33033921B982605000E683F /* main.swift in Sources */,
+				A31BF35E1BBE81B900756EB7 /* Array+Extensions.swift in Sources */,
+				A31BF3681BBE8C1100756EB7 /* Parameters.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
