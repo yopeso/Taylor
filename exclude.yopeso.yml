@@ -3,6 +3,7 @@
 - "Modules/finder/FinderTests/*"
 - "Modules/scissors/ScissorsTests/*"
 - "Modules/temper/Temper/TemperTests/*"
-- "Modules/BoundariesKit/BoundariesKitTests"
+- "Modules/BoundariesKit/BoundariesKitTests/*"
+- "Modules/Printer/PrinterTests/*"
 - "Common/*"
 - "CommonTestsSources/*"
