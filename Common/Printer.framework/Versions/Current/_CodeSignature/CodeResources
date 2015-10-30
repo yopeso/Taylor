@@ -6,14 +6,14 @@
 	<dict>
 		<key>Resources/Info.plist</key>
 		<data>
-		C7btyw4200mx4Zt4JDgV8WK04N0=
+		i6yn5QYT4t5mRrVrjOVQVAb0yS8=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
 		<key>Headers/Printer-Swift.h</key>
 		<data>
-		5rKbju6NYpoOkx95zLvq4dg8gTw=
+		WD8wJy8UMVJzEhtFzo28USwikYw=
 		</data>
 		<key>Headers/Printer.h</key>
 		<data>
@@ -21,11 +21,11 @@
 		</data>
 		<key>Modules/Printer.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		dfwanHJkBjpPJoTvaWrxdUpJMl4=
+		4SJR2rXQSNRSDYI6Fm41MEIblcg=
 		</data>
 		<key>Modules/Printer.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		kvAwhDC+9Rwu4J2S/umE5FFqElY=
+		mdktbWTOpMQ1RC91cGjwmBWKqXg=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -33,7 +33,7 @@
 		</data>
 		<key>Resources/Info.plist</key>
 		<data>
-		C7btyw4200mx4Zt4JDgV8WK04N0=
+		i6yn5QYT4t5mRrVrjOVQVAb0yS8=
 		</data>
 	</dict>
 	<key>rules</key>

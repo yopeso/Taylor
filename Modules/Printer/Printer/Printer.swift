@@ -50,4 +50,3 @@ public class Printer {
         reporter.printMessage(text)
     }
 }
-

@@ -122,7 +122,7 @@
       </AdditionalOptions>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -145,7 +145,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-p /Users/thelvis/Developer/taylor -v info"
+            argument = "-p /Users/thelvis/Developer/taylor -v info -ef exclude.yopeso.yml"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

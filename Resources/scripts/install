@@ -1,6 +1,7 @@
 #!/bin/sh
 
-APPPATH="$1"
+BASEDIR=$(dirname $0)
+APPPATH="$(dirname $(dirname $BASEDIR))"
 LOCALDIR="/usr/local/bin"
 BASH_PROFILE=~/.bash_profile
 APPNAME=$(basename "$APPPATH" ".app")
