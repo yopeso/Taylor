@@ -6,12 +6,12 @@
 //  Copyright (c) 2015 YOPESO. All rights reserved.
 //
 
+import TaylorFramework
 import Foundation
 
 let parameters = Arguments()
 let printer = Printer(verbosityLevel: parameters.verbosityLevel())
 var temper: Temper?
-
 func runTask() {
     printer.printInfo("Taylor \(version)")
     
@@ -30,25 +30,21 @@ func runTask() {
     generateReport(rootPath)
     printer.printInfo("Running time: \(timer.stop())")
 }
-
 func generateReport(rootPath: String) {
     configureTemper(rootPath)
     checkFileContents(getFileContents())
 }
-
 func configureTemper(rootPath: String) {
     temper = Temper(outputPath: rootPath)
     temper?.setLimits(parameters.thresholds())
     setReporters(temper!)
 }
-
 func getFileContents() -> [FileContent] {
     let paths = Finder().findFilePaths(parameters: parameters.finderParameters())
     let scissors = Scissors(printer: printer)
     
     return parallelizeTokenization(scissors, paths: paths)
 }
-
 func checkFileContents(contents: [FileContent]) {
     guard let temper = temper else { return }
     
@@ -57,13 +53,10 @@ func checkFileContents(contents: [FileContent]) {
     }
     temper.finishTempering()
 }
-
 func parallelizeTokenization(scissors: Scissors, paths: [String]) -> [FileContent] {
     return paths.pmap { scissors.tokenizeFileAtPath($0) }
 }
-
 // MARK: Reporters
-
 func setReporters(temper: Temper) {
     let reporters = createReporters(parameters.reporterRepresentations())
     if reporters.count > 0 {
@@ -72,11 +65,9 @@ func setReporters(temper: Temper) {
         printer.printInfo("No reporters were indicated. Default(PMD) reporter will be used.")
     }
 }
-
 func createReporters(dictionaryRepresentations: [[String: String]]) -> [Reporter] {
     return dictionaryRepresentations.map { makeReporterFromRepresentation($0) }
 }
-
 func makeReporterFromRepresentation(representation: [String : String]) -> Reporter {
     guard let typeAsString = representation["type"] else {
         printer.printError("Reporters: No type was indicated.")
@@ -90,9 +81,7 @@ func makeReporterFromRepresentation(representation: [String : String]) -> Report
         return Reporter(type: type)
     }
 }
-
 // MARK: Easter Egg
-
 func runEasterEggIfNeeded() {
     if parameters.arguments["type"] != nil { return }
     defer { exit(EXIT_FAILURE) }
@@ -104,17 +93,14 @@ func runEasterEggIfNeeded() {
         printer.printError("O Kay! Next time :)")
     }
 }
-
 func formatInputString(string: String) -> String {
     return string.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet());
 }
-
 func input() -> String {
     let keyboard = NSFileHandle.fileHandleWithStandardInput()
     let inputData = keyboard.availableData
     return NSString(data: inputData, encoding:NSUTF8StringEncoding) as! String
 }
-
 func runEasterEgg() {
     guard let rootPath = parameters.rootPath() else { exit(EXIT_FAILURE) }
     
@@ -122,6 +108,4 @@ func runEasterEgg() {
     let pacman = Pacman(paths: paths)
     pacman.start()
 }
-
-
 runTask()
