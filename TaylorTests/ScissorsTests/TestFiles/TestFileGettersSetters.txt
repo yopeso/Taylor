@@ -1,0 +1,24 @@
+class TestGettersSetters {
+    var a: Double {
+        get {
+            return 1
+        } set {
+            if true {}
+        }
+    }
+    var b: Double {
+        didSet {
+        } willSet {
+        }
+    }
+}
+class TestGetter {
+    var b: Double {
+        get {
+            return 1
+        }
+    }
+    var c {
+        willSet{
+    }}
+}

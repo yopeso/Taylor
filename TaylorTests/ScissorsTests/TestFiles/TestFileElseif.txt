@@ -1,0 +1,4 @@
+func testElseIf() {
+if (true) {}
+else if (false) {
+}}

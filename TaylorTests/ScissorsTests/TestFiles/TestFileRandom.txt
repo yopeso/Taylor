@@ -1,0 +1,10 @@
+class TestFile {
+    func testFunction() {
+
+    }
+    /*
+        func(){}
+    */
+}
+func testFunction () {
+}

@@ -1,0 +1,10 @@
+func testTernary() -> Bool {
+    guard 12 < 17 else {
+        return false
+    }
+    
+    return 2 < 3 ?
+        2 < 3 && 4 < 6 :
+        3 > 5 &&
+        2 > 17
+}
