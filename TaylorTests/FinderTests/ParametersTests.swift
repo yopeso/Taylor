@@ -8,8 +8,7 @@
 
 import Quick
 import Nimble
-import Printer
-@testable import Finder
+@testable import Taylor
 
 class ParametersTests: QuickSpec {
     

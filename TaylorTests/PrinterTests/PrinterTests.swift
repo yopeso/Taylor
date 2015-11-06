@@ -9,7 +9,7 @@
 import XCTest
 import Quick
 import Nimble
-@testable import Printer
+@testable import Taylor
 
 class FakeReporter : Printing {
     var printedText: String?

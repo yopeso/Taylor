@@ -26,103 +26,14 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "NO">
       <Testables>
-         <TestableReference
-            skipped = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A36B2F041B98244F0049F590"
-               BuildableName = "TaylorTests.xctest"
-               BlueprintName = "TaylorTests"
-               ReferencedContainer = "container:Taylor.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A33D625E1B98462400C6F3C3"
-               BuildableName = "BoundariesKitTests.xctest"
-               BlueprintName = "BoundariesKitTests"
-               ReferencedContainer = "container:Modules/BoundariesKit/BoundariesKit.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A36B2F211B9826A20049F590"
-               BuildableName = "CapriceTests.xctest"
-               BlueprintName = "CapriceTests"
-               ReferencedContainer = "container:Modules/caprices/Caprices/Caprices.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B1E391A81B9861B100F3EB83"
-               BuildableName = "FinderTests.xctest"
-               BlueprintName = "FinderTests"
-               ReferencedContainer = "container:Modules/finder/Finder.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A31E32821BA1C6DD005E3D0F"
-               BuildableName = "PrinterTests.xctest"
-               BlueprintName = "PrinterTests"
-               ReferencedContainer = "container:Modules/Printer/Printer.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FFDF4CCD1B97760C00D11DAB"
-               BuildableName = "ScissorsTests.xctest"
-               BlueprintName = "ScissorsTests"
-               ReferencedContainer = "container:Modules/scissors/Scissors.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "17E2CF811B983AF10018A48C"
-               BuildableName = "TemperTests.xctest"
-               BlueprintName = "TemperTests"
-               ReferencedContainer = "container:Modules/temper/Temper/Temper.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A368A4081BB3F5FC0029BDF7"
-               BuildableName = "IntegrationTests.xctest"
-               BlueprintName = "IntegrationTests"
-               ReferencedContainer = "container:Taylor.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A36B2EF51B98244F0049F590"
-            BuildableName = "Taylor.app"
-            BlueprintName = "Taylor"
-            ReferencedContainer = "container:Taylor.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -145,8 +56,8 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-p /Users/thelvis/Developer/taylor -v info -ef exclude.yopeso.yml"
-            isEnabled = "YES">
+            argument = "-p /Users/S2dent/Desktop/taylor -v info -ef exclude.yopeso.yml"
+            isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
       <AdditionalOptions>

@@ -9,7 +9,7 @@
 import XCTest
 import Quick
 import Nimble
-@testable import BoundariesKit
+@testable import Taylor
 
 func getTestRange() -> ComponentRange {
     return ComponentRange(sl: 0, el: 0);

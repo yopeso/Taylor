@@ -1,5 +1,5 @@
 //
-//  Finder.swift
+//  ComponentFinder.swift
 //  Scissors
 //
 //  Created by Alex Culeva on 10/2/15.
@@ -8,9 +8,8 @@
 
 import Foundation
 import SourceKittenFramework
-import BoundariesKit
 
-final class Finder {
+final class ComponentFinder {
     let text: String
     let syntaxMap: SyntaxMap
     init(text: String, syntaxMap: SyntaxMap = SyntaxMap(tokens: [])) {

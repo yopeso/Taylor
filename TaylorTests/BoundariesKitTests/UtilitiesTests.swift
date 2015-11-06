@@ -9,7 +9,7 @@
 import XCTest
 import Quick
 import Nimble
-@testable import BoundariesKit
+@testable import Taylor
 
 class UtilitiesTests: QuickSpec {
 

@@ -8,7 +8,7 @@
 
 import Quick
 import Nimble
-@testable import Finder
+@testable import Taylor
 
 class ExcludesTests: QuickSpec {
     override func spec() {

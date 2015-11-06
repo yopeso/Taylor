@@ -6,8 +6,7 @@
 //  Copyright © 2015 com.yopeso.aculeva. All rights reserved.
 //
 
-import BoundariesKit
-@testable import Scissors
+@testable import Taylor
 
 func arrayComponents() -> [ExtendedComponent] {
     return [ExtendedComponent(type: ComponentType.Function, range: OffsetRange(start: 2, end: 4)),

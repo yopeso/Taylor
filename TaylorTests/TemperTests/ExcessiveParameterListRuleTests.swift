@@ -8,8 +8,7 @@
 
 import Quick
 import Nimble
-import BoundariesKit
-@testable import Temper
+@testable import Taylor
 
 class TooManyParametersRuleTests: QuickSpec {
     override func spec() {

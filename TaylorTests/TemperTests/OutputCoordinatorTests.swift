@@ -8,8 +8,7 @@
 
 import Nimble
 import Quick
-import BoundariesKit
-@testable import Temper
+@testable import Taylor
 
 class OutputCoordinatorTests : QuickSpec {
     let helper : TestsHelper = TestsHelper()

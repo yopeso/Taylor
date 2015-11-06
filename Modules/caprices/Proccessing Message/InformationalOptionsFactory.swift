@@ -10,13 +10,13 @@ import Cocoa
 import Foundation
 import Printer
 
-public typealias ReporterType = [String: String]
+public typealias OutputReporter = [String: String]
 public typealias CustomizationRule = [String: Int]
 
 class InformationalOptionsFactory {
     
     var infoOptions: [InformationalOption]
-    var reporterTypes = [ReporterType]()
+    var reporterTypes = [OutputReporter]()
     var customizationRules = CustomizationRule()
     var verbosityLevel = VerbosityLevel.Error
     
@@ -35,7 +35,7 @@ class InformationalOptionsFactory {
         return infoOptions.filter { $0.name == name }
     }
     
-    func getReporters() -> [ReporterType] {
+    func getReporters() -> [OutputReporter] {
         let reporterOptions = filterClassesOfType(ReporterOption().name).map {
             $0 as! ReporterOption
         }

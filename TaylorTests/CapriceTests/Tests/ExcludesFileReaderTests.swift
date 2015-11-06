@@ -8,7 +8,7 @@
 
 import Quick
 import Nimble
-@testable import Caprice
+@testable import Taylor
 
 let TestFileName = "excludes"
 let TestFileExtension = "yml"

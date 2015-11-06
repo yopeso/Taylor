@@ -8,8 +8,7 @@
 
 import Nimble
 import Quick
-import BoundariesKit
-@testable import Temper // 068534569
+@testable import Taylor
 
 class CyclomaticComplexityTests: QuickSpec {
     let rule = CyclomaticComplexityRule()

@@ -9,7 +9,7 @@
 import Foundation
 import Nimble
 import Quick
-@testable import Temper
+@testable import Taylor
 
 class NSFileManagerTests: QuickSpec {
     override func spec() {

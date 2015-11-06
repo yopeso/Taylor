@@ -79,7 +79,7 @@ class MessageProcessor {
     }
     
     
-    func getReporters() -> [ReporterType] {
+    func getReporters() -> [OutputReporter] {
         return optionsProcessor.factory.reporterTypes
     }
     

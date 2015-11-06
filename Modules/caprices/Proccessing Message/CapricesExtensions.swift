@@ -1,5 +1,5 @@
 //
-//  Extensions.swift
+//  CapricesExtensions.swift
 //  Caprices
 //
 //  Created by Alex Culeva on 10/30/15.

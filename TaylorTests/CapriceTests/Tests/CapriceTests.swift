@@ -8,8 +8,7 @@
 
 import Quick
 import Nimble
-import Printer
-@testable import Caprice
+@testable import Taylor
 
 class CapriceTests: QuickSpec {
     override func spec() {

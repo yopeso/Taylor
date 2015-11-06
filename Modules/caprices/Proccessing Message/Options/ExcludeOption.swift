@@ -6,6 +6,8 @@
 //  Copyright © 2015 yopeso.dmitriicelpan. All rights reserved.
 //
 
+import Foundation
+
 let ExcludeLong = "--exclude"
 let ExcludeShort = "-e"
 

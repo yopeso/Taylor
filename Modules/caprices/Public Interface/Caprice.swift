@@ -62,7 +62,7 @@ public struct Caprice {
     For xcode reporter type, value for "fileName" key will be empty.
     Must be called after processing arguments.
     */
-    public func getReporters() -> [ReporterType] {
+    public func getReporters() -> [OutputReporter] {
         return messageProcessor.getReporters()
     }
     

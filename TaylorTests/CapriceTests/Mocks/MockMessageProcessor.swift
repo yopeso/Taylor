@@ -6,8 +6,8 @@
 //  Copyright © 2015 yopeso.dmitriicelpan. All rights reserved.
 //
 
-import Cocoa
-@testable import Caprice
+import Foundation
+@testable import Taylor
 
 class MockMessageProcessor : MessageProcessor {
     

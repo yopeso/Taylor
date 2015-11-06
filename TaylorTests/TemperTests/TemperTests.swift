@@ -7,10 +7,9 @@
 //
 
 import Foundation
-import BoundariesKit
 import Nimble
 import Quick
-@testable import Temper
+@testable import Taylor
 
 class TemperTests : QuickSpec {
     let helper = TestsHelper()

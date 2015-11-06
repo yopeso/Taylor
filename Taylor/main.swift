@@ -6,13 +6,9 @@
 //  Copyright (c) 2015 YOPESO. All rights reserved.
 //
 
-import Finder
-import Scissors
-import Temper
-import Printer
-import BoundariesKit
+import Foundation
 
-let parameters = Parameters()
+let parameters = Arguments()
 let printer = Printer(verbosityLevel: parameters.verbosityLevel())
 var temper: Temper?
 

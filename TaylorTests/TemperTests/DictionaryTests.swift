@@ -8,7 +8,7 @@
 
 import Nimble
 import Quick
-@testable import Temper
+@testable import Taylor
 
 class DictionaryTests : QuickSpec {
     override func spec() {

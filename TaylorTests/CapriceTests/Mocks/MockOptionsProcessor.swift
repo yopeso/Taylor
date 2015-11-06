@@ -6,7 +6,7 @@
 //  Copyright © 2015 yopeso.dmitriicelpan. All rights reserved.
 //
 
-@testable import Caprice
+@testable import Taylor
 
 class MockOptionsProcessor: OptionsProcessor {
     

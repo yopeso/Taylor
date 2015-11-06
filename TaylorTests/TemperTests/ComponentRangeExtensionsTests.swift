@@ -6,10 +6,9 @@
 //  Copyright © 2015 Yopeso. All rights reserved.
 //
 
-import BoundariesKit
 import Nimble
 import Quick
-@testable import Temper
+@testable import Taylor
 
 class ComponentRangeExtensionsTests: QuickSpec {
     var range : ComponentRange = ComponentRange(sl: 10, el: 30)

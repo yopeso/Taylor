@@ -5,6 +5,8 @@
 //  Created by Dmitrii Celpan on 9/9/15.
 //  Copyright © 2015 yopeso.dmitriicelpan. All rights reserved.
 //
+import Foundation
+
 
 let ReporterLong = "--reporter"
 let ReporterShort = "-r"
@@ -13,7 +15,6 @@ let JsonType = "json"
 let PmdType = "pmd"
 let PlainType = "plain"
 let XcodeType = "xcode"
-
 
 
 class ReporterOption: InformationalOption {
@@ -29,8 +30,8 @@ class ReporterOption: InformationalOption {
         optionArgument = argument
     }
     
-    func dictionaryFromArgument() -> ReporterType {
-        var reporterDictionary = ReporterType()
+    func dictionaryFromArgument() -> OutputReporter {
+        var reporterDictionary = OutputReporter()
         let reporterComponents = optionArgument.componentsSeparatedByString(argumentSeparator)
         reporterDictionary[TypeKey] = reporterComponents.first
         reporterDictionary[OutputPathKey] = getOutputPathKey(reporterComponents)

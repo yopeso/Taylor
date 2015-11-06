@@ -6,7 +6,6 @@
 //  Copyright © 2015 Yopeso. All rights reserved.
 //
 
-import BoundariesKit
 
 class ExcessiveParameterListRule : Rule {
     var rule = "ExcessiveParameterList"
@@ -35,6 +34,6 @@ class ExcessiveParameterListRule : Rule {
     }
     
     private func parametersCountForFunction(component: Component) -> Int {
-        return component.components.filter { $0.type == .Parameter }.count
+        return component.components.filter { $0.type == ComponentType.Parameter }.count
     }
 }

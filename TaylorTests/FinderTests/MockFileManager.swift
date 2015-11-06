@@ -7,7 +7,7 @@
 //
 
 import Foundation
-@testable import Finder
+@testable import Taylor
 
 class MockFileManager: NSFileManager {
     
@@ -36,15 +36,24 @@ class MockFileManager: NSFileManager {
             "/Home/Finder/Finder/Controllers", "/Home/Finder":
             isDirectory.memory = true
             return true
-            
         case "/Home/Finder/Finder/main.swift", "/Home/Finder/FinderTests/FinderTests.swift", "/Home/Finder/FinderTests/Info.plist",
             "/Home/Finder/Finder/Controllers/MainViewController.swift", "/Home/Finder/Finder/Controllers/AccountViewController.swift",
             "/Home/Finder/Finder.xcodeproj", "/Home/Finder/Readme.md", "/Home/Finder/.git":
             isDirectory.memory = false
             return true
-            
+        case "pathToDirectory":
+            isDirectory.memory = true
+            return true
+        case "pathToFile.yml", "pathToFile.txt", testFile("excludes", fileType: "yml"), testFile("emptyExcludes", fileType: "yml"):
+            isDirectory.memory = false
+            return true
         default:
             return false
         }
+    }
+    
+    func testFile(fileName: String, fileType: String) -> String {
+        let testBundle = NSBundle(forClass: self.dynamicType)
+        return testBundle.pathForResource(fileName, ofType: fileType)!
     }
 }

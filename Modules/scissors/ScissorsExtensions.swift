@@ -1,5 +1,5 @@
 //
-//  Extensions.swift
+//  ScissorsExtensions.swift
 //  Scissors
 //
 //  Created by Alex Culeva on 9/18/15.
@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import BoundariesKit
 import SwiftXPC
 import SourceKittenFramework
 

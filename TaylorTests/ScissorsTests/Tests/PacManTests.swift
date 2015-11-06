@@ -9,8 +9,7 @@
 import Foundation
 import Quick
 import Nimble
-import BoundariesKit
-@testable import Scissors
+@testable import Taylor
 
 class PacmanTests: QuickSpec {
     override func spec() {

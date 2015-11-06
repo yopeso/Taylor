@@ -8,8 +8,7 @@
 
 import Nimble
 import Quick
-import BoundariesKit
-@testable import Temper
+@testable import Taylor
 
 class NumberOfMethodsInClassRuleTests: QuickSpec {
     let rule = NumberOfMethodsInClassRule()

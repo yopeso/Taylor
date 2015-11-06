@@ -7,10 +7,8 @@
 //
 
 import Foundation
-@testable import Temper
-import BoundariesKit
 
-typealias Component = BoundariesKit.Component
+@testable import Taylor
 
 class TestsHelper {
     var parametrizedFunctionComponent : Component {

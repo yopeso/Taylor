@@ -8,8 +8,7 @@
 
 import Nimble
 import Quick
-@testable import Temper
-import BoundariesKit
+@testable import Taylor
 
 class ComponentExtensionsTests: QuickSpec {
     

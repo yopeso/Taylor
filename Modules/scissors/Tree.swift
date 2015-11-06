@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import BoundariesKit
 import SwiftXPC
 import SourceKittenFramework
 
@@ -31,7 +30,7 @@ final class Tree {
         let root = ExtendedComponent(type: .Other, range: dictionary.offsetRange)
         let noStringsText = replaceStringsWithSpaces(parts.map() { $0.contents })
         
-        let finder = Finder(text: noStringsText, syntaxMap: syntaxMap)
+        let finder = ComponentFinder(text: noStringsText, syntaxMap: syntaxMap)
         var componentsArray = root.appendComponents([], array: dictionary.substructure)
         componentsArray += finder.findGetters(componentsArray)
         arrayToTree(componentsArray, root: root)
@@ -44,7 +43,7 @@ final class Tree {
         return convertTree(root)
     }
     
-    func additionalComponents(finder: Finder) -> [ExtendedComponent] {
+    func additionalComponents(finder: ComponentFinder) -> [ExtendedComponent] {
         return finder.findComments() + finder.findLogicalOperators() + finder.findEmptyLines()
     }
     

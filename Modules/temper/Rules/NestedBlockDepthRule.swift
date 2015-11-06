@@ -6,7 +6,6 @@
 //  Copyright © 2015 Yopeso. All rights reserved.
 //
 
-import BoundariesKit
 
 class NestedBlockDepthRule : Rule {
     let rule = "NestedBlockDepth"

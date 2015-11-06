@@ -6,7 +6,7 @@
 //  Copyright © 2015 Yopeso. All rights reserved.
 //
 
-import BoundariesKit
+import Foundation
 
 public class Temper {
     

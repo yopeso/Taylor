@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import BoundariesKit
 
 class PMDCoordinator : WritingCoordinator {
     

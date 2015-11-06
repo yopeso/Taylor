@@ -10,9 +10,8 @@ import Foundation
 import Quick
 import Nimble
 import XCTest
-import BoundariesKit
-@testable import Scissors
 import SourceKittenFramework
+@testable import Taylor
 
 class MockFileReader {
     let testEmptyArray = []

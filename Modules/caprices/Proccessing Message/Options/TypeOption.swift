@@ -6,6 +6,8 @@
 //  Copyright © 2015 yopeso.dmitriicelpan. All rights reserved.
 //
 
+import Foundation
+
 let TypeLong = "--type"
 let TypeShort = "-t"
 

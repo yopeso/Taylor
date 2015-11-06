@@ -8,8 +8,7 @@
 
 import Nimble
 import Quick
-import BoundariesKit
-@testable import Temper
+@testable import Taylor
 
 class NPathComplexityRuleTests: QuickSpec {
     let rule = NPathComplexityRule()

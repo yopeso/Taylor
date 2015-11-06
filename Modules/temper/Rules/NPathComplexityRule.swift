@@ -6,7 +6,6 @@
 //  Copyright © 2015 Yopeso. All rights reserved.
 //
 
-import BoundariesKit
 
 class NPathComplexityRule : Rule {
     let rule = "NPathComplexity"
@@ -43,7 +42,7 @@ class NPathComplexityRule : Rule {
 extension Component {
     
     func expresionNPath() -> Int {
-        return components.filter { $0.type == .Or || $0.type == .And }.count
+        return components.filter { $0.type == ComponentType.Or || $0.type == ComponentType.And }.count
     }
     
     func NPathComplexity() -> Int {

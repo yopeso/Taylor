@@ -1,5 +1,5 @@
 //
-//  Extensions.swift
+//  FinderExtensions.swift
 //  Finder
 //
 //  Created by Simion Schiopu on 9/7/15.

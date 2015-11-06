@@ -1,12 +1,12 @@
 //
-//  Component.swift
+//  ComponentExtensions.swift
 //  Temper
 //
 //  Created by Mihai Seremet on 8/28/15.
 //  Copyright © 2015 Yopeso. All rights reserved.
 //
 
-import BoundariesKit
+import Foundation
 
 protocol Serialization {
     func serialize() -> [String:AnyObject]

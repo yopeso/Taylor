@@ -1,5 +1,5 @@
 //
-//  Parameters.swift
+//  Arguments.swift
 //  Taylor
 //
 //  Created by Andrei Raifura on 10/2/15.
@@ -7,18 +7,17 @@
 //
 
 import Foundation
-import Caprice
 import Printer
 
-class Parameters {
+class Arguments {
     let caprice = Caprice()
-    let arguments: [String : [String]]
+    let arguments: Options
     
     init () {
         arguments = caprice.processArguments(Process.arguments)
     }
     
-    func finderParameters() -> [String: [String]] {
+    func finderParameters() -> Options {
         return arguments
     }
     
@@ -30,11 +29,11 @@ class Parameters {
         return arguments["path"]?[0]
     }
     
-    func reporterRepresentations() -> [[String : String]] {
+    func reporterRepresentations() -> [OutputReporter] {
         return caprice.getReporters()
     }
     
-    func thresholds() -> [String : Int] {
+    func thresholds() -> CustomizationRule {
         return caprice.getRuleThresholds()
     }
 }

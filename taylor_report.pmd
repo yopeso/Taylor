@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<pmd>
+    <file name="/Users/S2dent/Desktop/taylor/Modules/temper/Output/OutputCoordinator.swift">
+        <violation beginline="19" endline="32" rule="CyclomaticComplexity" class="OutputCoordinator" method="writeTheOutput(_:reporters:)" value="6" externalInfoUrl="http://phpmd.org/rules/codesize.html#cyclomaticcomplexity" priority="2">The method 'writeTheOutput(_:reporters:)' has a Cyclomatic Complexity of 6. The configured cyclomatic complexity is 5</violation>
+    </file>
+    <file name="/Users/S2dent/Desktop/taylor/Modules/finder/Finder.swift">
+        <violation beginline="12" endline="101" rule="TooManyMethods" class="Finder" value="13" externalInfoUrl="http://phpmd.org/rules/codesize.html#toomanymethods" priority="3">Class 'Finder' has to many methods: 13. The configured number of methods in class is 10</violation>
+    </file>
+    <file name="/Users/S2dent/Desktop/taylor/Modules/caprices/Proccessing Message/OptionsProcessor.swift">
+        <violation beginline="17" endline="156" rule="TooManyMethods" class="OptionsProcessor" value="12" externalInfoUrl="http://phpmd.org/rules/codesize.html#toomanymethods" priority="3">Class 'OptionsProcessor' has to many methods: 12. The configured number of methods in class is 10</violation>
+        <violation beginline="125" endline="147" rule="ExcessiveMethodLength" class="OptionsProcessor" method="optionObjectFromOption(_:argument:)" value="22" externalInfoUrl="http://phpmd.org/rules/codesize.html#excessivemethodlength" priority="3">Method 'optionObjectFromOption(_:argument:)' has to many lines: 22. The configured number of lines in method is 20</violation>
+        <violation beginline="125" endline="147" rule="CyclomaticComplexity" class="OptionsProcessor" method="optionObjectFromOption(_:argument:)" value="10" externalInfoUrl="http://phpmd.org/rules/codesize.html#cyclomaticcomplexity" priority="2">The method 'optionObjectFromOption(_:argument:)' has a Cyclomatic Complexity of 10. The configured cyclomatic complexity is 5</violation>
+    </file>
+    <file name="/Users/S2dent/Desktop/taylor/Modules/scissors/ExtendedComponent.swift">
+        <violation beginline="13" endline="148" rule="TooManyMethods" class="ExtendedComponent" value="14" externalInfoUrl="http://phpmd.org/rules/codesize.html#toomanymethods" priority="3">Class 'ExtendedComponent' has to many methods: 14. The configured number of methods in class is 10</violation>
+        <violation beginline="20" endline="26" rule="ExcessiveParameterList" class="ExtendedComponent" method="init(type:range:name:parent:)" value="4" externalInfoUrl="http://phpmd.org/rules/codesize.html#excessiveparameterlist" priority="3">Method 'init(type:range:name:parent:)' has 4 parameters. The configured number of parameters is 3</violation>
+        <violation beginline="37" endline="62" rule="ExcessiveMethodLength" class="ExtendedComponent" method="appendComponents(_:array:)" value="22" externalInfoUrl="http://phpmd.org/rules/codesize.html#excessivemethodlength" priority="3">Method 'appendComponents(_:array:)' has to many lines: 22. The configured number of lines in method is 20</violation>
+        <violation beginline="37" endline="62" rule="CyclomaticComplexity" class="ExtendedComponent" method="appendComponents(_:array:)" value="8" externalInfoUrl="http://phpmd.org/rules/codesize.html#cyclomaticcomplexity" priority="2">The method 'appendComponents(_:array:)' has a Cyclomatic Complexity of 8. The configured cyclomatic complexity is 5</violation>
+    </file>
+    <file name="/Users/S2dent/Desktop/taylor/Modules/temper/Core/Temper.swift">
+        <violation beginline="122" endline="150" rule="ExcessiveMethodLength" class="Temper" method="checkPair(rule:component:)" value="28" externalInfoUrl="http://phpmd.org/rules/codesize.html#excessivemethodlength" priority="3">Method 'checkPair(rule:component:)' has to many lines: 28. The configured number of lines in method is 20</violation>
+        <violation beginline="122" endline="150" rule="CyclomaticComplexity" class="Temper" method="checkPair(rule:component:)" value="10" externalInfoUrl="http://phpmd.org/rules/codesize.html#cyclomaticcomplexity" priority="2">The method 'checkPair(rule:component:)' has a Cyclomatic Complexity of 10. The configured cyclomatic complexity is 5</violation>
+        <violation beginline="122" endline="150" rule="NestedBlockDepth" class="Temper" method="checkPair(rule:component:)" value="4" externalInfoUrl="http://docs.oclint.org/en/dev/rules/size.html#nestedblockdepth" priority="3">Method 'checkPair(rule:component:)' has a block depth of 4. The configured block depth is 3</violation>
+    </file>
+    <file name="/Users/S2dent/Desktop/taylor/Modules/caprices/Proccessing Message/MessageProcessor.swift">
+        <violation beginline="23" endline="125" rule="TooManyMethods" class="MessageProcessor" value="11" externalInfoUrl="http://phpmd.org/rules/codesize.html#toomanymethods" priority="3">Class 'MessageProcessor' has to many methods: 11. The configured number of methods in class is 10</violation>
+    </file>
+    <file name="/Users/S2dent/Desktop/taylor/Modules/scissors/ComponentFinder.swift">
+        <violation beginline="110" endline="130" rule="CyclomaticComplexity" class="ComponentFinder" method="findObserverGetters(_:)" value="7" externalInfoUrl="http://phpmd.org/rules/codesize.html#cyclomaticcomplexity" priority="2">The method 'findObserverGetters(_:)' has a Cyclomatic Complexity of 7. The configured cyclomatic complexity is 5</violation>
+    </file>
+    <file name="/Users/S2dent/Desktop/taylor/Modules/scissors/ExternalLibraries/PySwiftyRegex.swift">
+        <violation beginline="61" endline="63" rule="ExcessiveParameterList" class="re" method="sub(_:_:_:_:flags:)" value="5" externalInfoUrl="http://phpmd.org/rules/codesize.html#excessiveparameterlist" priority="3">Method 'sub(_:_:_:_:flags:)' has 5 parameters. The configured number of parameters is 3</violation>
+        <violation beginline="78" endline="80" rule="ExcessiveParameterList" class="re" method="subn(_:_:_:_:flags:)" value="5" externalInfoUrl="http://phpmd.org/rules/codesize.html#excessiveparameterlist" priority="3">Method 'subn(_:_:_:_:flags:)' has 5 parameters. The configured number of parameters is 3</violation>
+        <violation beginline="145" endline="158" rule="ExcessiveParameterList" class="RegexObject" method="search(_:_:_:options:)" value="4" externalInfoUrl="http://phpmd.org/rules/codesize.html#excessiveparameterlist" priority="3">Method 'search(_:_:_:options:)' has 4 parameters. The configured number of parameters is 3</violation>
+        <violation beginline="185" endline="216" rule="ExcessiveMethodLength" class="RegexObject" method="split(_:_:)" value="29" externalInfoUrl="http://phpmd.org/rules/codesize.html#excessivemethodlength" priority="3">Method 'split(_:_:)' has to many lines: 29. The configured number of lines in method is 20</violation>
+        <violation beginline="185" endline="216" rule="CyclomaticComplexity" class="RegexObject" method="split(_:_:)" value="6" externalInfoUrl="http://phpmd.org/rules/codesize.html#cyclomaticcomplexity" priority="2">The method 'split(_:_:)' has a Cyclomatic Complexity of 6. The configured cyclomatic complexity is 5</violation>
+        <violation beginline="229" endline="231" rule="ExcessiveParameterList" class="RegexObject" method="findall(_:_:_:)" value="4" externalInfoUrl="http://phpmd.org/rules/codesize.html#excessiveparameterlist" priority="3">Method 'findall(_:_:_:)' has 4 parameters. The configured number of parameters is 3</violation>
+        <violation beginline="244" endline="253" rule="ExcessiveParameterList" class="RegexObject" method="finditer(_:_:_:)" value="4" externalInfoUrl="http://phpmd.org/rules/codesize.html#excessiveparameterlist" priority="3">Method 'finditer(_:_:_:)' has 4 parameters. The configured number of parameters is 3</violation>
+        <violation beginline="281" endline="304" rule="ExcessiveMethodLength" class="RegexObject" method="subn(_:_:_:)" value="23" externalInfoUrl="http://phpmd.org/rules/codesize.html#excessivemethodlength" priority="3">Method 'subn(_:_:_:)' has to many lines: 23. The configured number of lines in method is 20</violation>
+    </file>
+    <file name="/Users/S2dent/Desktop/taylor/Modules/temper/Rules/NPathComplexityRule.swift">
+        <violation beginline="48" endline="65" rule="CyclomaticComplexity" class="Component" method="NPathComplexity()" value="8" externalInfoUrl="http://phpmd.org/rules/codesize.html#cyclomaticcomplexity" priority="2">The method 'NPathComplexity()' has a Cyclomatic Complexity of 8. The configured cyclomatic complexity is 5</violation>
+    </file>
+    <file name="/Users/S2dent/Desktop/taylor/Modules/temper/Violations/Violation.swift">
+        <violation beginline="17" endline="23" rule="ExcessiveParameterList" class="Violation" method="init(component:rule:message:path:value:)" value="5" externalInfoUrl="http://phpmd.org/rules/codesize.html#excessiveparameterlist" priority="3">Method 'init(component:rule:message:path:value:)' has 5 parameters. The configured number of parameters is 3</violation>
+    </file>
+    <file name="/Users/S2dent/Desktop/taylor/Taylor/Array+Extensions.swift">
+        <violation beginline="18" endline="49" rule="ExcessiveMethodLength" class="Array" method="pmap(_:)" value="22" externalInfoUrl="http://phpmd.org/rules/codesize.html#excessivemethodlength" priority="3">Method 'pmap(_:)' has to many lines: 22. The configured number of lines in method is 20</violation>
+    </file>
+</pmd>
