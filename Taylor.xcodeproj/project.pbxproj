@@ -153,6 +153,7 @@
 		69B4DDB41BED223C005EA7D5 /* SourceKittenFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B4DC1A1BED169B005EA7D5 /* SourceKittenFramework.framework */; };
 		69B4DDB51BED223C005EA7D5 /* SwiftXPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B4DC1B1BED169B005EA7D5 /* SwiftXPC.framework */; };
 		69B4DDB61BED223C005EA7D5 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B4DC1C1BED169B005EA7D5 /* SWXMLHash.framework */; };
+		69EA54F91BEE209C007713A6 /* Taylor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EA54F81BEE209C007713A6 /* Taylor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -395,6 +396,7 @@
 		69B4DD351BED1FE0005EA7D5 /* TemperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemperTests.swift; sourceTree = "<group>"; };
 		69B4DD361BED1FE0005EA7D5 /* TestsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsHelper.swift; sourceTree = "<group>"; };
 		69B4DD371BED1FE0005EA7D5 /* ViolationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViolationTests.swift; sourceTree = "<group>"; };
+		69EA54F81BEE209C007713A6 /* Taylor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Taylor.swift; sourceTree = "<group>"; };
 		A36B2F001B98244F0049F590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3CB26501B9DF6FA00802E80 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Nimble.framework; sourceTree = "<group>"; };
 		A3CB26511B9DF6FA00802E80 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Quick.framework; sourceTree = "<group>"; };
@@ -454,19 +456,11 @@
 			isa = PBXGroup;
 			children = (
 				69B4DBDE1BED169B005EA7D5 /* TaylorFramework.h */,
-				69B4DBDD1BED169B005EA7D5 /* Headers */,
 				69B4DBDF1BED169B005EA7D5 /* Modules */,
 				69B4DC391BED169B005EA7D5 /* Resources */,
 				69B4DC3B1BED169B005EA7D5 /* Taylor */,
 			);
 			path = TaylorFramework;
-			sourceTree = "<group>";
-		};
-		69B4DBDD1BED169B005EA7D5 /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Headers;
 			sourceTree = "<group>";
 		};
 		69B4DBDF1BED169B005EA7D5 /* Modules */ = {
@@ -717,6 +711,7 @@
 		69B4DC3B1BED169B005EA7D5 /* Taylor */ = {
 			isa = PBXGroup;
 			children = (
+				69EA54F81BEE209C007713A6 /* Taylor.swift */,
 				69B4DC3C1BED169B005EA7D5 /* Arguments.swift */,
 				69B4DC3D1BED169B005EA7D5 /* Array+Extensions.swift */,
 				69B4DC3E1BED169B005EA7D5 /* Timer.swift */,
@@ -1092,6 +1087,7 @@
 				69B4DCB11BED1C2D005EA7D5 /* FinderExtensions.swift in Sources */,
 				69B4DCB21BED1C2D005EA7D5 /* Parameters.swift in Sources */,
 				69B4DCB31BED1C2D005EA7D5 /* Printer.swift in Sources */,
+				69EA54F91BEE209C007713A6 /* Taylor.swift in Sources */,
 				69B4DCB41BED1C2D005EA7D5 /* ComponentFinder.swift in Sources */,
 				69B4DCB51BED1C2D005EA7D5 /* PacMan.swift in Sources */,
 				69B4DCB61BED1C2D005EA7D5 /* ExtendedComponent.swift in Sources */,
@@ -1436,6 +1432,7 @@
 				692FCBE91BED2A2400DB5F16 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		69B4DC921BED1BD3005EA7D5 /* Build configuration list for PBXNativeTarget "TaylorFramework" */ = {
 			isa = XCConfigurationList;

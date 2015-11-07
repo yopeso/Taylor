@@ -8,12 +8,12 @@
 
 import Foundation
 
-public enum VerbosityLevel {
+enum VerbosityLevel {
     case Info, Warning, Error
 }
 
 
-public protocol Printing {
+protocol Printing {
     func printMessage(text: String)
 }
 
@@ -25,28 +25,28 @@ struct DefaultReporter : Printing {
 }
 
 
-public class Printer {
+class Printer {
     private let reporter: Printing
     let verbosity: VerbosityLevel
     
-    public init(verbosityLevel: VerbosityLevel, reporter: Printing = DefaultReporter()) {
+    init(verbosityLevel: VerbosityLevel, reporter: Printing = DefaultReporter()) {
         verbosity = verbosityLevel
         self.reporter = reporter
     }
     
-    public func printInfo(text: String) {
+    func printInfo(text: String) {
         if verbosity == .Info {
             reporter.printMessage(text)
         }
     }
     
-    public func printWarning(text: String) {
+    func printWarning(text: String) {
         if [.Warning, .Info].contains(verbosity) {
             reporter.printMessage(text)
         }
     }
     
-    public func printError(text: String) {
+    func printError(text: String) {
         reporter.printMessage(text)
     }
 }

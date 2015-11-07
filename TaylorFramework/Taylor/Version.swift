@@ -6,7 +6,7 @@
 //  Copyright © 2015 YOPESO. All rights reserved.
 //
 
-public let version = "0.2.0"
+let version = "0.2.0"
 
 
 // Changes

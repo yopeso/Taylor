@@ -2,14 +2,14 @@ import Accelerate
 
 // MARK: Sum
 
-public func sum(x: [Float]) -> Float {
+func sum(x: [Float]) -> Float {
     var result: Float = 0.0
     vDSP_sve(x, 1, &result, vDSP_Length(x.count))
     
     return result
 }
 
-public func sum(x: [Double]) -> Double {
+func sum(x: [Double]) -> Double {
     var result: Double = 0.0
     vDSP_sveD(x, 1, &result, vDSP_Length(x.count))
     
@@ -18,24 +18,24 @@ public func sum(x: [Double]) -> Double {
 
 // MARK: Sum of Absolute Values
 
-public func asum(x: [Float]) -> Float {
+func asum(x: [Float]) -> Float {
     return cblas_sasum(Int32(x.count), x, 1)
 }
 
-public func asum(x: [Double]) -> Double {
+func asum(x: [Double]) -> Double {
     return cblas_dasum(Int32(x.count), x, 1)
 }
 
 // MARK: Maximum
 
-public func max(x: [Float]) -> Float {
+func max(x: [Float]) -> Float {
     var result: Float = 0.0
     vDSP_maxv(x, 1, &result, vDSP_Length(x.count))
     
     return result
 }
 
-public func max(x: [Double]) -> Double {
+func max(x: [Double]) -> Double {
     var result: Double = 0.0
     vDSP_maxvD(x, 1, &result, vDSP_Length(x.count))
     
@@ -44,14 +44,14 @@ public func max(x: [Double]) -> Double {
 
 // MARK: Minimum
 
-public func min(x: [Float]) -> Float {
+func min(x: [Float]) -> Float {
     var result: Float = 0.0
     vDSP_minv(x, 1, &result, vDSP_Length(x.count))
     
     return result
 }
 
-public func min(x: [Double]) -> Double {
+func min(x: [Double]) -> Double {
     var result: Double = 0.0
     vDSP_minvD(x, 1, &result, vDSP_Length(x.count))
     
@@ -60,14 +60,14 @@ public func min(x: [Double]) -> Double {
 
 // MARK: Mean
 
-public func mean(x: [Float]) -> Float {
+func mean(x: [Float]) -> Float {
     var result: Float = 0.0
     vDSP_meanv(x, 1, &result, vDSP_Length(x.count))
     
     return result
 }
 
-public func mean(x: [Double]) -> Double {
+func mean(x: [Double]) -> Double {
     var result: Double = 0.0
     vDSP_meanvD(x, 1, &result, vDSP_Length(x.count))
     
@@ -76,14 +76,14 @@ public func mean(x: [Double]) -> Double {
 
 // MARK: Mean Magnitude
 
-public func meamg(x: [Float]) -> Float {
+func meamg(x: [Float]) -> Float {
     var result: Float = 0.0
     vDSP_meamgv(x, 1, &result, vDSP_Length(x.count))
     
     return result
 }
 
-public func meamg(x: [Double]) -> Double {
+func meamg(x: [Double]) -> Double {
     var result: Double = 0.0
     vDSP_meamgvD(x, 1, &result, vDSP_Length(x.count))
     
@@ -92,14 +92,14 @@ public func meamg(x: [Double]) -> Double {
 
 // MARK: Mean Square Value
 
-public func measq(x: [Float]) -> Float {
+func measq(x: [Float]) -> Float {
     var result: Float = 0.0
     vDSP_measqv(x, 1, &result, vDSP_Length(x.count))
     
     return result
 }
 
-public func measq(x: [Double]) -> Double {
+func measq(x: [Double]) -> Double {
     var result: Double = 0.0
     vDSP_measqvD(x, 1, &result, vDSP_Length(x.count))
     
@@ -108,14 +108,14 @@ public func measq(x: [Double]) -> Double {
 
 // MARK: Add
 
-public func add(x: [Float], y: [Float]) -> [Float] {
+func add(x: [Float], y: [Float]) -> [Float] {
     var results = [Float](y)
     cblas_saxpy(Int32(x.count), 1.0, x, 1, &results, 1)
     
     return results
 }
 
-public func add(x: [Double], y: [Double]) -> [Double] {
+func add(x: [Double], y: [Double]) -> [Double] {
     var results = [Double](y)
     cblas_daxpy(Int32(x.count), 1.0, x, 1, &results, 1)
     
@@ -124,14 +124,14 @@ public func add(x: [Double], y: [Double]) -> [Double] {
 
 // MARK: Multiply
 
-public func mul(x: [Float], y: [Float]) -> [Float] {
+func mul(x: [Float], y: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vDSP_vmul(x, 1, y, 1, &results, 1, vDSP_Length(x.count))
     
     return results
 }
 
-public func mul(x: [Double], y: [Double]) -> [Double] {
+func mul(x: [Double], y: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vDSP_vmulD(x, 1, y, 1, &results, 1, vDSP_Length(x.count))
     
@@ -140,14 +140,14 @@ public func mul(x: [Double], y: [Double]) -> [Double] {
 
 // MARK: Divide
 
-public func div(x: [Float], y: [Float]) -> [Float] {
+func div(x: [Float], y: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvdivf(&results, x, y, [Int32(x.count)])
     
     return results
 }
 
-public func div(x: [Double], y: [Double]) -> [Double] {
+func div(x: [Double], y: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvdiv(&results, x, y, [Int32(x.count)])
     
@@ -156,14 +156,14 @@ public func div(x: [Double], y: [Double]) -> [Double] {
 
 // MARK: Modulo
 
-public func mod(x: [Float], y: [Float]) -> [Float] {
+func mod(x: [Float], y: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvfmodf(&results, x, y, [Int32(x.count)])
     
     return results
 }
 
-public func mod(x: [Double], y: [Double]) -> [Double] {
+func mod(x: [Double], y: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvfmod(&results, x, y, [Int32(x.count)])
     
@@ -172,14 +172,14 @@ public func mod(x: [Double], y: [Double]) -> [Double] {
 
 // MARK: Remainder
 
-public func remainder(x: [Float], y: [Float]) -> [Float] {
+func remainder(x: [Float], y: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvremainderf(&results, x, y, [Int32(x.count)])
     
     return results
 }
 
-public func remainder(x: [Double], y: [Double]) -> [Double] {
+func remainder(x: [Double], y: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvremainder(&results, x, y, [Int32(x.count)])
     
@@ -188,14 +188,14 @@ public func remainder(x: [Double], y: [Double]) -> [Double] {
 
 // MARK: Square Root
 
-public func sqrt(x: [Float]) -> [Float] {
+func sqrt(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvsqrtf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func sqrt(x: [Double]) -> [Double] {
+func sqrt(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvsqrt(&results, x, [Int32(x.count)])
     
@@ -204,7 +204,7 @@ public func sqrt(x: [Double]) -> [Double] {
 
 // MARK: Dot Product
 
-public func dot(x: [Float], y: [Float]) -> Float {
+func dot(x: [Float], y: [Float]) -> Float {
     precondition(x.count == y.count, "Vectors must have equal count")
     
     var result: Float = 0.0
@@ -214,7 +214,7 @@ public func dot(x: [Float], y: [Float]) -> Float {
 }
 
 
-public func dot(x: [Double], y: [Double]) -> Double {
+func dot(x: [Double], y: [Double]) -> Double {
     precondition(x.count == y.count, "Vectors must have equal count")
     
     var result: Double = 0.0
@@ -301,14 +301,14 @@ func • (lhs: [Float], rhs: [Float]) -> Float {
 
 // MARK: Absolute Value
 
-public func abs(x: [Double]) -> [Double] {
+func abs(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvfabs(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func abs(x: [Float]) -> [Float] {
+func abs(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvfabsf(&results, x, [Int32(x.count)])
     
@@ -317,14 +317,14 @@ public func abs(x: [Float]) -> [Float] {
 
 // MARK: Ceiling
 
-public func ceil(x: [Float]) -> [Float] {
+func ceil(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvceilf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func ceil(x: [Double]) -> [Double] {
+func ceil(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvceil(&results, x, [Int32(x.count)])
     
@@ -333,14 +333,14 @@ public func ceil(x: [Double]) -> [Double] {
 
 // MARK: Clip
 
-public func clip(x: [Float], low: Float, high: Float) -> [Float] {
+func clip(x: [Float], low: Float, high: Float) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0), y = low, z = high
     vDSP_vclip(x, 1, &y, &z, &results, 1, vDSP_Length(x.count))
     
     return results
 }
 
-public func clip(x: [Double], low: Double, high: Double) -> [Double] {
+func clip(x: [Double], low: Double, high: Double) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0), y = low, z = high
     vDSP_vclipD(x, 1, &y, &z, &results, 1, vDSP_Length(x.count))
     
@@ -349,14 +349,14 @@ public func clip(x: [Double], low: Double, high: Double) -> [Double] {
 
 // MARK: Copy Sign
 
-public func copysign(sign: [Float], magnitude: [Float]) -> [Float] {
+func copysign(sign: [Float], magnitude: [Float]) -> [Float] {
     var results = [Float](count: sign.count, repeatedValue: 0.0)
     vvcopysignf(&results, magnitude, sign, [Int32(sign.count)])
     
     return results
 }
 
-public func copysign(sign: [Double], magnitude: [Double]) -> [Double] {
+func copysign(sign: [Double], magnitude: [Double]) -> [Double] {
     var results = [Double](count: sign.count, repeatedValue: 0.0)
     vvcopysign(&results, magnitude, sign, [Int32(sign.count)])
     
@@ -365,14 +365,14 @@ public func copysign(sign: [Double], magnitude: [Double]) -> [Double] {
 
 // MARK: Floor
 
-public func floor(x: [Float]) -> [Float] {
+func floor(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvfloorf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func floor(x: [Double]) -> [Double] {
+func floor(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvfloor(&results, x, [Int32(x.count)])
     
@@ -381,14 +381,14 @@ public func floor(x: [Double]) -> [Double] {
 
 // MARK: Negate
 
-public func neg(x: [Float]) -> [Float] {
+func neg(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vDSP_vneg(x, 1, &results, 1, vDSP_Length(x.count))
     
     return results
 }
 
-public func neg(x: [Double]) -> [Double] {
+func neg(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vDSP_vnegD(x, 1, &results, 1, vDSP_Length(x.count))
     
@@ -397,14 +397,14 @@ public func neg(x: [Double]) -> [Double] {
 
 // MARK: Reciprocal
 
-public func rec(x: [Float]) -> [Float] {
+func rec(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvrecf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func rec(x: [Double]) -> [Double] {
+func rec(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvrec(&results, x, [Int32(x.count)])
     
@@ -413,14 +413,14 @@ public func rec(x: [Double]) -> [Double] {
 
 // MARK: Round
 
-public func round(x: [Float]) -> [Float] {
+func round(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvnintf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func round(x: [Double]) -> [Double] {
+func round(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvnint(&results, x, [Int32(x.count)])
     
@@ -429,14 +429,14 @@ public func round(x: [Double]) -> [Double] {
 
 // MARK: Threshold
 
-public func threshold(x: [Float], low: Float) -> [Float] {
+func threshold(x: [Float], low: Float) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0), y = low
     vDSP_vthr(x, 1, &y, &results, 1, vDSP_Length(x.count))
     
     return results
 }
 
-public func threshold(x: [Double], low: Double) -> [Double] {
+func threshold(x: [Double], low: Double) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0), y = low
     vDSP_vthrD(x, 1, &y, &results, 1, vDSP_Length(x.count))
     
@@ -445,14 +445,14 @@ public func threshold(x: [Double], low: Double) -> [Double] {
 
 // MARK: Truncate
 
-public func trunc(x: [Float]) -> [Float] {
+func trunc(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvintf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func trunc(x: [Double]) -> [Double] {
+func trunc(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvint(&results, x, [Int32(x.count)])
     
@@ -460,14 +460,14 @@ public func trunc(x: [Double]) -> [Double] {
 }
 // MARK: Exponentiation
 
-public func exp(x: [Float]) -> [Float] {
+func exp(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvexpf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func exp(x: [Double]) -> [Double] {
+func exp(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvexp(&results, x, [Int32(x.count)])
     
@@ -476,14 +476,14 @@ public func exp(x: [Double]) -> [Double] {
 
 // MARK: Square Exponentiation
 
-public func exp2(x: [Float]) -> [Float] {
+func exp2(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvexp2f(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func exp2(x: [Double]) -> [Double] {
+func exp2(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvexp2(&results, x, [Int32(x.count)])
     
@@ -492,14 +492,14 @@ public func exp2(x: [Double]) -> [Double] {
 
 // MARK: Natural Logarithm
 
-public func log(x: [Float]) -> [Float] {
+func log(x: [Float]) -> [Float] {
     var results = [Float](x)
     vvlogf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func log(x: [Double]) -> [Double] {
+func log(x: [Double]) -> [Double] {
     var results = [Double](x)
     vvlog(&results, x, [Int32(x.count)])
     
@@ -508,14 +508,14 @@ public func log(x: [Double]) -> [Double] {
 
 // MARK: Base-2 Logarithm
 
-public func log2(x: [Float]) -> [Float] {
+func log2(x: [Float]) -> [Float] {
     var results = [Float](x)
     vvlog2f(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func log2(x: [Double]) -> [Double] {
+func log2(x: [Double]) -> [Double] {
     var results = [Double](x)
     vvlog2(&results, x, [Int32(x.count)])
     
@@ -524,14 +524,14 @@ public func log2(x: [Double]) -> [Double] {
 
 // MARK: Base-10 Logarithm
 
-public func log10(x: [Float]) -> [Float] {
+func log10(x: [Float]) -> [Float] {
     var results = [Float](x)
     vvlog10f(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func log10(x: [Double]) -> [Double] {
+func log10(x: [Double]) -> [Double] {
     var results = [Double](x)
     vvlog10(&results, x, [Int32(x.count)])
     
@@ -540,14 +540,14 @@ public func log10(x: [Double]) -> [Double] {
 
 // MARK: Logarithmic Exponentiation
 
-public func logb(x: [Float]) -> [Float] {
+func logb(x: [Float]) -> [Float] {
     var results = [Float](x)
     vvlogbf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func logb(x: [Double]) -> [Double] {
+func logb(x: [Double]) -> [Double] {
     var results = [Double](x)
     vvlogb(&results, x, [Int32(x.count)])
     
@@ -556,7 +556,7 @@ public func logb(x: [Double]) -> [Double] {
 
 // MARK: Fast Fourier Transform
 
-public func fft(input: [Float]) -> [Float] {
+func fft(input: [Float]) -> [Float] {
     var real = [Float](input)
     var imaginary = [Float](count: input.count, repeatedValue: 0.0)
     var splitComplex = DSPSplitComplex(realp: &real, imagp: &imaginary)
@@ -577,7 +577,7 @@ public func fft(input: [Float]) -> [Float] {
     return normalizedMagnitudes
 }
 
-public func fft(input: [Double]) -> [Double] {
+func fft(input: [Double]) -> [Double] {
     var real = [Double](input)
     var imaginary = [Double](count: input.count, repeatedValue: 0.0)
     var splitComplex = DSPDoubleSplitComplex(realp: &real, imagp: &imaginary)
@@ -600,14 +600,14 @@ public func fft(input: [Double]) -> [Double] {
 
 // MARK: Hyperbolic Sine
 
-public func sinh(x: [Float]) -> [Float] {
+func sinh(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvsinhf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func sinh(x: [Double]) -> [Double] {
+func sinh(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvsinh(&results, x, [Int32(x.count)])
     
@@ -616,14 +616,14 @@ public func sinh(x: [Double]) -> [Double] {
 
 // MARK: Hyperbolic Cosine
 
-public func cosh(x: [Float]) -> [Float] {
+func cosh(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvcoshf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func cosh(x: [Double]) -> [Double] {
+func cosh(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvcosh(&results, x, [Int32(x.count)])
     
@@ -632,14 +632,14 @@ public func cosh(x: [Double]) -> [Double] {
 
 // MARK: Hyperbolic Tangent
 
-public func tanh(x: [Float]) -> [Float] {
+func tanh(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvtanhf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func tanh(x: [Double]) -> [Double] {
+func tanh(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvtanh(&results, x, [Int32(x.count)])
     
@@ -648,14 +648,14 @@ public func tanh(x: [Double]) -> [Double] {
 
 // MARK: Inverse Hyperbolic Sine
 
-public func asinh(x: [Float]) -> [Float] {
+func asinh(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvasinhf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func asinh(x: [Double]) -> [Double] {
+func asinh(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvasinh(&results, x, [Int32(x.count)])
     
@@ -664,14 +664,14 @@ public func asinh(x: [Double]) -> [Double] {
 
 // MARK: Inverse Hyperbolic Cosine
 
-public func acosh(x: [Float]) -> [Float] {
+func acosh(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvacoshf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func acosh(x: [Double]) -> [Double] {
+func acosh(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvacosh(&results, x, [Int32(x.count)])
     
@@ -680,35 +680,35 @@ public func acosh(x: [Double]) -> [Double] {
 
 // MARK: Inverse Hyperbolic Tangent
 
-public func atanh(x: [Float]) -> [Float] {
+func atanh(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvatanhf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func atanh(x: [Double]) -> [Double] {
+func atanh(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvatanh(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public struct Matrix<T where T: FloatingPointType, T: FloatLiteralConvertible> {
+struct Matrix<T where T: FloatingPointType, T: FloatLiteralConvertible> {
     typealias Element = T
     
     let rows: Int
     let columns: Int
     var grid: [Element]
     
-    public init(rows: Int, columns: Int, repeatedValue: Element) {
+    init(rows: Int, columns: Int, repeatedValue: Element) {
         self.rows = rows
         self.columns = columns
         
         self.grid = [Element](count: rows * columns, repeatedValue: repeatedValue)
     }
     
-    public init(_ contents: [[Element]]) {
+    init(_ contents: [[Element]]) {
         let m: Int = contents.count
         let n: Int = contents[0].count
         let repeatedValue: Element = 0.0
@@ -720,7 +720,7 @@ public struct Matrix<T where T: FloatingPointType, T: FloatLiteralConvertible> {
         }
     }
     
-    public subscript(row: Int, column: Int) -> Element {
+    subscript(row: Int, column: Int) -> Element {
         get {
             assert(indexIsValidForRow(row, column: column))
             return grid[(row * columns) + column]
@@ -740,7 +740,7 @@ public struct Matrix<T where T: FloatingPointType, T: FloatLiteralConvertible> {
 // MARK: - Printable
 
 extension Matrix: Printable {
-    public var description: String {
+    var description: String {
         var description = ""
         
         for i in 0..<rows {
@@ -767,7 +767,7 @@ extension Matrix: Printable {
 // MARK: - SequenceType
 
 extension Matrix: SequenceType {
-    public func generate() -> GeneratorOf<ArraySlice<Element>> {
+    func generate() -> GeneratorOf<ArraySlice<Element>> {
         let endIndex = rows * columns
         var nextRowStartIndex = 0
         
@@ -786,7 +786,7 @@ extension Matrix: SequenceType {
 
 // MARK: -
 
-public func add(x: Matrix<Float>, y: Matrix<Float>) -> Matrix<Float> {
+func add(x: Matrix<Float>, y: Matrix<Float>) -> Matrix<Float> {
     precondition(x.rows == y.rows && x.columns == y.columns, "Matrix dimensions not compatible with addition")
     
     var results = y
@@ -795,7 +795,7 @@ public func add(x: Matrix<Float>, y: Matrix<Float>) -> Matrix<Float> {
     return results
 }
 
-public func add(x: Matrix<Double>, y: Matrix<Double>) -> Matrix<Double> {
+func add(x: Matrix<Double>, y: Matrix<Double>) -> Matrix<Double> {
     precondition(x.rows == y.rows && x.columns == y.columns, "Matrix dimensions not compatible with addition")
     
     var results = y
@@ -804,21 +804,21 @@ public func add(x: Matrix<Double>, y: Matrix<Double>) -> Matrix<Double> {
     return results
 }
 
-public func mul(alpha: Float, x: Matrix<Float>) -> Matrix<Float> {
+func mul(alpha: Float, x: Matrix<Float>) -> Matrix<Float> {
     var results = x
     cblas_sscal(Int32(x.grid.count), alpha, &(results.grid), 1)
     
     return results
 }
 
-public func mul(alpha: Double, x: Matrix<Double>) -> Matrix<Double> {
+func mul(alpha: Double, x: Matrix<Double>) -> Matrix<Double> {
     var results = x
     cblas_dscal(Int32(x.grid.count), alpha, &(results.grid), 1)
     
     return results
 }
 
-public func mul(x: Matrix<Float>, y: Matrix<Float>) -> Matrix<Float> {
+func mul(x: Matrix<Float>, y: Matrix<Float>) -> Matrix<Float> {
     precondition(x.columns == y.rows, "Matrix dimensions not compatible with multiplication")
     
     var results = Matrix<Float>(rows: x.rows, columns: y.columns, repeatedValue: 0.0)
@@ -827,7 +827,7 @@ public func mul(x: Matrix<Float>, y: Matrix<Float>) -> Matrix<Float> {
     return results
 }
 
-public func mul(x: Matrix<Double>, y: Matrix<Double>) -> Matrix<Double> {
+func mul(x: Matrix<Double>, y: Matrix<Double>) -> Matrix<Double> {
     precondition(x.columns == y.rows, "Matrix dimensions not compatible with multiplication")
     
     var results = Matrix<Double>(rows: x.rows, columns: y.columns, repeatedValue: 0.0)
@@ -836,7 +836,7 @@ public func mul(x: Matrix<Double>, y: Matrix<Double>) -> Matrix<Double> {
     return results
 }
 
-public func inv(x : Matrix<Float>) -> Matrix<Float> {
+func inv(x : Matrix<Float>) -> Matrix<Float> {
     precondition(x.rows == x.columns, "Matrix must be square")
     
     var results = x
@@ -855,7 +855,7 @@ public func inv(x : Matrix<Float>) -> Matrix<Float> {
     return results
 }
 
-public func inv(x : Matrix<Double>) -> Matrix<Double> {
+func inv(x : Matrix<Double>) -> Matrix<Double> {
     precondition(x.rows == x.columns, "Matrix must be square")
     
     var results = x
@@ -874,14 +874,14 @@ public func inv(x : Matrix<Double>) -> Matrix<Double> {
     return results
 }
 
-public func transpose(x: Matrix<Float>) -> Matrix<Float> {
+func transpose(x: Matrix<Float>) -> Matrix<Float> {
     var results = Matrix<Float>(rows: x.columns, columns: x.rows, repeatedValue: 0.0)
     vDSP_mtrans(x.grid, 1, &(results.grid), 1, vDSP_Length(results.rows), vDSP_Length(results.columns))
     
     return results
 }
 
-public func transpose(x: Matrix<Double>) -> Matrix<Double> {
+func transpose(x: Matrix<Double>) -> Matrix<Double> {
     var results = Matrix<Double>(rows: x.columns, columns: x.rows, repeatedValue: 0.0)
     vDSP_mtransD(x.grid, 1, &(results.grid), 1, vDSP_Length(results.rows), vDSP_Length(results.columns))
     
@@ -890,42 +890,42 @@ public func transpose(x: Matrix<Double>) -> Matrix<Double> {
 
 // MARK: - Operators
 
-public func + (lhs: Matrix<Float>, rhs: Matrix<Float>) -> Matrix<Float> {
+func + (lhs: Matrix<Float>, rhs: Matrix<Float>) -> Matrix<Float> {
     return add(lhs, rhs)
 }
 
-public func + (lhs: Matrix<Double>, rhs: Matrix<Double>) -> Matrix<Double> {
+func + (lhs: Matrix<Double>, rhs: Matrix<Double>) -> Matrix<Double> {
     return add(lhs, rhs)
 }
 
-public func * (lhs: Float, rhs: Matrix<Float>) -> Matrix<Float> {
+func * (lhs: Float, rhs: Matrix<Float>) -> Matrix<Float> {
     return mul(lhs, rhs)
 }
 
-public func * (lhs: Double, rhs: Matrix<Double>) -> Matrix<Double> {
+func * (lhs: Double, rhs: Matrix<Double>) -> Matrix<Double> {
     return mul(lhs, rhs)
 }
 
-public func * (lhs: Matrix<Float>, rhs: Matrix<Float>) -> Matrix<Float> {
+func * (lhs: Matrix<Float>, rhs: Matrix<Float>) -> Matrix<Float> {
     return mul(lhs, rhs)
 }
 
-public func * (lhs: Matrix<Double>, rhs: Matrix<Double>) -> Matrix<Double> {
+func * (lhs: Matrix<Double>, rhs: Matrix<Double>) -> Matrix<Double> {
     return mul(lhs, rhs)
 }
 
 postfix operator ′ {}
-public postfix func ′ (value: Matrix<Float>) -> Matrix<Float> {
+postfix func ′ (value: Matrix<Float>) -> Matrix<Float> {
     return transpose(value)
 }
 
-public postfix func ′ (value: Matrix<Double>) -> Matrix<Double> {
+postfix func ′ (value: Matrix<Double>) -> Matrix<Double> {
     return transpose(value)
 }
 
 // MARK: Sine-Cosine
 
-public func sincos(x: [Float]) -> (sin: [Float], cos: [Float]) {
+func sincos(x: [Float]) -> (sin: [Float], cos: [Float]) {
     var sin = [Float](count: x.count, repeatedValue: 0.0)
     var cos = [Float](count: x.count, repeatedValue: 0.0)
     vvsincosf(&sin, &cos, x, [Int32(x.count)])
@@ -933,7 +933,7 @@ public func sincos(x: [Float]) -> (sin: [Float], cos: [Float]) {
     return (sin, cos)
 }
 
-public func sincos(x: [Double]) -> (sin: [Double], cos: [Double]) {
+func sincos(x: [Double]) -> (sin: [Double], cos: [Double]) {
     var sin = [Double](count: x.count, repeatedValue: 0.0)
     var cos = [Double](count: x.count, repeatedValue: 0.0)
     vvsincos(&sin, &cos, x, [Int32(x.count)])
@@ -943,14 +943,14 @@ public func sincos(x: [Double]) -> (sin: [Double], cos: [Double]) {
 
 // MARK: Sine
 
-public func sin(x: [Float]) -> [Float] {
+func sin(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvsinf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func sin(x: [Double]) -> [Double] {
+func sin(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvsin(&results, x, [Int32(x.count)])
     
@@ -959,14 +959,14 @@ public func sin(x: [Double]) -> [Double] {
 
 // MARK: Cosine
 
-public func cos(x: [Float]) -> [Float] {
+func cos(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvcosf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func cos(x: [Double]) -> [Double] {
+func cos(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvcos(&results, x, [Int32(x.count)])
     
@@ -975,14 +975,14 @@ public func cos(x: [Double]) -> [Double] {
 
 // MARK: Tangent
 
-public func tan(x: [Float]) -> [Float] {
+func tan(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvtanf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func tan(x: [Double]) -> [Double] {
+func tan(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvtan(&results, x, [Int32(x.count)])
     
@@ -991,14 +991,14 @@ public func tan(x: [Double]) -> [Double] {
 
 // MARK: Arcsine
 
-public func asin(x: [Float]) -> [Float] {
+func asin(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvasinf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func asin(x: [Double]) -> [Double] {
+func asin(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvasin(&results, x, [Int32(x.count)])
     
@@ -1007,14 +1007,14 @@ public func asin(x: [Double]) -> [Double] {
 
 // MARK: Arccosine
 
-public func acos(x: [Float]) -> [Float] {
+func acos(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvacosf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func acos(x: [Double]) -> [Double] {
+func acos(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvacos(&results, x, [Int32(x.count)])
     
@@ -1023,14 +1023,14 @@ public func acos(x: [Double]) -> [Double] {
 
 // MARK: Arctangent
 
-public func atan(x: [Float]) -> [Float] {
+func atan(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvatanf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func atan(x: [Double]) -> [Double] {
+func atan(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvatan(&results, x, [Int32(x.count)])
     
@@ -1078,14 +1078,14 @@ import Accelerate
 
 // MARK: Sum
 
-public func sum(x: [Float]) -> Float {
+func sum(x: [Float]) -> Float {
     var result: Float = 0.0
     vDSP_sve(x, 1, &result, vDSP_Length(x.count))
     
     return result
 }
 
-public func sum(x: [Double]) -> Double {
+func sum(x: [Double]) -> Double {
     var result: Double = 0.0
     vDSP_sveD(x, 1, &result, vDSP_Length(x.count))
     
@@ -1094,24 +1094,24 @@ public func sum(x: [Double]) -> Double {
 
 // MARK: Sum of Absolute Values
 
-public func asum(x: [Float]) -> Float {
+func asum(x: [Float]) -> Float {
     return cblas_sasum(Int32(x.count), x, 1)
 }
 
-public func asum(x: [Double]) -> Double {
+func asum(x: [Double]) -> Double {
     return cblas_dasum(Int32(x.count), x, 1)
 }
 
 // MARK: Maximum
 
-public func max(x: [Float]) -> Float {
+func max(x: [Float]) -> Float {
     var result: Float = 0.0
     vDSP_maxv(x, 1, &result, vDSP_Length(x.count))
     
     return result
 }
 
-public func max(x: [Double]) -> Double {
+func max(x: [Double]) -> Double {
     var result: Double = 0.0
     vDSP_maxvD(x, 1, &result, vDSP_Length(x.count))
     
@@ -1120,14 +1120,14 @@ public func max(x: [Double]) -> Double {
 
 // MARK: Minimum
 
-public func min(x: [Float]) -> Float {
+func min(x: [Float]) -> Float {
     var result: Float = 0.0
     vDSP_minv(x, 1, &result, vDSP_Length(x.count))
     
     return result
 }
 
-public func min(x: [Double]) -> Double {
+func min(x: [Double]) -> Double {
     var result: Double = 0.0
     vDSP_minvD(x, 1, &result, vDSP_Length(x.count))
     
@@ -1136,14 +1136,14 @@ public func min(x: [Double]) -> Double {
 
 // MARK: Mean
 
-public func mean(x: [Float]) -> Float {
+func mean(x: [Float]) -> Float {
     var result: Float = 0.0
     vDSP_meanv(x, 1, &result, vDSP_Length(x.count))
     
     return result
 }
 
-public func mean(x: [Double]) -> Double {
+func mean(x: [Double]) -> Double {
     var result: Double = 0.0
     vDSP_meanvD(x, 1, &result, vDSP_Length(x.count))
     
@@ -1152,14 +1152,14 @@ public func mean(x: [Double]) -> Double {
 
 // MARK: Mean Magnitude
 
-public func meamg(x: [Float]) -> Float {
+func meamg(x: [Float]) -> Float {
     var result: Float = 0.0
     vDSP_meamgv(x, 1, &result, vDSP_Length(x.count))
     
     return result
 }
 
-public func meamg(x: [Double]) -> Double {
+func meamg(x: [Double]) -> Double {
     var result: Double = 0.0
     vDSP_meamgvD(x, 1, &result, vDSP_Length(x.count))
     
@@ -1168,14 +1168,14 @@ public func meamg(x: [Double]) -> Double {
 
 // MARK: Mean Square Value
 
-public func measq(x: [Float]) -> Float {
+func measq(x: [Float]) -> Float {
     var result: Float = 0.0
     vDSP_measqv(x, 1, &result, vDSP_Length(x.count))
     
     return result
 }
 
-public func measq(x: [Double]) -> Double {
+func measq(x: [Double]) -> Double {
     var result: Double = 0.0
     vDSP_measqvD(x, 1, &result, vDSP_Length(x.count))
     
@@ -1184,14 +1184,14 @@ public func measq(x: [Double]) -> Double {
 
 // MARK: Add
 
-public func add(x: [Float], y: [Float]) -> [Float] {
+func add(x: [Float], y: [Float]) -> [Float] {
     var results = [Float](y)
     cblas_saxpy(Int32(x.count), 1.0, x, 1, &results, 1)
     
     return results
 }
 
-public func add(x: [Double], y: [Double]) -> [Double] {
+func add(x: [Double], y: [Double]) -> [Double] {
     var results = [Double](y)
     cblas_daxpy(Int32(x.count), 1.0, x, 1, &results, 1)
     
@@ -1200,14 +1200,14 @@ public func add(x: [Double], y: [Double]) -> [Double] {
 
 // MARK: Multiply
 
-public func mul(x: [Float], y: [Float]) -> [Float] {
+func mul(x: [Float], y: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vDSP_vmul(x, 1, y, 1, &results, 1, vDSP_Length(x.count))
     
     return results
 }
 
-public func mul(x: [Double], y: [Double]) -> [Double] {
+func mul(x: [Double], y: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vDSP_vmulD(x, 1, y, 1, &results, 1, vDSP_Length(x.count))
     
@@ -1216,14 +1216,14 @@ public func mul(x: [Double], y: [Double]) -> [Double] {
 
 // MARK: Divide
 
-public func div(x: [Float], y: [Float]) -> [Float] {
+func div(x: [Float], y: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvdivf(&results, x, y, [Int32(x.count)])
     
     return results
 }
 
-public func div(x: [Double], y: [Double]) -> [Double] {
+func div(x: [Double], y: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvdiv(&results, x, y, [Int32(x.count)])
     
@@ -1232,14 +1232,14 @@ public func div(x: [Double], y: [Double]) -> [Double] {
 
 // MARK: Modulo
 
-public func mod(x: [Float], y: [Float]) -> [Float] {
+func mod(x: [Float], y: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvfmodf(&results, x, y, [Int32(x.count)])
     
     return results
 }
 
-public func mod(x: [Double], y: [Double]) -> [Double] {
+func mod(x: [Double], y: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvfmod(&results, x, y, [Int32(x.count)])
     
@@ -1248,14 +1248,14 @@ public func mod(x: [Double], y: [Double]) -> [Double] {
 
 // MARK: Remainder
 
-public func remainder(x: [Float], y: [Float]) -> [Float] {
+func remainder(x: [Float], y: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvremainderf(&results, x, y, [Int32(x.count)])
     
     return results
 }
 
-public func remainder(x: [Double], y: [Double]) -> [Double] {
+func remainder(x: [Double], y: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvremainder(&results, x, y, [Int32(x.count)])
     
@@ -1264,14 +1264,14 @@ public func remainder(x: [Double], y: [Double]) -> [Double] {
 
 // MARK: Square Root
 
-public func sqrt(x: [Float]) -> [Float] {
+func sqrt(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvsqrtf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func sqrt(x: [Double]) -> [Double] {
+func sqrt(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvsqrt(&results, x, [Int32(x.count)])
     
@@ -1280,7 +1280,7 @@ public func sqrt(x: [Double]) -> [Double] {
 
 // MARK: Dot Product
 
-public func dot(x: [Float], y: [Float]) -> Float {
+func dot(x: [Float], y: [Float]) -> Float {
     precondition(x.count == y.count, "Vectors must have equal count")
     
     var result: Float = 0.0
@@ -1290,7 +1290,7 @@ public func dot(x: [Float], y: [Float]) -> Float {
 }
 
 
-public func dot(x: [Double], y: [Double]) -> Double {
+func dot(x: [Double], y: [Double]) -> Double {
     precondition(x.count == y.count, "Vectors must have equal count")
     
     var result: Double = 0.0
@@ -1377,14 +1377,14 @@ func • (lhs: [Float], rhs: [Float]) -> Float {
 
 // MARK: Absolute Value
 
-public func abs(x: [Double]) -> [Double] {
+func abs(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvfabs(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func abs(x: [Float]) -> [Float] {
+func abs(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvfabsf(&results, x, [Int32(x.count)])
     
@@ -1393,14 +1393,14 @@ public func abs(x: [Float]) -> [Float] {
 
 // MARK: Ceiling
 
-public func ceil(x: [Float]) -> [Float] {
+func ceil(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvceilf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func ceil(x: [Double]) -> [Double] {
+func ceil(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvceil(&results, x, [Int32(x.count)])
     
@@ -1409,14 +1409,14 @@ public func ceil(x: [Double]) -> [Double] {
 
 // MARK: Clip
 
-public func clip(x: [Float], low: Float, high: Float) -> [Float] {
+func clip(x: [Float], low: Float, high: Float) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0), y = low, z = high
     vDSP_vclip(x, 1, &y, &z, &results, 1, vDSP_Length(x.count))
     
     return results
 }
 
-public func clip(x: [Double], low: Double, high: Double) -> [Double] {
+func clip(x: [Double], low: Double, high: Double) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0), y = low, z = high
     vDSP_vclipD(x, 1, &y, &z, &results, 1, vDSP_Length(x.count))
     
@@ -1425,14 +1425,14 @@ public func clip(x: [Double], low: Double, high: Double) -> [Double] {
 
 // MARK: Copy Sign
 
-public func copysign(sign: [Float], magnitude: [Float]) -> [Float] {
+func copysign(sign: [Float], magnitude: [Float]) -> [Float] {
     var results = [Float](count: sign.count, repeatedValue: 0.0)
     vvcopysignf(&results, magnitude, sign, [Int32(sign.count)])
     
     return results
 }
 
-public func copysign(sign: [Double], magnitude: [Double]) -> [Double] {
+func copysign(sign: [Double], magnitude: [Double]) -> [Double] {
     var results = [Double](count: sign.count, repeatedValue: 0.0)
     vvcopysign(&results, magnitude, sign, [Int32(sign.count)])
     
@@ -1441,14 +1441,14 @@ public func copysign(sign: [Double], magnitude: [Double]) -> [Double] {
 
 // MARK: Floor
 
-public func floor(x: [Float]) -> [Float] {
+func floor(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvfloorf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func floor(x: [Double]) -> [Double] {
+func floor(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvfloor(&results, x, [Int32(x.count)])
     
@@ -1457,14 +1457,14 @@ public func floor(x: [Double]) -> [Double] {
 
 // MARK: Negate
 
-public func neg(x: [Float]) -> [Float] {
+func neg(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vDSP_vneg(x, 1, &results, 1, vDSP_Length(x.count))
     
     return results
 }
 
-public func neg(x: [Double]) -> [Double] {
+func neg(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vDSP_vnegD(x, 1, &results, 1, vDSP_Length(x.count))
     
@@ -1473,14 +1473,14 @@ public func neg(x: [Double]) -> [Double] {
 
 // MARK: Reciprocal
 
-public func rec(x: [Float]) -> [Float] {
+func rec(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvrecf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func rec(x: [Double]) -> [Double] {
+func rec(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvrec(&results, x, [Int32(x.count)])
     
@@ -1489,14 +1489,14 @@ public func rec(x: [Double]) -> [Double] {
 
 // MARK: Round
 
-public func round(x: [Float]) -> [Float] {
+func round(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvnintf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func round(x: [Double]) -> [Double] {
+func round(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvnint(&results, x, [Int32(x.count)])
     
@@ -1505,14 +1505,14 @@ public func round(x: [Double]) -> [Double] {
 
 // MARK: Threshold
 
-public func threshold(x: [Float], low: Float) -> [Float] {
+func threshold(x: [Float], low: Float) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0), y = low
     vDSP_vthr(x, 1, &y, &results, 1, vDSP_Length(x.count))
     
     return results
 }
 
-public func threshold(x: [Double], low: Double) -> [Double] {
+func threshold(x: [Double], low: Double) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0), y = low
     vDSP_vthrD(x, 1, &y, &results, 1, vDSP_Length(x.count))
     
@@ -1521,14 +1521,14 @@ public func threshold(x: [Double], low: Double) -> [Double] {
 
 // MARK: Truncate
 
-public func trunc(x: [Float]) -> [Float] {
+func trunc(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvintf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func trunc(x: [Double]) -> [Double] {
+func trunc(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvint(&results, x, [Int32(x.count)])
     
@@ -1536,14 +1536,14 @@ public func trunc(x: [Double]) -> [Double] {
 }
 // MARK: Exponentiation
 
-public func exp(x: [Float]) -> [Float] {
+func exp(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvexpf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func exp(x: [Double]) -> [Double] {
+func exp(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvexp(&results, x, [Int32(x.count)])
     
@@ -1552,14 +1552,14 @@ public func exp(x: [Double]) -> [Double] {
 
 // MARK: Square Exponentiation
 
-public func exp2(x: [Float]) -> [Float] {
+func exp2(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvexp2f(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func exp2(x: [Double]) -> [Double] {
+func exp2(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvexp2(&results, x, [Int32(x.count)])
     
@@ -1568,14 +1568,14 @@ public func exp2(x: [Double]) -> [Double] {
 
 // MARK: Natural Logarithm
 
-public func log(x: [Float]) -> [Float] {
+func log(x: [Float]) -> [Float] {
     var results = [Float](x)
     vvlogf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func log(x: [Double]) -> [Double] {
+func log(x: [Double]) -> [Double] {
     var results = [Double](x)
     vvlog(&results, x, [Int32(x.count)])
     
@@ -1584,14 +1584,14 @@ public func log(x: [Double]) -> [Double] {
 
 // MARK: Base-2 Logarithm
 
-public func log2(x: [Float]) -> [Float] {
+func log2(x: [Float]) -> [Float] {
     var results = [Float](x)
     vvlog2f(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func log2(x: [Double]) -> [Double] {
+func log2(x: [Double]) -> [Double] {
     var results = [Double](x)
     vvlog2(&results, x, [Int32(x.count)])
     
@@ -1600,14 +1600,14 @@ public func log2(x: [Double]) -> [Double] {
 
 // MARK: Base-10 Logarithm
 
-public func log10(x: [Float]) -> [Float] {
+func log10(x: [Float]) -> [Float] {
     var results = [Float](x)
     vvlog10f(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func log10(x: [Double]) -> [Double] {
+func log10(x: [Double]) -> [Double] {
     var results = [Double](x)
     vvlog10(&results, x, [Int32(x.count)])
     
@@ -1616,14 +1616,14 @@ public func log10(x: [Double]) -> [Double] {
 
 // MARK: Logarithmic Exponentiation
 
-public func logb(x: [Float]) -> [Float] {
+func logb(x: [Float]) -> [Float] {
     var results = [Float](x)
     vvlogbf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func logb(x: [Double]) -> [Double] {
+func logb(x: [Double]) -> [Double] {
     var results = [Double](x)
     vvlogb(&results, x, [Int32(x.count)])
     
@@ -1632,7 +1632,7 @@ public func logb(x: [Double]) -> [Double] {
 
 // MARK: Fast Fourier Transform
 
-public func fft(input: [Float]) -> [Float] {
+func fft(input: [Float]) -> [Float] {
     var real = [Float](input)
     var imaginary = [Float](count: input.count, repeatedValue: 0.0)
     var splitComplex = DSPSplitComplex(realp: &real, imagp: &imaginary)
@@ -1653,7 +1653,7 @@ public func fft(input: [Float]) -> [Float] {
     return normalizedMagnitudes
 }
 
-public func fft(input: [Double]) -> [Double] {
+func fft(input: [Double]) -> [Double] {
     var real = [Double](input)
     var imaginary = [Double](count: input.count, repeatedValue: 0.0)
     var splitComplex = DSPDoubleSplitComplex(realp: &real, imagp: &imaginary)
@@ -1676,14 +1676,14 @@ public func fft(input: [Double]) -> [Double] {
 
 // MARK: Hyperbolic Sine
 
-public func sinh(x: [Float]) -> [Float] {
+func sinh(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvsinhf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func sinh(x: [Double]) -> [Double] {
+func sinh(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvsinh(&results, x, [Int32(x.count)])
     
@@ -1692,14 +1692,14 @@ public func sinh(x: [Double]) -> [Double] {
 
 // MARK: Hyperbolic Cosine
 
-public func cosh(x: [Float]) -> [Float] {
+func cosh(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvcoshf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func cosh(x: [Double]) -> [Double] {
+func cosh(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvcosh(&results, x, [Int32(x.count)])
     
@@ -1708,14 +1708,14 @@ public func cosh(x: [Double]) -> [Double] {
 
 // MARK: Hyperbolic Tangent
 
-public func tanh(x: [Float]) -> [Float] {
+func tanh(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvtanhf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func tanh(x: [Double]) -> [Double] {
+func tanh(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvtanh(&results, x, [Int32(x.count)])
     
@@ -1724,14 +1724,14 @@ public func tanh(x: [Double]) -> [Double] {
 
 // MARK: Inverse Hyperbolic Sine
 
-public func asinh(x: [Float]) -> [Float] {
+func asinh(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvasinhf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func asinh(x: [Double]) -> [Double] {
+func asinh(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvasinh(&results, x, [Int32(x.count)])
     
@@ -1740,14 +1740,14 @@ public func asinh(x: [Double]) -> [Double] {
 
 // MARK: Inverse Hyperbolic Cosine
 
-public func acosh(x: [Float]) -> [Float] {
+func acosh(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvacoshf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func acosh(x: [Double]) -> [Double] {
+func acosh(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvacosh(&results, x, [Int32(x.count)])
     
@@ -1756,35 +1756,35 @@ public func acosh(x: [Double]) -> [Double] {
 
 // MARK: Inverse Hyperbolic Tangent
 
-public func atanh(x: [Float]) -> [Float] {
+func atanh(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvatanhf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func atanh(x: [Double]) -> [Double] {
+func atanh(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvatanh(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public struct Matrix<T where T: FloatingPointType, T: FloatLiteralConvertible> {
+struct Matrix<T where T: FloatingPointType, T: FloatLiteralConvertible> {
     typealias Element = T
     
     let rows: Int
     let columns: Int
     var grid: [Element]
     
-    public init(rows: Int, columns: Int, repeatedValue: Element) {
+    init(rows: Int, columns: Int, repeatedValue: Element) {
         self.rows = rows
         self.columns = columns
         
         self.grid = [Element](count: rows * columns, repeatedValue: repeatedValue)
     }
     
-    public init(_ contents: [[Element]]) {
+    init(_ contents: [[Element]]) {
         let m: Int = contents.count
         let n: Int = contents[0].count
         let repeatedValue: Element = 0.0
@@ -1796,7 +1796,7 @@ public struct Matrix<T where T: FloatingPointType, T: FloatLiteralConvertible> {
         }
     }
     
-    public subscript(row: Int, column: Int) -> Element {
+    subscript(row: Int, column: Int) -> Element {
         get {
             assert(indexIsValidForRow(row, column: column))
             return grid[(row * columns) + column]
@@ -1816,7 +1816,7 @@ public struct Matrix<T where T: FloatingPointType, T: FloatLiteralConvertible> {
 // MARK: - Printable
 
 extension Matrix: Printable {
-    public var description: String {
+    var description: String {
         var description = ""
         
         for i in 0..<rows {
@@ -1843,7 +1843,7 @@ extension Matrix: Printable {
 // MARK: - SequenceType
 
 extension Matrix: SequenceType {
-    public func generate() -> GeneratorOf<ArraySlice<Element>> {
+    func generate() -> GeneratorOf<ArraySlice<Element>> {
         let endIndex = rows * columns
         var nextRowStartIndex = 0
         
@@ -1862,7 +1862,7 @@ extension Matrix: SequenceType {
 
 // MARK: -
 
-public func add(x: Matrix<Float>, y: Matrix<Float>) -> Matrix<Float> {
+func add(x: Matrix<Float>, y: Matrix<Float>) -> Matrix<Float> {
     precondition(x.rows == y.rows && x.columns == y.columns, "Matrix dimensions not compatible with addition")
     
     var results = y
@@ -1871,7 +1871,7 @@ public func add(x: Matrix<Float>, y: Matrix<Float>) -> Matrix<Float> {
     return results
 }
 
-public func add(x: Matrix<Double>, y: Matrix<Double>) -> Matrix<Double> {
+func add(x: Matrix<Double>, y: Matrix<Double>) -> Matrix<Double> {
     precondition(x.rows == y.rows && x.columns == y.columns, "Matrix dimensions not compatible with addition")
     
     var results = y
@@ -1880,21 +1880,21 @@ public func add(x: Matrix<Double>, y: Matrix<Double>) -> Matrix<Double> {
     return results
 }
 
-public func mul(alpha: Float, x: Matrix<Float>) -> Matrix<Float> {
+func mul(alpha: Float, x: Matrix<Float>) -> Matrix<Float> {
     var results = x
     cblas_sscal(Int32(x.grid.count), alpha, &(results.grid), 1)
     
     return results
 }
 
-public func mul(alpha: Double, x: Matrix<Double>) -> Matrix<Double> {
+func mul(alpha: Double, x: Matrix<Double>) -> Matrix<Double> {
     var results = x
     cblas_dscal(Int32(x.grid.count), alpha, &(results.grid), 1)
     
     return results
 }
 
-public func mul(x: Matrix<Float>, y: Matrix<Float>) -> Matrix<Float> {
+func mul(x: Matrix<Float>, y: Matrix<Float>) -> Matrix<Float> {
     precondition(x.columns == y.rows, "Matrix dimensions not compatible with multiplication")
     
     var results = Matrix<Float>(rows: x.rows, columns: y.columns, repeatedValue: 0.0)
@@ -1903,7 +1903,7 @@ public func mul(x: Matrix<Float>, y: Matrix<Float>) -> Matrix<Float> {
     return results
 }
 
-public func mul(x: Matrix<Double>, y: Matrix<Double>) -> Matrix<Double> {
+func mul(x: Matrix<Double>, y: Matrix<Double>) -> Matrix<Double> {
     precondition(x.columns == y.rows, "Matrix dimensions not compatible with multiplication")
     
     var results = Matrix<Double>(rows: x.rows, columns: y.columns, repeatedValue: 0.0)
@@ -1912,7 +1912,7 @@ public func mul(x: Matrix<Double>, y: Matrix<Double>) -> Matrix<Double> {
     return results
 }
 
-public func inv(x : Matrix<Float>) -> Matrix<Float> {
+func inv(x : Matrix<Float>) -> Matrix<Float> {
     precondition(x.rows == x.columns, "Matrix must be square")
     
     var results = x
@@ -1931,7 +1931,7 @@ public func inv(x : Matrix<Float>) -> Matrix<Float> {
     return results
 }
 
-public func inv(x : Matrix<Double>) -> Matrix<Double> {
+func inv(x : Matrix<Double>) -> Matrix<Double> {
     precondition(x.rows == x.columns, "Matrix must be square")
     
     var results = x
@@ -1950,14 +1950,14 @@ public func inv(x : Matrix<Double>) -> Matrix<Double> {
     return results
 }
 
-public func transpose(x: Matrix<Float>) -> Matrix<Float> {
+func transpose(x: Matrix<Float>) -> Matrix<Float> {
     var results = Matrix<Float>(rows: x.columns, columns: x.rows, repeatedValue: 0.0)
     vDSP_mtrans(x.grid, 1, &(results.grid), 1, vDSP_Length(results.rows), vDSP_Length(results.columns))
     
     return results
 }
 
-public func transpose(x: Matrix<Double>) -> Matrix<Double> {
+func transpose(x: Matrix<Double>) -> Matrix<Double> {
     var results = Matrix<Double>(rows: x.columns, columns: x.rows, repeatedValue: 0.0)
     vDSP_mtransD(x.grid, 1, &(results.grid), 1, vDSP_Length(results.rows), vDSP_Length(results.columns))
     
@@ -1966,42 +1966,42 @@ public func transpose(x: Matrix<Double>) -> Matrix<Double> {
 
 // MARK: - Operators
 
-public func + (lhs: Matrix<Float>, rhs: Matrix<Float>) -> Matrix<Float> {
+func + (lhs: Matrix<Float>, rhs: Matrix<Float>) -> Matrix<Float> {
     return add(lhs, rhs)
 }
 
-public func + (lhs: Matrix<Double>, rhs: Matrix<Double>) -> Matrix<Double> {
+func + (lhs: Matrix<Double>, rhs: Matrix<Double>) -> Matrix<Double> {
     return add(lhs, rhs)
 }
 
-public func * (lhs: Float, rhs: Matrix<Float>) -> Matrix<Float> {
+func * (lhs: Float, rhs: Matrix<Float>) -> Matrix<Float> {
     return mul(lhs, rhs)
 }
 
-public func * (lhs: Double, rhs: Matrix<Double>) -> Matrix<Double> {
+func * (lhs: Double, rhs: Matrix<Double>) -> Matrix<Double> {
     return mul(lhs, rhs)
 }
 
-public func * (lhs: Matrix<Float>, rhs: Matrix<Float>) -> Matrix<Float> {
+func * (lhs: Matrix<Float>, rhs: Matrix<Float>) -> Matrix<Float> {
     return mul(lhs, rhs)
 }
 
-public func * (lhs: Matrix<Double>, rhs: Matrix<Double>) -> Matrix<Double> {
+func * (lhs: Matrix<Double>, rhs: Matrix<Double>) -> Matrix<Double> {
     return mul(lhs, rhs)
 }
 
 postfix operator ′ {}
-public postfix func ′ (value: Matrix<Float>) -> Matrix<Float> {
+postfix func ′ (value: Matrix<Float>) -> Matrix<Float> {
     return transpose(value)
 }
 
-public postfix func ′ (value: Matrix<Double>) -> Matrix<Double> {
+postfix func ′ (value: Matrix<Double>) -> Matrix<Double> {
     return transpose(value)
 }
 
 // MARK: Sine-Cosine
 
-public func sincos(x: [Float]) -> (sin: [Float], cos: [Float]) {
+func sincos(x: [Float]) -> (sin: [Float], cos: [Float]) {
     var sin = [Float](count: x.count, repeatedValue: 0.0)
     var cos = [Float](count: x.count, repeatedValue: 0.0)
     vvsincosf(&sin, &cos, x, [Int32(x.count)])
@@ -2009,7 +2009,7 @@ public func sincos(x: [Float]) -> (sin: [Float], cos: [Float]) {
     return (sin, cos)
 }
 
-public func sincos(x: [Double]) -> (sin: [Double], cos: [Double]) {
+func sincos(x: [Double]) -> (sin: [Double], cos: [Double]) {
     var sin = [Double](count: x.count, repeatedValue: 0.0)
     var cos = [Double](count: x.count, repeatedValue: 0.0)
     vvsincos(&sin, &cos, x, [Int32(x.count)])
@@ -2019,14 +2019,14 @@ public func sincos(x: [Double]) -> (sin: [Double], cos: [Double]) {
 
 // MARK: Sine
 
-public func sin(x: [Float]) -> [Float] {
+func sin(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvsinf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func sin(x: [Double]) -> [Double] {
+func sin(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvsin(&results, x, [Int32(x.count)])
     
@@ -2035,14 +2035,14 @@ public func sin(x: [Double]) -> [Double] {
 
 // MARK: Cosine
 
-public func cos(x: [Float]) -> [Float] {
+func cos(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvcosf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func cos(x: [Double]) -> [Double] {
+func cos(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvcos(&results, x, [Int32(x.count)])
     
@@ -2051,14 +2051,14 @@ public func cos(x: [Double]) -> [Double] {
 
 // MARK: Tangent
 
-public func tan(x: [Float]) -> [Float] {
+func tan(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvtanf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func tan(x: [Double]) -> [Double] {
+func tan(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvtan(&results, x, [Int32(x.count)])
     
@@ -2067,14 +2067,14 @@ public func tan(x: [Double]) -> [Double] {
 
 // MARK: Arcsine
 
-public func asin(x: [Float]) -> [Float] {
+func asin(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvasinf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func asin(x: [Double]) -> [Double] {
+func asin(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvasin(&results, x, [Int32(x.count)])
     
@@ -2083,14 +2083,14 @@ public func asin(x: [Double]) -> [Double] {
 
 // MARK: Arccosine
 
-public func acos(x: [Float]) -> [Float] {
+func acos(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvacosf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func acos(x: [Double]) -> [Double] {
+func acos(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvacos(&results, x, [Int32(x.count)])
     
@@ -2099,14 +2099,14 @@ public func acos(x: [Double]) -> [Double] {
 
 // MARK: Arctangent
 
-public func atan(x: [Float]) -> [Float] {
+func atan(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvatanf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func atan(x: [Double]) -> [Double] {
+func atan(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvatan(&results, x, [Int32(x.count)])
     
@@ -2154,14 +2154,14 @@ import Accelerate
 
 // MARK: Sum
 
-public func sum(x: [Float]) -> Float {
+func sum(x: [Float]) -> Float {
     var result: Float = 0.0
     vDSP_sve(x, 1, &result, vDSP_Length(x.count))
     
     return result
 }
 
-public func sum(x: [Double]) -> Double {
+func sum(x: [Double]) -> Double {
     var result: Double = 0.0
     vDSP_sveD(x, 1, &result, vDSP_Length(x.count))
     
@@ -2170,24 +2170,24 @@ public func sum(x: [Double]) -> Double {
 
 // MARK: Sum of Absolute Values
 
-public func asum(x: [Float]) -> Float {
+func asum(x: [Float]) -> Float {
     return cblas_sasum(Int32(x.count), x, 1)
 }
 
-public func asum(x: [Double]) -> Double {
+func asum(x: [Double]) -> Double {
     return cblas_dasum(Int32(x.count), x, 1)
 }
 
 // MARK: Maximum
 
-public func max(x: [Float]) -> Float {
+func max(x: [Float]) -> Float {
     var result: Float = 0.0
     vDSP_maxv(x, 1, &result, vDSP_Length(x.count))
     
     return result
 }
 
-public func max(x: [Double]) -> Double {
+func max(x: [Double]) -> Double {
     var result: Double = 0.0
     vDSP_maxvD(x, 1, &result, vDSP_Length(x.count))
     
@@ -2196,14 +2196,14 @@ public func max(x: [Double]) -> Double {
 
 // MARK: Minimum
 
-public func min(x: [Float]) -> Float {
+func min(x: [Float]) -> Float {
     var result: Float = 0.0
     vDSP_minv(x, 1, &result, vDSP_Length(x.count))
     
     return result
 }
 
-public func min(x: [Double]) -> Double {
+func min(x: [Double]) -> Double {
     var result: Double = 0.0
     vDSP_minvD(x, 1, &result, vDSP_Length(x.count))
     
@@ -2212,14 +2212,14 @@ public func min(x: [Double]) -> Double {
 
 // MARK: Mean
 
-public func mean(x: [Float]) -> Float {
+func mean(x: [Float]) -> Float {
     var result: Float = 0.0
     vDSP_meanv(x, 1, &result, vDSP_Length(x.count))
     
     return result
 }
 
-public func mean(x: [Double]) -> Double {
+func mean(x: [Double]) -> Double {
     var result: Double = 0.0
     vDSP_meanvD(x, 1, &result, vDSP_Length(x.count))
     
@@ -2228,14 +2228,14 @@ public func mean(x: [Double]) -> Double {
 
 // MARK: Mean Magnitude
 
-public func meamg(x: [Float]) -> Float {
+func meamg(x: [Float]) -> Float {
     var result: Float = 0.0
     vDSP_meamgv(x, 1, &result, vDSP_Length(x.count))
     
     return result
 }
 
-public func meamg(x: [Double]) -> Double {
+func meamg(x: [Double]) -> Double {
     var result: Double = 0.0
     vDSP_meamgvD(x, 1, &result, vDSP_Length(x.count))
     
@@ -2244,14 +2244,14 @@ public func meamg(x: [Double]) -> Double {
 
 // MARK: Mean Square Value
 
-public func measq(x: [Float]) -> Float {
+func measq(x: [Float]) -> Float {
     var result: Float = 0.0
     vDSP_measqv(x, 1, &result, vDSP_Length(x.count))
     
     return result
 }
 
-public func measq(x: [Double]) -> Double {
+func measq(x: [Double]) -> Double {
     var result: Double = 0.0
     vDSP_measqvD(x, 1, &result, vDSP_Length(x.count))
     
@@ -2260,14 +2260,14 @@ public func measq(x: [Double]) -> Double {
 
 // MARK: Add
 
-public func add(x: [Float], y: [Float]) -> [Float] {
+func add(x: [Float], y: [Float]) -> [Float] {
     var results = [Float](y)
     cblas_saxpy(Int32(x.count), 1.0, x, 1, &results, 1)
     
     return results
 }
 
-public func add(x: [Double], y: [Double]) -> [Double] {
+func add(x: [Double], y: [Double]) -> [Double] {
     var results = [Double](y)
     cblas_daxpy(Int32(x.count), 1.0, x, 1, &results, 1)
     
@@ -2276,14 +2276,14 @@ public func add(x: [Double], y: [Double]) -> [Double] {
 
 // MARK: Multiply
 
-public func mul(x: [Float], y: [Float]) -> [Float] {
+func mul(x: [Float], y: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vDSP_vmul(x, 1, y, 1, &results, 1, vDSP_Length(x.count))
     
     return results
 }
 
-public func mul(x: [Double], y: [Double]) -> [Double] {
+func mul(x: [Double], y: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vDSP_vmulD(x, 1, y, 1, &results, 1, vDSP_Length(x.count))
     
@@ -2292,14 +2292,14 @@ public func mul(x: [Double], y: [Double]) -> [Double] {
 
 // MARK: Divide
 
-public func div(x: [Float], y: [Float]) -> [Float] {
+func div(x: [Float], y: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvdivf(&results, x, y, [Int32(x.count)])
     
     return results
 }
 
-public func div(x: [Double], y: [Double]) -> [Double] {
+func div(x: [Double], y: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvdiv(&results, x, y, [Int32(x.count)])
     
@@ -2308,14 +2308,14 @@ public func div(x: [Double], y: [Double]) -> [Double] {
 
 // MARK: Modulo
 
-public func mod(x: [Float], y: [Float]) -> [Float] {
+func mod(x: [Float], y: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvfmodf(&results, x, y, [Int32(x.count)])
     
     return results
 }
 
-public func mod(x: [Double], y: [Double]) -> [Double] {
+func mod(x: [Double], y: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvfmod(&results, x, y, [Int32(x.count)])
     
@@ -2324,14 +2324,14 @@ public func mod(x: [Double], y: [Double]) -> [Double] {
 
 // MARK: Remainder
 
-public func remainder(x: [Float], y: [Float]) -> [Float] {
+func remainder(x: [Float], y: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvremainderf(&results, x, y, [Int32(x.count)])
     
     return results
 }
 
-public func remainder(x: [Double], y: [Double]) -> [Double] {
+func remainder(x: [Double], y: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvremainder(&results, x, y, [Int32(x.count)])
     
@@ -2340,14 +2340,14 @@ public func remainder(x: [Double], y: [Double]) -> [Double] {
 
 // MARK: Square Root
 
-public func sqrt(x: [Float]) -> [Float] {
+func sqrt(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvsqrtf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func sqrt(x: [Double]) -> [Double] {
+func sqrt(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvsqrt(&results, x, [Int32(x.count)])
     
@@ -2356,7 +2356,7 @@ public func sqrt(x: [Double]) -> [Double] {
 
 // MARK: Dot Product
 
-public func dot(x: [Float], y: [Float]) -> Float {
+func dot(x: [Float], y: [Float]) -> Float {
     precondition(x.count == y.count, "Vectors must have equal count")
     
     var result: Float = 0.0
@@ -2366,7 +2366,7 @@ public func dot(x: [Float], y: [Float]) -> Float {
 }
 
 
-public func dot(x: [Double], y: [Double]) -> Double {
+func dot(x: [Double], y: [Double]) -> Double {
     precondition(x.count == y.count, "Vectors must have equal count")
     
     var result: Double = 0.0
@@ -2453,14 +2453,14 @@ func • (lhs: [Float], rhs: [Float]) -> Float {
 
 // MARK: Absolute Value
 
-public func abs(x: [Double]) -> [Double] {
+func abs(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvfabs(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func abs(x: [Float]) -> [Float] {
+func abs(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvfabsf(&results, x, [Int32(x.count)])
     
@@ -2469,14 +2469,14 @@ public func abs(x: [Float]) -> [Float] {
 
 // MARK: Ceiling
 
-public func ceil(x: [Float]) -> [Float] {
+func ceil(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvceilf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func ceil(x: [Double]) -> [Double] {
+func ceil(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvceil(&results, x, [Int32(x.count)])
     
@@ -2485,14 +2485,14 @@ public func ceil(x: [Double]) -> [Double] {
 
 // MARK: Clip
 
-public func clip(x: [Float], low: Float, high: Float) -> [Float] {
+func clip(x: [Float], low: Float, high: Float) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0), y = low, z = high
     vDSP_vclip(x, 1, &y, &z, &results, 1, vDSP_Length(x.count))
     
     return results
 }
 
-public func clip(x: [Double], low: Double, high: Double) -> [Double] {
+func clip(x: [Double], low: Double, high: Double) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0), y = low, z = high
     vDSP_vclipD(x, 1, &y, &z, &results, 1, vDSP_Length(x.count))
     
@@ -2501,14 +2501,14 @@ public func clip(x: [Double], low: Double, high: Double) -> [Double] {
 
 // MARK: Copy Sign
 
-public func copysign(sign: [Float], magnitude: [Float]) -> [Float] {
+func copysign(sign: [Float], magnitude: [Float]) -> [Float] {
     var results = [Float](count: sign.count, repeatedValue: 0.0)
     vvcopysignf(&results, magnitude, sign, [Int32(sign.count)])
     
     return results
 }
 
-public func copysign(sign: [Double], magnitude: [Double]) -> [Double] {
+func copysign(sign: [Double], magnitude: [Double]) -> [Double] {
     var results = [Double](count: sign.count, repeatedValue: 0.0)
     vvcopysign(&results, magnitude, sign, [Int32(sign.count)])
     
@@ -2517,14 +2517,14 @@ public func copysign(sign: [Double], magnitude: [Double]) -> [Double] {
 
 // MARK: Floor
 
-public func floor(x: [Float]) -> [Float] {
+func floor(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvfloorf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func floor(x: [Double]) -> [Double] {
+func floor(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvfloor(&results, x, [Int32(x.count)])
     
@@ -2533,14 +2533,14 @@ public func floor(x: [Double]) -> [Double] {
 
 // MARK: Negate
 
-public func neg(x: [Float]) -> [Float] {
+func neg(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vDSP_vneg(x, 1, &results, 1, vDSP_Length(x.count))
     
     return results
 }
 
-public func neg(x: [Double]) -> [Double] {
+func neg(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vDSP_vnegD(x, 1, &results, 1, vDSP_Length(x.count))
     
@@ -2549,14 +2549,14 @@ public func neg(x: [Double]) -> [Double] {
 
 // MARK: Reciprocal
 
-public func rec(x: [Float]) -> [Float] {
+func rec(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvrecf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func rec(x: [Double]) -> [Double] {
+func rec(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvrec(&results, x, [Int32(x.count)])
     
@@ -2565,14 +2565,14 @@ public func rec(x: [Double]) -> [Double] {
 
 // MARK: Round
 
-public func round(x: [Float]) -> [Float] {
+func round(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvnintf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func round(x: [Double]) -> [Double] {
+func round(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvnint(&results, x, [Int32(x.count)])
     
@@ -2581,14 +2581,14 @@ public func round(x: [Double]) -> [Double] {
 
 // MARK: Threshold
 
-public func threshold(x: [Float], low: Float) -> [Float] {
+func threshold(x: [Float], low: Float) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0), y = low
     vDSP_vthr(x, 1, &y, &results, 1, vDSP_Length(x.count))
     
     return results
 }
 
-public func threshold(x: [Double], low: Double) -> [Double] {
+func threshold(x: [Double], low: Double) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0), y = low
     vDSP_vthrD(x, 1, &y, &results, 1, vDSP_Length(x.count))
     
@@ -2597,14 +2597,14 @@ public func threshold(x: [Double], low: Double) -> [Double] {
 
 // MARK: Truncate
 
-public func trunc(x: [Float]) -> [Float] {
+func trunc(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvintf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func trunc(x: [Double]) -> [Double] {
+func trunc(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvint(&results, x, [Int32(x.count)])
     
@@ -2612,14 +2612,14 @@ public func trunc(x: [Double]) -> [Double] {
 }
 // MARK: Exponentiation
 
-public func exp(x: [Float]) -> [Float] {
+func exp(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvexpf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func exp(x: [Double]) -> [Double] {
+func exp(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvexp(&results, x, [Int32(x.count)])
     
@@ -2628,14 +2628,14 @@ public func exp(x: [Double]) -> [Double] {
 
 // MARK: Square Exponentiation
 
-public func exp2(x: [Float]) -> [Float] {
+func exp2(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvexp2f(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func exp2(x: [Double]) -> [Double] {
+func exp2(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvexp2(&results, x, [Int32(x.count)])
     
@@ -2644,14 +2644,14 @@ public func exp2(x: [Double]) -> [Double] {
 
 // MARK: Natural Logarithm
 
-public func log(x: [Float]) -> [Float] {
+func log(x: [Float]) -> [Float] {
     var results = [Float](x)
     vvlogf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func log(x: [Double]) -> [Double] {
+func log(x: [Double]) -> [Double] {
     var results = [Double](x)
     vvlog(&results, x, [Int32(x.count)])
     
@@ -2660,14 +2660,14 @@ public func log(x: [Double]) -> [Double] {
 
 // MARK: Base-2 Logarithm
 
-public func log2(x: [Float]) -> [Float] {
+func log2(x: [Float]) -> [Float] {
     var results = [Float](x)
     vvlog2f(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func log2(x: [Double]) -> [Double] {
+func log2(x: [Double]) -> [Double] {
     var results = [Double](x)
     vvlog2(&results, x, [Int32(x.count)])
     
@@ -2676,14 +2676,14 @@ public func log2(x: [Double]) -> [Double] {
 
 // MARK: Base-10 Logarithm
 
-public func log10(x: [Float]) -> [Float] {
+func log10(x: [Float]) -> [Float] {
     var results = [Float](x)
     vvlog10f(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func log10(x: [Double]) -> [Double] {
+func log10(x: [Double]) -> [Double] {
     var results = [Double](x)
     vvlog10(&results, x, [Int32(x.count)])
     
@@ -2692,14 +2692,14 @@ public func log10(x: [Double]) -> [Double] {
 
 // MARK: Logarithmic Exponentiation
 
-public func logb(x: [Float]) -> [Float] {
+func logb(x: [Float]) -> [Float] {
     var results = [Float](x)
     vvlogbf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func logb(x: [Double]) -> [Double] {
+func logb(x: [Double]) -> [Double] {
     var results = [Double](x)
     vvlogb(&results, x, [Int32(x.count)])
     
@@ -2708,7 +2708,7 @@ public func logb(x: [Double]) -> [Double] {
 
 // MARK: Fast Fourier Transform
 
-public func fft(input: [Float]) -> [Float] {
+func fft(input: [Float]) -> [Float] {
     var real = [Float](input)
     var imaginary = [Float](count: input.count, repeatedValue: 0.0)
     var splitComplex = DSPSplitComplex(realp: &real, imagp: &imaginary)
@@ -2729,7 +2729,7 @@ public func fft(input: [Float]) -> [Float] {
     return normalizedMagnitudes
 }
 
-public func fft(input: [Double]) -> [Double] {
+func fft(input: [Double]) -> [Double] {
     var real = [Double](input)
     var imaginary = [Double](count: input.count, repeatedValue: 0.0)
     var splitComplex = DSPDoubleSplitComplex(realp: &real, imagp: &imaginary)
@@ -2752,14 +2752,14 @@ public func fft(input: [Double]) -> [Double] {
 
 // MARK: Hyperbolic Sine
 
-public func sinh(x: [Float]) -> [Float] {
+func sinh(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvsinhf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func sinh(x: [Double]) -> [Double] {
+func sinh(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvsinh(&results, x, [Int32(x.count)])
     
@@ -2768,14 +2768,14 @@ public func sinh(x: [Double]) -> [Double] {
 
 // MARK: Hyperbolic Cosine
 
-public func cosh(x: [Float]) -> [Float] {
+func cosh(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvcoshf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func cosh(x: [Double]) -> [Double] {
+func cosh(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvcosh(&results, x, [Int32(x.count)])
     
@@ -2784,14 +2784,14 @@ public func cosh(x: [Double]) -> [Double] {
 
 // MARK: Hyperbolic Tangent
 
-public func tanh(x: [Float]) -> [Float] {
+func tanh(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvtanhf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func tanh(x: [Double]) -> [Double] {
+func tanh(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvtanh(&results, x, [Int32(x.count)])
     
@@ -2800,14 +2800,14 @@ public func tanh(x: [Double]) -> [Double] {
 
 // MARK: Inverse Hyperbolic Sine
 
-public func asinh(x: [Float]) -> [Float] {
+func asinh(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvasinhf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func asinh(x: [Double]) -> [Double] {
+func asinh(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvasinh(&results, x, [Int32(x.count)])
     
@@ -2816,14 +2816,14 @@ public func asinh(x: [Double]) -> [Double] {
 
 // MARK: Inverse Hyperbolic Cosine
 
-public func acosh(x: [Float]) -> [Float] {
+func acosh(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvacoshf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func acosh(x: [Double]) -> [Double] {
+func acosh(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvacosh(&results, x, [Int32(x.count)])
     
@@ -2832,35 +2832,35 @@ public func acosh(x: [Double]) -> [Double] {
 
 // MARK: Inverse Hyperbolic Tangent
 
-public func atanh(x: [Float]) -> [Float] {
+func atanh(x: [Float]) -> [Float] {
     var results = [Float](count: x.count, repeatedValue: 0.0)
     vvatanhf(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public func atanh(x: [Double]) -> [Double] {
+func atanh(x: [Double]) -> [Double] {
     var results = [Double](count: x.count, repeatedValue: 0.0)
     vvatanh(&results, x, [Int32(x.count)])
     
     return results
 }
 
-public struct Matrix<T where T: FloatingPointType, T: FloatLiteralConvertible> {
+struct Matrix<T where T: FloatingPointType, T: FloatLiteralConvertible> {
     typealias Element = T
     
     let rows: Int
     let columns: Int
     var grid: [Element]
     
-    public init(rows: Int, columns: Int, repeatedValue: Element) {
+    init(rows: Int, columns: Int, repeatedValue: Element) {
         self.rows = rows
         self.columns = columns
         
         self.grid = [Element](count: rows * columns, repeatedValue: repeatedValue)
     }
     
-    public init(_ contents: [[Element]]) {
+    init(_ contents: [[Element]]) {
         let m: Int = contents.count
         let n: Int = contents[0].count
         let repeatedValue: Element = 0.0
@@ -2872,7 +2872,7 @@ public struct Matrix<T where T: FloatingPointType, T: FloatLiteralConvertible> {
         }
     }
     
-    public subscript(row: Int, column: Int) -> Element {
+    subscript(row: Int, column: Int) -> Element {
         get {
             assert(indexIsValidForRow(row, column: column))
             return grid[(row * columns) + column]
@@ -2892,7 +2892,7 @@ public struct Matrix<T where T: FloatingPointType, T: FloatLiteralConvertible> {
 // MARK: - Printable
 
 extension Matrix: Printable {
-    public var description: String {
+    var description: String {
         var description = ""
         
         for i in 0..<rows {
@@ -2919,7 +2919,7 @@ extension Matrix: Printable {
 // MARK: - SequenceType
 
 extension Matrix: SequenceType {
-    public func generate() -> GeneratorOf<ArraySlice<Element>> {
+    func generate() -> GeneratorOf<ArraySlice<Element>> {
         let endIndex = rows * columns
         var nextRowStartIndex = 0
         
@@ -2938,7 +2938,7 @@ extension Matrix: SequenceType {
 
 // MARK: -
 
-public func add(x: Matrix<Float>, y: Matrix<Float>) -> Matrix<Float> {
+func add(x: Matrix<Float>, y: Matrix<Float>) -> Matrix<Float> {
     precondition(x.rows == y.rows && x.columns == y.columns, "Matrix dimensions not compatible with addition")
     
     var results = y
@@ -2947,7 +2947,7 @@ public func add(x: Matrix<Float>, y: Matrix<Float>) -> Matrix<Float> {
     return results
 }
 
-public func add(x: Matrix<Double>, y: Matrix<Double>) -> Matrix<Double> {
+func add(x: Matrix<Double>, y: Matrix<Double>) -> Matrix<Double> {
     precondition(x.rows == y.rows && x.columns == y.columns, "Matrix dimensions not compatible with addition")
     
     var results = y
@@ -2956,21 +2956,21 @@ public func add(x: Matrix<Double>, y: Matrix<Double>) -> Matrix<Double> {
     return results
 }
 
-public func mul(alpha: Float, x: Matrix<Float>) -> Matrix<Float> {
+func mul(alpha: Float, x: Matrix<Float>) -> Matrix<Float> {
     var results = x
     cblas_sscal(Int32(x.grid.count), alpha, &(results.grid), 1)
     
     return results
 }
 
-public func mul(alpha: Double, x: Matrix<Double>) -> Matrix<Double> {
+func mul(alpha: Double, x: Matrix<Double>) -> Matrix<Double> {
     var results = x
     cblas_dscal(Int32(x.grid.count), alpha, &(results.grid), 1)
     
     return results
 }
 
-public func mul(x: Matrix<Float>, y: Matrix<Float>) -> Matrix<Float> {
+func mul(x: Matrix<Float>, y: Matrix<Float>) -> Matrix<Float> {
     precondition(x.columns == y.rows, "Matrix dimensions not compatible with multiplication")
     
     var results = Matrix<Float>(rows: x.rows, columns: y.columns, repeatedValue: 0.0)
@@ -2979,7 +2979,7 @@ public func mul(x: Matrix<Float>, y: Matrix<Float>) -> Matrix<Float> {
     return results
 }
 
-public func mul(x: Matrix<Double>, y: Matrix<Double>) -> Matrix<Double> {
+func mul(x: Matrix<Double>, y: Matrix<Double>) -> Matrix<Double> {
     precondition(x.columns == y.rows, "Matrix dimensions not compatible with multiplication")
     
     var results = Matrix<Double>(rows: x.rows, columns: y.columns, repeatedValue: 0.0)
@@ -2988,7 +2988,7 @@ public func mul(x: Matrix<Double>, y: Matrix<Double>) -> Matrix<Double> {
     return results
 }
 
-public func inv(x : Matrix<Float>) -> Matrix<Float> {
+func inv(x : Matrix<Float>) -> Matrix<Float> {
     precondition(x.rows == x.columns, "Matrix must be square")
     
     var results = x

@@ -8,16 +8,16 @@
 
 import Foundation
 
-public class Timer {
+class Timer {
     var startDate: NSDate?
     
-    public init() {}
+    init() {}
     
-    public func start() {
+    func start() {
         startDate = NSDate()
     }
     
-    public func stop() -> NSTimeInterval {
+    func stop() -> NSTimeInterval {
         guard let startDate = self.startDate else { return 0 }
         
         let timeInterval = NSDate().timeIntervalSinceDate(startDate)
@@ -25,7 +25,7 @@ public class Timer {
         return timeInterval
     }
     
-    public func profile(block: () -> ()) -> NSTimeInterval {
+    func profile(block: () -> ()) -> NSTimeInterval {
         start()
         block()
         return stop()

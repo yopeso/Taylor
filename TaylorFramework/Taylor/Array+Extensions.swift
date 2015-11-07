@@ -15,7 +15,7 @@ extension Array {
     The `transform` operation is parralelized to take advantage of all the
     proccessor cores.
     */
-    public func pmap<T>(transform: (Element -> T)) -> [T] {
+    func pmap<T>(transform: (Element -> T)) -> [T] {
         guard !self.isEmpty else { return [] }
         
         var result: [(Int, [T])] = []

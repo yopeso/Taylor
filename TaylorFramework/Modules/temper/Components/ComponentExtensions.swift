@@ -36,13 +36,13 @@ extension ComponentRange : Serialization, Deserialization {
     }
 }
 
-public extension ComponentRange {
+extension ComponentRange {
     
     /**
         This property return the length of the component
     */
     
-    public var length : Int {
+    var length : Int {
         return endLine - startLine
     }
     
@@ -52,7 +52,7 @@ public extension ComponentRange {
         :returns: [NSXMLNode] An array with 2 objects: the begin line node and the end line node
     */
     
-    public func XMLAttributes() -> [NSXMLNode] {
+    func XMLAttributes() -> [NSXMLNode] {
         guard let beginLineNode = (NSXMLNode.attributeWithName("beginline", stringValue: String(startLine)) as? NSXMLNode) else {
             return []
         }
@@ -74,15 +74,15 @@ public extension ComponentRange {
     :param: right The dictionary with source keys and values
 */
 
-public func +=<KeyType, KeyValue>(inout left: Dictionary<KeyType, KeyValue>, right: Dictionary<KeyType, KeyValue>) {
+func +=<KeyType, KeyValue>(inout left: Dictionary<KeyType, KeyValue>, right: Dictionary<KeyType, KeyValue>) {
     for (key, value) in right {
         left.updateValue(value, forKey: key)
     }
 }
 
-public extension Component {
+extension Component {
     
-    public var isRedundantLine : Bool {
+    var isRedundantLine : Bool {
         return type == .Comment || type == .EmptyLines
     }
     
@@ -92,7 +92,7 @@ public extension Component {
         :returns: Bool true if is construct type
     */
     
-    public var isConstructType : Bool {
+    var isConstructType : Bool {
         return type == ComponentType.Class || type == ComponentType.Struct ||
             type == ComponentType.Enum || type == ComponentType.Extension
     }
@@ -105,7 +105,7 @@ public extension Component {
         :returns: Component? The parent component of Class type
     */
     
-    public func classComponent() -> Component? {
+    func classComponent() -> Component? {
         if isConstructType { return self }
         guard let parentComponent = parent else {
             return nil
@@ -122,7 +122,7 @@ public extension Component {
         :returns: Component? The next component
     */
     
-    public func nextComponent() -> Component? {
+    func nextComponent() -> Component? {
         guard let parent = parent else {
             return nil
         }

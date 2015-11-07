@@ -7,7 +7,7 @@
 //
 
 infix operator ~== { associativity left }
-public func ~== (a: String?, b: String?) -> Bool {
+func ~== (a: String?, b: String?) -> Bool {
     if a == nil && b == nil {
         return true
     }
@@ -20,6 +20,6 @@ public func ~== (a: String?, b: String?) -> Bool {
 }
 
 infix operator !~== { associativity left }
-public func !~== (a: String?, b: String?) -> Bool {
+func !~== (a: String?, b: String?) -> Bool {
     return !(a ~== b)
 }

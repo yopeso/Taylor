@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum FinderError: ErrorType {
+enum FinderError: ErrorType {
     case NotSpecifiedRootPath
     case NotSpecifiedType
     case WrongFilePath(path: String)

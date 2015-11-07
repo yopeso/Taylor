@@ -10,17 +10,17 @@ import Foundation
 import SwiftXPC
 
 /// Represents a source file.
-public struct File {
+struct File {
     /// File path. Nil if initialized directly with `File(contents:)`.
-    public let path: String?
+    let path: String?
     /// File contents.
-    public let contents: String
+    let contents: String
     /// File lines.
-    public let lines: [Line]
+    let lines: [Line]
     
-    public let startLine: Int
-    public let startOffset: Int
-    public let size: Int
+    let startLine: Int
+    let startOffset: Int
+    let size: Int
     
     
     /**
@@ -28,7 +28,7 @@ public struct File {
     
     - parameter path: File path.
     */
-    public init?(path: String, startLine: Int = 1, startOffset: Int = 0, size: Int = 0) {
+    init?(path: String, startLine: Int = 1, startOffset: Int = 0, size: Int = 0) {
         do {
             let sourceCode = try NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding) as String
             //sourceCode.filterCharacters()
@@ -51,7 +51,7 @@ public struct File {
     
     - parameter contents: File contents.
     */
-    public init(contents: String, startLine: Int = 1, startOffset: Int = 0, size: Int = 0) {
+    init(contents: String, startLine: Int = 1, startOffset: Int = 0, size: Int = 0) {
         path = nil
         self.contents = contents
         self.lines = self.contents.lines()
@@ -62,7 +62,7 @@ public struct File {
     }
     
     
-    public init(lines: [String], startLine: Int = 1, startOffset: Int = 0, size: Int = 0) {
+    init(lines: [String], startLine: Int = 1, startOffset: Int = 0, size: Int = 0) {
         path = nil
         self.contents = String(lines.reduce("", combine: { $0 + "\n" + $1 }).characters.dropFirst())
         self.lines = self.contents.lines()
@@ -79,7 +79,7 @@ public struct File {
     
     - returns: Source declaration if successfully parsed.
     */
-    public func parseDeclaration(dictionary: XPCDictionary) -> String? {
+    func parseDeclaration(dictionary: XPCDictionary) -> String? {
         if !shouldParseDeclaration(dictionary) {
             return nil
         }
@@ -99,7 +99,7 @@ public struct File {
     
     - returns: Line numbers containing the declaration's implementation.
     */
-    public func parseScopeRange(dictionary: XPCDictionary) -> (start: Int, end: Int)? {
+    func parseScopeRange(dictionary: XPCDictionary) -> (start: Int, end: Int)? {
         if !shouldParseDeclaration(dictionary) {
             return nil
         }
@@ -141,7 +141,7 @@ public struct File {
     - parameter dictionary:        Dictionary to process.
     - parameter cursorInfoRequest: Cursor.Info request to get declaration information.
     */
-    public func processDictionary(var dictionary: XPCDictionary, cursorInfoRequest: xpc_object_t? = nil, syntaxMap: SyntaxMap? = nil) -> XPCDictionary {
+    func processDictionary(var dictionary: XPCDictionary, cursorInfoRequest: xpc_object_t? = nil, syntaxMap: SyntaxMap? = nil) -> XPCDictionary {
         if let cursorInfoRequest = cursorInfoRequest {
             dictionary = merge(
                 dictionary,
@@ -331,7 +331,7 @@ public struct File {
     - returns: `dictionary`'s documentation comment body as a string, without any documentation
     syntax (`/** ... */` or `/// ...`).
     */
-    public func getDocumentationCommentBody(dictionary: XPCDictionary, syntaxMap: SyntaxMap) -> String? {
+    func getDocumentationCommentBody(dictionary: XPCDictionary, syntaxMap: SyntaxMap) -> String? {
         return SwiftDocKey.getOffset(dictionary).flatMap { offset in
             return syntaxMap.commentRangeBeforeOffset(Int(offset)).flatMap { commentByteRange in
                 return contents.byteRangeToNSRange(start: commentByteRange.start, length: commentByteRange.length).flatMap { nsRange in
@@ -344,7 +344,7 @@ public struct File {
     /**
     Returns tuple consisting of starting line and ending line of structure.
     */
-    public func getLines(dictionary: XPCDictionary) -> (start: Int, end: Int)? {
+    func getLines(dictionary: XPCDictionary) -> (start: Int, end: Int)? {
         return SwiftDocKey.getOffset(dictionary).flatMap { start in
             let start = Int(start)
             let end = SwiftDocKey.getBodyOffset(dictionary).flatMap { bodyOffset in
@@ -361,7 +361,7 @@ public struct File {
     Returns tuple consisting of line offset. Anyone is free to modify it to return
     a single value.
     */
-    public func getLineByOffset(offset: Int, length: Int) -> (start: Int, end: Int) {
+    func getLineByOffset(offset: Int, length: Int) -> (start: Int, end: Int) {
         return self.contents.lineRangeWithByteRange(start: offset, length: 0) ?? (lines.count, lines.count)
     }
 }
@@ -409,7 +409,7 @@ private func isDeclarationOrCommentMark(dictionary: XPCDictionary) -> Bool {
 import Foundation
 import AppKit
 
-public typealias Line = (index: Int, content: String)
+typealias Line = (index: Int, content: String)
 
 private let whitespaceAndNewlineCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()
 
@@ -455,7 +455,7 @@ extension NSString {
     
     - parameter characterSet: Character set to check for membership.
     */
-    public func stringByTrimmingTrailingCharactersInSet(characterSet: NSCharacterSet) -> String {
+    func stringByTrimmingTrailingCharactersInSet(characterSet: NSCharacterSet) -> String {
         if length == 0 {
             return self as String
         }
@@ -474,7 +474,7 @@ extension NSString {
     
     - parameter rootDirectory: Absolute parent path if not already an absolute path.
     */
-    public func absolutePathRepresentation(rootDirectory: String = NSFileManager.defaultManager().currentDirectoryPath) -> String {
+    func absolutePathRepresentation(rootDirectory: String = NSFileManager.defaultManager().currentDirectoryPath) -> String {
         if absolutePath {
             return self as String
         }
@@ -490,7 +490,7 @@ extension NSString {
     
     - returns: An equivalent `NSRange`.
     */
-    public func byteRangeToNSRange(start start: Int, length: Int) -> NSRange? {
+    func byteRangeToNSRange(start start: Int, length: Int) -> NSRange? {
         return indexOfByteOffset(start).flatMap { stringStart in
             return indexOfByteOffset(start + length).map { stringEnd in
                 return NSRange(location: stringStart, length: stringEnd - stringStart)
@@ -504,7 +504,7 @@ extension NSString {
     - parameter start: Starting byte offset.
     - parameter length: Length of bytes to include in range.
     */
-    public func substringWithByteRange(start start: Int, length: Int) -> String? {
+    func substringWithByteRange(start start: Int, length: Int) -> String? {
         return byteRangeToNSRange(start: start, length: length).map(substringWithRange)
     }
     
@@ -515,7 +515,7 @@ extension NSString {
     - parameter start: Starting byte offset.
     - parameter length: Length of bytes to include in range.
     */
-    public func substringLinesWithByteRange(start start: Int, length: Int) -> String? {
+    func substringLinesWithByteRange(start start: Int, length: Int) -> String? {
         return byteRangeToNSRange(start: start, length: length).map { range in
             var lineStart = 0, lineEnd = 0
             getLineStart(&lineStart, end: &lineEnd, contentsEnd: nil, forRange: range)
@@ -529,7 +529,7 @@ extension NSString {
     - parameter start: Starting byte offset.
     - parameter length: Length of bytes to include in range.
     */
-    public func lineRangeWithByteRange(start start: Int, length: Int) -> (start: Int, end: Int)? {
+    func lineRangeWithByteRange(start start: Int, length: Int) -> (start: Int, end: Int)? {
         return byteRangeToNSRange(start: start, length: length).flatMap { range in
             var numberOfLines = 0, index = 0, lineRangeStart = 0
             while index < self.length {
@@ -561,14 +561,14 @@ extension NSString {
     /**
     Returns true if self is an Objective-C header file.
     */
-    public func isObjectiveCHeaderFile() -> Bool {
+    func isObjectiveCHeaderFile() -> Bool {
         return ["h", "hpp", "hh"].contains(pathExtension)
     }
     
     /**
     Returns true if self is a Swift file.
     */
-    public func isSwiftFile() -> Bool {
+    func isSwiftFile() -> Bool {
         return pathExtension == "swift"
     }
 }
@@ -584,7 +584,7 @@ extension String {
     
     - parameter token: Token to process.
     */
-    public func isTokenDocumentable(token: SyntaxToken) -> Bool {
+    func isTokenDocumentable(token: SyntaxToken) -> Bool {
         if token.type == SyntaxKind.Keyword.rawValue {
             let keywordFunctions = ["subscript", "init", "deinit"]
             return ((self as NSString).substringWithByteRange(start: token.offset, length: token.length))
@@ -600,7 +600,7 @@ extension String {
     
     - returns: Array of documented token offsets.
     */
-    public func documentedTokenOffsets(syntaxMap: SyntaxMap) -> [Int] {
+    func documentedTokenOffsets(syntaxMap: SyntaxMap) -> [Int] {
         let documentableOffsets = syntaxMap.tokens.filter(isTokenDocumentable).map {
             $0.offset
         }
@@ -619,7 +619,7 @@ extension String {
     
     - parameter range: Range to restrict the search for a comment body.
     */
-    public func commentBody(range: NSRange? = nil) -> String? {
+    func commentBody(range: NSRange? = nil) -> String? {
         let nsString = self as NSString
         let patterns: [(pattern: String, options: NSRegularExpressionOptions)] = [
             ("^\\s*\\/\\*\\*\\s*(.+)\\*\\/", [.AnchorsMatchLines, .DotMatchesLineSeparators]),   // multi: ^\s*\/\*\*\s*(.+)\*\/
@@ -663,7 +663,7 @@ extension String {
     }
     
     /// Returns a copy of `self` with the leading whitespace common in each line removed.
-    public func stringByRemovingCommonLeadingWhitespaceFromLines() -> String {
+    func stringByRemovingCommonLeadingWhitespaceFromLines() -> String {
         var minLeadingWhitespace = Int.max
         enumerateLines { line, _ in
             let lineLeadingWhitespace = line.countOfLeadingCharactersInSet(whitespaceAndNewlineCharacterSet)
@@ -687,7 +687,7 @@ extension String {
     
     - parameter characterSet: Character set to check for membership.
     */
-    public func countOfLeadingCharactersInSet(characterSet: NSCharacterSet) -> Int {
+    func countOfLeadingCharactersInSet(characterSet: NSCharacterSet) -> Int {
         let utf16View = utf16
         var count = 0
         for char in utf16View {
@@ -735,7 +735,7 @@ Converts an XPCRepresentable object to its xpc_object_t value.
 
 - returns: Converted XPC object.
 */
-public func toXPCGeneral(object: XPCRepresentable) -> xpc_object_t? {
+func toXPCGeneral(object: XPCRepresentable) -> xpc_object_t? {
     switch object {
     case let object as XPCArray:
         return toXPC(object)
@@ -772,7 +772,7 @@ Converts an xpc_object_t to its Swift value (XPCRepresentable).
 
 - returns: Converted XPCRepresentable object.
 */
-public func fromXPCGeneral(xpcObject: xpc_object_t) -> XPCRepresentable? {
+func fromXPCGeneral(xpcObject: xpc_object_t) -> XPCRepresentable? {
     let type = xpc_get_type(xpcObject)
     switch typeMap[type]! {
     case .Array:
@@ -809,7 +809,7 @@ Converts an Array of XPCRepresentable objects to its xpc_object_t value.
 
 - returns: Converted XPC array.
 */
-public func toXPC(array: XPCArray) -> xpc_object_t {
+func toXPC(array: XPCArray) -> xpc_object_t {
     let xpcArray = xpc_array_create(nil, 0)
     for value in array {
         if let xpcValue = toXPCGeneral(value) {
@@ -826,7 +826,7 @@ Converts an xpc_object_t array to an Array of XPCRepresentable objects.
 
 - returns: Converted Array of XPCRepresentable objects.
 */
-public func fromXPC(xpcObject: xpc_object_t) -> XPCArray {
+func fromXPC(xpcObject: xpc_object_t) -> XPCArray {
     var array = XPCArray()
     xpc_array_apply(xpcObject) { index, value in
         if let value = fromXPCGeneral(value) {
@@ -846,7 +846,7 @@ Converts a Dictionary of XPCRepresentable objects to its xpc_object_t value.
 
 - returns: Converted XPC dictionary.
 */
-public func toXPC(dictionary: XPCDictionary) -> xpc_object_t {
+func toXPC(dictionary: XPCDictionary) -> xpc_object_t {
     let xpcDictionary = xpc_dictionary_create(nil, nil, 0)
     for (key, value) in dictionary {
         xpc_dictionary_set_value(xpcDictionary, key, toXPCGeneral(value))
@@ -861,7 +861,7 @@ Converts an xpc_object_t dictionary to a Dictionary of XPCRepresentable objects.
 
 - returns: Converted Dictionary of XPCRepresentable objects.
 */
-public func fromXPC(xpcObject: xpc_object_t) -> XPCDictionary {
+func fromXPC(xpcObject: xpc_object_t) -> XPCDictionary {
     var dict = XPCDictionary()
     xpc_dictionary_apply(xpcObject) { key, value in
         if let key = String(UTF8String: key), let value = fromXPCGeneral(value) {
@@ -881,7 +881,7 @@ Converts a String to an xpc_object_t string.
 
 - returns: Converted XPC string.
 */
-public func toXPC(string: String) -> xpc_object_t? {
+func toXPC(string: String) -> xpc_object_t? {
     return xpc_string_create(string)
 }
 
@@ -892,7 +892,7 @@ Converts an xpc_object_t string to a String.
 
 - returns: Converted String.
 */
-public func fromXPC(xpcObject: xpc_object_t) -> String? {
+func fromXPC(xpcObject: xpc_object_t) -> String? {
     return String(UTF8String: xpc_string_get_string_ptr(xpcObject))
 }
 
@@ -907,7 +907,7 @@ Converts an NSDate to an xpc_object_t date.
 
 - returns: Converted XPC date.
 */
-public func toXPC(date: NSDate) -> xpc_object_t? {
+func toXPC(date: NSDate) -> xpc_object_t? {
     return xpc_date_create(Int64(date.timeIntervalSince1970 * xpcDateInterval))
 }
 
@@ -918,7 +918,7 @@ Converts an xpc_object_t date to an NSDate.
 
 - returns: Converted NSDate.
 */
-public func fromXPC(xpcObject: xpc_object_t) -> NSDate? {
+func fromXPC(xpcObject: xpc_object_t) -> NSDate? {
     let nanosecondsInterval = xpc_date_get_value(xpcObject)
     return NSDate(timeIntervalSince1970: NSTimeInterval(nanosecondsInterval) / xpcDateInterval)
 }
@@ -932,7 +932,7 @@ Converts an NSData to an xpc_object_t data.
 
 - returns: Converted XPC data.
 */
-public func toXPC(data: NSData) -> xpc_object_t? {
+func toXPC(data: NSData) -> xpc_object_t? {
     return xpc_data_create(data.bytes, data.length)
 }
 
@@ -943,7 +943,7 @@ Converts an xpc_object_t data to an NSData.
 
 - returns: Converted NSData.
 */
-public func fromXPC(xpcObject: xpc_object_t) -> NSData? {
+func fromXPC(xpcObject: xpc_object_t) -> NSData? {
     return NSData(bytes: xpc_data_get_bytes_ptr(xpcObject), length: Int(xpc_data_get_length(xpcObject)))
 }
 
@@ -956,7 +956,7 @@ Converts a UInt64 to an xpc_object_t uint64.
 
 - returns: Converted XPC uint64.
 */
-public func toXPC(number: UInt64) -> xpc_object_t? {
+func toXPC(number: UInt64) -> xpc_object_t? {
     return xpc_uint64_create(number)
 }
 
@@ -967,7 +967,7 @@ Converts an xpc_object_t uint64 to a UInt64.
 
 - returns: Converted UInt64.
 */
-public func fromXPC(xpcObject: xpc_object_t) -> UInt64? {
+func fromXPC(xpcObject: xpc_object_t) -> UInt64? {
     return xpc_uint64_get_value(xpcObject)
 }
 
@@ -980,7 +980,7 @@ Converts an Int64 to an xpc_object_t int64.
 
 - returns: Converted XPC int64.
 */
-public func toXPC(number: Int64) -> xpc_object_t? {
+func toXPC(number: Int64) -> xpc_object_t? {
     return xpc_int64_create(number)
 }
 
@@ -991,7 +991,7 @@ Converts an xpc_object_t int64 to a Int64.
 
 - returns: Converted Int64.
 */
-public func fromXPC(xpcObject: xpc_object_t) -> Int64? {
+func fromXPC(xpcObject: xpc_object_t) -> Int64? {
     return xpc_int64_get_value(xpcObject)
 }
 
@@ -1004,7 +1004,7 @@ Converts a Double to an xpc_object_t double.
 
 - returns: Converted XPC double.
 */
-public func toXPC(number: Double) -> xpc_object_t? {
+func toXPC(number: Double) -> xpc_object_t? {
     return xpc_double_create(number)
 }
 
@@ -1015,7 +1015,7 @@ Converts an xpc_object_t double to a Double.
 
 - returns: Converted Double.
 */
-public func fromXPC(xpcObject: xpc_object_t) -> Double? {
+func fromXPC(xpcObject: xpc_object_t) -> Double? {
     return xpc_double_get_value(xpcObject)
 }
 
@@ -1028,7 +1028,7 @@ Converts a Bool to an xpc_object_t bool.
 
 - returns: Converted XPC bool.
 */
-public func toXPC(bool: Bool) -> xpc_object_t? {
+func toXPC(bool: Bool) -> xpc_object_t? {
     return xpc_bool_create(bool)
 }
 
@@ -1039,7 +1039,7 @@ Converts an xpc_object_t bool to a Bool.
 
 - returns: Converted Bool.
 */
-public func fromXPC(xpcObject: xpc_object_t) -> Bool? {
+func fromXPC(xpcObject: xpc_object_t) -> Bool? {
     return xpc_bool_get_value(xpcObject)
 }
 
@@ -1052,7 +1052,7 @@ Converts an NSFileHandle to an equivalent xpc_object_t file handle.
 
 - returns: Converted XPC file handle. Equivalent but not necessarily identical to the input.
 */
-public func toXPC(fileHandle: NSFileHandle) -> xpc_object_t? {
+func toXPC(fileHandle: NSFileHandle) -> xpc_object_t? {
     return xpc_fd_create(fileHandle.fileDescriptor)
 }
 
@@ -1063,7 +1063,7 @@ Converts an xpc_object_t file handle to an equivalent NSFileHandle.
 
 - returns: Converted NSFileHandle. Equivalent but not necessarily identical to the input.
 */
-public func fromXPC(xpcObject: xpc_object_t) -> NSFileHandle? {
+func fromXPC(xpcObject: xpc_object_t) -> NSFileHandle? {
     return NSFileHandle(fileDescriptor: xpc_fd_dup(xpcObject), closeOnDealloc: true)
 }
 
@@ -1074,7 +1074,7 @@ Converts an NSUUID to an equivalent xpc_object_t uuid.
 
 - returns: Converted XPC uuid. Equivalent but not necessarily identical to the input.
 */
-public func toXPC(uuid: NSUUID) -> xpc_object_t? {
+func toXPC(uuid: NSUUID) -> xpc_object_t? {
     var bytes = [UInt8](count: 16, repeatedValue: 0)
     uuid.getUUIDBytes(&bytes)
     return xpc_uuid_create(bytes)
@@ -1087,6 +1087,6 @@ Converts an xpc_object_t uuid to an equivalent NSUUID.
 
 - returns: Converted NSUUID. Equivalent but not necessarily identical to the input.
 */
-public func fromXPC(xpcObject: xpc_object_t) -> NSUUID? {
+func fromXPC(xpcObject: xpc_object_t) -> NSUUID? {
     return NSUUID(UUIDBytes: xpc_uuid_get_bytes(xpcObject))
 }

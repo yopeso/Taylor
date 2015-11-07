@@ -7,20 +7,20 @@
 //
 
 
-public let ResultDictionaryPathKey = "path"
-public let ResultDictionaryTypeKey = "type"
-public let ResultDictionaryExcludesKey = "excludes"
-public let ResultDictionaryFileKey = "files"
-public let ResultDictionaryErrorKey = "error"
+let ResultDictionaryPathKey = "path"
+let ResultDictionaryTypeKey = "type"
+let ResultDictionaryExcludesKey = "excludes"
+let ResultDictionaryFileKey = "files"
+let ResultDictionaryErrorKey = "error"
 
 
-public typealias Options = [String: [String]]
+typealias Options = [String: [String]]
 
-public struct Caprice {
+struct Caprice {
 
     let messageProcessor = MessageProcessor()
     
-    public init() { }
+    init() { }
     
     /**
     Returns dictionary with necessary info
@@ -28,7 +28,7 @@ public struct Caprice {
     Retuns empty dictionary if help is requested.
     Returns current path if an error occurs.
     */
-    public func processArguments(arguments: [String]) -> Options {
+    func processArguments(arguments: [String]) -> Options {
         let resultDictionary = messageProcessor.processArguments(arguments)
         return checkIfErrorOccursOrHelpRequested(resultDictionary)
     }
@@ -61,7 +61,7 @@ public struct Caprice {
     For xcode reporter type, value for "fileName" key will be empty.
     Must be called after processing arguments.
     */
-    public func getReporters() -> [OutputReporter] {
+    func getReporters() -> [OutputReporter] {
         return messageProcessor.getReporters()
     }
     
@@ -69,7 +69,7 @@ public struct Caprice {
     Returns dictionary with rules and it's argument.
     Must be called after processing arguments.
     */
-    public func getRuleThresholds() -> CustomizationRule {
+    func getRuleThresholds() -> CustomizationRule {
         return messageProcessor.getRuleThresholds()
     }
     
@@ -77,7 +77,7 @@ public struct Caprice {
     Returns verbosity level indicated by user or default(error).
     Must be called after processing arguments.
     */
-    public func getVerbosityLevel() -> VerbosityLevel {
+    func getVerbosityLevel() -> VerbosityLevel {
         return messageProcessor.getVerbosityLevel()
     }
 

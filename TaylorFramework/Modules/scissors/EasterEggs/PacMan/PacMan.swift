@@ -15,7 +15,7 @@ let PLAYER = "@"
 let GHOST = "$"
 let POINT = "."
 
-public class Pacman {
+class Pacman {
     let paths: [String]
     
     /**
@@ -23,7 +23,7 @@ public class Pacman {
     
     - parameter paths: paths to files for the map to be generated from.
     */
-    public init(paths: [String]) {
+    init(paths: [String]) {
         self.paths = paths
     }
     
@@ -31,7 +31,7 @@ public class Pacman {
     Starts pacman game by generating a map using text from one of the files in *paths*.
     If no paths were given, no game instance will run.
     */
-    public func start() {
+    func start() {
         guard paths.count > 0 else {
             return
         }

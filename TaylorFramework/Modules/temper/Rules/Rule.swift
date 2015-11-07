@@ -7,7 +7,7 @@
 //
 
 
-public protocol Rule {
+protocol Rule {
     
     /**
         The rule name

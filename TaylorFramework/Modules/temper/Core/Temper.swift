@@ -8,9 +8,9 @@
 
 import Foundation
 
-public class Temper {
+class Temper {
     
-    public  var rules : [Rule]
+    var rules : [Rule]
     private let outputPath : String
     private var violations : [Violation]
     private var output : OutputCoordinator
@@ -24,7 +24,7 @@ public class Temper {
     static  var violationsWithP3 = 0
     private var fileWasChecked = false
     
-    public var path : String {
+    var path : String {
         return outputPath
     }
     
@@ -41,7 +41,7 @@ public class Temper {
         :param: outputPath The output path when will be created the reporters
     */
     
-    public init(outputPath: String) {
+    init(outputPath: String) {
         if !NSFileManager.defaultManager().fileExistsAtPath(outputPath) {
             print("Temper: Wrong output path! The current directory path will be used as output path!")
             self.outputPath = NSFileManager.defaultManager().currentDirectoryPath
@@ -62,7 +62,7 @@ public class Temper {
         :param: content The content of file parsed in components
     */
     
-    public func checkContent(content: FileContent) {
+    func checkContent(content: FileContent) {
         Temper.totalFiles++
         fileWasChecked = false
         currentPath = content.path
@@ -79,7 +79,7 @@ public class Temper {
         * Plain (text file)
     */
     
-    public func setReporters(reporters : [Reporter]) {
+    func setReporters(reporters : [Reporter]) {
         self.reporters = reporters
     }
     
@@ -87,7 +87,7 @@ public class Temper {
         This method is called when there are no more content for checking. It will create the reporters and write the violations.
     */
     
-    public func finishTempering() {
+    func finishTempering() {
         output.writeTheOutput(violations, reporters: reporters)
     }
     
@@ -97,7 +97,7 @@ public class Temper {
         :param: limits A dictionary with the rule name as key and unsigned int as value(the limit)
     */
     
-    public func setLimits(limits: [String:Int]) {
+    func setLimits(limits: [String:Int]) {
         rules = rules.map({ (var rule: Rule) -> Rule in
             if let limit = limits[rule.rule] {
                 rule.limit = limit

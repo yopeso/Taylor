@@ -49,7 +49,7 @@ class PMDCoordinator : WritingCoordinator {
     }
 }
 
-public extension Array where Element : Hashable {
+extension Array where Element : Hashable {
     
     /**
         This property delete the duplicated objects in the array
@@ -57,7 +57,7 @@ public extension Array where Element : Hashable {
         :returns: [Element] An array with distinct objects
     */
     
-    public var unique: [Element] {
+    var unique: [Element] {
         return Array(Set(self))
     }
 }

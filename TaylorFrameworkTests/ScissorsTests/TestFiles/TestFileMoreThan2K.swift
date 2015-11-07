@@ -1,20 +1,20 @@
 import Foundation
 
 /// Responsible for managing the mapping of `ServerTrustPolicy` objects to a given host.
-public class ServerTrustPolicyManager {
+class ServerTrustPolicyManager {
     /// The dictionary of policies mapped to a particular host.
-    public let policies: [String: ServerTrustPolicy]
+    let policies: [String: ServerTrustPolicy]
     
     /**
     Initializes the `ServerTrustPolicyManager` instance with the given policies.
     Since different servers and web services can have different leaf certificates, intermediate and even root
     certficates, it is important to have the flexibility to specify evaluation policies on a per host basis. This
-    allows for scenarios such as using default evaluation for host1, certificate pinning for host2, public key
+    allows for scenarios such as using default evaluation for host1, certificate pinning for host2, key
     pinning for host3 and disabling evaluation for host4.
     - parameter policies: A dictionary of all policies mapped to a particular host.
     - returns: The new `ServerTrustPolicyManager` instance.
     */
-    public init(policies: [String: ServerTrustPolicy]) {
+    init(policies: [String: ServerTrustPolicy]) {
         self.policies = policies
     }
     
@@ -25,7 +25,7 @@ public class ServerTrustPolicyManager {
     - parameter host: The host to use when searching for a matching policy.
     - returns: The server trust policy for the given host if found.
     */
-    public func serverTrustPolicyForHost(host: String) -> ServerTrustPolicy? {
+    func serverTrustPolicyForHost(host: String) -> ServerTrustPolicy? {
         return policies[host]
     }
 }
@@ -53,7 +53,7 @@ extension NSURLSession {
 The `ServerTrustPolicy` evaluates the server trust generally provided by an `NSURLAuthenticationChallenge` when
 connecting to a server over a secure HTTPS connection. The policy configuration then evaluates the server trust
 with a given set of criteria to determine whether the server trust is valid and the connection should be made.
-Using pinned certificates or public keys for evaluation helps prevent man-in-the-middle (MITM) attacks and other
+Using pinned certificates or keys for evaluation helps prevent man-in-the-middle (MITM) attacks and other
 vulnerabilities. Applications dealing with sensitive customer data or financial information are strongly encouraged
 to route all communication over an HTTPS connection with pinning enabled.
 - PerformDefaultEvaluation: Uses the default server trust evaluation while allowing you to control whether to
@@ -66,16 +66,16 @@ By validating both the certificate chain and host, certificate pinning provides 
 secure form of server trust validation mitigating most, if not all, MITM attacks.
 Applications are encouraged to always validate the host and require a valid certificate
 chain in production environments.
-- PinPublicKeys:            Uses the pinned public keys to validate the server trust. The server trust is considered
-valid if one of the pinned public keys match one of the server certificate public keys.
-By validating both the certificate chain and host, public key pinning provides a very
+- PinPublicKeys:            Uses the pinned keys to validate the server trust. The server trust is considered
+valid if one of the pinned keys match one of the server certificate keys.
+By validating both the certificate chain and host, key pinning provides a very
 secure form of server trust validation mitigating most, if not all, MITM attacks.
 Applications are encouraged to always validate the host and require a valid certificate
 chain in production environments.
 - DisableEvaluation:        Disables all evaluation which in turn will always consider any server trust as valid.
 - CustomEvaluation:         Uses the associated closure to evaluate the validity of the server trust.
 */
-public enum ServerTrustPolicy {
+enum ServerTrustPolicy {
     case PerformDefaultEvaluation(validateHost: Bool)
     case PinCertificates(certificates: [SecCertificate], validateCertificateChain: Bool, validateHost: Bool)
     case PinPublicKeys(publicKeys: [SecKey], validateCertificateChain: Bool, validateHost: Bool)
@@ -89,7 +89,7 @@ public enum ServerTrustPolicy {
     - parameter bundle: The bundle to search for all `.cer` files.
     - returns: All certificates within the given bundle.
     */
-    public static func certificatesInBundle(bundle: NSBundle = NSBundle.mainBundle()) -> [SecCertificate] {
+    static func certificatesInBundle(bundle: NSBundle = NSBundle.mainBundle()) -> [SecCertificate] {
         var certificates: [SecCertificate] = []
         
         for path in bundle.pathsForResourcesOfType(".cer", inDirectory: nil) {
@@ -105,11 +105,11 @@ public enum ServerTrustPolicy {
     }
     
     /**
-    Returns all public keys within the given bundle with a `.cer` file extension.
+    Returns all keys within the given bundle with a `.cer` file extension.
     - parameter bundle: The bundle to search for all `*.cer` files.
-    - returns: All public keys within the given bundle.
+    - returns: All keys within the given bundle.
     */
-    public static func publicKeysInBundle(bundle: NSBundle = NSBundle.mainBundle()) -> [SecKey] {
+    static func publicKeysInBundle(bundle: NSBundle = NSBundle.mainBundle()) -> [SecKey] {
         var publicKeys: [SecKey] = []
         
         for certificate in certificatesInBundle(bundle) {
@@ -129,7 +129,7 @@ public enum ServerTrustPolicy {
     - parameter host:        The host of the challenge protection space.
     - returns: Whether the server trust is valid.
     */
-    public func evaluateServerTrust(serverTrust: SecTrust, isValidForHost host: String) -> Bool {
+    func evaluateServerTrust(serverTrust: SecTrust, isValidForHost host: String) -> Bool {
         var serverTrustIsValid = false
         
         switch self {
@@ -232,7 +232,7 @@ public enum ServerTrustPolicy {
         return certificates.map { SecCertificateCopyData($0) as NSData }
     }
     
-    // MARK: - Private - Public Key Extraction
+    // MARK: - Private - Key Extraction
     
     private static func publicKeysForTrust(trust: SecTrust) -> [SecKey] {
         var publicKeys: [SecKey] = []
@@ -319,7 +319,7 @@ extension Manager {
     - parameter file:       The file to upload
     - returns: The created upload request.
     */
-    public func upload(URLRequest: URLRequestConvertible, file: NSURL) -> Request {
+    func upload(URLRequest: URLRequestConvertible, file: NSURL) -> Request {
         return upload(.File(URLRequest.URLRequest, file))
     }
     
@@ -332,7 +332,7 @@ extension Manager {
     - parameter file:      The file to upload
     - returns: The created upload request.
     */
-    public func upload(
+    func upload(
         method: Method,
         _ URLString: URLStringConvertible,
         headers: [String: String]? = nil,
@@ -352,7 +352,7 @@ extension Manager {
     - parameter data:       The data to upload.
     - returns: The created upload request.
     */
-    public func upload(URLRequest: URLRequestConvertible, data: NSData) -> Request {
+    func upload(URLRequest: URLRequestConvertible, data: NSData) -> Request {
         return upload(.Data(URLRequest.URLRequest, data))
     }
     
@@ -365,7 +365,7 @@ extension Manager {
     - parameter data:      The data to upload
     - returns: The created upload request.
     */
-    public func upload(
+    func upload(
         method: Method,
         _ URLString: URLStringConvertible,
         headers: [String: String]? = nil,
@@ -386,7 +386,7 @@ extension Manager {
     - parameter stream:     The stream to upload.
     - returns: The created upload request.
     */
-    public func upload(URLRequest: URLRequestConvertible, stream: NSInputStream) -> Request {
+    func upload(URLRequest: URLRequestConvertible, stream: NSInputStream) -> Request {
         return upload(.Stream(URLRequest.URLRequest, stream))
     }
     
@@ -399,7 +399,7 @@ extension Manager {
     - parameter stream:    The stream to upload.
     - returns: The created upload request.
     */
-    public func upload(
+    func upload(
         method: Method,
         _ URLString: URLStringConvertible,
         headers: [String: String]? = nil,
@@ -414,7 +414,7 @@ extension Manager {
     // MARK: MultipartFormData
     
     /// Default memory threshold used when encoding `MultipartFormData`.
-    public static let MultipartFormDataEncodingMemoryThreshold: UInt64 = 10 * 1024 * 1024
+    static let MultipartFormDataEncodingMemoryThreshold: UInt64 = 10 * 1024 * 1024
     
     /**
     Defines whether the `MultipartFormData` encoding was successful and contains result of the encoding as
@@ -424,7 +424,7 @@ extension Manager {
     - Failure: Used to represent a failure in the `MultipartFormData` encoding and also contains the encoding
     error.
     */
-    public enum MultipartFormDataEncodingResult {
+    enum MultipartFormDataEncodingResult {
         case Success(request: Request, streamingFromDisk: Bool, streamFileURL: NSURL?)
         case Failure(ErrorType)
     }
@@ -451,7 +451,7 @@ extension Manager {
     `MultipartFormDataEncodingMemoryThreshold` by default.
     - parameter encodingCompletion:      The closure called when the `MultipartFormData` encoding is complete.
     */
-    public func upload(
+    func upload(
         method: Method,
         _ URLString: URLStringConvertible,
         headers: [String: String]? = nil,
@@ -489,7 +489,7 @@ extension Manager {
     `MultipartFormDataEncodingMemoryThreshold` by default.
     - parameter encodingCompletion:      The closure called when the `MultipartFormData` encoding is complete.
     */
-    public func upload(
+    func upload(
         URLRequest: URLRequestConvertible,
         multipartFormData: MultipartFormData -> Void,
         encodingMemoryThreshold: UInt64 = Manager.MultipartFormDataEncodingMemoryThreshold,
@@ -593,7 +593,7 @@ extension Request {
 Types adopting the `URLStringConvertible` protocol can be used to construct URL strings, which are then used to
 construct URL requests.
 */
-public protocol URLStringConvertible {
+protocol URLStringConvertible {
     /**
     A URL that conforms to RFC 2396.
     Methods accepting a `URLStringConvertible` type parameter parse it according to RFCs 1738 and 1808.
@@ -605,25 +605,25 @@ public protocol URLStringConvertible {
 }
 
 extension String: URLStringConvertible {
-    public var URLString: String {
+    var URLString: String {
         return self
     }
 }
 
 extension NSURL: URLStringConvertible {
-    public var URLString: String {
+    var URLString: String {
         return absoluteString
     }
 }
 
 extension NSURLComponents: URLStringConvertible {
-    public var URLString: String {
+    var URLString: String {
         return URL!.URLString
     }
 }
 
 extension NSURLRequest: URLStringConvertible {
-    public var URLString: String {
+    var URLString: String {
         return URL!.URLString
     }
 }
@@ -633,13 +633,13 @@ extension NSURLRequest: URLStringConvertible {
 /**
 Types adopting the `URLRequestConvertible` protocol can be used to construct URL requests.
 */
-public protocol URLRequestConvertible {
+protocol URLRequestConvertible {
     /// The URL request.
     var URLRequest: NSMutableURLRequest { get }
 }
 
 extension NSURLRequest: URLRequestConvertible {
-    public var URLRequest: NSMutableURLRequest {
+    var URLRequest: NSMutableURLRequest {
         return self.mutableCopy() as! NSMutableURLRequest
     }
 }
@@ -676,7 +676,7 @@ parameter encoding.
 - parameter headers:    The HTTP headers. `nil` by default.
 - returns: The created request.
 */
-public func request(
+func request(
     method: Method,
     _ URLString: URLStringConvertible,
     parameters: [String: AnyObject]? = nil,
@@ -699,7 +699,7 @@ If `startRequestsImmediately` is `true`, the request will have `resume()` called
 - parameter URLRequest: The URL request
 - returns: The created request.
 */
-public func request(URLRequest: URLRequestConvertible) -> Request {
+func request(URLRequest: URLRequestConvertible) -> Request {
     return Manager.sharedInstance.request(URLRequest.URLRequest)
 }
 
@@ -715,7 +715,7 @@ Creates an upload request using the shared manager instance for the specified me
 - parameter file:      The file to upload.
 - returns: The created upload request.
 */
-public func upload(
+func upload(
     method: Method,
     _ URLString: URLStringConvertible,
     headers: [String: String]? = nil,
@@ -731,7 +731,7 @@ Creates an upload request using the shared manager instance for the specified UR
 - parameter file:       The file to upload.
 - returns: The created upload request.
 */
-public func upload(URLRequest: URLRequestConvertible, file: NSURL) -> Request {
+func upload(URLRequest: URLRequestConvertible, file: NSURL) -> Request {
     return Manager.sharedInstance.upload(URLRequest, file: file)
 }
 
@@ -745,7 +745,7 @@ Creates an upload request using the shared manager instance for the specified me
 - parameter data:      The data to upload.
 - returns: The created upload request.
 */
-public func upload(
+func upload(
     method: Method,
     _ URLString: URLStringConvertible,
     headers: [String: String]? = nil,
@@ -761,7 +761,7 @@ Creates an upload request using the shared manager instance for the specified UR
 - parameter data:       The data to upload.
 - returns: The created upload request.
 */
-public func upload(URLRequest: URLRequestConvertible, data: NSData) -> Request {
+func upload(URLRequest: URLRequestConvertible, data: NSData) -> Request {
     return Manager.sharedInstance.upload(URLRequest, data: data)
 }
 
@@ -775,7 +775,7 @@ Creates an upload request using the shared manager instance for the specified me
 - parameter stream:    The stream to upload.
 - returns: The created upload request.
 */
-public func upload(
+func upload(
     method: Method,
     _ URLString: URLStringConvertible,
     headers: [String: String]? = nil,
@@ -791,7 +791,7 @@ Creates an upload request using the shared manager instance for the specified UR
 - parameter stream:     The stream to upload.
 - returns: The created upload request.
 */
-public func upload(URLRequest: URLRequestConvertible, stream: NSInputStream) -> Request {
+func upload(URLRequest: URLRequestConvertible, stream: NSInputStream) -> Request {
     return Manager.sharedInstance.upload(URLRequest, stream: stream)
 }
 
@@ -807,7 +807,7 @@ Creates an upload request using the shared manager instance for the specified me
 `MultipartFormDataEncodingMemoryThreshold` by default.
 - parameter encodingCompletion:      The closure called when the `MultipartFormData` encoding is complete.
 */
-public func upload(
+func upload(
     method: Method,
     _ URLString: URLStringConvertible,
     headers: [String: String]? = nil,
@@ -833,7 +833,7 @@ Creates an upload request using the shared manager instance for the specified me
 `MultipartFormDataEncodingMemoryThreshold` by default.
 - parameter encodingCompletion:      The closure called when the `MultipartFormData` encoding is complete.
 */
-public func upload(
+func upload(
     URLRequest: URLRequestConvertible,
     multipartFormData: MultipartFormData -> Void,
     encodingMemoryThreshold: UInt64 = Manager.MultipartFormDataEncodingMemoryThreshold,
@@ -861,7 +861,7 @@ Creates a download request using the shared manager instance for the specified m
 - parameter destination: The closure used to determine the destination of the downloaded file.
 - returns: The created download request.
 */
-public func download(
+func download(
     method: Method,
     _ URLString: URLStringConvertible,
     parameters: [String: AnyObject]? = nil,
@@ -886,7 +886,7 @@ Creates a download request using the shared manager instance for the specified U
 - parameter destination: The closure used to determine the destination of the downloaded file.
 - returns: The created download request.
 */
-public func download(URLRequest: URLRequestConvertible, destination: Request.DownloadFileDestination) -> Request {
+func download(URLRequest: URLRequestConvertible, destination: Request.DownloadFileDestination) -> Request {
     return Manager.sharedInstance.download(URLRequest, destination: destination)
 }
 
@@ -901,26 +901,26 @@ information.
 - parameter destination: The closure used to determine the destination of the downloaded file.
 - returns: The created download request.
 */
-public func download(resumeData data: NSData, destination: Request.DownloadFileDestination) -> Request {
+func download(resumeData data: NSData, destination: Request.DownloadFileDestination) -> Request {
     return Manager.sharedInstance.download(data, destination: destination)
 }
 import Foundation
 
 /// Responsible for managing the mapping of `ServerTrustPolicy` objects to a given host.
-public class ServerTrustPolicyManager {
+class ServerTrustPolicyManager {
     /// The dictionary of policies mapped to a particular host.
-    public let policies: [String: ServerTrustPolicy]
+    let policies: [String: ServerTrustPolicy]
     
     /**
     Initializes the `ServerTrustPolicyManager` instance with the given policies.
     Since different servers and web services can have different leaf certificates, intermediate and even root
     certficates, it is important to have the flexibility to specify evaluation policies on a per host basis. This
-    allows for scenarios such as using default evaluation for host1, certificate pinning for host2, public key
+    allows for scenarios such as using default evaluation for host1, certificate pinning for host2, key
     pinning for host3 and disabling evaluation for host4.
     - parameter policies: A dictionary of all policies mapped to a particular host.
     - returns: The new `ServerTrustPolicyManager` instance.
     */
-    public init(policies: [String: ServerTrustPolicy]) {
+    init(policies: [String: ServerTrustPolicy]) {
         self.policies = policies
     }
     
@@ -931,7 +931,7 @@ public class ServerTrustPolicyManager {
     - parameter host: The host to use when searching for a matching policy.
     - returns: The server trust policy for the given host if found.
     */
-    public func serverTrustPolicyForHost(host: String) -> ServerTrustPolicy? {
+    func serverTrustPolicyForHost(host: String) -> ServerTrustPolicy? {
         return policies[host]
     }
 }
@@ -959,7 +959,7 @@ extension NSURLSession {
 The `ServerTrustPolicy` evaluates the server trust generally provided by an `NSURLAuthenticationChallenge` when
 connecting to a server over a secure HTTPS connection. The policy configuration then evaluates the server trust
 with a given set of criteria to determine whether the server trust is valid and the connection should be made.
-Using pinned certificates or public keys for evaluation helps prevent man-in-the-middle (MITM) attacks and other
+Using pinned certificates or keys for evaluation helps prevent man-in-the-middle (MITM) attacks and other
 vulnerabilities. Applications dealing with sensitive customer data or financial information are strongly encouraged
 to route all communication over an HTTPS connection with pinning enabled.
 - PerformDefaultEvaluation: Uses the default server trust evaluation while allowing you to control whether to
@@ -972,16 +972,16 @@ By validating both the certificate chain and host, certificate pinning provides 
 secure form of server trust validation mitigating most, if not all, MITM attacks.
 Applications are encouraged to always validate the host and require a valid certificate
 chain in production environments.
-- PinPublicKeys:            Uses the pinned public keys to validate the server trust. The server trust is considered
-valid if one of the pinned public keys match one of the server certificate public keys.
-By validating both the certificate chain and host, public key pinning provides a very
+- PinPublicKeys:            Uses the pinned keys to validate the server trust. The server trust is considered
+valid if one of the pinned keys match one of the server certificate keys.
+By validating both the certificate chain and host, key pinning provides a very
 secure form of server trust validation mitigating most, if not all, MITM attacks.
 Applications are encouraged to always validate the host and require a valid certificate
 chain in production environments.
 - DisableEvaluation:        Disables all evaluation which in turn will always consider any server trust as valid.
 - CustomEvaluation:         Uses the associated closure to evaluate the validity of the server trust.
 */
-public enum ServerTrustPolicy {
+enum ServerTrustPolicy {
     case PerformDefaultEvaluation(validateHost: Bool)
     case PinCertificates(certificates: [SecCertificate], validateCertificateChain: Bool, validateHost: Bool)
     case PinPublicKeys(publicKeys: [SecKey], validateCertificateChain: Bool, validateHost: Bool)
@@ -995,7 +995,7 @@ public enum ServerTrustPolicy {
     - parameter bundle: The bundle to search for all `.cer` files.
     - returns: All certificates within the given bundle.
     */
-    public static func certificatesInBundle(bundle: NSBundle = NSBundle.mainBundle()) -> [SecCertificate] {
+    static func certificatesInBundle(bundle: NSBundle = NSBundle.mainBundle()) -> [SecCertificate] {
         var certificates: [SecCertificate] = []
         
         for path in bundle.pathsForResourcesOfType(".cer", inDirectory: nil) {
@@ -1011,11 +1011,11 @@ public enum ServerTrustPolicy {
     }
     
     /**
-    Returns all public keys within the given bundle with a `.cer` file extension.
+    Returns all keys within the given bundle with a `.cer` file extension.
     - parameter bundle: The bundle to search for all `*.cer` files.
-    - returns: All public keys within the given bundle.
+    - returns: All keys within the given bundle.
     */
-    public static func publicKeysInBundle(bundle: NSBundle = NSBundle.mainBundle()) -> [SecKey] {
+    static func publicKeysInBundle(bundle: NSBundle = NSBundle.mainBundle()) -> [SecKey] {
         var publicKeys: [SecKey] = []
         
         for certificate in certificatesInBundle(bundle) {
@@ -1035,7 +1035,7 @@ public enum ServerTrustPolicy {
     - parameter host:        The host of the challenge protection space.
     - returns: Whether the server trust is valid.
     */
-    public func evaluateServerTrust(serverTrust: SecTrust, isValidForHost host: String) -> Bool {
+    func evaluateServerTrust(serverTrust: SecTrust, isValidForHost host: String) -> Bool {
         var serverTrustIsValid = false
         
         switch self {
@@ -1138,7 +1138,7 @@ public enum ServerTrustPolicy {
         return certificates.map { SecCertificateCopyData($0) as NSData }
     }
     
-    // MARK: - Private - Public Key Extraction
+    // MARK: - Private - Key Extraction
     
     private static func publicKeysForTrust(trust: SecTrust) -> [SecKey] {
         var publicKeys: [SecKey] = []
@@ -1225,7 +1225,7 @@ extension Manager {
     - parameter file:       The file to upload
     - returns: The created upload request.
     */
-    public func upload(URLRequest: URLRequestConvertible, file: NSURL) -> Request {
+    func upload(URLRequest: URLRequestConvertible, file: NSURL) -> Request {
         return upload(.File(URLRequest.URLRequest, file))
     }
     
@@ -1238,7 +1238,7 @@ extension Manager {
     - parameter file:      The file to upload
     - returns: The created upload request.
     */
-    public func upload(
+    func upload(
         method: Method,
         _ URLString: URLStringConvertible,
         headers: [String: String]? = nil,
@@ -1258,7 +1258,7 @@ extension Manager {
     - parameter data:       The data to upload.
     - returns: The created upload request.
     */
-    public func upload(URLRequest: URLRequestConvertible, data: NSData) -> Request {
+    func upload(URLRequest: URLRequestConvertible, data: NSData) -> Request {
         return upload(.Data(URLRequest.URLRequest, data))
     }
     
@@ -1271,7 +1271,7 @@ extension Manager {
     - parameter data:      The data to upload
     - returns: The created upload request.
     */
-    public func upload(
+    func upload(
         method: Method,
         _ URLString: URLStringConvertible,
         headers: [String: String]? = nil,
@@ -1292,7 +1292,7 @@ extension Manager {
     - parameter stream:     The stream to upload.
     - returns: The created upload request.
     */
-    public func upload(URLRequest: URLRequestConvertible, stream: NSInputStream) -> Request {
+    func upload(URLRequest: URLRequestConvertible, stream: NSInputStream) -> Request {
         return upload(.Stream(URLRequest.URLRequest, stream))
     }
     
@@ -1305,7 +1305,7 @@ extension Manager {
     - parameter stream:    The stream to upload.
     - returns: The created upload request.
     */
-    public func upload(
+    func upload(
         method: Method,
         _ URLString: URLStringConvertible,
         headers: [String: String]? = nil,
@@ -1320,7 +1320,7 @@ extension Manager {
     // MARK: MultipartFormData
     
     /// Default memory threshold used when encoding `MultipartFormData`.
-    public static let MultipartFormDataEncodingMemoryThreshold: UInt64 = 10 * 1024 * 1024
+    static let MultipartFormDataEncodingMemoryThreshold: UInt64 = 10 * 1024 * 1024
     
     /**
     Defines whether the `MultipartFormData` encoding was successful and contains result of the encoding as
@@ -1330,7 +1330,7 @@ extension Manager {
     - Failure: Used to represent a failure in the `MultipartFormData` encoding and also contains the encoding
     error.
     */
-    public enum MultipartFormDataEncodingResult {
+    enum MultipartFormDataEncodingResult {
         case Success(request: Request, streamingFromDisk: Bool, streamFileURL: NSURL?)
         case Failure(ErrorType)
     }
@@ -1357,7 +1357,7 @@ extension Manager {
     `MultipartFormDataEncodingMemoryThreshold` by default.
     - parameter encodingCompletion:      The closure called when the `MultipartFormData` encoding is complete.
     */
-    public func upload(
+    func upload(
         method: Method,
         _ URLString: URLStringConvertible,
         headers: [String: String]? = nil,
@@ -1395,7 +1395,7 @@ extension Manager {
     `MultipartFormDataEncodingMemoryThreshold` by default.
     - parameter encodingCompletion:      The closure called when the `MultipartFormData` encoding is complete.
     */
-    public func upload(
+    func upload(
         URLRequest: URLRequestConvertible,
         multipartFormData: MultipartFormData -> Void,
         encodingMemoryThreshold: UInt64 = Manager.MultipartFormDataEncodingMemoryThreshold,
@@ -1499,7 +1499,7 @@ extension Request {
 Types adopting the `URLStringConvertible` protocol can be used to construct URL strings, which are then used to
 construct URL requests.
 */
-public protocol URLStringConvertible {
+protocol URLStringConvertible {
     /**
     A URL that conforms to RFC 2396.
     Methods accepting a `URLStringConvertible` type parameter parse it according to RFCs 1738 and 1808.
@@ -1511,25 +1511,25 @@ public protocol URLStringConvertible {
 }
 
 extension String: URLStringConvertible {
-    public var URLString: String {
+    var URLString: String {
         return self
     }
 }
 
 extension NSURL: URLStringConvertible {
-    public var URLString: String {
+    var URLString: String {
         return absoluteString
     }
 }
 
 extension NSURLComponents: URLStringConvertible {
-    public var URLString: String {
+    var URLString: String {
         return URL!.URLString
     }
 }
 
 extension NSURLRequest: URLStringConvertible {
-    public var URLString: String {
+    var URLString: String {
         return URL!.URLString
     }
 }
@@ -1539,13 +1539,13 @@ extension NSURLRequest: URLStringConvertible {
 /**
 Types adopting the `URLRequestConvertible` protocol can be used to construct URL requests.
 */
-public protocol URLRequestConvertible {
+protocol URLRequestConvertible {
     /// The URL request.
     var URLRequest: NSMutableURLRequest { get }
 }
 
 extension NSURLRequest: URLRequestConvertible {
-    public var URLRequest: NSMutableURLRequest {
+    var URLRequest: NSMutableURLRequest {
         return self.mutableCopy() as! NSMutableURLRequest
     }
 }
@@ -1582,7 +1582,7 @@ parameter encoding.
 - parameter headers:    The HTTP headers. `nil` by default.
 - returns: The created request.
 */
-public func request(
+func request(
     method: Method,
     _ URLString: URLStringConvertible,
     parameters: [String: AnyObject]? = nil,
@@ -1605,7 +1605,7 @@ If `startRequestsImmediately` is `true`, the request will have `resume()` called
 - parameter URLRequest: The URL request
 - returns: The created request.
 */
-public func request(URLRequest: URLRequestConvertible) -> Request {
+func request(URLRequest: URLRequestConvertible) -> Request {
     return Manager.sharedInstance.request(URLRequest.URLRequest)
 }
 
@@ -1621,7 +1621,7 @@ Creates an upload request using the shared manager instance for the specified me
 - parameter file:      The file to upload.
 - returns: The created upload request.
 */
-public func upload(
+func upload(
     method: Method,
     _ URLString: URLStringConvertible,
     headers: [String: String]? = nil,
@@ -1637,7 +1637,7 @@ Creates an upload request using the shared manager instance for the specified UR
 - parameter file:       The file to upload.
 - returns: The created upload request.
 */
-public func upload(URLRequest: URLRequestConvertible, file: NSURL) -> Request {
+func upload(URLRequest: URLRequestConvertible, file: NSURL) -> Request {
     return Manager.sharedInstance.upload(URLRequest, file: file)
 }
 
@@ -1651,7 +1651,7 @@ Creates an upload request using the shared manager instance for the specified me
 - parameter data:      The data to upload.
 - returns: The created upload request.
 */
-public func upload(
+func upload(
     method: Method,
     _ URLString: URLStringConvertible,
     headers: [String: String]? = nil,
@@ -1667,7 +1667,7 @@ Creates an upload request using the shared manager instance for the specified UR
 - parameter data:       The data to upload.
 - returns: The created upload request.
 */
-public func upload(URLRequest: URLRequestConvertible, data: NSData) -> Request {
+func upload(URLRequest: URLRequestConvertible, data: NSData) -> Request {
     return Manager.sharedInstance.upload(URLRequest, data: data)
 }
 
@@ -1681,7 +1681,7 @@ Creates an upload request using the shared manager instance for the specified me
 - parameter stream:    The stream to upload.
 - returns: The created upload request.
 */
-public func upload(
+func upload(
     method: Method,
     _ URLString: URLStringConvertible,
     headers: [String: String]? = nil,
@@ -1697,7 +1697,7 @@ Creates an upload request using the shared manager instance for the specified UR
 - parameter stream:     The stream to upload.
 - returns: The created upload request.
 */
-public func upload(URLRequest: URLRequestConvertible, stream: NSInputStream) -> Request {
+func upload(URLRequest: URLRequestConvertible, stream: NSInputStream) -> Request {
     return Manager.sharedInstance.upload(URLRequest, stream: stream)
 }
 
@@ -1713,7 +1713,7 @@ Creates an upload request using the shared manager instance for the specified me
 `MultipartFormDataEncodingMemoryThreshold` by default.
 - parameter encodingCompletion:      The closure called when the `MultipartFormData` encoding is complete.
 */
-public func upload(
+func upload(
     method: Method,
     _ URLString: URLStringConvertible,
     headers: [String: String]? = nil,
@@ -1739,7 +1739,7 @@ Creates an upload request using the shared manager instance for the specified me
 `MultipartFormDataEncodingMemoryThreshold` by default.
 - parameter encodingCompletion:      The closure called when the `MultipartFormData` encoding is complete.
 */
-public func upload(
+func upload(
     URLRequest: URLRequestConvertible,
     multipartFormData: MultipartFormData -> Void,
     encodingMemoryThreshold: UInt64 = Manager.MultipartFormDataEncodingMemoryThreshold,
@@ -1767,7 +1767,7 @@ Creates a download request using the shared manager instance for the specified m
 - parameter destination: The closure used to determine the destination of the downloaded file.
 - returns: The created download request.
 */
-public func download(
+func download(
     method: Method,
     _ URLString: URLStringConvertible,
     parameters: [String: AnyObject]? = nil,
@@ -1792,7 +1792,7 @@ Creates a download request using the shared manager instance for the specified U
 - parameter destination: The closure used to determine the destination of the downloaded file.
 - returns: The created download request.
 */
-public func download(URLRequest: URLRequestConvertible, destination: Request.DownloadFileDestination) -> Request {
+func download(URLRequest: URLRequestConvertible, destination: Request.DownloadFileDestination) -> Request {
     return Manager.sharedInstance.download(URLRequest, destination: destination)
 }
 
@@ -1807,13 +1807,13 @@ information.
 - parameter destination: The closure used to determine the destination of the downloaded file.
 - returns: The created download request.
 */
-public func download(resumeData data: NSData, destination: Request.DownloadFileDestination) -> Request {
+func download(resumeData data: NSData, destination: Request.DownloadFileDestination) -> Request {
     return Manager.sharedInstance.download(data, destination: destination)
 }
 /**
 Responsible for creating and managing `Request` objects, as well as their underlying `NSURLSession`.
 */
-public class Manager {
+class Manager {
     
     // MARK: - Properties
     
@@ -1821,7 +1821,7 @@ public class Manager {
     A shared instance of `Manager`, used by top-level Alamofire request methods, and suitable for use directly
     for any ad hoc requests.
     */
-    public static let sharedInstance: Manager = {
+    static let sharedInstance: Manager = {
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
         configuration.HTTPAdditionalHeaders = Manager.defaultHTTPHeaders
         
@@ -1831,7 +1831,7 @@ public class Manager {
     /**
     Creates default values for the "Accept-Encoding", "Accept-Language" and "User-Agent" headers.
     */
-    public static let defaultHTTPHeaders: [String: String] = {
+    static let defaultHTTPHeaders: [String: String] = {
         // Accept-Encoding HTTP Header; see https://tools.ietf.org/html/rfc7230#section-4.2.3
         let acceptEncoding: String = "gzip;q=1.0,compress;q=0.5"
         
@@ -1878,13 +1878,13 @@ public class Manager {
     let queue = dispatch_queue_create(nil, DISPATCH_QUEUE_SERIAL)
     
     /// The underlying session.
-    public let session: NSURLSession
+    let session: NSURLSession
     
     /// The session delegate handling all the task and session delegate callbacks.
-    public let delegate: SessionDelegate
+    let delegate: SessionDelegate
     
     /// Whether to start requests immediately after being constructed. `true` by default.
-    public var startRequestsImmediately: Bool = true
+    var startRequestsImmediately: Bool = true
     
     /**
     The background completion handler closure provided by the UIApplicationDelegate
@@ -1897,7 +1897,7 @@ public class Manager {
     
     `nil` by default.
     */
-    public var backgroundCompletionHandler: (() -> Void)?
+    var backgroundCompletionHandler: (() -> Void)?
     
     // MARK: - Lifecycle
     
@@ -1911,7 +1911,7 @@ public class Manager {
     challenges. `nil` by default.
     - returns: The new `Manager` instance.
     */
-    public init(
+    init(
         configuration: NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration(),
         delegate: SessionDelegate = SessionDelegate(),
         serverTrustPolicyManager: ServerTrustPolicyManager? = nil)
@@ -1930,7 +1930,7 @@ public class Manager {
     challenges. `nil` by default.
     - returns: The new `Manager` instance if the URL session's delegate matches the delegate parameter.
     */
-    public init?(
+    init?(
         session: NSURLSession,
         delegate: SessionDelegate,
         serverTrustPolicyManager: ServerTrustPolicyManager? = nil)
@@ -1967,7 +1967,7 @@ public class Manager {
     - parameter headers:    The HTTP headers. `nil` by default.
     - returns: The created request.
     */
-    public func request(
+    func request(
         method: Method,
         _ URLString: URLStringConvertible,
         parameters: [String: AnyObject]? = nil,
@@ -1986,7 +1986,7 @@ public class Manager {
     - parameter URLRequest: The URL request
     - returns: The created request.
     */
-    public func request(URLRequest: URLRequestConvertible) -> Request {
+    func request(URLRequest: URLRequestConvertible) -> Request {
         var dataTask: NSURLSessionDataTask!
         
         dispatch_sync(queue) {
@@ -2008,7 +2008,7 @@ public class Manager {
     /**
     Responsible for handling all delegate callbacks for the underlying session.
     */
-    public final class SessionDelegate: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate, NSURLSessionDownloadDelegate {
+    final class SessionDelegate: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate, NSURLSessionDownloadDelegate {
         private var subdelegates: [Int: Request.TaskDelegate] = [:]
         private let subdelegateQueue = dispatch_queue_create(nil, DISPATCH_QUEUE_CONCURRENT)
         
@@ -2033,7 +2033,7 @@ public class Manager {
         Initializes the `SessionDelegate` instance.
         - returns: The new `SessionDelegate` instance.
         */
-        public override init() {
+        override init() {
             super.init()
         }
         
@@ -2042,13 +2042,13 @@ public class Manager {
         // MARK: Override Closures
         
         /// Overrides default behavior for NSURLSessionDelegate method `URLSession:didBecomeInvalidWithError:`.
-        public var sessionDidBecomeInvalidWithError: ((NSURLSession, NSError?) -> Void)?
+        var sessionDidBecomeInvalidWithError: ((NSURLSession, NSError?) -> Void)?
         
         /// Overrides default behavior for NSURLSessionDelegate method `URLSession:didReceiveChallenge:completionHandler:`.
-        public var sessionDidReceiveChallenge: ((NSURLSession, NSURLAuthenticationChallenge) -> (NSURLSessionAuthChallengeDisposition, NSURLCredential?))?
+        var sessionDidReceiveChallenge: ((NSURLSession, NSURLAuthenticationChallenge) -> (NSURLSessionAuthChallengeDisposition, NSURLCredential?))?
         
         /// Overrides default behavior for NSURLSessionDelegate method `URLSessionDidFinishEventsForBackgroundURLSession:`.
-        public var sessionDidFinishEventsForBackgroundURLSession: ((NSURLSession) -> Void)?
+        var sessionDidFinishEventsForBackgroundURLSession: ((NSURLSession) -> Void)?
         
         // MARK: Delegate Methods
         
@@ -2057,7 +2057,7 @@ public class Manager {
         - parameter session: The session object that was invalidated.
         - parameter error:   The error that caused invalidation, or nil if the invalidation was explicit.
         */
-        public func URLSession(session: NSURLSession, didBecomeInvalidWithError error: NSError?) {
+        func URLSession(session: NSURLSession, didBecomeInvalidWithError error: NSError?) {
             sessionDidBecomeInvalidWithError?(session, error)
         }
         
@@ -2067,7 +2067,7 @@ public class Manager {
         - parameter challenge:         An object that contains the request for authentication.
         - parameter completionHandler: A handler that your delegate method must call providing the disposition and credential.
         */
-        public func URLSession(
+        func URLSession(
             session: NSURLSession,
             didReceiveChallenge challenge: NSURLAuthenticationChallenge,
             completionHandler: ((NSURLSessionAuthChallengeDisposition, NSURLCredential?) -> Void))
@@ -2100,7 +2100,7 @@ public class Manager {
         Tells the delegate that all messages enqueued for a session have been delivered.
         - parameter session: The session that no longer has any outstanding requests.
         */
-        public func URLSessionDidFinishEventsForBackgroundURLSession(session: NSURLSession) {
+        func URLSessionDidFinishEventsForBackgroundURLSession(session: NSURLSession) {
             sessionDidFinishEventsForBackgroundURLSession?(session)
         }
         
@@ -2109,19 +2109,19 @@ public class Manager {
         // MARK: Override Closures
         
         /// Overrides default behavior for NSURLSessionTaskDelegate method `URLSession:task:willPerformHTTPRedirection:newRequest:completionHandler:`.
-        public var taskWillPerformHTTPRedirection: ((NSURLSession, NSURLSessionTask, NSHTTPURLResponse, NSURLRequest) -> NSURLRequest?)?
+        var taskWillPerformHTTPRedirection: ((NSURLSession, NSURLSessionTask, NSHTTPURLResponse, NSURLRequest) -> NSURLRequest?)?
         
         /// Overrides default behavior for NSURLSessionTaskDelegate method `URLSession:task:didReceiveChallenge:completionHandler:`.
-        public var taskDidReceiveChallenge: ((NSURLSession, NSURLSessionTask, NSURLAuthenticationChallenge) -> (NSURLSessionAuthChallengeDisposition, NSURLCredential?))?
+        var taskDidReceiveChallenge: ((NSURLSession, NSURLSessionTask, NSURLAuthenticationChallenge) -> (NSURLSessionAuthChallengeDisposition, NSURLCredential?))?
         
         /// Overrides default behavior for NSURLSessionTaskDelegate method `URLSession:session:task:needNewBodyStream:`.
-        public var taskNeedNewBodyStream: ((NSURLSession, NSURLSessionTask) -> NSInputStream!)?
+        var taskNeedNewBodyStream: ((NSURLSession, NSURLSessionTask) -> NSInputStream!)?
         
         /// Overrides default behavior for NSURLSessionTaskDelegate method `URLSession:task:didSendBodyData:totalBytesSent:totalBytesExpectedToSend:`.
-        public var taskDidSendBodyData: ((NSURLSession, NSURLSessionTask, Int64, Int64, Int64) -> Void)?
+        var taskDidSendBodyData: ((NSURLSession, NSURLSessionTask, Int64, Int64, Int64) -> Void)?
         
         /// Overrides default behavior for NSURLSessionTaskDelegate method `URLSession:task:didCompleteWithError:`.
-        public var taskDidComplete: ((NSURLSession, NSURLSessionTask, NSError?) -> Void)?
+        var taskDidComplete: ((NSURLSession, NSURLSessionTask, NSError?) -> Void)?
         
         // MARK: Delegate Methods
         
@@ -2135,7 +2135,7 @@ public class Manager {
         parameter, a modified URL request object, or NULL to refuse the redirect and
         return the body of the redirect response.
         */
-        public func URLSession(
+        func URLSession(
             session: NSURLSession,
             task: NSURLSessionTask,
             willPerformHTTPRedirection response: NSHTTPURLResponse,
@@ -2158,7 +2158,7 @@ public class Manager {
         - parameter challenge:         An object that contains the request for authentication.
         - parameter completionHandler: A handler that your delegate method must call providing the disposition and credential.
         */
-        public func URLSession(
+        func URLSession(
             session: NSURLSession,
             task: NSURLSessionTask,
             didReceiveChallenge challenge: NSURLAuthenticationChallenge,
@@ -2184,7 +2184,7 @@ public class Manager {
         - parameter task:              The task that needs a new body stream.
         - parameter completionHandler: A completion handler that your delegate method should call with the new body stream.
         */
-        public func URLSession(
+        func URLSession(
             session: NSURLSession,
             task: NSURLSessionTask,
             needNewBodyStream completionHandler: ((NSInputStream?) -> Void))
@@ -2204,7 +2204,7 @@ public class Manager {
         - parameter totalBytesSent:           The total number of bytes sent so far.
         - parameter totalBytesExpectedToSend: The expected length of the body data.
         */
-        public func URLSession(
+        func URLSession(
             session: NSURLSession,
             task: NSURLSessionTask,
             didSendBodyData bytesSent: Int64,
@@ -2230,7 +2230,7 @@ public class Manager {
         - parameter task:    The task whose request finished transferring data.
         - parameter error:   If an error occurred, an error object indicating how the transfer failed, otherwise nil.
         */
-        public func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
+        func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
             if let taskDidComplete = taskDidComplete {
                 taskDidComplete(session, task, error)
             } else if let delegate = self[task] {
@@ -2245,16 +2245,16 @@ public class Manager {
         // MARK: Override Closures
         
         /// Overrides default behavior for NSURLSessionDataDelegate method `URLSession:dataTask:didReceiveResponse:completionHandler:`.
-        public var dataTaskDidReceiveResponse: ((NSURLSession, NSURLSessionDataTask, NSURLResponse) -> NSURLSessionResponseDisposition)?
+        var dataTaskDidReceiveResponse: ((NSURLSession, NSURLSessionDataTask, NSURLResponse) -> NSURLSessionResponseDisposition)?
         
         /// Overrides default behavior for NSURLSessionDataDelegate method `URLSession:dataTask:didBecomeDownloadTask:`.
-        public var dataTaskDidBecomeDownloadTask: ((NSURLSession, NSURLSessionDataTask, NSURLSessionDownloadTask) -> Void)?
+        var dataTaskDidBecomeDownloadTask: ((NSURLSession, NSURLSessionDataTask, NSURLSessionDownloadTask) -> Void)?
         
         /// Overrides default behavior for NSURLSessionDataDelegate method `URLSession:dataTask:didReceiveData:`.
-        public var dataTaskDidReceiveData: ((NSURLSession, NSURLSessionDataTask, NSData) -> Void)?
+        var dataTaskDidReceiveData: ((NSURLSession, NSURLSessionDataTask, NSData) -> Void)?
         
         /// Overrides default behavior for NSURLSessionDataDelegate method `URLSession:dataTask:willCacheResponse:completionHandler:`.
-        public var dataTaskWillCacheResponse: ((NSURLSession, NSURLSessionDataTask, NSCachedURLResponse) -> NSCachedURLResponse!)?
+        var dataTaskWillCacheResponse: ((NSURLSession, NSURLSessionDataTask, NSCachedURLResponse) -> NSCachedURLResponse!)?
         
         // MARK: Delegate Methods
         
@@ -2267,7 +2267,7 @@ public class Manager {
         constant to indicate whether the transfer should continue as a data task or
         should become a download task.
         */
-        public func URLSession(
+        func URLSession(
             session: NSURLSession,
             dataTask: NSURLSessionDataTask,
             didReceiveResponse response: NSURLResponse,
@@ -2288,7 +2288,7 @@ public class Manager {
         - parameter dataTask:     The data task that was replaced by a download task.
         - parameter downloadTask: The new download task that replaced the data task.
         */
-        public func URLSession(
+        func URLSession(
             session: NSURLSession,
             dataTask: NSURLSessionDataTask,
             didBecomeDownloadTask downloadTask: NSURLSessionDownloadTask)
@@ -2307,7 +2307,7 @@ public class Manager {
         - parameter dataTask: The data task that provided data.
         - parameter data:     A data object containing the transferred data.
         */
-        public func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
+        func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
             if let dataTaskDidReceiveData = dataTaskDidReceiveData {
                 dataTaskDidReceiveData(session, dataTask, data)
             } else if let delegate = self[dataTask] as? Request.DataTaskDelegate {
@@ -2327,7 +2327,7 @@ public class Manager {
         response. If your delegate implements this method, it must call this completion
         handler; otherwise, your app leaks memory.
         */
-        public func URLSession(
+        func URLSession(
             session: NSURLSession,
             dataTask: NSURLSessionDataTask,
             willCacheResponse proposedResponse: NSCachedURLResponse,
@@ -2352,13 +2352,13 @@ public class Manager {
         // MARK: Override Closures
         
         /// Overrides default behavior for NSURLSessionDownloadDelegate method `URLSession:downloadTask:didFinishDownloadingToURL:`.
-        public var downloadTaskDidFinishDownloadingToURL: ((NSURLSession, NSURLSessionDownloadTask, NSURL) -> Void)?
+        var downloadTaskDidFinishDownloadingToURL: ((NSURLSession, NSURLSessionDownloadTask, NSURL) -> Void)?
         
         /// Overrides default behavior for NSURLSessionDownloadDelegate method `URLSession:downloadTask:didWriteData:totalBytesWritten:totalBytesExpectedToWrite:`.
-        public var downloadTaskDidWriteData: ((NSURLSession, NSURLSessionDownloadTask, Int64, Int64, Int64) -> Void)?
+        var downloadTaskDidWriteData: ((NSURLSession, NSURLSessionDownloadTask, Int64, Int64, Int64) -> Void)?
         
         /// Overrides default behavior for NSURLSessionDownloadDelegate method `URLSession:downloadTask:didResumeAtOffset:expectedTotalBytes:`.
-        public var downloadTaskDidResumeAtOffset: ((NSURLSession, NSURLSessionDownloadTask, Int64, Int64) -> Void)?
+        var downloadTaskDidResumeAtOffset: ((NSURLSession, NSURLSessionDownloadTask, Int64, Int64) -> Void)?
         
         // MARK: Delegate Methods
         
@@ -2370,7 +2370,7 @@ public class Manager {
         open the file for reading or move it to a permanent location in your app’s sandbox
         container directory before returning from this delegate method.
         */
-        public func URLSession(
+        func URLSession(
             session: NSURLSession,
             downloadTask: NSURLSessionDownloadTask,
             didFinishDownloadingToURL location: NSURL)
@@ -2393,7 +2393,7 @@ public class Manager {
         header. If this header was not provided, the value is
         `NSURLSessionTransferSizeUnknown`.
         */
-        public func URLSession(
+        func URLSession(
             session: NSURLSession,
             downloadTask: NSURLSessionDownloadTask,
             didWriteData bytesWritten: Int64,
@@ -2424,7 +2424,7 @@ public class Manager {
         - parameter expectedTotalBytes: The expected length of the file, as provided by the Content-Length header.
         If this header was not provided, the value is NSURLSessionTransferSizeUnknown.
         */
-        public func URLSession(
+        func URLSession(
             session: NSURLSession,
             downloadTask: NSURLSessionDownloadTask,
             didResumeAtOffset fileOffset: Int64,
@@ -2451,7 +2451,7 @@ public class Manager {
         
         // MARK: - NSObject
         
-        public override func respondsToSelector(selector: Selector) -> Bool {
+        override func respondsToSelector(selector: Selector) -> Bool {
             switch selector {
             case "URLSession:didBecomeInvalidWithError:":
                 return sessionDidBecomeInvalidWithError != nil

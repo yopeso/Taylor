@@ -8,31 +8,31 @@
 
 import Foundation
 
-public class Arguments {
-    public let caprice = Caprice()
-    public let arguments: Options
+final class Arguments {
+    let caprice = Caprice()
+    let arguments: Options
     
-    public init () {
+    init () {
         arguments = caprice.processArguments(Process.arguments)
     }
     
-    public func finderParameters() -> Options {
+    var finderParameters: Options {
         return arguments
     }
     
-    public func verbosityLevel() -> VerbosityLevel {
+    var verbosityLevel: VerbosityLevel {
         return caprice.getVerbosityLevel()
     }
     
-    public func rootPath() -> String? {
-        return arguments["path"]?[0]
+    var rootPath: String? {
+        return arguments["path"]?.first
     }
     
-    public func reporterRepresentations() -> [OutputReporter] {
+    var reporterRepresentations: [OutputReporter] {
         return caprice.getReporters()
     }
     
-    public func thresholds() -> CustomizationRule {
+    var thresholds: CustomizationRule {
         return caprice.getRuleThresholds()
     }
 }

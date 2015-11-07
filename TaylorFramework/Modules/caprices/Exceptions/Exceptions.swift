@@ -6,7 +6,7 @@
 //  Copyright © 2015 yopeso.dmitriicelpan. All rights reserved.
 //
 
-public enum CommandLineError: ErrorType {
+enum CommandLineError: ErrorType {
     case InvalidOption(String)
     case AbuseOfOptions(String)
     case InvalidExclude(String)

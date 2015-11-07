@@ -7,7 +7,7 @@
 //
 
 
-public enum ReporterType {
+enum ReporterType {
     case JSON
     case PMD
     case Plain
@@ -25,7 +25,7 @@ public enum ReporterType {
         * XCODE
     */
     
-    public init(string: String) {
+    init(string: String) {
         switch string.uppercaseString {
         case "JSON": self = .JSON
         case "PMD": self = .PMD
@@ -42,7 +42,7 @@ public enum ReporterType {
         :returns: String The file extension
     */
     
-    public func fileExtension() -> String {
+    func fileExtension() -> String {
         switch self {
         case .JSON: return "json"
         case .PMD: return "pmd"
@@ -59,13 +59,13 @@ public enum ReporterType {
         :returns: String The file name of the reporter
     */
     
-    public func defaultFileName() -> String {
+    func defaultFileName() -> String {
         if self == .Xcode { return "" }
         return "taylor_report" + "." + fileExtension()
     }
 }
 
-public class Reporter {
+class Reporter {
     let type : ReporterType
     let fileName : String
     
@@ -81,7 +81,7 @@ public class Reporter {
         :param: fileName The file name of the reporter
     */
     
-    public init(type : ReporterType, fileName : String) {
+    init(type : ReporterType, fileName : String) {
         self.type = type
         self.fileName = fileName
     }
@@ -102,7 +102,7 @@ public class Reporter {
         * Xcode
     */
     
-    convenience public init (type : ReporterType) {
+    convenience init (type : ReporterType) {
         self.init(type: type, fileName:type.defaultFileName())
     }
 }

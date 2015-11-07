@@ -9,8 +9,8 @@
 import Cocoa
 import Foundation
 
-public typealias OutputReporter = [String: String]
-public typealias CustomizationRule = [String: Int]
+typealias OutputReporter = [String: String]
+typealias CustomizationRule = [String: Int]
 
 class InformationalOptionsFactory {
     

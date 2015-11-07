@@ -8,18 +8,18 @@
 
 import Foundation
 
-public class Finder {
+class Finder {
     private let fileManager: NSFileManager
     private let printer: ErrorPrinter
     private var parameters: Parameters!
     private var excludes: Excludes!
     
-    public init(fileManager: NSFileManager = NSFileManager.defaultManager(), printer: Printer = Printer(verbosityLevel: .Error)) {
+    init(fileManager: NSFileManager = NSFileManager.defaultManager(), printer: Printer = Printer(verbosityLevel: .Error)) {
         self.fileManager = fileManager
         self.printer = ErrorPrinter(printer: printer)
     }
     
-    public func findFilePaths(parameters dictionary: [String: [String]]) -> [String] {
+    func findFilePaths(parameters dictionary: [String: [String]]) -> [String] {
         parameters = Parameters(dictionary: dictionary, printer: printer)
         guard parameters != nil && validateParameters(parameters) else {
             return []

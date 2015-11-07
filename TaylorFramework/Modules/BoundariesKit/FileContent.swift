@@ -6,10 +6,10 @@
 //  Copyright © 2015 YOPESO. All rights reserved.
 //
 
-public struct FileContent {
-    public let path: String
-    public let components: [Component]
-    public init(path: String, components:[Component]) {
+struct FileContent {
+    let path: String
+    let components: [Component]
+    init(path: String, components:[Component]) {
         self.path = path
         self.components = components
     }
@@ -19,7 +19,7 @@ public struct FileContent {
 extension FileContent: Equatable {
 }
 
-public func ==(lhs: FileContent, rhs: FileContent) -> Bool {
+func ==(lhs: FileContent, rhs: FileContent) -> Bool {
     return lhs.path == rhs.path &&
         lhs.components == rhs.components
 }

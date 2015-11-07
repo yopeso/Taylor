@@ -9,14 +9,14 @@
 import Foundation
 import SourceKittenFramework
 
-public class Scissors {
+class Scissors {
     let printer: Printer
     
     /**
     Initialize Scissors by passing in a Printer.
     - parameter printer: Printer to be used as message or error output.
     */
-    public init(printer: Printer = Printer(verbosityLevel: VerbosityLevel.Error)) {
+    init(printer: Printer = Printer(verbosityLevel: VerbosityLevel.Error)) {
         self.printer = printer
     }
     
@@ -27,7 +27,7 @@ public class Scissors {
     
     - returns: **FileContent** containing 'path' to file and the tree of components.
     */
-    public func tokenizeFileAtPath(path: String) -> FileContent {
+    func tokenizeFileAtPath(path: String) -> FileContent {
         printer.printInfo("Processing \(path)")
         let tree = Tree(file: File(path: path)!)
         let root = tree.makeTree()
