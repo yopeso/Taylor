@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		54EFF4BB1BF0D51100EE8E94 /* Array+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EFF4BA1BF0D51100EE8E94 /* Array+ExtensionsTests.swift */; };
+		54EFF4BD1BF0D78D00EE8E94 /* TimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EFF4BC1BF0D78D00EE8E94 /* TimerTests.swift */; };
+		54EFF4E01BF0F92500EE8E94 /* TaylorIntegrationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EFF4DF1BF0F92500EE8E94 /* TaylorIntegrationTest.swift */; };
+		54EFF4E21BF0F92500EE8E94 /* TaylorFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B4DC891BED1BD3005EA7D5 /* TaylorFramework.framework */; };
+		54EFF4ED1BF0F94800EE8E94 /* JSONToViolationParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EFF4E81BF0F94800EE8E94 /* JSONToViolationParser.swift */; };
+		54EFF4EE1BF0F94800EE8E94 /* ReporterComparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EFF4E91BF0F94800EE8E94 /* ReporterComparator.swift */; };
+		54EFF4EF1BF0F94800EE8E94 /* TaylorIntegrationTestResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 54EFF4EB1BF0F94800EE8E94 /* TaylorIntegrationTestResources.bundle */; };
+		54EFF4F01BF0F94800EE8E94 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EFF4EC1BF0F94800EE8E94 /* StringExtensions.swift */; };
+		54EFF4F21BF0F98000EE8E94 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A3CB26501B9DF6FA00802E80 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		54EFF4F31BF0F98000EE8E94 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A3CB26511B9DF6FA00802E80 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		54EFF4F41BF0F98B00EE8E94 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CB26501B9DF6FA00802E80 /* Nimble.framework */; };
+		54EFF4F51BF0F98B00EE8E94 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CB26511B9DF6FA00802E80 /* Quick.framework */; };
 		692FCBEB1BED2B7F00DB5F16 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692FCBEA1BED2B7F00DB5F16 /* main.swift */; };
 		692FCBEE1BED2C2A00DB5F16 /* TaylorFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B4DC891BED1BD3005EA7D5 /* TaylorFramework.framework */; };
 		692FCBF31BED2E2A00DB5F16 /* install in Resources */ = {isa = PBXBuildFile; fileRef = 692FCBF21BED2E2A00DB5F16 /* install */; };
@@ -181,6 +193,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		54EFF4F11BF0F97200EE8E94 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				54EFF4F21BF0F98000EE8E94 /* Nimble.framework in CopyFiles */,
+				54EFF4F31BF0F98000EE8E94 /* Quick.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		692FCBEF1BED2DD400DB5F16 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -267,6 +290,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		54EFF4BA1BF0D51100EE8E94 /* Array+ExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+ExtensionsTests.swift"; sourceTree = "<group>"; };
+		54EFF4BC1BF0D78D00EE8E94 /* TimerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerTests.swift; sourceTree = "<group>"; };
+		54EFF4DD1BF0F92500EE8E94 /* TaylorIntegrationTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaylorIntegrationTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		54EFF4DF1BF0F92500EE8E94 /* TaylorIntegrationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaylorIntegrationTest.swift; sourceTree = "<group>"; };
+		54EFF4E11BF0F92500EE8E94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		54EFF4E81BF0F94800EE8E94 /* JSONToViolationParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONToViolationParser.swift; sourceTree = "<group>"; };
+		54EFF4E91BF0F94800EE8E94 /* ReporterComparator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReporterComparator.swift; sourceTree = "<group>"; };
+		54EFF4EB1BF0F94800EE8E94 /* TaylorIntegrationTestResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TaylorIntegrationTestResources.bundle; sourceTree = "<group>"; };
+		54EFF4EC1BF0F94800EE8E94 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		692FCBDD1BED2A2400DB5F16 /* Taylor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taylor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		692FCBEA1BED2B7F00DB5F16 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		692FCBF21BED2E2A00DB5F16 /* install */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = install; sourceTree = "<group>"; };
@@ -417,6 +449,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		54EFF4DA1BF0F92500EE8E94 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54EFF4F41BF0F98B00EE8E94 /* Nimble.framework in Frameworks */,
+				54EFF4F51BF0F98B00EE8E94 /* Quick.framework in Frameworks */,
+				54EFF4E21BF0F92500EE8E94 /* TaylorFramework.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		692FCBDA1BED2A2400DB5F16 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -450,6 +492,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		54EFF4B91BF0D48D00EE8E94 /* TaylorTests */ = {
+			isa = PBXGroup;
+			children = (
+				54EFF4BA1BF0D51100EE8E94 /* Array+ExtensionsTests.swift */,
+				54EFF4BC1BF0D78D00EE8E94 /* TimerTests.swift */,
+			);
+			name = TaylorTests;
+			sourceTree = "<group>";
+		};
+		54EFF4DE1BF0F92500EE8E94 /* TaylorIntegrationTest */ = {
+			isa = PBXGroup;
+			children = (
+				54EFF4EA1BF0F94800EE8E94 /* Resources */,
+				54EFF4DF1BF0F92500EE8E94 /* TaylorIntegrationTest.swift */,
+				54EFF4E81BF0F94800EE8E94 /* JSONToViolationParser.swift */,
+				54EFF4E91BF0F94800EE8E94 /* ReporterComparator.swift */,
+				54EFF4EC1BF0F94800EE8E94 /* StringExtensions.swift */,
+				54EFF4E11BF0F92500EE8E94 /* Info.plist */,
+			);
+			path = TaylorIntegrationTest;
+			sourceTree = "<group>";
+		};
+		54EFF4EA1BF0F94800EE8E94 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				54EFF4EB1BF0F94800EE8E94 /* TaylorIntegrationTestResources.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		692FCBF01BED2E2A00DB5F16 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -749,6 +821,7 @@
 			isa = PBXGroup;
 			children = (
 				694C26D01BF0AF5C002A543F /* PySwiftyRegexTests */,
+				54EFF4B91BF0D48D00EE8E94 /* TaylorTests */,
 				69B4DCED1BED1FE0005EA7D5 /* BoundariesKitTests */,
 				69B4DCF21BED1FE0005EA7D5 /* CapriceTests */,
 				69B4DD011BED1FE0005EA7D5 /* FinderTests */,
@@ -922,6 +995,7 @@
 				A3CB264F1B9DF6FA00802E80 /* CommonTestsSources */,
 				69B4DBDC1BED169B005EA7D5 /* TaylorFramework */,
 				69B4DCEC1BED1FE0005EA7D5 /* TaylorFrameworkTests */,
+				54EFF4DE1BF0F92500EE8E94 /* TaylorIntegrationTest */,
 				692FCBF01BED2E2A00DB5F16 /* Resources */,
 				A36B2EF71B98244F0049F590 /* Products */,
 			);
@@ -933,6 +1007,7 @@
 				69B4DC891BED1BD3005EA7D5 /* TaylorFramework.framework */,
 				69B4DCE21BED1F87005EA7D5 /* TaylorFrameworkTests.xctest */,
 				692FCBDD1BED2A2400DB5F16 /* Taylor.app */,
+				54EFF4DD1BF0F92500EE8E94 /* TaylorIntegrationTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -968,6 +1043,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		54EFF4DC1BF0F92500EE8E94 /* TaylorIntegrationTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54EFF4E51BF0F92500EE8E94 /* Build configuration list for PBXNativeTarget "TaylorIntegrationTest" */;
+			buildPhases = (
+				54EFF4D91BF0F92500EE8E94 /* Sources */,
+				54EFF4DA1BF0F92500EE8E94 /* Frameworks */,
+				54EFF4DB1BF0F92500EE8E94 /* Resources */,
+				54EFF4F11BF0F97200EE8E94 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TaylorIntegrationTest;
+			productName = TaylorIntegrationTest;
+			productReference = 54EFF4DD1BF0F92500EE8E94 /* TaylorIntegrationTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		692FCBDC1BED2A2400DB5F16 /* Taylor */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 692FCBE71BED2A2400DB5F16 /* Build configuration list for PBXNativeTarget "Taylor" */;
@@ -1038,12 +1131,15 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = YOPESO;
 				TargetAttributes = {
+					54EFF4DC1BF0F92500EE8E94 = {
+						CreatedOnToolsVersion = 7.1;
+					};
 					692FCBDC1BED2A2400DB5F16 = {
 						CreatedOnToolsVersion = 7.1;
 					};
 					69B4DC881BED1BD3005EA7D5 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = DU6674T27B;
+						DevelopmentTeam = X4YVN3GFA9;
 					};
 					69B4DCE11BED1F87005EA7D5 = {
 						CreatedOnToolsVersion = 7.1;
@@ -1067,11 +1163,20 @@
 				69B4DC881BED1BD3005EA7D5 /* TaylorFramework */,
 				69B4DCE11BED1F87005EA7D5 /* TaylorFrameworkTests */,
 				692FCBDC1BED2A2400DB5F16 /* Taylor */,
+				54EFF4DC1BF0F92500EE8E94 /* TaylorIntegrationTest */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		54EFF4DB1BF0F92500EE8E94 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54EFF4EF1BF0F94800EE8E94 /* TaylorIntegrationTestResources.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		692FCBDB1BED2A2400DB5F16 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1109,11 +1214,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which taylor >/dev/null; then\n  taylor -p ${PROJECT_DIR} -r xcode -ef ${PROJECT_DIR}/exclude.yopeso.yml\nelse\n  echo \"Taylor not installed\"\nfi";
+			shellScript = "if which taylor >/dev/null; then\n  taylor -p ${PROJECT_DIR} -r xcode\nelse\n  echo \"Taylor not installed\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		54EFF4D91BF0F92500EE8E94 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54EFF4F01BF0F94800EE8E94 /* StringExtensions.swift in Sources */,
+				54EFF4E01BF0F92500EE8E94 /* TaylorIntegrationTest.swift in Sources */,
+				54EFF4EE1BF0F94800EE8E94 /* ReporterComparator.swift in Sources */,
+				54EFF4ED1BF0F94800EE8E94 /* JSONToViolationParser.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		692FCBD91BED2A2400DB5F16 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1204,11 +1320,13 @@
 				69B4DD4C1BED1FE0005EA7D5 /* ComponentsBuilder.swift in Sources */,
 				69B4DD491BED1FE0005EA7D5 /* MockFileManager.swift in Sources */,
 				69B4DD411BED1FE0005EA7D5 /* ExcludesFileReaderTests.swift in Sources */,
+				54EFF4BB1BF0D51100EE8E94 /* Array+ExtensionsTests.swift in Sources */,
 				69B4DD3A1BED1FE0005EA7D5 /* FileContentTests.swift in Sources */,
 				69B4DD4A1BED1FE0005EA7D5 /* ParametersTests.swift in Sources */,
 				69B4DD6F1BED1FE1005EA7D5 /* NumberOfLinesInMethodRuleTests.swift in Sources */,
 				69B4DD3B1BED1FE0005EA7D5 /* UtilitiesTests.swift in Sources */,
 				69B4DD731BED1FE1005EA7D5 /* RulesFactoryTests.swift in Sources */,
+				54EFF4BD1BF0D78D00EE8E94 /* TimerTests.swift in Sources */,
 				69B4DD711BED1FE1005EA7D5 /* OutputCoordinatorTests.swift in Sources */,
 				69B4DD6C1BED1FE1005EA7D5 /* NPathComplexityRuleTests.swift in Sources */,
 				69B4DD461BED1FE0005EA7D5 /* VerbosityOptionTests.swift in Sources */,
@@ -1257,6 +1375,42 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		54EFF4E61BF0F92500EE8E94 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CommonTestsSources",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TaylorIntegrationTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.TaylorIntegrationTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		54EFF4E71BF0F92500EE8E94 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CommonTestsSources",
+				);
+				INFOPLIST_FILE = TaylorIntegrationTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.TaylorIntegrationTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		692FCBE81BED2A2400DB5F16 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1480,6 +1634,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		54EFF4E51BF0F92500EE8E94 /* Build configuration list for PBXNativeTarget "TaylorIntegrationTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54EFF4E61BF0F92500EE8E94 /* Debug */,
+				54EFF4E71BF0F92500EE8E94 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		692FCBE71BED2A2400DB5F16 /* Build configuration list for PBXNativeTarget "Taylor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
