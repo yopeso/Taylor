@@ -53,7 +53,6 @@ extension String {
                 range: NSMakeRange(0, self.characters.count))
             guard range.length > 2 else { return "" }
             return (self as NSString).substringWithRange(NSMakeRange(range.location + 1, range.length - 2))
-        } catch { }
-        return ""
+        } catch { return "" }
     }
 }

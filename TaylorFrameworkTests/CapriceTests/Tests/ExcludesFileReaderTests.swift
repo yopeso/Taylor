@@ -80,6 +80,18 @@ class ExcludesFileReaderTests: QuickSpec {
                 }.to(equal(resultsArray))
             }
             
+            it("should throw error if path to directory was passed") {
+                expect {
+                    try excludesFileReader.absolutePathsFromExcludesFile("pathToDirectory", forAnalyzePath: "")
+                }.to(throwError())
+            }
+            
+            it("should throw error if path to file with another extension was passed") {
+                expect {
+                    try excludesFileReader.absolutePathsFromExcludesFile("pathToFile.txt", forAnalyzePath: "")
+                    }.to(throwError())
+            }
+            
         }
     }
 

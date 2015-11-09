@@ -29,8 +29,4 @@ class ErrorPrinter {
     func printFileManagerError(path: FilePath) {
         printer.printError("File manager has not found subpath from \(path)")
     }
-    
-    func printParametersErrorInit() {
-        printer.printError("Parameters has not initialized")
-    }
 }

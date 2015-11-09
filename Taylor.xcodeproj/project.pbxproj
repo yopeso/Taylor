@@ -11,6 +11,11 @@
 		692FCBEE1BED2C2A00DB5F16 /* TaylorFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B4DC891BED1BD3005EA7D5 /* TaylorFramework.framework */; };
 		692FCBF31BED2E2A00DB5F16 /* install in Resources */ = {isa = PBXBuildFile; fileRef = 692FCBF21BED2E2A00DB5F16 /* install */; };
 		692FCBF41BED2E8400DB5F16 /* TaylorFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69B4DC891BED1BD3005EA7D5 /* TaylorFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		694C26D51BF0AF5C002A543F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 694C26D11BF0AF5C002A543F /* Info.plist */; };
+		694C26D61BF0AF5C002A543F /* ReMatchObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694C26D21BF0AF5C002A543F /* ReMatchObjectTests.swift */; };
+		694C26D71BF0AF5C002A543F /* ReRegexObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694C26D31BF0AF5C002A543F /* ReRegexObjectTests.swift */; };
+		694C26D81BF0AF5C002A543F /* ReTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694C26D41BF0AF5C002A543F /* ReTests.swift */; };
+		694C26DC1BF0E2C0002A543F /* PySwiftyRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694C26DB1BF0E2C0002A543F /* PySwiftyRegex.swift */; };
 		69B4DC951BED1BF6005EA7D5 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B4DBE41BED169B005EA7D5 /* Component.swift */; };
 		69B4DC961BED1BF6005EA7D5 /* ComponentRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B4DBE51BED169B005EA7D5 /* ComponentRange.swift */; };
 		69B4DC971BED1BF6005EA7D5 /* FileContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B4DBE61BED169B005EA7D5 /* FileContent.swift */; };
@@ -45,7 +50,6 @@
 		69B4DCB41BED1C2D005EA7D5 /* ComponentFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B4DC101BED169B005EA7D5 /* ComponentFinder.swift */; };
 		69B4DCB51BED1C2D005EA7D5 /* PacMan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B4DC141BED169B005EA7D5 /* PacMan.swift */; };
 		69B4DCB61BED1C2D005EA7D5 /* ExtendedComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B4DC161BED169B005EA7D5 /* ExtendedComponent.swift */; };
-		69B4DCB71BED1C2D005EA7D5 /* PySwiftyRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B4DC181BED169B005EA7D5 /* PySwiftyRegex.swift */; };
 		69B4DCB81BED1C2D005EA7D5 /* Scissors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B4DC1D1BED169B005EA7D5 /* Scissors.swift */; };
 		69B4DCB91BED1C2D005EA7D5 /* ScissorsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B4DC1E1BED169B005EA7D5 /* ScissorsExtensions.swift */; };
 		69B4DCBA1BED1C2D005EA7D5 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B4DC1F1BED169B005EA7D5 /* Tree.swift */; };
@@ -154,6 +158,9 @@
 		69B4DDB51BED223C005EA7D5 /* SwiftXPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B4DC1B1BED169B005EA7D5 /* SwiftXPC.framework */; };
 		69B4DDB61BED223C005EA7D5 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B4DC1C1BED169B005EA7D5 /* SWXMLHash.framework */; };
 		69EA54F91BEE209C007713A6 /* Taylor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EA54F81BEE209C007713A6 /* Taylor.swift */; };
+		B199EC0B1BF0C9E200B6155A /* RuleCustomizationOptionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B199EC0A1BF0C9E200B6155A /* RuleCustomizationOptionTests.swift */; };
+		B199EC0D1BF0D33800B6155A /* ExcludesFileOptionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B199EC0C1BF0D33800B6155A /* ExcludesFileOptionTests.swift */; };
+		B199EC0F1BF0E21000B6155A /* ReporterOptionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B199EC0E1BF0E21000B6155A /* ReporterOptionTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -263,6 +270,11 @@
 		692FCBDD1BED2A2400DB5F16 /* Taylor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taylor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		692FCBEA1BED2B7F00DB5F16 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		692FCBF21BED2E2A00DB5F16 /* install */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = install; sourceTree = "<group>"; };
+		694C26D11BF0AF5C002A543F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		694C26D21BF0AF5C002A543F /* ReMatchObjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReMatchObjectTests.swift; sourceTree = "<group>"; };
+		694C26D31BF0AF5C002A543F /* ReRegexObjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReRegexObjectTests.swift; sourceTree = "<group>"; };
+		694C26D41BF0AF5C002A543F /* ReTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReTests.swift; sourceTree = "<group>"; };
+		694C26DB1BF0E2C0002A543F /* PySwiftyRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PySwiftyRegex.swift; sourceTree = "<group>"; };
 		69B4DBDE1BED169B005EA7D5 /* TaylorFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaylorFramework.h; path = Headers/TaylorFramework.h; sourceTree = "<group>"; };
 		69B4DBE41BED169B005EA7D5 /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		69B4DBE51BED169B005EA7D5 /* ComponentRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentRange.swift; sourceTree = "<group>"; };
@@ -301,7 +313,6 @@
 		69B4DC141BED169B005EA7D5 /* PacMan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PacMan.swift; sourceTree = "<group>"; };
 		69B4DC151BED169B005EA7D5 /* prototype_map.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = prototype_map.dat; sourceTree = "<group>"; };
 		69B4DC161BED169B005EA7D5 /* ExtendedComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendedComponent.swift; sourceTree = "<group>"; };
-		69B4DC181BED169B005EA7D5 /* PySwiftyRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PySwiftyRegex.swift; sourceTree = "<group>"; };
 		69B4DC1A1BED169B005EA7D5 /* SourceKittenFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SourceKittenFramework.framework; sourceTree = "<group>"; };
 		69B4DC1B1BED169B005EA7D5 /* SwiftXPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftXPC.framework; sourceTree = "<group>"; };
 		69B4DC1C1BED169B005EA7D5 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SWXMLHash.framework; sourceTree = "<group>"; };
@@ -400,6 +411,9 @@
 		A36B2F001B98244F0049F590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3CB26501B9DF6FA00802E80 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Nimble.framework; sourceTree = "<group>"; };
 		A3CB26511B9DF6FA00802E80 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Quick.framework; sourceTree = "<group>"; };
+		B199EC0A1BF0C9E200B6155A /* RuleCustomizationOptionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuleCustomizationOptionTests.swift; sourceTree = "<group>"; };
+		B199EC0C1BF0D33800B6155A /* ExcludesFileOptionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExcludesFileOptionTests.swift; sourceTree = "<group>"; };
+		B199EC0E1BF0E21000B6155A /* ReporterOptionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReporterOptionTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -450,6 +464,17 @@
 				692FCBF21BED2E2A00DB5F16 /* install */,
 			);
 			path = scripts;
+			sourceTree = "<group>";
+		};
+		694C26D01BF0AF5C002A543F /* PySwiftyRegexTests */ = {
+			isa = PBXGroup;
+			children = (
+				694C26D11BF0AF5C002A543F /* Info.plist */,
+				694C26D21BF0AF5C002A543F /* ReMatchObjectTests.swift */,
+				694C26D31BF0AF5C002A543F /* ReRegexObjectTests.swift */,
+				694C26D41BF0AF5C002A543F /* ReTests.swift */,
+			);
+			path = PySwiftyRegexTests;
 			sourceTree = "<group>";
 		};
 		69B4DBDC1BED169B005EA7D5 /* TaylorFramework */ = {
@@ -612,7 +637,7 @@
 		69B4DC171BED169B005EA7D5 /* ExternalLibraries */ = {
 			isa = PBXGroup;
 			children = (
-				69B4DC181BED169B005EA7D5 /* PySwiftyRegex.swift */,
+				694C26DB1BF0E2C0002A543F /* PySwiftyRegex.swift */,
 			);
 			path = ExternalLibraries;
 			sourceTree = "<group>";
@@ -723,6 +748,7 @@
 		69B4DCEC1BED1FE0005EA7D5 /* TaylorFrameworkTests */ = {
 			isa = PBXGroup;
 			children = (
+				694C26D01BF0AF5C002A543F /* PySwiftyRegexTests */,
 				69B4DCED1BED1FE0005EA7D5 /* BoundariesKitTests */,
 				69B4DCF21BED1FE0005EA7D5 /* CapriceTests */,
 				69B4DD011BED1FE0005EA7D5 /* FinderTests */,
@@ -782,6 +808,9 @@
 				69B4DCFE1BED1FE0005EA7D5 /* OptionsValidatorTests.swift */,
 				69B4DCFF1BED1FE0005EA7D5 /* PathFormatterTests.swift */,
 				69B4DD001BED1FE0005EA7D5 /* VerbosityOptionTests.swift */,
+				B199EC0A1BF0C9E200B6155A /* RuleCustomizationOptionTests.swift */,
+				B199EC0C1BF0D33800B6155A /* ExcludesFileOptionTests.swift */,
+				B199EC0E1BF0E21000B6155A /* ReporterOptionTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -947,6 +976,7 @@
 				692FCBDA1BED2A2400DB5F16 /* Frameworks */,
 				692FCBDB1BED2A2400DB5F16 /* Resources */,
 				692FCBEF1BED2DD400DB5F16 /* CopyFiles */,
+				694C26DD1BF1012B002A543F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1013,7 +1043,7 @@
 					};
 					69B4DC881BED1BD3005EA7D5 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = QE33WF5A23;
+						DevelopmentTeam = DU6674T27B;
 					};
 					69B4DCE11BED1F87005EA7D5 = {
 						CreatedOnToolsVersion = 7.1;
@@ -1061,10 +1091,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				694C26D51BF0AF5C002A543F /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		694C26DD1BF1012B002A543F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which taylor >/dev/null; then\n  taylor -p ${PROJECT_DIR} -r xcode -ef ${PROJECT_DIR}/exclude.yopeso.yml\nelse\n  echo \"Taylor not installed\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		692FCBD91BED2A2400DB5F16 /* Sources */ = {
@@ -1089,9 +1136,9 @@
 				69B4DCB31BED1C2D005EA7D5 /* Printer.swift in Sources */,
 				69EA54F91BEE209C007713A6 /* Taylor.swift in Sources */,
 				69B4DCB41BED1C2D005EA7D5 /* ComponentFinder.swift in Sources */,
+				694C26DC1BF0E2C0002A543F /* PySwiftyRegex.swift in Sources */,
 				69B4DCB51BED1C2D005EA7D5 /* PacMan.swift in Sources */,
 				69B4DCB61BED1C2D005EA7D5 /* ExtendedComponent.swift in Sources */,
-				69B4DCB71BED1C2D005EA7D5 /* PySwiftyRegex.swift in Sources */,
 				69B4DCB81BED1C2D005EA7D5 /* Scissors.swift in Sources */,
 				69B4DCB91BED1C2D005EA7D5 /* ScissorsExtensions.swift in Sources */,
 				69B4DCBA1BED1C2D005EA7D5 /* Tree.swift in Sources */,
@@ -1148,6 +1195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69B4DD441BED1FE0005EA7D5 /* OptionsValidatorTests.swift in Sources */,
+				B199EC0D1BF0D33800B6155A /* ExcludesFileOptionTests.swift in Sources */,
 				69B4DD3C1BED1FE0005EA7D5 /* MockMessageProcessor.swift in Sources */,
 				69B4DD3D1BED1FE0005EA7D5 /* MockOptionsProcessor.swift in Sources */,
 				69B4DD6B1BED1FE1005EA7D5 /* NestedBlockDepthRuleTests.swift in Sources */,
@@ -1170,6 +1218,7 @@
 				69B4DD761BED1FE1005EA7D5 /* ViolationTests.swift in Sources */,
 				69B4DD691BED1FE1005EA7D5 /* DictionaryTests.swift in Sources */,
 				69B4DD6A1BED1FE1005EA7D5 /* ExcessiveParameterListRuleTests.swift in Sources */,
+				694C26D71BF0AF5C002A543F /* ReRegexObjectTests.swift in Sources */,
 				69B4DD6D1BED1FE1005EA7D5 /* NSFileManagerTests.swift in Sources */,
 				69B4DD641BED1FE1005EA7D5 /* PacManTests.swift in Sources */,
 				69B4DD751BED1FE1005EA7D5 /* TestsHelper.swift in Sources */,
@@ -1177,13 +1226,17 @@
 				69B4DD741BED1FE1005EA7D5 /* TemperTests.swift in Sources */,
 				69B4DD701BED1FE1005EA7D5 /* NumberOfMethodsInClassRuleTests.swift in Sources */,
 				69B4DD681BED1FE1005EA7D5 /* CyclomaticComplexityTests.swift in Sources */,
+				694C26D61BF0AF5C002A543F /* ReMatchObjectTests.swift in Sources */,
+				694C26D81BF0AF5C002A543F /* ReTests.swift in Sources */,
 				69B4DD421BED1FE0005EA7D5 /* MessageProcessorTests.swift in Sources */,
 				69B4DD661BED1FE1005EA7D5 /* ComponentExtensionsTests.swift in Sources */,
 				69B4DD481BED1FE0005EA7D5 /* FinderTests.swift in Sources */,
 				69B4DD721BED1FE1005EA7D5 /* ReporterTests.swift in Sources */,
 				69B4DD471BED1FE0005EA7D5 /* ExcludesTests.swift in Sources */,
 				69B4DD651BED1FE1005EA7D5 /* TokenizerTests.swift in Sources */,
+				B199EC0B1BF0C9E200B6155A /* RuleCustomizationOptionTests.swift in Sources */,
 				69B4DD4B1BED1FE0005EA7D5 /* PrinterTests.swift in Sources */,
+				B199EC0F1BF0E21000B6155A /* ReporterOptionTests.swift in Sources */,
 				69B4DD451BED1FE0005EA7D5 /* PathFormatterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1264,6 +1317,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.TaylorFramework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1292,6 +1346,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.TaylorFramework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

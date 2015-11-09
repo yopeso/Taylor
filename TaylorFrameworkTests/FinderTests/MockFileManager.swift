@@ -12,6 +12,9 @@ import Foundation
 class MockFileManager: NSFileManager {
     
     override func subpathsOfDirectoryAtPath(path: String) throws -> [String] {
+        if path == "/Home/Test2" {
+            return []
+        }
         if path != "/Home/Finder" {
             throw FinderError.WrongFilePath(path: path)
         }
@@ -33,16 +36,13 @@ class MockFileManager: NSFileManager {
     override func fileExistsAtPath(path: String, isDirectory: UnsafeMutablePointer<ObjCBool>) ->Bool {
         switch path {
         case "/Home/Finder/Finder", "/Home/Finder/FinderTests",
-            "/Home/Finder/Finder/Controllers", "/Home/Finder":
+            "/Home/Finder/Finder/Controllers", "/Home/Finder", "/Home/Test", "/Home/Test2":
             isDirectory.memory = true
             return true
         case "/Home/Finder/Finder/main.swift", "/Home/Finder/FinderTests/FinderTests.swift", "/Home/Finder/FinderTests/Info.plist",
             "/Home/Finder/Finder/Controllers/MainViewController.swift", "/Home/Finder/Finder/Controllers/AccountViewController.swift",
             "/Home/Finder/Finder.xcodeproj", "/Home/Finder/Readme.md", "/Home/Finder/.git":
             isDirectory.memory = false
-            return true
-        case "pathToDirectory":
-            isDirectory.memory = true
             return true
         case "pathToFile.yml", "pathToFile.txt", testFile("excludes", fileType: "yml"), testFile("emptyExcludes", fileType: "yml"):
             isDirectory.memory = false

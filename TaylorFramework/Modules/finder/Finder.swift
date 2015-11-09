@@ -19,7 +19,7 @@ class Finder {
         self.printer = ErrorPrinter(printer: printer)
     }
     
-    func findFilePaths(parameters dictionary: [String: [String]]) -> [String] {
+    func findFilePaths(parameters dictionary: Options) -> [String] {
         parameters = Parameters(dictionary: dictionary, printer: printer)
         guard parameters != nil && validateParameters(parameters) else {
             return []
@@ -40,11 +40,10 @@ class Finder {
             let pathsInDirectory = try fileManager.subpathsOfDirectoryAtPath(path)
             let paths = exclude(excludes, fromPaths: pathsInDirectory)
             return paths.map { absolutePath(parameters.rootPath, fileName: $0) }
-        } catch {
+        } catch _ {
             printer.printFileManagerError(path)
+            return []
         }
-        
-        return []
     }
     
     private func exclude(excludes: Excludes, fromPaths files: [FilePath]) -> [FilePath] {

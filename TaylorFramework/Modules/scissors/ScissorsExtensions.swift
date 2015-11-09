@@ -136,10 +136,6 @@ func + (var lhs: [File], rhs: File) -> [File] {
 }
 
 extension Array {
-    func part(from a: Int, to b: Int) -> Array<Element> {
-        return Array(self[a ..< b])
-    }
-    
     /// Creates an array of elements split into groups the length of size.
     /// If array can’t be split evenly, the final chunk will be the remaining elements.
     ///

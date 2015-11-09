@@ -43,11 +43,9 @@ class ExcludesFileOption: ExecutableOption {
     }
     
     
-    private func addExcludePaths(paths:[String],inout toDictionary dictionary:[String : [String]]) {
-        if paths.count <= 0 { return }
-        dictionary[ResultDictionaryExcludesKey] = (dictionary[ResultDictionaryExcludesKey] == nil) ?
-                                                                    paths :
-                                                                    dictionary[ResultDictionaryExcludesKey]! + paths
+    private func addExcludePaths(paths:[String],inout toDictionary dictionary:Options) {
+        if paths.isEmpty { return }
+        dictionary.add(paths, toKey: ResultDictionaryExcludesKey)
     }
     
 }

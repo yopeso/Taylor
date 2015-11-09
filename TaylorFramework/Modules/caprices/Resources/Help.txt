@@ -18,16 +18,17 @@ options:
         Path to recursive analyse (default current path).
         Must be maximum one path option
 
-    -r, --reporter  type:path
-        Saves report in file with extension "type" on indicated "path".
+    -r, --reporter  type:file_name
+        Saves report in file with given "file_name" and "type" at analyze path.
         Each "type" must be indicated no more than one time.
-        Supported types : json, pmd, plain.
+        Supported types : json, pmd, plain, xcode(without path).
 
     -rc, --ruleCustomization rule:value
         Rules for code analisys.
         Each "rule" must be indicated no more than one time.
         Value must be a number.
-        Supported rules : ExcessiveClassLength, ExcessiveMethodLength, TooManyMethods, CyclomaticComplexity, NestedBlockDepth, NPathComplexity.
+        Supported rules : ExcessiveClassLength, ExcessiveMethodLength, TooManyMethods,
+                CyclomaticComplexity, NestedBlockDepth, NPathComplexity, ExcessiveParameterList.
     
     -t, —-type  type
         Type of files to analyse (default swift).
@@ -37,6 +38,9 @@ options:
         Verbosity level for output messages.
         Must be maximum one verbosity option.
         Supported levels : info, warning, error.
+
+    help
+        Prints help/usage of taylor.
 
 taylor with no options will analyse recursive "swift" files recursive from current path with excludes from default "excludes.yml" file if it exists in current path
 

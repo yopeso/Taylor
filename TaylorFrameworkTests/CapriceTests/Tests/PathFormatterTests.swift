@@ -58,9 +58,14 @@ class PathFormatterTests: QuickSpec {
                 expect(relativePath.formattedExcludePath(analyzePath)).to(equal(analyzePath + "/" + relativePath))
             }
             
-            it("should appned relative path to default path if analyze path was not indicated") {
+            it("should append relative path to default path if analyze path was not indicated") {
                 let relativePath = "relativePath"
                 expect(relativePath.formattedExcludePath()).to(equal(currentPath + "/" + relativePath))
+            }
+            
+            it("should return last component from path") {
+                let testPath = "/path/to/something"
+                expect(testPath.lastComponentFromPath()).to(equal("something"))
             }
             
         }

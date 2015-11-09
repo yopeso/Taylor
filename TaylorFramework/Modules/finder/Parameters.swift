@@ -19,14 +19,14 @@ class Parameters {
         type = parameters.type
     }
     
-    convenience init?(dictionary: [String: [String]], printer: ErrorPrinter) {
+    convenience init?(dictionary: Options, printer: ErrorPrinter) {
         let pathValue = dictionary[ParametersKeys.Path]
-        if pathValue == nil || pathValue!.count <= 0 || pathValue![0].isEmpty {
+        if pathValue == nil || pathValue!.isEmpty || pathValue!.first!.isEmpty {
             printer.printWrongRootPathMessage()
             return nil
         }
         let fileType = dictionary[ParametersKeys.FileType]
-        if  fileType == nil || fileType!.count <= 0 || fileType![0].isEmpty {
+        if  fileType == nil || fileType!.isEmpty || fileType!.first!.isEmpty {
             printer.printWrongTypeFile()
             return nil
         }
@@ -38,6 +38,6 @@ class Parameters {
         if filesValue == nil {
             filesValue = []
         }
-        self.init(parameters: (pathValue![0], excludesValue!, filesValue!, fileType![0]))
+        self.init(parameters: (pathValue!.first!, excludesValue!, filesValue!, fileType!.first!))
     }
 }

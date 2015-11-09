@@ -9,7 +9,6 @@
 import Foundation
 import Quick
 import Nimble
-import XCTest
 import SourceKittenFramework
 @testable import TaylorFramework
 
@@ -148,38 +147,22 @@ class TokenizerTests: QuickSpec {
                 let expectedContent = FileContent(path: path, components: componentsForBraceWithParameters())
                 expect(returnContent).to(equal(expectedContent))
             }
-        }
-    }
-}
-
-class PerformanceTests: XCTestCase {
-    let reader = MockFileReader()
-    
-    func testIsFastFor500Lines() {
-        measureBlock {
-            let path = self.reader.pathForFile("TestFileMoreThan500", fileType: "swift")
-            _ = Scissors().tokenizeFileAtPath(path)
-        }
-    }
-    
-    func testIsFastFor1KLines() {
-        measureBlock {
-            let path = self.reader.pathForFile("TestFileMoreThan1K", fileType: "swift")
-            _ = Scissors().tokenizeFileAtPath(path)
-        }
-    }
-    
-    func testIsFastFor2KLines() {
-        measureBlock {
-            let path = self.reader.pathForFile("TestFileMoreThan2K", fileType: "swift")
-            _ = Scissors().tokenizeFileAtPath(path)
-        }
-    }
-    
-    func testIsFastFor3KLines() {
-        measureBlock {
-            let path = self.reader.pathForFile("TestFileMoreThan3K", fileType: "swift")
-            _ = Scissors().tokenizeFileAtPath(path)
+            it("should run for files with 500 lines") {
+                let path = reader.pathForFile("TestFileMoreThan500", fileType: "swift")
+                _ = Scissors().tokenizeFileAtPath(path)
+            }
+            it("should run for files more than 1K lines") {
+                let path = reader.pathForFile("TestFileMoreThan1K", fileType: "swift")
+                _ = Scissors().tokenizeFileAtPath(path)
+            }
+            it("should run for files more than 2K lines") {
+                let path = reader.pathForFile("TestFileMoreThan2K", fileType: "swift")
+                _ = Scissors().tokenizeFileAtPath(path)
+            }
+            it("should run for files more than 3K lines") {
+                let path = reader.pathForFile("TestFileMoreThan3K", fileType: "swift")
+                _ = Scissors().tokenizeFileAtPath(path)
+            }
         }
     }
 }

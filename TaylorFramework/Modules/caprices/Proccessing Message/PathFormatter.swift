@@ -73,7 +73,6 @@ extension Path {
     
     
     private func checkLastPathComponentsElement(inout pathComponents: [String]) {
-        if pathComponents.isEmpty { return }
         if [EmptyString, RecursiveSymbol].contains(pathComponents.last!) {
             pathComponents.removeLast()
         }

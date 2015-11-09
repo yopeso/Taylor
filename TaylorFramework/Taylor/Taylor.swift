@@ -17,7 +17,6 @@ public final class Taylor {
         printer = Printer(verbosityLevel: arguments.verbosityLevel)
     }
     
-    
     /**
      Runs Taylor which initializes all other modules.
     */
@@ -30,15 +29,24 @@ public final class Taylor {
         }
         
         runEasterEggIfNeeded()
+        printParameters(arguments.arguments, directory: rootPath)
         
+        
+        generateTimeReport(rootPath)
+    }
+    
+    func printParameters(parameters: Options, directory dir: String) {
         printer.printInfo("Parameters: \(arguments.arguments)")
-        printer.printInfo("Output directory: \(rootPath)")
-        
+        printer.printInfo("Output directory: \(dir)")
+    }
+    
+    func generateTimeReport(rootPath: String) {
         let timer = Timer()
         timer.start()
         generateReport(rootPath)
         printer.printInfo("Running time: \(timer.stop())")
     }
+    
     func generateReport(rootPath: String) {
         configureTemper(rootPath)
         checkFileContents(getFileContents())
@@ -74,10 +82,10 @@ public final class Taylor {
             printer.printInfo("No reporters were indicated. Default(PMD) reporter will be used.")
         }
     }
-    func createReporters(dictionaryRepresentations: [[String: String]]) -> [Reporter] {
+    func createReporters(dictionaryRepresentations: [OutputReporter]) -> [Reporter] {
         return dictionaryRepresentations.map { makeReporterFromRepresentation($0) }
     }
-    func makeReporterFromRepresentation(representation: [String : String]) -> Reporter {
+    func makeReporterFromRepresentation(representation: OutputReporter) -> Reporter {
         guard let typeAsString = representation["type"] else {
             printer.printError("Reporters: No type was indicated.")
             exit(EXIT_FAILURE)
@@ -108,7 +116,7 @@ public final class Taylor {
     func input() -> String {
         let keyboard = NSFileHandle.fileHandleWithStandardInput()
         let inputData = keyboard.availableData
-        return NSString(data: inputData, encoding:NSUTF8StringEncoding) as! String
+        return NSString(data: inputData, encoding: NSUTF8StringEncoding) as! String
     }
     func runEasterEgg() {
         guard let rootPath = arguments.rootPath else { exit(EXIT_FAILURE) }

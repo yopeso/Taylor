@@ -40,11 +40,8 @@ class ReporterOption: InformationalOption {
     }
     
     private func getOutputPathKey(reporterComponents: [String]) -> String {
-        if reporterComponents.first == XcodeType {
-            return ""
-        } else {
-            return reporterComponents.second ?? ""
-        }
+        if reporterComponents.first == XcodeType { return "" }
+        return reporterComponents.second ?? ""
     }
     
     func validateArgumentComponents(components: [String]) throws {

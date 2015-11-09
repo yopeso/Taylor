@@ -17,6 +17,7 @@ let POINT = "."
 
 class Pacman {
     let paths: [String]
+    let fileManager = NSFileManager.defaultManager()
     
     /**
     Initialize Pacman with an array of paths
@@ -32,13 +33,12 @@ class Pacman {
     If no paths were given, no game instance will run.
     */
     func start() {
-        guard paths.count > 0 else {
-            return
-        }
+        if paths.isEmpty { return }
         let path = getGamePath()
         createMap()
-        system("cd "+path)
-        system("python "+path+"/pacman.py")
+        system("cd " + path)
+        system("python " + path + "/pacman.py")
+        removeMap()
     }
     
     func getGamePath() -> String {
@@ -56,13 +56,20 @@ class Pacman {
         let mapText = generator.generateMapString(generator.getText())
         let dataPath = "\(NSHomeDirectory())" + "/tmp"
         do {
-            if (!NSFileManager.defaultManager().fileExistsAtPath(dataPath)) {
-                try NSFileManager.defaultManager() .createDirectoryAtPath(dataPath, withIntermediateDirectories: true, attributes: nil)
+            if !fileManager.fileExistsAtPath(dataPath) {
+                try fileManager.createDirectoryAtPath(dataPath, withIntermediateDirectories: true, attributes: nil)
             }
             try mapText.writeToFile(dataPath + "/map.dat", atomically: true, encoding: NSUTF8StringEncoding)
             return true
-        } catch {
-            return false
+        } catch { return false }
+    }
+    
+    func removeMap() {
+        let dataPath = "\(NSHomeDirectory())" + "/tmp"
+        if fileManager.fileExistsAtPath(dataPath) {
+            do {
+                try fileManager.removeItemAtPath(dataPath)
+            } catch { }
         }
     }
 }
@@ -81,6 +88,7 @@ class Generator {
     }
     
     func generateMapString(text: String) -> String {
+        if text.isEmpty { return "" }
         let endIndex = mapString.characters.count + Int(arc4random_uniform(UInt32(text.characters.count-mapString.characters.count)))
         let textRange = Range<String.Index>(start: text.startIndex.advancedBy(endIndex-mapString.characters.count),
                                               end: text.startIndex.advancedBy(endIndex))
@@ -105,7 +113,9 @@ class Generator {
         let charNumber = countWallCharacters()
         while file.contents.characters.count < charNumber {
             let path = paths[Int(arc4random_uniform(UInt32(paths.count-1)))]
-            file = File(path: path)!
+            if NSFileManager.defaultManager().fileExistsAtPath(path) {
+                file = File(path: path)!
+            } else { return "" }
         }
         return file.contents
     }

@@ -29,6 +29,12 @@ class VerbosityOptionTests: QuickSpec {
                 expect(verbosity.verbosityLevelFromOption()).to(equal(VerbosityLevel.Error))
             }
             
+            it("should return error if given components have no first element") {
+                expect{
+                    try verbosity.validateArgumentComponents([String]())
+                }.to(throwError())
+            }
+            
         }
     }
 }

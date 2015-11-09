@@ -28,14 +28,14 @@ class OptionsProcessorTests: QuickSpec {
             
             context("when arguments contain reporter option") {
                 
-//                it("should create ReporterOption and append it to reporterOptions array") {
-//                    let reporterArgument = "plain:/path/to/plain-output.txt"
-//                    let inputArguments = [currentPath, ReporterLong, reporterArgument]
-//                    optionsProcessor.processOptions(inputArguments)
-//                    let reporterArg = optionsProcessor.factory.reporterOptions[0].optionArgument
-//                    let equal = (reporterArg == reporterArgument)
-//                    expect(equal).to(beTrue())
-//                }
+                it("should create ReporterOption and append it to reporterOptions array") {
+                    let reporterArgument = "plain:/path/to/plain-output.txt"
+                    let inputArguments = [currentPath, ReporterLong, reporterArgument]
+                    optionsProcessor.processOptions(inputArguments)
+                    let reporterArg = optionsProcessor.factory.filterClassesOfType(ReporterOption().name)[0].optionArgument
+                    let equal = (reporterArg == reporterArgument)
+                    expect(equal).to(beTrue())
+                }
                 
                 it("should return empty dictionary if reporter argument does not contain : symbol and is not xcode reporter") {
                     let reporterArgument = "plain/path/to/plain-output.txt"
@@ -69,19 +69,19 @@ class OptionsProcessorTests: QuickSpec {
             
             context("when arguments contain multiple reporterOptions") {
                 
-//                it("should append multiple reporterOptions to reporterOptions array") {
-//                    let reporterArgument1 = "plain:/path/to/plain-output.txt"
-//                    let reporterArgument2 = "json:/path/to/plain-output.json"
-//                    let reporterArgument3 = "xcode"
-//                    let inputArguments = [currentPath, ReporterLong, reporterArgument1, ReporterShort, reporterArgument2, ReporterShort, reporterArgument3]
-//                    optionsProcessor.processOptions(inputArguments)
-//                    var reportersArguments = [String]()
-//                    for arg in optionsProcessor.factory.reporterOptions {
-//                        reportersArguments.append(arg.optionArgument)
-//                    }
-//                    let equal = (reportersArguments == [reporterArgument1, reporterArgument2, reporterArgument3])
-//                    expect(equal).to(beTrue())
-//                }
+                it("should append multiple reporterOptions to reporterOptions array") {
+                    let reporterArgument1 = "plain:/path/to/plain-output.txt"
+                    let reporterArgument2 = "json:/path/to/plain-output.json"
+                    let reporterArgument3 = "xcode"
+                    let inputArguments = [currentPath, ReporterLong, reporterArgument1, ReporterShort, reporterArgument2, ReporterShort, reporterArgument3]
+                    optionsProcessor.processOptions(inputArguments)
+                    var reportersArguments = [String]()
+                    for arg in optionsProcessor.factory.filterClassesOfType(ReporterOption().name) {
+                        reportersArguments.append(arg.optionArgument)
+                    }
+                    let equal = (reportersArguments == [reporterArgument1, reporterArgument2, reporterArgument3])
+                    expect(equal).to(beTrue())
+                }
                 
                 it("should return empty dictionary if reportedOption type is repeated") {
                     let reporterArgument = "plain:/path/to/plain-output.txt"
@@ -128,14 +128,14 @@ class OptionsProcessorTests: QuickSpec {
             
             context("when arguments contain rule customization option") {
                 
-//                it("should create ruleCustommizationOption and append it to ruleCustomizationOptions array") {
-//                    let rcArgument = "ExcessiveMethodLength=10"
-//                    let inputArguments = [currentPath, RuleCustomizationLong, rcArgument]
-//                    optionsProcessor.processOptions(inputArguments)
-//                    let rcArguments = optionsProcessor.infoOptionsProcessor.ruleCustomizationOptions[0].optionArgument
-//                    let equal = (rcArgument == rcArguments)
-//                    expect(equal).to(beTrue())
-//                }
+                it("should create ruleCustomizationOption and append it to ruleCustomizationOptions array") {
+                    let rcArgument = "ExcessiveMethodLength=10"
+                    let inputArguments = [currentPath, RuleCustomizationLong, rcArgument]
+                    optionsProcessor.processOptions(inputArguments)
+                    let rcArguments = optionsProcessor.factory.filterClassesOfType(RuleCustomizationOption().name)[0].optionArgument
+                    let equal = (rcArgument == rcArguments)
+                    expect(equal).to(beTrue())
+                }
                 
                 it("should return empty dictionary if ruleCustommization argument does not contain = symbol") {
                     let rcArgument = "ExcessiveMethodLength10"
@@ -169,18 +169,18 @@ class OptionsProcessorTests: QuickSpec {
             
             context("when arguments contain multiple customization rules") {
                 
-//                it("should append multiple customization rules to ruleCustomizationOptions array") {
-//                    let rcArgument1 = "ExcessiveMethodLength=10"
-//                    let rcArgument2 = "ExcessiveClassLength=400"
-//                    let inputArguments = [currentPath, RuleCustomizationLong, rcArgument1, RuleCustomizationShort, rcArgument2]
-//                    optionsProcessor.processOptions(inputArguments)
-//                    var rcArguments = [String]()
-//                    for arg in optionsProcessor.factory.ruleCustomizationOptions {
-//                        rcArguments.append(arg.optionArgument)
-//                    }
-//                    let equal = ([rcArgument1, rcArgument2] == rcArguments)
-//                    expect(equal).to(beTrue())
-//                }
+                it("should append multiple customization rules to ruleCustomizationOptions array") {
+                    let rcArgument1 = "ExcessiveMethodLength=10"
+                    let rcArgument2 = "ExcessiveClassLength=400"
+                    let inputArguments = [currentPath, RuleCustomizationLong, rcArgument1, RuleCustomizationShort, rcArgument2]
+                    optionsProcessor.processOptions(inputArguments)
+                    var rcArguments = [String]()
+                    for arg in optionsProcessor.factory.filterClassesOfType(RuleCustomizationOption().name) {
+                        rcArguments.append(arg.optionArgument)
+                    }
+                    let equal = ([rcArgument1, rcArgument2] == rcArguments)
+                    expect(equal).to(beTrue())
+                }
                 
                 it("should return empty dictionary if rule customization types are repeated") {
                     let rcArgument = "ExcessiveMethodLength=10"
@@ -249,6 +249,37 @@ class OptionsProcessorTests: QuickSpec {
                     let verbosityArgument = "info"
                     let inputArguments = [currentPath, VerbosityLong, verbosityArgument, VerbosityShort, verbosityArgument]
                     expect(optionsProcessor.processOptions(inputArguments)).to(beEmpty())
+                }
+                
+            }
+            
+            context("when setDefaultValuesToResultDictionary is called") {
+                
+                it("should set default values only for keys that was not indicated") {
+                    var dictionary = [ResultDictionaryTypeKey : ["someType"]]
+                    optionsProcessor.setDefaultValuesToResultDictionary(&dictionary)
+                    expect(dictionary).to(equal([ResultDictionaryPathKey : [currentPath], ResultDictionaryTypeKey : ["someType"]]))
+                }
+                
+                it("should set default values for dictionary") {
+                    var dictionary = Options()
+                    optionsProcessor.setDefaultValuesToResultDictionary(&dictionary)
+                    expect(dictionary).to(equal([ResultDictionaryPathKey : [currentPath], ResultDictionaryTypeKey : [DefaultExtensionType]]))
+                }
+                
+                it("should not change values if they are already setted") {
+                    var dictionary = [ResultDictionaryPathKey : ["SomePath"], ResultDictionaryTypeKey : ["SomeExtension"]]
+                    optionsProcessor.setDefaultValuesToResultDictionary(&dictionary)
+                    expect(dictionary).to(equal([ResultDictionaryPathKey : ["SomePath"], ResultDictionaryTypeKey : ["SomeExtension"]]))
+                }
+                
+                it("should set exclude paths from default excludesFile") {
+                    let pathToExcludesFile = MockFileManager().testFile("excludes", fileType: "yml")
+                    let pathToExcludesFileRootFolder = pathToExcludesFile.stringByReplacingOccurrencesOfString("/excludes.yml", withString: "")
+                    var dictionary = [ResultDictionaryPathKey : [pathToExcludesFileRootFolder]]
+                    optionsProcessor.setDefaultValuesToResultDictionary(&dictionary)
+                    let resultsArrayOfExcludes = ["file.txt".formattedExcludePath(pathToExcludesFileRootFolder), "path/to/file.txt".formattedExcludePath(pathToExcludesFileRootFolder), "folder".formattedExcludePath(pathToExcludesFileRootFolder), "path/to/folder".formattedExcludePath(pathToExcludesFileRootFolder)]
+                    expect(dictionary).to(equal([ResultDictionaryPathKey : [pathToExcludesFileRootFolder], ResultDictionaryTypeKey : [DefaultExtensionType], ResultDictionaryExcludesKey : resultsArrayOfExcludes]))
                 }
                 
             }

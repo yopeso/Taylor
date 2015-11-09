@@ -10,32 +10,34 @@
 
 class MockOptionsProcessor: OptionsProcessor {
     
-    override func setDefaultValuesToResultDictionary(inout dictionary : [String : [String]]) {
+    override func setDefaultValuesToResultDictionary(inout dictionary: Options) {
+        setDefaultPathAndTypeToDictionary(&dictionary)
+        if !isExcludesFileIndicated { setDefaultExcludesToDictionary(&dictionary) }
+    }
+    
+    
+    private func setDefaultPathAndTypeToDictionary(inout dictionary: Options) {
         let defaultDictionary = MockMessageProcessor().defaultDictionaryWithPathAndType()
-        if dictionary[ResultDictionaryPathKey] == nil {
-            dictionary[ResultDictionaryPathKey] = defaultDictionary[ResultDictionaryPathKey]
+        dictionary.setIfNotExist(defaultDictionary[ResultDictionaryPathKey] ?? [], forKey: ResultDictionaryPathKey)
+        dictionary.setIfNotExist(defaultDictionary[ResultDictionaryTypeKey] ?? [], forKey: ResultDictionaryTypeKey)
+    }
+    
+    
+    private func setDefaultExcludesToDictionary(inout dictionary: Options) {
+        var excludePaths = [String]()
+        do {
+            let excludesFilePath = MessageProcessor().defaultExcludesFilePathForDictionary(dictionary)
+            excludePaths = try ExcludesFileReader().absolutePathsFromExcludesFile(excludesFilePath,  forAnalyzePath:dictionary[ResultDictionaryPathKey]![0])
+        } catch {
+            return
         }
-        if dictionary[ResultDictionaryTypeKey] == nil {
-            dictionary[ResultDictionaryTypeKey] = defaultDictionary[ResultDictionaryTypeKey]
-        }
-        if !isExcludesFileIndicated {
-            let excludesFileReader = ExcludesFileReader()
-            var excludePaths = [String]()
-            do {
-                let pathToExcludesFile = MessageProcessor().defaultExcludesFilePathForDictionary(dictionary)
-                excludePaths = try excludesFileReader.absolutePathsFromExcludesFile(DefaultExcludesFile, forAnalyzePath: pathToExcludesFile)
-            } catch {
-                return
-            }
-            if excludePaths.count > 0 {
-                if dictionary[ResultDictionaryExcludesKey] == nil {
-                    dictionary[ResultDictionaryExcludesKey] = excludePaths
-                } else {
-                    dictionary[ResultDictionaryExcludesKey]! += excludePaths
-                }
-            }
-            
-        }
+        addExcludePathsToDictionary(&dictionary, excludePaths: excludePaths)
+    }
+    
+    
+    private func addExcludePathsToDictionary(inout dictionary: Options, excludePaths:[String]) {
+        if excludePaths.isEmpty { return }
+        dictionary.add(excludePaths, toKey: ResultDictionaryExcludesKey)
     }
     
 }
