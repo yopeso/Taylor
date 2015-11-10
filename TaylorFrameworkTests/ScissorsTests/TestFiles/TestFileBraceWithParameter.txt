@@ -1,0 +1,6 @@
+func funcForClosures() {
+    let closure3 = { i in
+        if true {}
+        return i
+    }
+}

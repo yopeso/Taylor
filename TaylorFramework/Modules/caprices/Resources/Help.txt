@@ -1,0 +1,46 @@
+
+usage: taylor [option1 option1_argument] [option2 option2_argument] […]
+
+options:
+
+    -e, —-exclude  path
+        Path (directory or file) excluded from analysis.
+        Can be indicated .*name.* and recursive files that contain name will be excluded.
+
+    -ef, —-excludeFile  file
+        File(.yml) that contain exclude paths in format: "- “file.txt”" or "- “folder/*”".
+        Must be maximum one excludeFile option (default excludes.yml).
+
+    -f, —-file  file
+        File included to analysis.
+
+    -p, —-path  path
+        Path to recursive analyse (default current path).
+        Must be maximum one path option
+
+    -r, --reporter  type:file_name
+        Saves report in file with given "file_name" and "type" at analyze path.
+        Each "type" must be indicated no more than one time.
+        Supported types : json, pmd, plain, xcode(without path).
+
+    -rc, --ruleCustomization rule=value
+        Rules for code analisys.
+        Each "rule" must be indicated no more than one time.
+        Value must be a number.
+        Supported rules : ExcessiveClassLength, ExcessiveMethodLength, TooManyMethods,
+                CyclomaticComplexity, NestedBlockDepth, NPathComplexity, ExcessiveParameterList.
+    
+    -t, —-type  type
+        Type of files to analyse (default swift).
+        Must be maximum one type option.
+
+    -v, --verbosity level
+        Verbosity level for output messages.
+        Must be maximum one verbosity option.
+        Supported levels : info, warning, error.
+
+    help
+        Prints help/usage of taylor.
+
+taylor with no options will analyse recursive "swift" files recursive from current path with excludes from default "excludes.yml" file if it exists in current path
+

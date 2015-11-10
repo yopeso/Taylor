@@ -1,0 +1,5 @@
+version: "Apple Swift version 2.1 (swiftlang-700.1.101.6 clang-700.1.76)"
+options: "4e637f2c8357c240aa64db723d87b7f4"
+build_time: [500381787, 141085000]
+inputs:
+  "/Users/seremetmihai/Desktop/TaylorIntegrationTestResources/CloseDialogWindowOperation.swift": [500138981, 0]

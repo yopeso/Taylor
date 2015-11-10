@@ -1,0 +1,8 @@
+import Foundation
+private func removeFileAtPath(path: String) {
+    if NSFileManager.defaultManager().fileExistsAtPath(path) {
+        do {
+            _ = try 27
+        } catch { }
+}
+}

@@ -1,0 +1,17 @@
+func funcForNPathComplexity() {
+    if true {
+    false ?1 : 2
+    }
+    if true {
+    false ?? true
+    }
+    if true {
+    true ? 2 : 1
+    }
+    if true {
+    true ?? false
+    }
+    if true {
+    false ? 2 : 1
+    }
+}

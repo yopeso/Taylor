@@ -1,0 +1,20 @@
+func nestedIfFunc() {
+    if true {
+    while true && false {
+    false ? 1 : 2
+    }
+} else if true || false {
+    for var i = 0; i < 2 || i > 4; i++ {
+    false ? 3 : 4
+    }
+} else {
+    switch 1 {
+        case 1: break
+        case 2: break
+        case 3: if false { }
+    }
+    }
+    if true {
+    
+    }
+}
