@@ -24,6 +24,8 @@ class Temper {
     static  var violationsWithP3 = 0
     private var fileWasChecked = false
     
+    var resultsOutput = [ResultOutput]()
+    
     var path : String {
         return outputPath
     }
@@ -66,7 +68,17 @@ class Temper {
         Temper.totalFiles++
         fileWasChecked = false
         currentPath = content.path
+        let initialViolations = violations.count
         startAnalazy(content.components)
+        
+        resultsForFile(currentPath, violations: violations.count - initialViolations)
+    }
+    
+    func resultsForFile(currentPath: String?, violations: Int) {
+        guard let path = currentPath where path.characters.count > outputPath.characters.count else { return }
+        let relativePath: String = (path as NSString).substringFromIndex(outputPath.characters.count + 1)
+        resultsOutput.append(ResultOutput(path: relativePath,
+            warnings: violations))
     }
     
     /**

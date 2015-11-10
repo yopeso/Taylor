@@ -28,7 +28,6 @@ class Scissors {
     - returns: **FileContent** containing 'path' to file and the tree of components.
     */
     func tokenizeFileAtPath(path: String) -> FileContent {
-        printer.printInfo("Processing \(path)")
         let tree = Tree(file: File(path: path)!)
         let root = tree.makeTree()
         return FileContent(path: path, components: root.components)
