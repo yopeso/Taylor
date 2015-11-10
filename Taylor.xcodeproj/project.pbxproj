@@ -1139,7 +1139,7 @@
 					};
 					69B4DC881BED1BD3005EA7D5 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = X4YVN3GFA9;
+						DevelopmentTeam = QE33WF5A23;
 					};
 					69B4DCE11BED1F87005EA7D5 = {
 						CreatedOnToolsVersion = 7.1;
@@ -1448,7 +1448,6 @@
 		69B4DC931BED1BD3005EA7D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1481,7 +1480,6 @@
 		69B4DC941BED1BD3005EA7D5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1641,6 +1639,7 @@
 				54EFF4E71BF0F92500EE8E94 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		692FCBE71BED2A2400DB5F16 /* Build configuration list for PBXNativeTarget "Taylor" */ = {
 			isa = XCConfigurationList;
