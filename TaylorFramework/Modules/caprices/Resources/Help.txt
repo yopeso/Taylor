@@ -23,7 +23,7 @@ options:
         Each "type" must be indicated no more than one time.
         Supported types : json, pmd, plain, xcode(without path).
 
-    -rc, --ruleCustomization rule:value
+    -rc, --ruleCustomization rule=value
         Rules for code analisys.
         Each "rule" must be indicated no more than one time.
         Value must be a number.

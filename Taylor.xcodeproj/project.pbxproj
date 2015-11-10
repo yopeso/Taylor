@@ -588,8 +588,8 @@
 			isa = PBXGroup;
 			children = (
 				69B4DBE91BED169B005EA7D5 /* Exceptions */,
-				69B4DBEB1BED169B005EA7D5 /* Proccessing Message */,
-				69B4DBFF1BED169B005EA7D5 /* Public Interface */,
+				69B4DBEB1BED169B005EA7D5 /* ProccessingMessage */,
+				69B4DBFF1BED169B005EA7D5 /* PublicInterface */,
 				69B4DC011BED169B005EA7D5 /* Resources */,
 			);
 			path = caprices;
@@ -603,7 +603,7 @@
 			path = Exceptions;
 			sourceTree = "<group>";
 		};
-		69B4DBEB1BED169B005EA7D5 /* Proccessing Message */ = {
+		69B4DBEB1BED169B005EA7D5 /* ProccessingMessage */ = {
 			isa = PBXGroup;
 			children = (
 				69B4DBEC1BED169B005EA7D5 /* CapricesExtensions.swift */,
@@ -615,7 +615,7 @@
 				69B4DBFD1BED169B005EA7D5 /* OptionsValidator.swift */,
 				69B4DBFE1BED169B005EA7D5 /* PathFormatter.swift */,
 			);
-			path = "Proccessing Message";
+			path = ProccessingMessage;
 			sourceTree = "<group>";
 		};
 		69B4DBF01BED169B005EA7D5 /* Options */ = {
@@ -636,12 +636,12 @@
 			path = Options;
 			sourceTree = "<group>";
 		};
-		69B4DBFF1BED169B005EA7D5 /* Public Interface */ = {
+		69B4DBFF1BED169B005EA7D5 /* PublicInterface */ = {
 			isa = PBXGroup;
 			children = (
 				69B4DC001BED169B005EA7D5 /* Caprice.swift */,
 			);
-			path = "Public Interface";
+			path = PublicInterface;
 			sourceTree = "<group>";
 		};
 		69B4DC011BED169B005EA7D5 /* Resources */ = {
@@ -1139,7 +1139,7 @@
 					};
 					69B4DC881BED1BD3005EA7D5 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = QE33WF5A23;
+						DevelopmentTeam = DU6674T27B;
 					};
 					69B4DCE11BED1F87005EA7D5 = {
 						CreatedOnToolsVersion = 7.1;
@@ -1448,6 +1448,7 @@
 		69B4DC931BED1BD3005EA7D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1480,6 +1481,7 @@
 		69B4DC941BED1BD3005EA7D5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;

@@ -14,23 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "69B4DC881BED1BD3005EA7D5"
-               BuildableName = "TaylorFramework.framework"
-               BlueprintName = "TaylorFramework"
-               ReferencedContainer = "container:Taylor.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "69B4DCE11BED1F87005EA7D5"
-               BuildableName = "TaylorFrameworkTests.xctest"
-               BlueprintName = "TaylorFrameworkTests"
+               BlueprintIdentifier = "692FCBDC1BED2A2400DB5F16"
+               BuildableName = "Taylor.app"
+               BlueprintName = "Taylor"
                ReferencedContainer = "container:Taylor.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -53,13 +39,23 @@
                ReferencedContainer = "container:Taylor.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "54EFF4DC1BF0F92500EE8E94"
+               BuildableName = "TaylorIntegrationTest.xctest"
+               BlueprintName = "TaylorIntegrationTest"
+               ReferencedContainer = "container:Taylor.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "69B4DC881BED1BD3005EA7D5"
-            BuildableName = "TaylorFramework.framework"
-            BlueprintName = "TaylorFramework"
+            BlueprintIdentifier = "692FCBDC1BED2A2400DB5F16"
+            BuildableName = "Taylor.app"
+            BlueprintName = "Taylor"
             ReferencedContainer = "container:Taylor.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -76,21 +72,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "69B4DC881BED1BD3005EA7D5"
-            BuildableName = "TaylorFramework.framework"
-            BlueprintName = "TaylorFramework"
+            BlueprintIdentifier = "692FCBDC1BED2A2400DB5F16"
+            BuildableName = "Taylor.app"
+            BlueprintName = "Taylor"
             ReferencedContainer = "container:Taylor.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
-      <CommandLineArguments>
-         <CommandLineArgument
-            argument = "-p /Users/s2dent/Desktop/taylor"
-            isEnabled = "NO">
-         </CommandLineArgument>
-      </CommandLineArguments>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -100,15 +91,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "69B4DC881BED1BD3005EA7D5"
-            BuildableName = "TaylorFramework.framework"
-            BlueprintName = "TaylorFramework"
+            BlueprintIdentifier = "692FCBDC1BED2A2400DB5F16"
+            BuildableName = "Taylor.app"
+            BlueprintName = "Taylor"
             ReferencedContainer = "container:Taylor.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

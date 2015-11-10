@@ -36,7 +36,6 @@ public final class Taylor {
     }
     
     func printParameters(parameters: Options, directory dir: String) {
-        printer.printInfo("Parameters: \(arguments.arguments)")
         printer.printInfo("Output directory: \(dir)")
     }
     
