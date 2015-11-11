@@ -21,8 +21,6 @@ public final class Taylor {
      Runs Taylor which initializes all other modules.
     */
     public func run() {
-        printer.printInfo("Taylor \(version)")
-        
         guard let rootPath = arguments.rootPath else {
             printer.printError("No path received.");
             return

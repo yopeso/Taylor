@@ -11,8 +11,8 @@ import Cocoa
 let DefaultExtensionType = "swift"
 let DefaultExcludesFile = "/excludes.yml"
 
-let HelpOptionKey = "help"
-private let HelpOptionValueKey = "help requested"
+let FlagKey = "flag"
+let FlagKeyValue = "info requested"
 
 let errorPrinter = Printer(verbosityLevel: .Error)
 
@@ -21,8 +21,6 @@ If you change this class don't forget to fix his mock for actual right tests (if
 */
 class MessageProcessor {
     
-    let HelpFileName = "Help"
-    let HelpFileExtension = "txt"
     let optionsProcessor = OptionsProcessor()
     
     func processArguments(arguments:[String]) -> Options {
@@ -43,38 +41,12 @@ class MessageProcessor {
     func processMultipleArguments(arguments:[String]) -> Options {
         if arguments.count.isOdd {
             return optionsProcessor.processOptions(arguments)
-        } else if arguments.count.isEven && arguments.second == HelpOptionKey {
-            return helpRequestedResultDictionary()
+        } else if arguments.containFlags {
+            FlagBuilder().flag(arguments.second!).execute()
+            exit(0)
         }
         errorPrinter.printError("\nInvalid options was indicated")
-        
         return Options()
-    }
-    
-    
-    private func helpRequestedResultDictionary() -> Options {
-        do {
-            try printHelp()
-        } catch {
-            errorPrinter.printError("\nCan't find help file")
-            return Options()
-        }
-        return [HelpOptionKey : [HelpOptionValueKey]]
-    }
-    
-    
-    func printHelp() throws {
-        let bundle = NSBundle(forClass: self.dynamicType)
-        guard let helpFile = bundle.pathForResource(HelpFileName, ofType: HelpFileExtension) else {
-            throw CommandLineError.CannotReadFromHelpFile
-        }
-        do {
-            let helpMessage = try String(contentsOfFile: helpFile)
-            let printer = Printer(verbosityLevel: .Info)
-            printer.printInfo(helpMessage)
-        } catch {
-            throw CommandLineError.CannotReadFromHelpFile
-        }
     }
     
     

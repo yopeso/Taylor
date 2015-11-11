@@ -42,27 +42,12 @@ class MockMessageProcessor : MessageProcessor {
         if arguments.count.isOdd {
             let optionsProcessor = MockOptionsProcessor()
             return optionsProcessor.processOptions(arguments)
-        } else if (arguments.count == 2) && (arguments.second == HelpOptionKey) {
-            do {
-                try printHelp()
-            } catch {
-                print("\nCan't find help file")
-                return [String : [String]]()
-            }
-            return ["help" : ["help requested"]]
+        } else if arguments.containFlags {
+            FlagBuilder().flag(arguments.second!).execute()
+            return [FlagKey : [FlagKeyValue]]
         } else {
             print("\nInvalid options was indicated")
-            return [String : [String]]()
-        }
-    }
-    
-    
-    override func printHelp() throws {
-        let bundle = NSBundle(forClass: self.dynamicType)
-        if let helpMessage = bundle.pathForResource("ErrorHelp", ofType: "txt") {
-            print(helpMessage)
-        } else {
-            throw CommandLineError.CannotReadFromHelpFile
+            return Options()
         }
     }
     

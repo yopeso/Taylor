@@ -8,8 +8,8 @@
 
 import Foundation
 
-let VerbosityLong = "--verbosity"
-let VerbosityShort = "-v"
+let VerbosityLong = "--verbosityLevel"
+let VerbosityShort = "-vl"
 
 let VerbosityLevelInfo = "info"
 let VerbosityLevelWarning = "warning"
