@@ -37,23 +37,14 @@ struct Caprice {
     private func checkIfErrorOccursOrHelpRequested(dictionary: Options) -> Options {
         var dictionary = dictionary
         if dictionary.isEmpty {
-            printHelp()
+            HelpFlag().execute()
             dictionary[ResultDictionaryPathKey] = messageProcessor.defaultDictionaryWithPathAndType()[ResultDictionaryPathKey]
         }
-        if let _ = dictionary[HelpOptionKey] {
+        if let _ = dictionary[FlagKey] {
             dictionary = Options()
         }
         
         return dictionary
-    }
-    
-    
-    private func printHelp() {
-        do {
-            try messageProcessor.printHelp()
-        } catch {
-            errorPrinter.printError("\nCan't find help file")
-        }
     }
     
     /**

@@ -170,6 +170,11 @@
 		69B4DDB51BED223C005EA7D5 /* SwiftXPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B4DC1B1BED169B005EA7D5 /* SwiftXPC.framework */; };
 		69B4DDB61BED223C005EA7D5 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B4DC1C1BED169B005EA7D5 /* SWXMLHash.framework */; };
 		69EA54F91BEE209C007713A6 /* Taylor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EA54F81BEE209C007713A6 /* Taylor.swift */; };
+		B143B20F1BF33B98009BFC99 /* FlagsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B143B20E1BF33B98009BFC99 /* FlagsTests.swift */; };
+		B16FAEBC1BF23E3D00882B64 /* Flag.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16FAEBB1BF23E3D00882B64 /* Flag.swift */; };
+		B16FAEBE1BF23EC000882B64 /* HelpFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16FAEBD1BF23EC000882B64 /* HelpFlag.swift */; };
+		B16FAEC01BF2470800882B64 /* VersionFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16FAEBF1BF2470800882B64 /* VersionFlag.swift */; };
+		B16FAEC41BF2484D00882B64 /* FlagBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16FAEC31BF2484D00882B64 /* FlagBuilder.swift */; };
 		B199EC0B1BF0C9E200B6155A /* RuleCustomizationOptionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B199EC0A1BF0C9E200B6155A /* RuleCustomizationOptionTests.swift */; };
 		B199EC0D1BF0D33800B6155A /* ExcludesFileOptionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B199EC0C1BF0D33800B6155A /* ExcludesFileOptionTests.swift */; };
 		B199EC0F1BF0E21000B6155A /* ReporterOptionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B199EC0E1BF0E21000B6155A /* ReporterOptionTests.swift */; };
@@ -443,6 +448,11 @@
 		A36B2F001B98244F0049F590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3CB26501B9DF6FA00802E80 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Nimble.framework; sourceTree = "<group>"; };
 		A3CB26511B9DF6FA00802E80 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Quick.framework; sourceTree = "<group>"; };
+		B143B20E1BF33B98009BFC99 /* FlagsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlagsTests.swift; sourceTree = "<group>"; };
+		B16FAEBB1BF23E3D00882B64 /* Flag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flag.swift; sourceTree = "<group>"; };
+		B16FAEBD1BF23EC000882B64 /* HelpFlag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpFlag.swift; sourceTree = "<group>"; };
+		B16FAEBF1BF2470800882B64 /* VersionFlag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionFlag.swift; sourceTree = "<group>"; };
+		B16FAEC31BF2484D00882B64 /* FlagBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlagBuilder.swift; sourceTree = "<group>"; };
 		B199EC0A1BF0C9E200B6155A /* RuleCustomizationOptionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuleCustomizationOptionTests.swift; sourceTree = "<group>"; };
 		B199EC0C1BF0D33800B6155A /* ExcludesFileOptionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExcludesFileOptionTests.swift; sourceTree = "<group>"; };
 		B199EC0E1BF0E21000B6155A /* ReporterOptionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReporterOptionTests.swift; sourceTree = "<group>"; };
@@ -587,9 +597,9 @@
 		69B4DBE81BED169B005EA7D5 /* caprices */ = {
 			isa = PBXGroup;
 			children = (
+				69B4DBFF1BED169B005EA7D5 /* PublicInterface */,
 				69B4DBE91BED169B005EA7D5 /* Exceptions */,
 				69B4DBEB1BED169B005EA7D5 /* ProccessingMessage */,
-				69B4DBFF1BED169B005EA7D5 /* PublicInterface */,
 				69B4DC011BED169B005EA7D5 /* Resources */,
 			);
 			path = caprices;
@@ -610,10 +620,12 @@
 				69B4DBED1BED169B005EA7D5 /* ExcludesFileReader.swift */,
 				69B4DBEE1BED169B005EA7D5 /* InformationalOptionsFactory.swift */,
 				69B4DBEF1BED169B005EA7D5 /* MessageProcessor.swift */,
-				69B4DBF01BED169B005EA7D5 /* Options */,
+				B16FAEC31BF2484D00882B64 /* FlagBuilder.swift */,
 				69B4DBFC1BED169B005EA7D5 /* OptionsProcessor.swift */,
 				69B4DBFD1BED169B005EA7D5 /* OptionsValidator.swift */,
 				69B4DBFE1BED169B005EA7D5 /* PathFormatter.swift */,
+				B16FAEBA1BF23E1100882B64 /* Flags */,
+				69B4DBF01BED169B005EA7D5 /* Options */,
 			);
 			path = ProccessingMessage;
 			sourceTree = "<group>";
@@ -884,6 +896,7 @@
 				B199EC0A1BF0C9E200B6155A /* RuleCustomizationOptionTests.swift */,
 				B199EC0C1BF0D33800B6155A /* ExcludesFileOptionTests.swift */,
 				B199EC0E1BF0E21000B6155A /* ReporterOptionTests.swift */,
+				B143B20E1BF33B98009BFC99 /* FlagsTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -1028,6 +1041,16 @@
 				A3CB26511B9DF6FA00802E80 /* Quick.framework */,
 			);
 			path = CommonTestsSources;
+			sourceTree = "<group>";
+		};
+		B16FAEBA1BF23E1100882B64 /* Flags */ = {
+			isa = PBXGroup;
+			children = (
+				B16FAEBB1BF23E3D00882B64 /* Flag.swift */,
+				B16FAEBD1BF23EC000882B64 /* HelpFlag.swift */,
+				B16FAEBF1BF2470800882B64 /* VersionFlag.swift */,
+			);
+			path = Flags;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1249,10 +1272,12 @@
 				69B4DCB01BED1C2D005EA7D5 /* Finder.swift in Sources */,
 				69B4DCB11BED1C2D005EA7D5 /* FinderExtensions.swift in Sources */,
 				69B4DCB21BED1C2D005EA7D5 /* Parameters.swift in Sources */,
+				B16FAEBE1BF23EC000882B64 /* HelpFlag.swift in Sources */,
 				69B4DCB31BED1C2D005EA7D5 /* Printer.swift in Sources */,
 				69EA54F91BEE209C007713A6 /* Taylor.swift in Sources */,
 				69B4DCB41BED1C2D005EA7D5 /* ComponentFinder.swift in Sources */,
 				694C26DC1BF0E2C0002A543F /* PySwiftyRegex.swift in Sources */,
+				B16FAEC01BF2470800882B64 /* VersionFlag.swift in Sources */,
 				69B4DCB51BED1C2D005EA7D5 /* PacMan.swift in Sources */,
 				69B4DCB61BED1C2D005EA7D5 /* ExtendedComponent.swift in Sources */,
 				69B4DCB81BED1C2D005EA7D5 /* Scissors.swift in Sources */,
@@ -1268,6 +1293,7 @@
 				69B4DCC21BED1C2D005EA7D5 /* Reporter.swift in Sources */,
 				69B4DCC31BED1C2D005EA7D5 /* CyclomaticComplexityRule.swift in Sources */,
 				69B4DCC41BED1C2D005EA7D5 /* ExcessiveParameterListRule.swift in Sources */,
+				B16FAEC41BF2484D00882B64 /* FlagBuilder.swift in Sources */,
 				69B4DCC51BED1C2D005EA7D5 /* NestedBlockDepthRule.swift in Sources */,
 				69B4DCC61BED1C2D005EA7D5 /* NPathComplexityRule.swift in Sources */,
 				69B4DCC71BED1C2D005EA7D5 /* NumberOfLinesInClassRule.swift in Sources */,
@@ -1303,6 +1329,7 @@
 				69B4DC9B1BED1BF6005EA7D5 /* ExcludesFileReader.swift in Sources */,
 				69B4DC9C1BED1BF6005EA7D5 /* InformationalOptionsFactory.swift in Sources */,
 				69B4DC9D1BED1BF6005EA7D5 /* MessageProcessor.swift in Sources */,
+				B16FAEBC1BF23E3D00882B64 /* Flag.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1341,6 +1368,7 @@
 				69B4DD641BED1FE1005EA7D5 /* PacManTests.swift in Sources */,
 				69B4DD751BED1FE1005EA7D5 /* TestsHelper.swift in Sources */,
 				69B4DD401BED1FE0005EA7D5 /* CapriceTests.swift in Sources */,
+				B143B20F1BF33B98009BFC99 /* FlagsTests.swift in Sources */,
 				69B4DD741BED1FE1005EA7D5 /* TemperTests.swift in Sources */,
 				69B4DD701BED1FE1005EA7D5 /* NumberOfMethodsInClassRuleTests.swift in Sources */,
 				69B4DD681BED1FE1005EA7D5 /* CyclomaticComplexityTests.swift in Sources */,
@@ -1416,6 +1444,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1435,6 +1464,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Taylor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -1448,8 +1478,8 @@
 		69B4DC931BED1BD3005EA7D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1481,8 +1511,8 @@
 		69B4DC941BED1BD3005EA7D5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;

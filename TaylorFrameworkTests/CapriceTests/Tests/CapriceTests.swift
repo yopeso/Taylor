@@ -54,7 +54,7 @@ class CapriceTests: QuickSpec {
             context("when help is requested") {
                 
                 it("should return an empty dictionary") {
-                    let inputArguments = [currentPath, HelpOptionKey]
+                    let inputArguments = [currentPath, FlagKey]
                     caprice.processArguments(inputArguments)
                     expect(caprice.getRuleThresholds()).to(beEmpty())
                 }

@@ -56,3 +56,19 @@ extension String {
         } catch { return "" }
     }
 }
+
+extension Array where Element: StringType {
+    
+    var containFlags: Bool {
+        return self.count == 2 && Flags.contains(String(self[1]))
+    }
+    
+}
+
+extension NSFileManager {
+    func isDirectory(path: String) -> Bool {
+        var isDirectory = ObjCBool(false)
+        self.fileExistsAtPath(path, isDirectory: &isDirectory)
+        return Bool(isDirectory)
+    }
+}

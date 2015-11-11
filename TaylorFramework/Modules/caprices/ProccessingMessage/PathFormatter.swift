@@ -84,14 +84,6 @@ extension Path {
     
 }
 
-extension NSFileManager {
-    func isDirectory(path: String) -> Bool {
-        var isDirectory = ObjCBool(false)
-        self.fileExistsAtPath(path, isDirectory: &isDirectory)
-        return Bool(isDirectory)
-    }
-}
-
 func +(lhs: [Path], rhs: Path) -> [Path] {
     return lhs + [rhs]
 }

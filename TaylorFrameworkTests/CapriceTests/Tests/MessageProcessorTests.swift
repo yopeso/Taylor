@@ -154,14 +154,9 @@ class MessageProcessorTests: QuickSpec {
             
             context("when single option is indicated") {
                 
-                it("should return empty dictionary if help was indicated") {
-                    let inputArguments = [currentPath, HelpOptionKey]
-                    expect(messageProcessor.processArguments(inputArguments)).to(equal(["help" : ["help requested"]]))
-                }
-                
                 it("should return error dictionary if help file wasnt found") {
                     let mockMessageProcessor = MockMessageProcessor()
-                    let inputArguments = [currentPath, HelpOptionKey]
+                    let inputArguments = [currentPath, FlagKey]
                     expect(mockMessageProcessor.processArguments(inputArguments)).to(beEmpty())
                 }
                 it("should return empty dictionary if single option is not help") {
