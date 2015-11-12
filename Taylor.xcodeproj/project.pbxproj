@@ -19,6 +19,7 @@
 		54EFF4F31BF0F98000EE8E94 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A3CB26511B9DF6FA00802E80 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		54EFF4F41BF0F98B00EE8E94 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CB26501B9DF6FA00802E80 /* Nimble.framework */; };
 		54EFF4F51BF0F98B00EE8E94 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CB26511B9DF6FA00802E80 /* Quick.framework */; };
+		692E462F1BF3AEF100D0886E /* Help.txt in Resources */ = {isa = PBXBuildFile; fileRef = 692E462E1BF3AEF100D0886E /* Help.txt */; };
 		692FCBEB1BED2B7F00DB5F16 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692FCBEA1BED2B7F00DB5F16 /* main.swift */; };
 		692FCBEE1BED2C2A00DB5F16 /* TaylorFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B4DC891BED1BD3005EA7D5 /* TaylorFramework.framework */; };
 		692FCBF31BED2E2A00DB5F16 /* install in Resources */ = {isa = PBXBuildFile; fileRef = 692FCBF21BED2E2A00DB5F16 /* install */; };
@@ -28,6 +29,7 @@
 		694C26D71BF0AF5C002A543F /* ReRegexObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694C26D31BF0AF5C002A543F /* ReRegexObjectTests.swift */; };
 		694C26D81BF0AF5C002A543F /* ReTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694C26D41BF0AF5C002A543F /* ReTests.swift */; };
 		694C26DC1BF0E2C0002A543F /* PySwiftyRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694C26DB1BF0E2C0002A543F /* PySwiftyRegex.swift */; };
+		69517A1A1BF25C31000B3F1B /* CLIReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69517A191BF25C31000B3F1B /* CLIReporter.swift */; };
 		69B4DC951BED1BF6005EA7D5 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B4DBE41BED169B005EA7D5 /* Component.swift */; };
 		69B4DC961BED1BF6005EA7D5 /* ComponentRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B4DBE51BED169B005EA7D5 /* ComponentRange.swift */; };
 		69B4DC971BED1BF6005EA7D5 /* FileContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B4DBE61BED169B005EA7D5 /* FileContent.swift */; };
@@ -87,7 +89,6 @@
 		69B4DCCE1BED1C2D005EA7D5 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B4DC3D1BED169B005EA7D5 /* Array+Extensions.swift */; };
 		69B4DCCF1BED1C2D005EA7D5 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B4DC3E1BED169B005EA7D5 /* Timer.swift */; };
 		69B4DCD01BED1C2D005EA7D5 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B4DC3F1BED169B005EA7D5 /* Version.swift */; };
-		69B4DCD21BED1C66005EA7D5 /* Help.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69B4DC021BED169B005EA7D5 /* Help.txt */; };
 		69B4DCD31BED1C66005EA7D5 /* pacman.py in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69B4DC131BED169B005EA7D5 /* pacman.py */; };
 		69B4DCD41BED1C66005EA7D5 /* prototype_map.dat in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69B4DC151BED169B005EA7D5 /* prototype_map.dat */; };
 		69B4DCD61BED1C75005EA7D5 /* SourceKittenFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69B4DC1A1BED169B005EA7D5 /* SourceKittenFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -181,6 +182,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		692E46301BF3B18500D0886E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A36B2EEE1B98244F0049F590 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 692FCBDC1BED2A2400DB5F16;
+			remoteInfo = Taylor;
+		};
 		692FCBEC1BED2BE700DB5F16 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A36B2EEE1B98244F0049F590 /* Project object */;
@@ -225,7 +233,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				69B4DCD21BED1C66005EA7D5 /* Help.txt in CopyFiles */,
 				69B4DCD31BED1C66005EA7D5 /* pacman.py in CopyFiles */,
 				69B4DCD41BED1C66005EA7D5 /* prototype_map.dat in CopyFiles */,
 			);
@@ -304,6 +311,7 @@
 		54EFF4E91BF0F94800EE8E94 /* ReporterComparator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReporterComparator.swift; sourceTree = "<group>"; };
 		54EFF4EB1BF0F94800EE8E94 /* TaylorIntegrationTestResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TaylorIntegrationTestResources.bundle; sourceTree = "<group>"; };
 		54EFF4EC1BF0F94800EE8E94 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		692E462E1BF3AEF100D0886E /* Help.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Help.txt; sourceTree = "<group>"; };
 		692FCBDD1BED2A2400DB5F16 /* Taylor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taylor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		692FCBEA1BED2B7F00DB5F16 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		692FCBF21BED2E2A00DB5F16 /* install */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = install; sourceTree = "<group>"; };
@@ -312,6 +320,7 @@
 		694C26D31BF0AF5C002A543F /* ReRegexObjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReRegexObjectTests.swift; sourceTree = "<group>"; };
 		694C26D41BF0AF5C002A543F /* ReTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReTests.swift; sourceTree = "<group>"; };
 		694C26DB1BF0E2C0002A543F /* PySwiftyRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PySwiftyRegex.swift; sourceTree = "<group>"; };
+		69517A191BF25C31000B3F1B /* CLIReporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLIReporter.swift; sourceTree = "<group>"; };
 		69B4DBDE1BED169B005EA7D5 /* TaylorFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaylorFramework.h; path = Headers/TaylorFramework.h; sourceTree = "<group>"; };
 		69B4DBE41BED169B005EA7D5 /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		69B4DBE51BED169B005EA7D5 /* ComponentRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentRange.swift; sourceTree = "<group>"; };
@@ -337,7 +346,6 @@
 		69B4DBFD1BED169B005EA7D5 /* OptionsValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsValidator.swift; sourceTree = "<group>"; };
 		69B4DBFE1BED169B005EA7D5 /* PathFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathFormatter.swift; sourceTree = "<group>"; };
 		69B4DC001BED169B005EA7D5 /* Caprice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Caprice.swift; sourceTree = "<group>"; };
-		69B4DC021BED169B005EA7D5 /* Help.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Help.txt; sourceTree = "<group>"; };
 		69B4DC041BED169B005EA7D5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		69B4DC051BED169B005EA7D5 /* ErrorPrinter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorPrinter.swift; sourceTree = "<group>"; };
 		69B4DC061BED169B005EA7D5 /* Excludes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Excludes.swift; sourceTree = "<group>"; };
@@ -600,7 +608,6 @@
 				69B4DBFF1BED169B005EA7D5 /* PublicInterface */,
 				69B4DBE91BED169B005EA7D5 /* Exceptions */,
 				69B4DBEB1BED169B005EA7D5 /* ProccessingMessage */,
-				69B4DC011BED169B005EA7D5 /* Resources */,
 			);
 			path = caprices;
 			sourceTree = "<group>";
@@ -654,14 +661,6 @@
 				69B4DC001BED169B005EA7D5 /* Caprice.swift */,
 			);
 			path = PublicInterface;
-			sourceTree = "<group>";
-		};
-		69B4DC011BED169B005EA7D5 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				69B4DC021BED169B005EA7D5 /* Help.txt */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		69B4DC031BED169B005EA7D5 /* finder */ = {
@@ -812,6 +811,7 @@
 		69B4DC391BED169B005EA7D5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				692E462E1BF3AEF100D0886E /* Help.txt */,
 				69B4DC3A1BED169B005EA7D5 /* Info.plist */,
 			);
 			path = Resources;
@@ -825,6 +825,7 @@
 				69B4DC3D1BED169B005EA7D5 /* Array+Extensions.swift */,
 				69B4DC3E1BED169B005EA7D5 /* Timer.swift */,
 				69B4DC3F1BED169B005EA7D5 /* Version.swift */,
+				69517A191BF25C31000B3F1B /* CLIReporter.swift */,
 			);
 			path = Taylor;
 			sourceTree = "<group>";
@@ -1078,6 +1079,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				692E46311BF3B18500D0886E /* PBXTargetDependency */,
 			);
 			name = TaylorIntegrationTest;
 			productName = TaylorIntegrationTest;
@@ -1166,7 +1168,6 @@
 					};
 					69B4DCE11BED1F87005EA7D5 = {
 						CreatedOnToolsVersion = 7.1;
-						TestTargetID = A36B2EF51B98244F0049F590;
 					};
 				};
 			};
@@ -1212,6 +1213,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				692E462F1BF3AEF100D0886E /* Help.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1317,6 +1319,7 @@
 				69B4DCA61BED1C00005EA7D5 /* RuleCustomizationOption.swift in Sources */,
 				69B4DCA71BED1C00005EA7D5 /* TypeOption.swift in Sources */,
 				69B4DCA81BED1C00005EA7D5 /* VerbosityOption.swift in Sources */,
+				69517A1A1BF25C31000B3F1B /* CLIReporter.swift in Sources */,
 				69B4DCA91BED1C00005EA7D5 /* OptionsProcessor.swift in Sources */,
 				69B4DCAA1BED1C00005EA7D5 /* OptionsValidator.swift in Sources */,
 				69B4DCAB1BED1C00005EA7D5 /* PathFormatter.swift in Sources */,
@@ -1390,6 +1393,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		692E46311BF3B18500D0886E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 692FCBDC1BED2A2400DB5F16 /* Taylor */;
+			targetProxy = 692E46301BF3B18500D0886E /* PBXContainerItemProxy */;
+		};
 		692FCBED1BED2BE700DB5F16 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 69B4DC881BED1BD3005EA7D5 /* TaylorFramework */;
@@ -1540,7 +1548,6 @@
 		69B4DCEA1BED1F87005EA7D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1556,14 +1563,12 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.TaylorFrameworkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "";
 			};
 			name = Debug;
 		};
 		69B4DCEB1BED1F87005EA7D5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1575,7 +1580,6 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.TaylorFrameworkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "";
 			};
 			name = Release;
 		};

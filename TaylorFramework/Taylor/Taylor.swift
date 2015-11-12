@@ -48,25 +48,31 @@ public final class Taylor {
         configureTemper(rootPath)
         checkFileContents(getFileContents())
     }
+    
     func configureTemper(rootPath: String) {
         temper = Temper(outputPath: rootPath)
         temper?.setLimits(arguments.thresholds)
         setReporters(temper!)
     }
+    
     func getFileContents() -> [FileContent] {
         let paths = Finder().findFilePaths(parameters: arguments.finderParameters)
         let scissors = Scissors(printer: printer)
         
         return parallelizeTokenization(scissors, paths: paths)
     }
+    
     func checkFileContents(contents: [FileContent]) {
         guard let temper = temper else { return }
         
         for content in contents {
             temper.checkContent(content)
         }
+        CLIReporter(results: temper.resultsOutput, printer: printer).outputResults()
         temper.finishTempering()
     }
+    
+    
     func parallelizeTokenization(scissors: Scissors, paths: [String]) -> [FileContent] {
         return paths.pmap { scissors.tokenizeFileAtPath($0) }
     }
@@ -79,9 +85,11 @@ public final class Taylor {
             printer.printInfo("No reporters were indicated. Default(PMD) reporter will be used.")
         }
     }
+    
     func createReporters(dictionaryRepresentations: [OutputReporter]) -> [Reporter] {
         return dictionaryRepresentations.map { makeReporterFromRepresentation($0) }
     }
+    
     func makeReporterFromRepresentation(representation: OutputReporter) -> Reporter {
         guard let typeAsString = representation["type"] else {
             printer.printError("Reporters: No type was indicated.")
@@ -95,7 +103,9 @@ public final class Taylor {
             return Reporter(type: type)
         }
     }
+    
     // MARK: Easter Egg
+    
     func runEasterEggIfNeeded() {
         if arguments.arguments["type"] != nil { return }
         defer { exit(EXIT_FAILURE) }
@@ -107,14 +117,17 @@ public final class Taylor {
             printer.printError("O Kay! Next time :)")
         }
     }
+    
     func formatInputString(string: String) -> String {
         return string.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet());
     }
+    
     func input() -> String {
         let keyboard = NSFileHandle.fileHandleWithStandardInput()
         let inputData = keyboard.availableData
         return NSString(data: inputData, encoding: NSUTF8StringEncoding) as! String
     }
+    
     func runEasterEgg() {
         guard let rootPath = arguments.rootPath else { exit(EXIT_FAILURE) }
         
