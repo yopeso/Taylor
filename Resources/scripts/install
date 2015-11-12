@@ -12,19 +12,19 @@ ALIASNAME="taylor"
 if [ ! -d $LOCALDIR ]
 then
     echo "Make Dir $LOCALDIR"
-    sudo mkdir -p $LOCALDIR
+    mkdir -p $LOCALDIR
 fi
 
 # Copy application to /usr/local/bin
 echo "Copy $ALIASNAME to $LOCALDIR"
-sudo rm -rf "$LOCALDIR/$APPNAME.app"
-sudo cp -R $APPPATH $LOCALDIR
+rm -rf "$LOCALDIR/$APPNAME.app"
+cp -R $APPPATH $LOCALDIR
 
 # Make shortcut from /usr/local/bin/Taylor/Contents/MacOS/Taylor to /usr/local/bin
 echo "Make $ALIASNAME shortcut to $LOCALDIR"
 cd $LOCALDIR
-sudo rm $LOCALDIR/$ALIASNAME
-sudo ln -s "$EXEPATH/$ALIASNAME"
+rm $LOCALDIR/$ALIASNAME
+ln -s "$EXEPATH/$ALIASNAME"
 
 # Create ~/.bash_profile if not exist
 if [ ! -e $BASH_PROFILE ]
