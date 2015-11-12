@@ -47,13 +47,12 @@ public final class Taylor {
     
     func getFileContents() -> [FileContent] {
         let paths = Finder().findFilePaths(parameters: arguments.finderParameters)
-        let scissors = Scissors(printer: printer)
         
-        return parallelizeTokenization(scissors, paths: paths)
+        return parallelizeTokenization(paths)
     }
     
-    func parallelizeTokenization(scissors: Scissors, paths: [String]) -> [FileContent] {
-        return paths.pmap { scissors.tokenizeFileAtPath($0) }
+    func parallelizeTokenization(paths: [String]) -> [FileContent] {
+        return paths.pmap { Scissors().tokenizeFileAtPath($0) }
     }
     
     func inputArgumentsErrorCommited(arguments: Options) -> Bool {
