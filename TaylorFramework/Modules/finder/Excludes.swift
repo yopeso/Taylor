@@ -9,11 +9,14 @@
 import Foundation
 
 class Excludes {
+    
     let excludePaths: [FilePath]
+    
     lazy var absolutePaths: [FilePath] = {
         let paths = self.excludePaths.filter { $0.hasPrefix(DirectorySuffix.Slash) }
         return paths.map { $0.substringFromIndex($0.startIndex.successor()) }
         }()
+    
     lazy var relativePaths: [String] = {
         return self.excludePaths.filter { !$0.hasPrefix(DirectorySuffix.Slash) &&
             !$0.hasSuffix(DirectorySuffix.AnyCombination) &&

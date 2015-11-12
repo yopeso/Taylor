@@ -15,6 +15,8 @@ let ResultDictionaryErrorKey = "error"
 
 
 typealias Options = [String: [String]]
+let ErrorKey = "error"
+let ErrorDictionary = [ErrorKey: [""]]
 
 struct Caprice {
 
@@ -38,7 +40,7 @@ struct Caprice {
         var dictionary = dictionary
         if dictionary.isEmpty {
             HelpFlag().execute()
-            dictionary[ResultDictionaryPathKey] = messageProcessor.defaultDictionaryWithPathAndType()[ResultDictionaryPathKey]
+            dictionary = ErrorDictionary
         }
         if let _ = dictionary[FlagKey] {
             dictionary = Options()

@@ -90,4 +90,5 @@ extension SequenceType where Generator.Element == FilePath {
     func deleteSuffixes() -> [FilePath] {
         return self.map { $0.deleteSuffixes() }
     }
+    
 }

@@ -5,8 +5,8 @@
 //  Created by Dmitrii Celpan on 9/9/15.
 //  Copyright © 2015 yopeso.dmitriicelpan. All rights reserved.
 //
-import Foundation
 
+import Foundation
 
 let ReporterLong = "--reporter"
 let ReporterShort = "-r"
@@ -16,13 +16,13 @@ let PmdType = "pmd"
 let PlainType = "plain"
 let XcodeType = "xcode"
 
+let ReporterTypeKey = "type"
+let ReporterFileNameKey = "fileName"
 
 class ReporterOption: InformationalOption {
-    var analyzePath = NSFileManager.defaultManager().currentDirectoryPath
-    let TypeKey = "type"
-    let OutputPathKey = "fileName"
-    var argumentSeparator = ":"
     
+    var analyzePath = NSFileManager.defaultManager().currentDirectoryPath
+    var argumentSeparator = ":"
     var optionArgument : String
     let name = "ReporterOption"
     
@@ -33,8 +33,8 @@ class ReporterOption: InformationalOption {
     func dictionaryFromArgument() -> OutputReporter {
         var reporterDictionary = OutputReporter()
         let reporterComponents = optionArgument.componentsSeparatedByString(argumentSeparator)
-        reporterDictionary[TypeKey] = reporterComponents.first
-        reporterDictionary[OutputPathKey] = getOutputPathKey(reporterComponents)
+        reporterDictionary[ReporterTypeKey] = reporterComponents.first
+        reporterDictionary[ReporterFileNameKey] = getOutputPathKey(reporterComponents)
         
         return reporterDictionary
     }

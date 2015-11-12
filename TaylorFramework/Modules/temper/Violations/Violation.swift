@@ -9,11 +9,13 @@
 import Foundation
 
 class Violation {
+    
     var path : String
     let component : Component
     let rule : Rule
     let message : String
     let value : Int
+    
     init(component: Component, rule: Rule, message: String, path: String, value: Int) {
         self.component = component
         self.rule = rule
