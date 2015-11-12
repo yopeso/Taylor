@@ -40,4 +40,5 @@ class Parameters {
         }
         self.init(parameters: (pathValue!.first!, excludesValue!, filesValue!, fileType!.first!))
     }
+    
 }

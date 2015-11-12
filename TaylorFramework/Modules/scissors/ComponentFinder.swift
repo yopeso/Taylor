@@ -10,8 +10,10 @@ import Foundation
 import SourceKittenFramework
 
 final class ComponentFinder {
+    
     let text: String
     let syntaxMap: SyntaxMap
+    
     init(text: String, syntaxMap: SyntaxMap = SyntaxMap(tokens: [])) {
         self.text = text
         self.syntaxMap = syntaxMap
@@ -128,4 +130,5 @@ final class ComponentFinder {
         
         return observers
     }
+    
 }

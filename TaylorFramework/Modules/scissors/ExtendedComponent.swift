@@ -11,6 +11,7 @@ import SourceKittenFramework
 import SwiftXPC
 
 final class ExtendedComponent {
+    
     var offsetRange: OffsetRange
     var type: ComponentType
     var name: String?
@@ -100,7 +101,6 @@ final class ExtendedComponent {
             self.insert($0)
         }
     }
-    
     
     func variablesToFunctions() {
         for component in self.components {

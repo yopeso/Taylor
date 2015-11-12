@@ -119,7 +119,7 @@ class CapriceTests: QuickSpec {
                     let typeArg = "someType"
                     let inputArguments = [currentPath, PathLong, pathArg, ExcludeLong, excludeArg, FileLong, fileArg, TypeLong, typeArg, ReporterLong, "invalidReporter", RuleCustomizationLong, "ExcessiveMethodLength=10", VerbosityLong, VerbosityLevelWarning]
                     let resultDictionary = localCaprice.processArguments(inputArguments)
-                    expect(resultDictionary).to(equal([ResultDictionaryPathKey : [currentPath]]))
+                    expect(resultDictionary).to(equal([ErrorKey: [""]]))
                     expect(localCaprice.getVerbosityLevel()).to(equal(VerbosityLevel.Error))
                     expect(localCaprice.getReporters()).to(beEmpty())
                     expect(localCaprice.getRuleThresholds()).to(beEmpty())
@@ -127,9 +127,9 @@ class CapriceTests: QuickSpec {
                 
             }
             
-            it("should return current path if error pccures") {
+            it("should return error dictionary if error occures") {
                 let inputArguments = [currentPath, ExcludesFileLong, "errorFile.txt"]
-                expect(caprice.processArguments(inputArguments)).to(equal([ResultDictionaryPathKey : [currentPath]]))
+                expect(caprice.processArguments(inputArguments)).to(equal([ErrorKey: [""]]))
             }
             
         }
