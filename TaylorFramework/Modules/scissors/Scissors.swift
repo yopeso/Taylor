@@ -10,15 +10,12 @@ import Foundation
 import SourceKittenFramework
 
 class Scissors {
-    let printer: Printer
     
     /**
     Initialize Scissors by passing in a Printer.
     - parameter printer: Printer to be used as message or error output.
     */
-    init(printer: Printer = Printer(verbosityLevel: VerbosityLevel.Error)) {
-        self.printer = printer
-    }
+    init() { }
     
     /**
     Tokenizes contents of file at a given path by converting it to a tree of components.
