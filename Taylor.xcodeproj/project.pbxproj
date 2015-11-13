@@ -86,8 +86,8 @@
 		69B4DCCE1BED1C2D005EA7D5 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B4DC3D1BED169B005EA7D5 /* Array+Extensions.swift */; };
 		69B4DCCF1BED1C2D005EA7D5 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B4DC3E1BED169B005EA7D5 /* Timer.swift */; };
 		69B4DCD01BED1C2D005EA7D5 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B4DC3F1BED169B005EA7D5 /* Version.swift */; };
-		69B4DCD31BED1C66005EA7D5 /* pacman.py in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69B4DC131BED169B005EA7D5 /* pacman.py */; };
-		69B4DCD41BED1C66005EA7D5 /* prototype_map.dat in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69B4DC151BED169B005EA7D5 /* prototype_map.dat */; };
+		69B4DCD31BED1C66005EA7D5 /* (null) in CopyFiles */ = {isa = PBXBuildFile; };
+		69B4DCD41BED1C66005EA7D5 /* (null) in CopyFiles */ = {isa = PBXBuildFile; };
 		69B4DCD61BED1C75005EA7D5 /* SourceKittenFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69B4DC1A1BED169B005EA7D5 /* SourceKittenFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		69B4DCD71BED1C75005EA7D5 /* SwiftXPC.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69B4DC1B1BED169B005EA7D5 /* SwiftXPC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		69B4DCD81BED1C75005EA7D5 /* SWXMLHash.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69B4DC1C1BED169B005EA7D5 /* SWXMLHash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -239,9 +239,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				69B4DCD31BED1C66005EA7D5 /* pacman.py in CopyFiles */,
-				69B4DCD41BED1C66005EA7D5 /* prototype_map.dat in CopyFiles */,
-				69B4DCD21BED1C66005EA7D5 /* Help.txt in CopyFiles */,
+				69B4DCD31BED1C66005EA7D5 /* (null) in CopyFiles */,
+				69B4DCD41BED1C66005EA7D5 /* (null) in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,11 +584,11 @@
 				69B4DC3B1BED169B005EA7D5 /* Taylor */,
 				B143B2101BF381D8009BFC99 /* EasterEggs */,
 				69B4DBE01BED169B005EA7D5 /* BoundariesKit */,
-				69B4DBE81BED169B005EA7D5 /* caprices */,
-				69B4DC031BED169B005EA7D5 /* finder */,
+				69B4DBE81BED169B005EA7D5 /* Caprices */,
+				69B4DC031BED169B005EA7D5 /* Finder */,
 				69B4DC0A1BED169B005EA7D5 /* Printer */,
-				69B4DC0F1BED169B005EA7D5 /* scissors */,
-				69B4DC201BED169B005EA7D5 /* temper */,
+				69B4DC0F1BED169B005EA7D5 /* Scissors */,
+				69B4DC201BED169B005EA7D5 /* Temper */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -605,13 +604,14 @@
 			path = BoundariesKit;
 			sourceTree = "<group>";
 		};
-		69B4DBE81BED169B005EA7D5 /* caprices */ = {
+		69B4DBE81BED169B005EA7D5 /* Caprices */ = {
 			isa = PBXGroup;
 			children = (
 				69B4DBFF1BED169B005EA7D5 /* PublicInterface */,
 				69B4DBE91BED169B005EA7D5 /* Exceptions */,
 				69B4DBEB1BED169B005EA7D5 /* ProccessingMessage */,
 			);
+			name = Caprices;
 			path = caprices;
 			sourceTree = "<group>";
 		};
@@ -666,7 +666,7 @@
 			path = PublicInterface;
 			sourceTree = "<group>";
 		};
-		69B4DC031BED169B005EA7D5 /* finder */ = {
+		69B4DC031BED169B005EA7D5 /* Finder */ = {
 			isa = PBXGroup;
 			children = (
 				69B4DC041BED169B005EA7D5 /* Constants.swift */,
@@ -676,6 +676,7 @@
 				69B4DC081BED169B005EA7D5 /* FinderExtensions.swift */,
 				69B4DC091BED169B005EA7D5 /* Parameters.swift */,
 			);
+			name = Finder;
 			path = finder;
 			sourceTree = "<group>";
 		};
@@ -687,7 +688,7 @@
 			path = Printer;
 			sourceTree = "<group>";
 		};
-		69B4DC0F1BED169B005EA7D5 /* scissors */ = {
+		69B4DC0F1BED169B005EA7D5 /* Scissors */ = {
 			isa = PBXGroup;
 			children = (
 				69B4DC101BED169B005EA7D5 /* ComponentFinder.swift */,
@@ -698,6 +699,7 @@
 				69B4DC1E1BED169B005EA7D5 /* ScissorsExtensions.swift */,
 				69B4DC1F1BED169B005EA7D5 /* Tree.swift */,
 			);
+			name = Scissors;
 			path = scissors;
 			sourceTree = "<group>";
 		};
@@ -719,7 +721,7 @@
 			path = Frameworks;
 			sourceTree = "<group>";
 		};
-		69B4DC201BED169B005EA7D5 /* temper */ = {
+		69B4DC201BED169B005EA7D5 /* Temper */ = {
 			isa = PBXGroup;
 			children = (
 				69B4DC211BED169B005EA7D5 /* Components */,
@@ -729,6 +731,7 @@
 				69B4DC2D1BED169B005EA7D5 /* Rules */,
 				69B4DC371BED169B005EA7D5 /* Violations */,
 			);
+			name = Temper;
 			path = temper;
 			sourceTree = "<group>";
 		};
