@@ -12,24 +12,24 @@ typealias ResultOutput = (path: String, warnings: Int)
 
 final class CLIReporter {
     let results: [ResultOutput]
-    let printer: Printer
     
-    init(results: [ResultOutput], printer: Printer) {
+    init(results: [ResultOutput]) {
         self.results = results
-        self.printer = printer
     }
     
-    func outputResults() {
-        guard results.count > 0 else { return }
-        let numberOfExtraCharacters = 7
+    func getResultsString() -> String {
+        guard results.count > 0 else { return "" }
+        let numberOfExtraCharacters = 9
         let maximalPathChars = results.map { $0.path }.maxLength
         let totalChars = maximalPathChars + numberOfExtraCharacters
-        print("=", times: totalChars)
-        results.forEach {
-            printer.printInfo(getResultOutputString($0, numberOfCharacters: maximalPathChars))
-        }
-        print("=", times: totalChars)
-        printStatisticsString()
+        
+        return results.reduce(getBorderString(totalChars)) {
+            $0 + getResultOutputString($1, numberOfCharacters: maximalPathChars) + "\n"
+        } + getBorderString(totalChars) + getStatisticsString()
+    }
+    
+    private func getBorderString(size: Int) -> String {
+        return "=" * size + "\n"
     }
     
     private func getResultOutputString(resultOutput: ResultOutput, numberOfCharacters charNum: Int) -> String {
@@ -38,12 +38,8 @@ final class CLIReporter {
         return warningsString + resultOutput.path + missingSpacesString + "|"
     }
     
-    private func printStatisticsString() {
-        printer.printInfo("Found \(results.reduce(0) { $0 + $1.warnings }) violations in \(results.count) files.")
-    }
-    
-    private func print(string: String, times: Int) {
-        printer.printInfo(string * times)
+    private func getStatisticsString() -> String {
+        return "Found \(results.reduce(0) { $0 + $1.warnings }) violations in \(results.count) files."
     }
     
     private func getResultsString(warnings: Int) -> String {

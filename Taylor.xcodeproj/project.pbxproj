@@ -22,6 +22,7 @@
 		692FCBEE1BED2C2A00DB5F16 /* TaylorFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B4DC891BED1BD3005EA7D5 /* TaylorFramework.framework */; };
 		692FCBF31BED2E2A00DB5F16 /* install in Resources */ = {isa = PBXBuildFile; fileRef = 692FCBF21BED2E2A00DB5F16 /* install */; };
 		692FCBF41BED2E8400DB5F16 /* TaylorFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69B4DC891BED1BD3005EA7D5 /* TaylorFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		69461E0A1BF61D2C00AF5B5C /* CLIReporterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69461E091BF61D2C00AF5B5C /* CLIReporterTests.swift */; };
 		694C26D51BF0AF5C002A543F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 694C26D11BF0AF5C002A543F /* Info.plist */; };
 		694C26D61BF0AF5C002A543F /* ReMatchObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694C26D21BF0AF5C002A543F /* ReMatchObjectTests.swift */; };
 		694C26D71BF0AF5C002A543F /* ReRegexObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694C26D31BF0AF5C002A543F /* ReRegexObjectTests.swift */; };
@@ -319,6 +320,7 @@
 		692FCBDD1BED2A2400DB5F16 /* Taylor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taylor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		692FCBEA1BED2B7F00DB5F16 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		692FCBF21BED2E2A00DB5F16 /* install */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = install; sourceTree = "<group>"; };
+		69461E091BF61D2C00AF5B5C /* CLIReporterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLIReporterTests.swift; sourceTree = "<group>"; };
 		694C26D11BF0AF5C002A543F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		694C26D21BF0AF5C002A543F /* ReMatchObjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReMatchObjectTests.swift; sourceTree = "<group>"; };
 		694C26D31BF0AF5C002A543F /* ReRegexObjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReRegexObjectTests.swift; sourceTree = "<group>"; };
@@ -1082,6 +1084,7 @@
 		B1F4BEC81BF50071003C584A /* TaylorTests */ = {
 			isa = PBXGroup;
 			children = (
+				69461E091BF61D2C00AF5B5C /* CLIReporterTests.swift */,
 				B1F4BEC91BF50071003C584A /* Array+ExtensionsTests.swift */,
 				B1F4BECA1BF50071003C584A /* TimerTests.swift */,
 				B1F4BECD1BF500B7003C584A /* ReportGeneratorTests.swift */,
@@ -1406,6 +1409,7 @@
 				69B4DD691BED1FE1005EA7D5 /* DictionaryTests.swift in Sources */,
 				69B4DD6A1BED1FE1005EA7D5 /* ExcessiveParameterListRuleTests.swift in Sources */,
 				694C26D71BF0AF5C002A543F /* ReRegexObjectTests.swift in Sources */,
+				69461E0A1BF61D2C00AF5B5C /* CLIReporterTests.swift in Sources */,
 				69B4DD6D1BED1FE1005EA7D5 /* NSFileManagerTests.swift in Sources */,
 				69B4DD751BED1FE1005EA7D5 /* TestsHelper.swift in Sources */,
 				69B4DD401BED1FE0005EA7D5 /* CapriceTests.swift in Sources */,

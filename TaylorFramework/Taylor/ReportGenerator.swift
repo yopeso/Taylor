@@ -35,7 +35,7 @@ class ReportGenerator {
         for content in contents {
             temper.checkContent(content)
         }
-        CLIReporter(results: temper.resultsOutput, printer: printer).outputResults()
+        printer.printInfo(CLIReporter(results: temper.resultsOutput).getResultsString())
         temper.finishTempering()
     }
     
