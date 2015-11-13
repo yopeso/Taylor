@@ -20,6 +20,7 @@ final class CLIReporter {
     }
     
     func outputResults() {
+        guard results.count > 0 else { return }
         let numberOfExtraCharacters = 7
         let maximalPathChars = results.map { $0.path }.maxLength
         let totalChars = maximalPathChars + numberOfExtraCharacters
@@ -59,6 +60,6 @@ final class CLIReporter {
 
 extension Array where Element: StringType {
     var maxLength: Int {
-        return self.reduce(Int.min) { max($0, String($1).characters.count) }
+        return self.reduce(0) { max($0, String($1).characters.count) }
     }
 }
