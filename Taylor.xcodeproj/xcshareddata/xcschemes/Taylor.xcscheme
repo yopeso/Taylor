@@ -84,7 +84,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-v"
+            argument = "-vl info -ef ${PROJECT_DIR}/exclude.yopeso.yml -p ${PROJECT_DIR}"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
