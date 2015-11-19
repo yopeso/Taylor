@@ -1,0 +1,876 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>BITSystemProfile Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">HockeySDK-Mac 3.2.0 </a></h1>
+				<a id="developerHome" href="../index.html">Bit Stadium GmbH</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">BITSystemProfile Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/deviceIdentifier">&nbsp;&nbsp;&nbsp;&nbsp;+ deviceIdentifier</option>
+	
+	<option value="//api/name/deviceModel">&nbsp;&nbsp;&nbsp;&nbsp;+ deviceModel</option>
+	
+	<option value="//api/name/sharedSystemProfile">&nbsp;&nbsp;&nbsp;&nbsp;+ sharedSystemProfile</option>
+	
+	<option value="//api/name/systemVersionString">&nbsp;&nbsp;&nbsp;&nbsp;+ systemVersionString</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/startUsage">&nbsp;&nbsp;&nbsp;&nbsp;- startUsage</option>
+	
+	<option value="//api/name/startUsageForBundle:">&nbsp;&nbsp;&nbsp;&nbsp;- startUsageForBundle:</option>
+	
+	<option value="//api/name/stopUsage">&nbsp;&nbsp;&nbsp;&nbsp;- stopUsage</option>
+	
+	<option value="//api/name/systemData">&nbsp;&nbsp;&nbsp;&nbsp;- systemData</option>
+	
+	<option value="//api/name/systemDataForBundle:">&nbsp;&nbsp;&nbsp;&nbsp;- systemDataForBundle:</option>
+	
+	<option value="//api/name/systemUsageData">&nbsp;&nbsp;&nbsp;&nbsp;- systemUsageData</option>
+	
+	<option value="//api/name/systemUsageDataForBundle:">&nbsp;&nbsp;&nbsp;&nbsp;- systemUsageDataForBundle:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Initialization">Initialization</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Generic">Generic</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Usage time">Usage time</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/deviceIdentifier">deviceIdentifier</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/deviceModel">deviceModel</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedSystemProfile">sharedSystemProfile</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/systemVersionString">systemVersionString</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/startUsage">startUsage</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/startUsageForBundle:">startUsageForBundle:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/stopUsage">stopUsage</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/systemData">systemData</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/systemDataForBundle:">systemDataForBundle:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/systemUsageData">systemUsageData</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/systemUsageDataForBundle:">systemUsageDataForBundle:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="BITSystemProfile Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">BITSystemProfile Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">BITSystemProfile.h</td>
+</tr>
+						</tbody></table></div>
+					
+                    
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Helper class for accessing system information and measuring usage time</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						<a title="Initialization" name="task_Initialization"></a>
+						<h3 class="subsubtitle task-title">Initialization</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sharedSystemProfile">+&nbsp;sharedSystemProfile</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Generic" name="task_Generic"></a>
+						<h3 class="subsubtitle task-title">Generic</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/deviceIdentifier">+&nbsp;deviceIdentifier</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/deviceModel">+&nbsp;deviceModel</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/systemVersionString">+&nbsp;systemVersionString</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/systemDataForBundle:">&ndash;&nbsp;systemDataForBundle:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/systemData">&ndash;&nbsp;systemData</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/systemUsageDataForBundle:">&ndash;&nbsp;systemUsageDataForBundle:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/systemUsageData">&ndash;&nbsp;systemUsageData</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Usage time" name="task_Usage time"></a>
+						<h3 class="subsubtitle task-title">Usage time</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/startUsageForBundle:">&ndash;&nbsp;startUsageForBundle:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/startUsage">&ndash;&nbsp;startUsage</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/stopUsage">&ndash;&nbsp;stopUsage</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/deviceIdentifier" title="deviceIdentifier"></a>
+	<h3 class="subsubtitle method-title">deviceIdentifier</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Return the current devices identifier</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (NSString *)deviceIdentifier</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>NSString with the device identifier</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BITSystemProfile.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/deviceModel" title="deviceModel"></a>
+	<h3 class="subsubtitle method-title">deviceModel</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Return the current device model</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (NSString *)deviceModel</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>NSString with the repesentation of the device model</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BITSystemProfile.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sharedSystemProfile" title="sharedSystemProfile"></a>
+	<h3 class="subsubtitle method-title">sharedSystemProfile</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns a shared BITSystemProfile object</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (BITSystemProfile *)sharedSystemProfile</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A singleton BITSystemProfile instance ready use</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BITSystemProfile.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/systemVersionString" title="systemVersionString"></a>
+	<h3 class="subsubtitle method-title">systemVersionString</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Return the system version of the current device</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (NSString *)systemVersionString</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>NSString with the system version</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BITSystemProfile.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/startUsage" title="startUsage"></a>
+	<h3 class="subsubtitle method-title">startUsage</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Start recording usage time for the current app</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)startUsage</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BITSystemProfile.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/startUsageForBundle:" title="startUsageForBundle:"></a>
+	<h3 class="subsubtitle method-title">startUsageForBundle:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Start recording usage time for a specific app or framework bundle</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)startUsageForBundle:(NSBundle *)<em>bundle</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>bundle</em></dt>
+			<dd><p>The app or framework bundle to measure the usage time for</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BITSystemProfile.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/stopUsage" title="stopUsage"></a>
+	<h3 class="subsubtitle method-title">stopUsage</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>stop recording usage time</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)stopUsage</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BITSystemProfile.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/systemData" title="systemData"></a>
+	<h3 class="subsubtitle method-title">systemData</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Return an array with system data</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSMutableArray *)systemData</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>NSMutableArray with system data</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BITSystemProfile.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/systemDataForBundle:" title="systemDataForBundle:"></a>
+	<h3 class="subsubtitle method-title">systemDataForBundle:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Return an array with system data for a specific bundle</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSMutableArray *)systemDataForBundle:(NSBundle *)<em>bundle</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>bundle</em></dt>
+			<dd><p>The app or framework bundle to get the system data from</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>NSMutableArrray with system data</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BITSystemProfile.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/systemUsageData" title="systemUsageData"></a>
+	<h3 class="subsubtitle method-title">systemUsageData</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Return an array with system usage data that can be used with Sparkle</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSMutableArray *)systemUsageData</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>NSMutableArray with system and app usage data</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Call this method in the Sparkle delegate <code>feedParametersForUpdater:sendingSystemProfile:</code>
+to attach system and app data to each Sparkle request</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BITSystemProfile.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/systemUsageDataForBundle:" title="systemUsageDataForBundle:"></a>
+	<h3 class="subsubtitle method-title">systemUsageDataForBundle:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Return an array with system usage data for a specific bundle</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSMutableArray *)systemUsageDataForBundle:(NSBundle *)<em>bundle</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>bundle</em></dt>
+			<dd><p>The app or framework bundle to get the usage data from</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>NSMutableArray with system and bundle usage data</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BITSystemProfile.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+                    
+                    
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2015 Bit Stadium GmbH. All rights reserved. (Last updated: 2015-09-21)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>
