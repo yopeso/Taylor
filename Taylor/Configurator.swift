@@ -17,6 +17,7 @@ struct Configurator {
     func startHockeyApp() {
         let HockeyAppID = "2ef85847b3c541d5b5644ae017ce6b1b"
         BITHockeyManager.sharedHockeyManager().configureWithIdentifier(HockeyAppID)
+        BITHockeyManager.sharedHockeyManager().crashManager.autoSubmitCrashReport = true
         BITHockeyManager.sharedHockeyManager().startManager()
     }
 }
