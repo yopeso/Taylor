@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Excludes {
+final class Excludes {
     
     let excludePaths: [FilePath]
     

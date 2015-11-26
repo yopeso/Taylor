@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PMDCoordinator : WritingCoordinator {
+final class PMDCoordinator : WritingCoordinator {
     
     func writeViolations(violations: [Violation], atPath path: String) {
         NSFileManager().removeFileAtPath(path)

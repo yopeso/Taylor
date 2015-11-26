@@ -9,7 +9,7 @@
 import Foundation
 import SourceKittenFramework
 
-class Scissors {
+final class Scissors {
     
     /**
     Initialize Scissors by passing in a Printer.

@@ -8,7 +8,7 @@
 
 let Flags = [HelpShort, HelpLong, VersionLong, VersionShort]
 
-class FlagBuilder {
+final class FlagBuilder {
     
     func flag(flag: String) -> Flag {
         switch flag {

@@ -15,7 +15,7 @@ let VerbosityLevelInfo = "info"
 let VerbosityLevelWarning = "warning"
 let VerbosityLevelError = "error"
 
-class VerbosityOption: InformationalOption {
+final class VerbosityOption: InformationalOption {
     var isValid = Bool(false)
     var analyzePath = NSFileManager.defaultManager().currentDirectoryPath
     var optionArgument : String

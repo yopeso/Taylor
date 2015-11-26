@@ -7,7 +7,7 @@
 //
 
 
-class NestedBlockDepthRule : Rule {
+final class NestedBlockDepthRule : Rule {
     let rule = "NestedBlockDepth"
     var priority : Int = 3 {
         willSet {

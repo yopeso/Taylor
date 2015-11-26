@@ -6,7 +6,7 @@
 //  Copyright © 2015 YOPESO. All rights reserved.
 //
 
-class Parameters {
+final class Parameters {
     var rootPath: String
     var excludes: [String]
     var files: [String]

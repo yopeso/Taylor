@@ -7,7 +7,7 @@
 //
 
 
-class OptionsValidator {
+final class OptionsValidator {
     
     func validateForSingleOptions(options: [Option]) -> Bool {
         do {

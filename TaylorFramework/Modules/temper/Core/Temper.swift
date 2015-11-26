@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Temper {
+final class Temper {
     
     var rules : [Rule]
     private let outputPath : String

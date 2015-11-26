@@ -19,7 +19,7 @@ let XcodeType = "xcode"
 let ReporterTypeKey = "type"
 let ReporterFileNameKey = "fileName"
 
-class ReporterOption: InformationalOption {
+final class ReporterOption: InformationalOption {
     
     var analyzePath = NSFileManager.defaultManager().currentDirectoryPath
     var argumentSeparator = ":"

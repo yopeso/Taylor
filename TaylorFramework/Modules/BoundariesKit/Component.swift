@@ -35,7 +35,7 @@ enum ComponentType {
     case Other
 }
 
-class Component {
+final class Component {
     var parent: Component?
     let type: ComponentType
     let range: ComponentRange

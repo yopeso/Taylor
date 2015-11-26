@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Finder {
+final class Finder {
     private let fileManager: NSFileManager
     private let printer: ErrorPrinter
     private var parameters: Parameters!
