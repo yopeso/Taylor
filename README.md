@@ -54,7 +54,7 @@ To use Taylor from command line run it as follows:
 
 ### Excludes
 
-If you want to exclude a file or folder from checking create a new `.yml` file and call Taylor with
+If you want to exclude some files or folders from checking create a new `.yml` file and call Taylor with
 `-ef /path/to/file` argument.  
 Default filename is `excludes.yml` and its default location is the folder
 specified by `--path` flag.  
