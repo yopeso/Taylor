@@ -10,9 +10,18 @@ import Quick
 import Nimble
 import TaylorFramework
 
+enum IntegrationTestsError: ErrorType {
+    case FileNotFount(String)
+    case BundleResourceNotFount(String)
+}
+
 class TaylorIntegrationTest: QuickSpec {
     
-    let runTaskPath = NSProcessInfo.processInfo().environment["PWD"]! + "/Taylor.app/Contents/MacOS/Taylor"
+    var runTaskPath : String {
+        let testBundle = NSBundle(forClass: self.dynamicType)
+        let bundlePath = testBundle.bundlePath
+        return bundlePath.stringWithoutLastComponent().stringByAppendingPathComponent("Taylor.app/Contents/MacOS/Taylor")
+    }
     
     var analyzeFilesPath = String()
     var resultFilePath = String()
@@ -31,41 +40,62 @@ class TaylorIntegrationTest: QuickSpec {
     }
     
     
-    func initializePaths() {
+    func initializePaths() throws {
         let mainBundle = NSBundle(forClass: self.dynamicType)
-        analyzeFilesPath = mainBundle.resourcePath!.stringByAppendingPathComponent("AnalyzeFiles")
-        resultFilePath = mainBundle.resourcePath!.stringByAppendingPathComponent("Result")
+        if let resourcesPath = mainBundle.resourcePath {
+            analyzeFilesPath = resourcesPath.stringByAppendingPathComponent("AnalyzeFiles")
+            resultFilePath = resourcesPath.stringByAppendingPathComponent("Result")
+        } else {
+            throw IntegrationTestsError.BundleResourceNotFount(mainBundle.bundlePath)
+        }
     }
     
     
     func createResources() throws {
         let mainBundle = NSBundle(forClass: self.dynamicType)
-        let bundle = NSBundle(path: mainBundle.pathForResource("TaylorIntegrationTestResources", ofType: "bundle")!)!
-        try NSFileManager.defaultManager().createDirectoryAtPath(analyzeFilesPath, withIntermediateDirectories: false, attributes: nil)
-        try NSFileManager.defaultManager().createDirectoryAtPath(resultFilePath, withIntermediateDirectories: false, attributes: nil)
-        try createFiles(bundle)
-        try createResultFile(bundle)
+        if let path = mainBundle.pathForResource("TaylorIntegrationTestResources", ofType: "bundle"), let bundle = NSBundle(path: path) {
+            if !NSFileManager.defaultManager().fileExistsAtPath(analyzeFilesPath) {
+                try NSFileManager.defaultManager().createDirectoryAtPath(analyzeFilesPath, withIntermediateDirectories: false, attributes: nil)
+            }
+            if !NSFileManager.defaultManager().fileExistsAtPath(resultFilePath) {
+                try NSFileManager.defaultManager().createDirectoryAtPath(resultFilePath, withIntermediateDirectories: false, attributes: nil)
+            }
+            try createFiles(bundle)
+            try createResultFile(bundle)
+        } else {
+            throw IntegrationTestsError.BundleResourceNotFount("TaylorIntegrationTestResources")
+        }
     }
     
     
     private func createFiles(sourceBundle: NSBundle) throws {
         for fileName in fileNames {
-            let path = sourceBundle.pathForResource(fileName.stringByTrimmingTheExtension, ofType: fileName.fileExtension)!
-            try NSFileManager.defaultManager().copyItemAtPath(path, toPath: self.analyzeFilesPath.stringByAppendingPathComponent(path.lastPathComponent))
+            if let path = sourceBundle.pathForResource(fileName.stringByTrimmingTheExtension, ofType: fileName.fileExtension) {
+                try NSFileManager.defaultManager().copyItemAtPath(path, toPath: self.analyzeFilesPath.stringByAppendingPathComponent(path.lastPathComponent))
+            } else {
+                throw IntegrationTestsError.BundleResourceNotFount("fileName")
+            }
         }
     }
     
     
     private func createResultFile(sourceBundle: NSBundle) throws {
-        let path = sourceBundle.pathForResource(resultFileName.stringByTrimmingTheExtension, ofType: resultFileName.fileExtension)!
-        resultFilePath = resultFilePath.stringByAppendingPathComponent(resultFileName)
-        try NSFileManager.defaultManager().copyItemAtPath(path, toPath: self.resultFilePath)
+        if let path = sourceBundle.pathForResource(resultFileName.stringByTrimmingTheExtension, ofType: resultFileName.fileExtension) {
+            resultFilePath = resultFilePath.stringByAppendingPathComponent(resultFileName)
+            try NSFileManager.defaultManager().copyItemAtPath(path, toPath: self.resultFilePath)
+        } else {
+            throw IntegrationTestsError.BundleResourceNotFount(resultFileName)
+        }
     }
     
     
     override func spec() {
         
-        self.initializePaths()
+        do {
+            try self.initializePaths()
+        } catch let error {
+            print(error)
+        }
         
         describe("Taylor") {
             
