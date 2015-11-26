@@ -31,10 +31,13 @@ class TaylorIntegrationTests: QuickSpec {
     }
     
     
-    func initializePaths() {
-        let mainBundle = NSBundle(forClass: self.dynamicType)
-        analyzeFilesPath = mainBundle.resourcePath!.stringByAppendingPathComponent("AnalyzeFiles")
-        resultFilePath = mainBundle.resourcePath!.stringByAppendingPathComponent("ResultFiles")
+    func initializePaths() throws {
+        if let resourcePath = NSBundle(forClass: self.dynamicType).resourcePath {
+        analyzeFilesPath = resourcePath.stringByAppendingPathComponent("AnalyzeFiles")
+        resultFilePath = resourcePath.stringByAppendingPathComponent("ResultFiles")
+        } else {
+            throw TestError.BundleResourcePathNotFound
+        }
     }
     
     
@@ -65,15 +68,27 @@ class TaylorIntegrationTests: QuickSpec {
     
     
     private func createResultFile(sourceBundle: NSBundle) throws {
-        let path = sourceBundle.pathForResource(resultFileName.stringByTrimmingTheExtension, ofType: resultFileName.fileExtension)!
+        let filename = resultFileName.stringByTrimmingTheExtension
+        if let path = sourceBundle.pathForResource(filename, ofType: resultFileName.fileExtension) {
         resultFilePath = resultFilePath.stringByAppendingPathComponent(resultFileName)
-        try NSFileManager.defaultManager().copyItemAtPath(path, toPath: self.resultFilePath)
+            try NSFileManager.defaultManager().copyItemAtPath(path, toPath: self.resultFilePath)
+        } else {
+            throw TestError.FileNotFound(filename)
+        }
     }
     
     
+    enum TestError: ErrorType {
+        case FileNotFound(String)
+        case BundleResourcePathNotFound
+    }
+    
     override func spec() {
-        
-        self.initializePaths()
+        do {
+            try self.initializePaths()
+        } catch _ {
+            print("Error occured while initializing paths.")
+        }
         
         describe("Taylor") {
             
