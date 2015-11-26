@@ -43,9 +43,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "54EFF4DC1BF0F92500EE8E94"
-               BuildableName = "TaylorIntegrationTest.xctest"
-               BlueprintName = "TaylorIntegrationTest"
+               BlueprintIdentifier = "542EF25F1C076F7F004C7477"
+               BuildableName = "TaylorIntegrationTests.xctest"
+               BlueprintName = "TaylorIntegrationTests"
                ReferencedContainer = "container:Taylor.xcodeproj">
             </BuildableReference>
          </TestableReference>
