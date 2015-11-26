@@ -1,32 +1,32 @@
+![](Assets/logo.png)
+
 # Taylor
 
-A tool aimed to increase Swift code quality, based on many rules from
-[OCLint](https://github.com/oclint/oclint).
+A tool aimed to increase Swift code quality, by checking for conformance to code metrics.
 
 Taylor uses [SourceKitten](https://github.com/S2dentik/SourceKitten) to a more
 accurate [AST](http://clang.llvm.org/docs/IntroductionToTheClangAST.html)
-representation and produces the final report in either **Xcode, JSON, PMD** or **plain text** formats.
+representation and generates the final report in either **Xcode, JSON, PMD** or **plain text** formats.
 
 ## Installation
 
 You can install Taylor by cloning the project and running `make install`
-(**Xcode 7 Beta 6 or higher required**).
+(**latest version of Xcode required**).
 
 ## Usage
 
 ### Xcode
 
-Integrate Taylor into an Xcode scheme to get warnings displayed in the IDE. Just
-add a new "Run Script Phase" with:
+To get warnings displayed in the IDE add a new **Run Script Phase** with:
 
 ```bash
 if which taylor >/dev/null; then
-taylor -p ${PROJECT_DIR} -r xcode
+  taylor -p ${PROJECT_DIR} -r xcode
 else
-echo "Taylor not installed"
+  echo "Taylor not installed"
 fi
 ```
-![](runscriptphase.png)
+![](Assets/runscriptphase.png)
 
 ### Command line 
 
@@ -51,8 +51,11 @@ To use Taylor from command line run it as follows:
 
 ### Excludes
 
-Configure Taylor by creating a `.yml` file and calling Taylor with `taylor -ef /path/to/file`
-argument enabled. The following excludes formats can be specified:
+If you want to exclude a file or folder from checking create a new `.yml` file and call Taylor with
+`-ef /path/to/file` argument.  
+Default filename is `excludes.yml` and its default location is the folder
+specified by `--path` flag.  
+The following excluding name formats can be specified:
 
 ```yaml
 - "/path/to/file"
@@ -61,6 +64,50 @@ argument enabled. The following excludes formats can be specified:
 - "Folder/*"
 - ".*Tests.*"
 ```
+
+
+### Rules
+
+These are the code quality rules currently existing:
+
+#### Excessive Class Length
+
+[Number of lines in a class]("http://phpmd.org/rules/codesize.html#excessiveclasslength") must not exceed given limit. Default limit = `400 lines`.  
+Example: `taylor -rc ExcessiveClassLength=100`.
+
+#### Excessive Method Length
+
+[Number of lines in a method]("http://phpmd.org/rules/codesize.html#excessivemethodlength") must not exceed given limit. Default limit = `20 lines`.  
+Example: `taylor -rc ExcessiveMethodLength=10`.
+
+#### Too Many Methods
+
+[Number of methods in a class]("http://phpmd.org/rules/codesize.html#toomanymethods") must not exceed given limit. Default limit = `10 methods`.  
+Example: `taylor -rc TooManyMethods=7`.
+
+#### Cyclomatic Complexity
+
+[Cyclomatic Complexity](http://phpmd.org/rules/codesize.html#cyclomaticcomplexity) number of a method must not exceed maximal admitted value. Default = `5`.  
+Example: `taylor -rc CyclomaticComplexity=10`.
+
+#### Nested Block Depth
+
+[Block Depth](http://docs.oclint.org/en/dev/rules/size.html#nestedblockdepth) of a method must not exceed maximal admitted value. Default = `5`.  
+Example: `taylor -rc NestedBlockDepth=7`.
+
+#### N-Path Complexity
+
+[N-Path Complexity](http://phpmd.org/rules/codesize.html#npathcomplexity) of a method must not exceed maximal admitted value. Default = `100`.  
+Example: `taylor -rc NPathComplexity=50`.
+
+#### Excessive Parameter List
+
+[Number of parameters](http://phpmd.org/rules/codesize.html#excessiveparameterlist) given to a method must not exceed maximal admitted value. Default = `3`.  
+Example: `taylor -rc ExcessiveParameterList=5`.
+
+## Credits
+
+Thanks to [JP Simard](https://github.com/jpsim) for developing [SourceKitten](https://github.com/jpsim/SourceKitten).
 
 ## License
 
