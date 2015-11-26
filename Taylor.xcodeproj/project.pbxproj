@@ -1176,7 +1176,6 @@
 				692FCBDA1BED2A2400DB5F16 /* Frameworks */,
 				692FCBDB1BED2A2400DB5F16 /* Resources */,
 				692FCBEF1BED2DD400DB5F16 /* CopyFiles */,
-				694C26DD1BF1012B002A543F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1310,22 +1309,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		694C26DD1BF1012B002A543F /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which taylor >/dev/null; then\n  taylor -p ${PROJECT_DIR} -ef ${PROJECT_DIR}/exclude.yopeso.yml -r xcode\nelse\n  echo \"Taylor not installed\"\nfi";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		54EFF4D91BF0F92500EE8E94 /* Sources */ = {
