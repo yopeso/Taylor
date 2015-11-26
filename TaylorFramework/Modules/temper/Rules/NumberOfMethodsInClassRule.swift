@@ -7,7 +7,7 @@
 //
 
 
-class NumberOfMethodsInClassRule : Rule {
+final class NumberOfMethodsInClassRule : Rule {
     let rule = "TooManyMethods"
     var priority : Int = 3 {
         willSet {

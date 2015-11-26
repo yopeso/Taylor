@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ReportGenerator {
+final class ReportGenerator {
     
     var temper: Temper!
     var arguments: Arguments

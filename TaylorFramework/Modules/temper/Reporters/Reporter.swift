@@ -65,7 +65,7 @@ enum ReporterType {
     }
 }
 
-class Reporter {
+final class Reporter {
     let type : ReporterType
     let fileName : String
     

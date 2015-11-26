@@ -19,7 +19,7 @@ let NestedBlockDepth = "NestedBlockDepth"
 let NPathComplexity = "NPathComplexity"
 let ExcessiveParameterList = "ExcessiveParameterList"
 
-class RuleCustomizationOption: InformationalOption {
+final class RuleCustomizationOption: InformationalOption {
     var analyzePath = NSFileManager.defaultManager().currentDirectoryPath
     var optionArgument : String
     let name = "RuleCustomizationOption"

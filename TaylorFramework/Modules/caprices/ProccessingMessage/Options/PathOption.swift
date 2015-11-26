@@ -11,7 +11,7 @@ import Foundation
 let PathLong = "--path"
 let PathShort = "-p"
 
-class PathOption: ExecutableOption {
+final class PathOption: ExecutableOption {
     var analyzePath = NSFileManager.defaultManager().currentDirectoryPath
     var optionArgument: Path
     let name = "PathOption"

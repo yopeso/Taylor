@@ -11,7 +11,7 @@ import Foundation
 let ExcludesFileLong = "--excludeFile"
 let ExcludesFileShort = "-ef"
 
-class ExcludesFileOption: ExecutableOption {
+final class ExcludesFileOption: ExecutableOption {
     var analyzePath = NSFileManager.defaultManager().currentDirectoryPath
     var optionArgument : Path
     let name = "ExcludesFileOption"

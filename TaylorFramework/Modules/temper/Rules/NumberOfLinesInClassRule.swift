@@ -7,7 +7,7 @@
 //
 
 
-class NumberOfLinesInClassRule : Rule {
+final class NumberOfLinesInClassRule : Rule {
     let rule = "ExcessiveClassLength"
     var priority : Int = 3 {
         willSet {

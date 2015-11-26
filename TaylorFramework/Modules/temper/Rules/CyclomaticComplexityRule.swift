@@ -7,7 +7,7 @@
 //
 
 
-class CyclomaticComplexityRule : Rule {
+final class CyclomaticComplexityRule : Rule {
     let rule = "CyclomaticComplexity"
     var priority : Int = 2 {
         willSet {

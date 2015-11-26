@@ -7,7 +7,7 @@
 //
 
 
-class ExcessiveParameterListRule : Rule {
+final class ExcessiveParameterListRule : Rule {
     var rule = "ExcessiveParameterList"
     var priority : Int = 3 {
         willSet {

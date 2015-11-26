@@ -8,7 +8,7 @@
 
 import Foundation
 
-class OutputCoordinator {
+final class OutputCoordinator {
     var filePath : String
     var reporters = [Reporter]()
     

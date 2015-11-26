@@ -7,7 +7,7 @@
 //
 
 
-class ErrorPrinter {
+final class ErrorPrinter {
     let printer: Printer
     
     init(printer: Printer) {

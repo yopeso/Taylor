@@ -12,7 +12,7 @@ import Foundation
 typealias OutputReporter = [String: String]
 typealias CustomizationRule = [String: Int]
 
-class InformationalOptionsFactory {
+final class InformationalOptionsFactory {
     
     var infoOptions: [InformationalOption]
     var reporterTypes = [OutputReporter]()

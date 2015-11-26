@@ -25,7 +25,7 @@ struct DefaultReporter : Printing {
 }
 
 
-class Printer {
+final class Printer {
     
     private let reporter: Printing
     let verbosity: VerbosityLevel

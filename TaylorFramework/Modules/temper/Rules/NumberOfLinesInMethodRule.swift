@@ -7,7 +7,7 @@
 //
 
 
-class NumberOfLinesInMethodRule : Rule {
+final class NumberOfLinesInMethodRule : Rule {
     let rule = "ExcessiveMethodLength"
     var priority : Int = 3 {
         willSet {

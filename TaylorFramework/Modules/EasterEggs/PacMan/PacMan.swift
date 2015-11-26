@@ -15,7 +15,7 @@ let PLAYER = "@"
 let GHOST = "$"
 let POINT = "."
 
-class Pacman {
+final class Pacman {
     let paths: [String]
     let fileManager = NSFileManager.defaultManager()
     
@@ -74,7 +74,7 @@ class Pacman {
     }
 }
 
-class Generator {
+final class Generator {
     let mapString: String
     let paths: [String]
     

@@ -7,7 +7,7 @@
 //
 
 
-class NPathComplexityRule : Rule {
+final class NPathComplexityRule : Rule {
     let rule = "NPathComplexity"
     var priority : Int = 2 {
         willSet {
