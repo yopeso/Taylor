@@ -14,6 +14,11 @@ class NestedBlockDepthRuleTests: QuickSpec {
     var component = TestsHelper().componentForCyclomaticComplexity
     let rule = NestedBlockDepthRule()
     override func spec() {
+        
+        beforeEach {
+            self.component = TestsHelper().componentForCyclomaticComplexity
+        }
+        
         describe("Nested Block Depth Rule") {
             it("should return true and nil when the depth is smaller than the limit") {
                 let result = self.rule.checkComponent(self.component, atPath: "path")

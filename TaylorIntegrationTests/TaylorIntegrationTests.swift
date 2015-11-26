@@ -12,7 +12,11 @@ import TaylorFramework
 
 class TaylorIntegrationTests: QuickSpec {
     
-    let runTaskPath = NSProcessInfo.processInfo().environment["PWD"]! + "/Taylor.app/Contents/MacOS/Taylor"
+    var runTaskPath : String? {
+        let testBundle = NSBundle(forClass: self.dynamicType)
+        let bundlePath = testBundle.bundlePath.stringWithoutLastComponent()
+        return bundlePath.stringByAppendingPathComponent("Taylor.app/Contents/MacOS/Taylor")
+    }
     
     var analyzeFilesPath = String()
     var resultFilePath = String()
@@ -44,7 +48,12 @@ class TaylorIntegrationTests: QuickSpec {
     func createResources() throws {
         let fileManager = NSFileManager.defaultManager()
         let mainBundle = NSBundle(forClass: self.dynamicType)
-        let bundle = NSBundle(path: mainBundle.pathForResource("TaylorIntegrationTestResources", ofType: "bundle")!)!
+        guard let bundlePath = mainBundle.pathForResource("TaylorIntegrationTestResources", ofType: "bundle") else {
+            throw TestError.BundleResourcePathNotFound
+        }
+        guard let bundle = NSBundle(path: bundlePath) else {
+            throw TestError.BundleResourcePathNotFound
+        }
         if !fileManager.fileExistsAtPath(analyzeFilesPath) {
             try NSFileManager.defaultManager().createDirectoryAtPath(analyzeFilesPath, withIntermediateDirectories: false, attributes: nil)
         }
@@ -58,10 +67,13 @@ class TaylorIntegrationTests: QuickSpec {
     
     private func createFiles(sourceBundle: NSBundle) throws {
         for fileName in fileNames {
-            let path = sourceBundle.pathForResource(fileName.stringByTrimmingTheExtension, ofType: fileName.fileExtension)!
-            let toPath = self.analyzeFilesPath.stringByAppendingPathComponent(path.lastPathComponent)
-            if !NSFileManager.defaultManager().fileExistsAtPath(toPath) {
-                try NSFileManager.defaultManager().copyItemAtPath(path, toPath: toPath)
+            if let path = sourceBundle.pathForResource(fileName.stringByTrimmingTheExtension, ofType: fileName.fileExtension) {
+                let toPath = self.analyzeFilesPath.stringByAppendingPathComponent(path.lastPathComponent)
+                if !NSFileManager.defaultManager().fileExistsAtPath(toPath) {
+                    try NSFileManager.defaultManager().copyItemAtPath(path, toPath: toPath)
+                }
+            } else {
+                throw TestError.BundleResourcePathNotFound
             }
         }
     }
@@ -70,18 +82,24 @@ class TaylorIntegrationTests: QuickSpec {
     private func createResultFile(sourceBundle: NSBundle) throws {
         let filename = resultFileName.stringByTrimmingTheExtension
         if let path = sourceBundle.pathForResource(filename, ofType: resultFileName.fileExtension) {
-        resultFilePath = resultFilePath.stringByAppendingPathComponent(resultFileName)
-            try NSFileManager.defaultManager().copyItemAtPath(path, toPath: self.resultFilePath)
+            resultFilePath = resultFilePath.stringByAppendingPathComponent(resultFileName)
+            if !NSFileManager.defaultManager().fileExistsAtPath(self.resultFilePath) {
+                try NSFileManager.defaultManager().copyItemAtPath(path, toPath: self.resultFilePath)
+            }
         } else {
             throw TestError.FileNotFound(filename)
         }
     }
     
     
-    enum TestError: ErrorType {
-        case FileNotFound(String)
-        case BundleResourcePathNotFound
+    private func configureAndRunTaskWithArguments(arguments: [String]) {
+        let runTask = NSTask()
+        runTask.launchPath = self.runTaskPath
+        runTask.arguments = arguments
+        runTask.launch()
+        runTask.waitUntilExit()
     }
+    
     
     override func spec() {
         do {
@@ -104,11 +122,7 @@ class TaylorIntegrationTests: QuickSpec {
             }
             
             it("should generate correct reports") {
-                let runTask = NSTask()
-                runTask.launchPath = self.runTaskPath
-                runTask.arguments = ["-p", self.analyzeFilesPath, "-r", "json:taylor_report.json"]
-                runTask.launch()
-                runTask.waitUntilExit()
+                self.configureAndRunTaskWithArguments(["-p", self.analyzeFilesPath, "-r", "json:taylor_report.json"])
                 let reporterPath = self.analyzeFilesPath.stringByAppendingPathComponent("taylor_report.json")
                 expect(ReporterComparator().compareReporters(self.resultFilePath, secondReporterPath: reporterPath)).to(beTrue())
                 do {

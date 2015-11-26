@@ -18,6 +18,12 @@ class UtilitiesTests: QuickSpec {
         var rhs: String?
         
         describe("String Optionals Equality operator") {
+            
+            beforeEach {
+                lhs = nil
+                rhs = nil
+            }
+            
             it("should return true if both operands are nil") {
                 expect(lhs ~== rhs).to(beTrue())
             }
@@ -46,6 +52,11 @@ class UtilitiesTests: QuickSpec {
         }
         
         describe("String Optionals Inequality operator") {
+            
+            beforeEach {
+                lhs = nil
+                rhs = nil
+            }
             
             it("should return false if both operands are nil") {
                 expect(lhs !~== rhs).to(beFalse())
