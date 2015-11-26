@@ -8,5 +8,4 @@
 
 import TaylorFramework
 
-Configurator().configure()
 Taylor().run()

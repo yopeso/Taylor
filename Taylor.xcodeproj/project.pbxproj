@@ -166,9 +166,6 @@
 		69B4DDB51BED223C005EA7D5 /* SwiftXPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B4DC1B1BED169B005EA7D5 /* SwiftXPC.framework */; };
 		69B4DDB61BED223C005EA7D5 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B4DC1C1BED169B005EA7D5 /* SWXMLHash.framework */; };
 		69EA54F91BEE209C007713A6 /* Taylor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EA54F81BEE209C007713A6 /* Taylor.swift */; };
-		A36376501BFDE26000C7ABDB /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A363764A1BFDE26000C7ABDB /* HockeySDK.framework */; };
-		A36376541BFDE29300C7ABDB /* HockeySDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A363764A1BFDE26000C7ABDB /* HockeySDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A36376561BFDE39F00C7ABDB /* Configurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36376551BFDE39F00C7ABDB /* Configurator.swift */; };
 		B143B20F1BF33B98009BFC99 /* FlagsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B143B20E1BF33B98009BFC99 /* FlagsTests.swift */; };
 		B143B2151BF381D8009BFC99 /* pacman.py in Resources */ = {isa = PBXBuildFile; fileRef = B143B2121BF381D8009BFC99 /* pacman.py */; };
 		B143B2161BF381D8009BFC99 /* PacMan.swift in Sources */ = {isa = PBXBuildFile; fileRef = B143B2131BF381D8009BFC99 /* PacMan.swift */; };
@@ -231,7 +228,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A36376541BFDE29300C7ABDB /* HockeySDK.framework in CopyFiles */,
 				692FCBF41BED2E8400DB5F16 /* TaylorFramework.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -446,13 +442,6 @@
 		69B4DD361BED1FE0005EA7D5 /* TestsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsHelper.swift; sourceTree = "<group>"; };
 		69B4DD371BED1FE0005EA7D5 /* ViolationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViolationTests.swift; sourceTree = "<group>"; };
 		69EA54F81BEE209C007713A6 /* Taylor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Taylor.swift; sourceTree = "<group>"; };
-		A36376481BFDE26000C7ABDB /* CHANGELOG */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG; sourceTree = "<group>"; };
-		A36376491BFDE26000C7ABDB /* de.bitstadium.HockeySDK-Mac-3.2.0.docset */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "de.bitstadium.HockeySDK-Mac-3.2.0.docset"; sourceTree = "<group>"; };
-		A363764A1BFDE26000C7ABDB /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
-		A363764B1BFDE26000C7ABDB /* HockeySDK.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = HockeySDK.framework.dSYM; sourceTree = "<group>"; };
-		A363764C1BFDE26000C7ABDB /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
-		A363764D1BFDE26000C7ABDB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		A36376551BFDE39F00C7ABDB /* Configurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configurator.swift; sourceTree = "<group>"; };
 		A36B2F001B98244F0049F590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3CB26501B9DF6FA00802E80 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Nimble.framework; sourceTree = "<group>"; };
 		A3CB26511B9DF6FA00802E80 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Quick.framework; sourceTree = "<group>"; };
@@ -491,7 +480,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A36376501BFDE26000C7ABDB /* HockeySDK.framework in Frameworks */,
 				692FCBEE1BED2C2A00DB5F16 /* TaylorFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -992,35 +980,6 @@
 			path = TemperTests;
 			sourceTree = "<group>";
 		};
-		A36376451BFDE26000C7ABDB /* External_Sources */ = {
-			isa = PBXGroup;
-			children = (
-				A36376461BFDE26000C7ABDB /* Frameworks */,
-			);
-			path = External_Sources;
-			sourceTree = "<group>";
-		};
-		A36376461BFDE26000C7ABDB /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A36376471BFDE26000C7ABDB /* HockeySDK-Mac */,
-			);
-			path = Frameworks;
-			sourceTree = "<group>";
-		};
-		A36376471BFDE26000C7ABDB /* HockeySDK-Mac */ = {
-			isa = PBXGroup;
-			children = (
-				A36376481BFDE26000C7ABDB /* CHANGELOG */,
-				A36376491BFDE26000C7ABDB /* de.bitstadium.HockeySDK-Mac-3.2.0.docset */,
-				A363764A1BFDE26000C7ABDB /* HockeySDK.framework */,
-				A363764B1BFDE26000C7ABDB /* HockeySDK.framework.dSYM */,
-				A363764C1BFDE26000C7ABDB /* LICENSE.txt */,
-				A363764D1BFDE26000C7ABDB /* README.md */,
-			);
-			path = "HockeySDK-Mac";
-			sourceTree = "<group>";
-		};
 		A36B2EED1B98244F0049F590 = {
 			isa = PBXGroup;
 			children = (
@@ -1048,9 +1007,7 @@
 		A36B2EF81B98244F0049F590 /* Taylor */ = {
 			isa = PBXGroup;
 			children = (
-				A36376451BFDE26000C7ABDB /* External_Sources */,
 				692FCBEA1BED2B7F00DB5F16 /* main.swift */,
-				A36376551BFDE39F00C7ABDB /* Configurator.swift */,
 				A36B2F001B98244F0049F590 /* Info.plist */,
 			);
 			path = Taylor;
@@ -1311,7 +1268,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A36376561BFDE39F00C7ABDB /* Configurator.swift in Sources */,
 				692FCBEB1BED2B7F00DB5F16 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1511,10 +1467,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Taylor/External_Sources/Frameworks/HockeySDK-Mac",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1534,10 +1487,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Taylor/External_Sources/Frameworks/HockeySDK-Mac",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Taylor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
