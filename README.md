@@ -36,18 +36,21 @@ To use Taylor from command line run it as follows:
 
 ##### Available options
 
-- `taylor -h`: Print **help**.
-- `taylor -v`: Print Taylor **version**.
-- `taylor -p path`: **Path** to the folder to be analysed (current folder by default).
-- `taylor -e file`: Path to either **directory or file to be excluded** from analysis.
-- `taylor -ef`: Path to **exclude file** in `.yml` format.
-- `taylor -f`: File to be **included** in analysis (may be from an external source).
-- `taylor -t`: **Type of files** to be analysed.
-- `taylor -vl`: **Verbosity level** for output messages (info, warning and error).
-- `taylor -r type:name`: Type of final report (**json, xcode, pmd** or **plain text**) and filename.
-- `taylor -rc rule=value`: **Customize rules**by giving custom values. See [help](/Resources/help.txt) for more details.
+|`taylor`           |Description|
+|----------------|-------------------|
+|`-h`/`--help`| Print **help**.|
+|`-v`/`--version`| Print Taylor **version**.|
+|`-p`/`--path` `path`| **Path** to the folder to be analysed (current folder by default).|
+|`-e`/`--excludeFile` `file`| Path to either **directory or file to be excluded** from analysis.|
+|`-ef`/`--excludeFile` `file`| Path to **exclude file** in `.yml` format.|
+|`-f`/`--file` `file`| File to be **included** in analysis (may be from an external source).|
+|`-t`/`--type` `type`| **Type of files** to be analysed.|
+|`-vl`/`--verbosityLevel` `level`| **Verbosity level** for output messages (info, warning and error).|
+|`-r`/`--reporter` `type:name`| Type of final report (**json, xcode, pmd** or **plain text**) and filename.|
+|`-rc`/`--ruleCustomization` `rule=value`| **Customize rules** by giving custom values. See [help](/Resources/Help.txt) for more details.|
 
 `taylor` alone with **no arguments** analyses `.swift` files inside current folder.
+
 
 ### Excludes
 
