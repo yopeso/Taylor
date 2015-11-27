@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class Violation {
+struct Violation {
     
     var path : String
     let component : Component

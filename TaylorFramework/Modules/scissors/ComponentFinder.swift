@@ -9,7 +9,7 @@
 import Foundation
 import SourceKittenFramework
 
-final class ComponentFinder {
+struct ComponentFinder {
     
     let text: String
     let syntaxMap: SyntaxMap

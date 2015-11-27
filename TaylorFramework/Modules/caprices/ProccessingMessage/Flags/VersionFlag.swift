@@ -9,7 +9,7 @@
 let VersionLong = "--version"
 let VersionShort = "-v"
 
-final class VersionFlag: Flag {
+struct VersionFlag: Flag {
     
     let name = "VersionFlag"
     

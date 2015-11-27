@@ -52,7 +52,8 @@ final class Pacman {
     func createMap() -> Bool {
         let path = getGamePath()
         let mapFile = File(path: path+"/prototype_map.dat")
-        let generator = Generator(map: (mapFile?.contents) ?? "", paths: paths)
+        if mapFile == nil { return false }
+        let generator = Generator(map: (mapFile!.contents) ?? "", paths: paths)
         let mapText = generator.generateMapString(generator.getText())
         let dataPath = "\(NSHomeDirectory())" + "/tmp"
         do {
@@ -74,7 +75,7 @@ final class Pacman {
     }
 }
 
-final class Generator {
+struct Generator {
     let mapString: String
     let paths: [String]
     

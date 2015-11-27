@@ -6,7 +6,7 @@
 //  Copyright © 2015 YOPESO. All rights reserved.
 //
 
-final class Parameters {
+struct Parameters {
     var rootPath: String
     var excludes: [String]
     var files: [String]
@@ -19,7 +19,7 @@ final class Parameters {
         type = parameters.type
     }
     
-    convenience init?(dictionary: Options, printer: ErrorPrinter) {
+    init?(dictionary: Options, printer: ErrorPrinter) {
         let pathValue = dictionary[ParametersKeys.Path]
         if pathValue == nil || pathValue!.isEmpty || pathValue!.first!.isEmpty {
             printer.printWrongRootPathMessage()

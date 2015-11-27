@@ -12,14 +12,14 @@ import Foundation
 typealias OutputReporter = [String: String]
 typealias CustomizationRule = [String: Int]
 
-final class InformationalOptionsFactory {
+struct InformationalOptionsFactory {
     
     var infoOptions: [InformationalOption]
     var reporterTypes = [OutputReporter]()
     var customizationRules = CustomizationRule()
     var verbosityLevel = VerbosityLevel.Error
     
-    convenience init() {
+    init() {
         self.init(infoOptions: [])
     }
     

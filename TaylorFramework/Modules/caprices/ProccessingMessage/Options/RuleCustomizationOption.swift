@@ -19,14 +19,14 @@ let NestedBlockDepth = "NestedBlockDepth"
 let NPathComplexity = "NPathComplexity"
 let ExcessiveParameterList = "ExcessiveParameterList"
 
-final class RuleCustomizationOption: InformationalOption {
+struct RuleCustomizationOption: InformationalOption {
     var analyzePath = NSFileManager.defaultManager().currentDirectoryPath
     var optionArgument : String
     let name = "RuleCustomizationOption"
     
     let argumentSeparator = "="
     
-    required init(argument: String = "") {
+    init(argument: String = "") {
         optionArgument = argument
     }
     

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class PacmanRunner: NSObject {
+class PacmanRunner {
     
     let printer = Printer(verbosityLevel: .Error)
     let currentPath = NSFileManager.defaultManager().currentDirectoryPath

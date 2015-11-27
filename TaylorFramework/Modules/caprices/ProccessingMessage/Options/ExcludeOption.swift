@@ -11,12 +11,12 @@ import Foundation
 let ExcludeLong = "--exclude"
 let ExcludeShort = "-e"
 
-final class ExcludeOption: ExecutableOption {
+struct ExcludeOption: ExecutableOption {
     var analyzePath = NSFileManager.defaultManager().currentDirectoryPath
     var optionArgument : Path
     let name = "ExcludeOption"
     
-    required init(argument:Path = EmptyString) {
+    init(argument:Path = EmptyString) {
         optionArgument = argument
     }
     

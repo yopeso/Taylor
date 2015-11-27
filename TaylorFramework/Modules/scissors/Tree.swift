@@ -10,7 +10,7 @@ import Foundation
 import SwiftXPC
 import SourceKittenFramework
 
-final class Tree {
+struct Tree {
     let file: File
     let dictionary: XPCDictionary
     let syntaxMap: SyntaxMap

@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class Arguments {
+struct Arguments {
     let caprice = Caprice()
     let arguments: Options
     
