@@ -20,10 +20,15 @@ final class ComponentFinder {
     }
     
     func findRanges(pattern: String, text: String) -> [OffsetRange] {
-        let r = re.compile(pattern, flags: [.DotMatchesLineSeparators])
-        return r.finditer(text).flatMap { $0.spanNSRange() }.reduce([OffsetRange]()) {
-            $0 + OffsetRange(start: $1.location, end: $1.location + $1.length)
-        }
+        do {
+            let regex = try NSRegularExpression(pattern: pattern, options: [.DotMatchesLineSeparators])
+            return regex.matchesInString(text, options: [], range: NSMakeRange(0, text.characters.count)).map {
+                    $0.range
+                }.reduce([OffsetRange]()) {
+                    $0 + OffsetRange(start: $1.location, end: $1.location + $1.length)
+            }
+        } catch { return [] }
+        
     }
     
     func findLogicalOperators() -> [ExtendedComponent] {

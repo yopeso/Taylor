@@ -109,15 +109,20 @@ final class Tree {
     //MARK: Text filtering methods
     
     func replaceStringsWithSpaces(text: [String]) -> String {
-        var noStrings = ""
-        for var part in text {
-            if part.isEmpty { continue }
-            for string in re.findall("\\\".*?\\\"", part, flags: [NSRegularExpressionOptions.DotMatchesLineSeparators]) {
-                let len = string.characters.count
-                part = part.stringByReplacingOccurrencesOfString(string, withString: " " * len)
+        do {
+            let regex = try NSRegularExpression(pattern: "\\\".*?\\\"", options: [.DotMatchesLineSeparators])
+            return text.filter { !$0.isEmpty }.reduce("") {
+                let matchRanges = regex.matchesInString($1, options: [], range: NSMakeRange(0, $1.characters.count)).map { $0.range }
+                return $0 + ($1 as NSString).stringByReplacingCharactersInRangesWithSpaces(matchRanges) + "\n"
             }
-            noStrings += part + "\n"
-        }
-        return noStrings
+        } catch { return "" }
+    }
+}
+
+extension NSString {
+    func stringByReplacingCharactersInRangesWithSpaces(ranges: [NSRange]) -> String {
+        var string = self
+        ranges.forEach { string = string.stringByReplacingCharactersInRange($0, withString: " " * $0.length) }
+        return string as String
     }
 }

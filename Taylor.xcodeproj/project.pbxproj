@@ -23,11 +23,6 @@
 		692FCBF31BED2E2A00DB5F16 /* install in Resources */ = {isa = PBXBuildFile; fileRef = 692FCBF21BED2E2A00DB5F16 /* install */; };
 		692FCBF41BED2E8400DB5F16 /* TaylorFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69B4DC891BED1BD3005EA7D5 /* TaylorFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		69461E0A1BF61D2C00AF5B5C /* CLIReporterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69461E091BF61D2C00AF5B5C /* CLIReporterTests.swift */; };
-		694C26D51BF0AF5C002A543F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 694C26D11BF0AF5C002A543F /* Info.plist */; };
-		694C26D61BF0AF5C002A543F /* ReMatchObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694C26D21BF0AF5C002A543F /* ReMatchObjectTests.swift */; };
-		694C26D71BF0AF5C002A543F /* ReRegexObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694C26D31BF0AF5C002A543F /* ReRegexObjectTests.swift */; };
-		694C26D81BF0AF5C002A543F /* ReTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694C26D41BF0AF5C002A543F /* ReTests.swift */; };
-		694C26DC1BF0E2C0002A543F /* PySwiftyRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694C26DB1BF0E2C0002A543F /* PySwiftyRegex.swift */; };
 		69517A1A1BF25C31000B3F1B /* CLIReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69517A191BF25C31000B3F1B /* CLIReporter.swift */; };
 		69B4DC951BED1BF6005EA7D5 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B4DBE41BED169B005EA7D5 /* Component.swift */; };
 		69B4DC961BED1BF6005EA7D5 /* ComponentRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B4DBE51BED169B005EA7D5 /* ComponentRange.swift */; };
@@ -308,11 +303,6 @@
 		692FCBEA1BED2B7F00DB5F16 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		692FCBF21BED2E2A00DB5F16 /* install */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = install; sourceTree = "<group>"; };
 		69461E091BF61D2C00AF5B5C /* CLIReporterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLIReporterTests.swift; sourceTree = "<group>"; };
-		694C26D11BF0AF5C002A543F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		694C26D21BF0AF5C002A543F /* ReMatchObjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReMatchObjectTests.swift; sourceTree = "<group>"; };
-		694C26D31BF0AF5C002A543F /* ReRegexObjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReRegexObjectTests.swift; sourceTree = "<group>"; };
-		694C26D41BF0AF5C002A543F /* ReTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReTests.swift; sourceTree = "<group>"; };
-		694C26DB1BF0E2C0002A543F /* PySwiftyRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PySwiftyRegex.swift; sourceTree = "<group>"; };
 		69517A191BF25C31000B3F1B /* CLIReporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLIReporter.swift; sourceTree = "<group>"; };
 		69B4DBDE1BED169B005EA7D5 /* TaylorFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaylorFramework.h; path = Headers/TaylorFramework.h; sourceTree = "<group>"; };
 		69B4DBE41BED169B005EA7D5 /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
@@ -546,17 +536,6 @@
 			path = scripts;
 			sourceTree = "<group>";
 		};
-		694C26D01BF0AF5C002A543F /* PySwiftyRegexTests */ = {
-			isa = PBXGroup;
-			children = (
-				694C26D11BF0AF5C002A543F /* Info.plist */,
-				694C26D21BF0AF5C002A543F /* ReMatchObjectTests.swift */,
-				694C26D31BF0AF5C002A543F /* ReRegexObjectTests.swift */,
-				694C26D41BF0AF5C002A543F /* ReTests.swift */,
-			);
-			path = PySwiftyRegexTests;
-			sourceTree = "<group>";
-		};
 		69B4DBDC1BED169B005EA7D5 /* TaylorFramework */ = {
 			isa = PBXGroup;
 			children = (
@@ -682,7 +661,6 @@
 			children = (
 				69B4DC101BED169B005EA7D5 /* ComponentFinder.swift */,
 				69B4DC161BED169B005EA7D5 /* ExtendedComponent.swift */,
-				69B4DC171BED169B005EA7D5 /* ExternalLibraries */,
 				69B4DC191BED169B005EA7D5 /* Frameworks */,
 				69B4DC1D1BED169B005EA7D5 /* Scissors.swift */,
 				69B4DC1E1BED169B005EA7D5 /* ScissorsExtensions.swift */,
@@ -690,14 +668,6 @@
 			);
 			name = Scissors;
 			path = scissors;
-			sourceTree = "<group>";
-		};
-		69B4DC171BED169B005EA7D5 /* ExternalLibraries */ = {
-			isa = PBXGroup;
-			children = (
-				694C26DB1BF0E2C0002A543F /* PySwiftyRegex.swift */,
-			);
-			path = ExternalLibraries;
 			sourceTree = "<group>";
 		};
 		69B4DC191BED169B005EA7D5 /* Frameworks */ = {
@@ -813,7 +783,6 @@
 			children = (
 				B1F4BEC81BF50071003C584A /* TaylorTests */,
 				B143B21A1BF3A5CB009BFC99 /* EasterEggsTests */,
-				694C26D01BF0AF5C002A543F /* PySwiftyRegexTests */,
 				69B4DCED1BED1FE0005EA7D5 /* BoundariesKitTests */,
 				69B4DCF21BED1FE0005EA7D5 /* CapriceTests */,
 				69B4DD011BED1FE0005EA7D5 /* FinderTests */,
@@ -1246,7 +1215,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				694C26D51BF0AF5C002A543F /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1287,7 +1255,6 @@
 				69B4DCB31BED1C2D005EA7D5 /* Printer.swift in Sources */,
 				69EA54F91BEE209C007713A6 /* Taylor.swift in Sources */,
 				69B4DCB41BED1C2D005EA7D5 /* ComponentFinder.swift in Sources */,
-				694C26DC1BF0E2C0002A543F /* PySwiftyRegex.swift in Sources */,
 				B16FAEC01BF2470800882B64 /* VersionFlag.swift in Sources */,
 				69B4DCB61BED1C2D005EA7D5 /* ExtendedComponent.swift in Sources */,
 				69B4DCB81BED1C2D005EA7D5 /* Scissors.swift in Sources */,
@@ -1377,7 +1344,6 @@
 				69B4DD761BED1FE1005EA7D5 /* ViolationTests.swift in Sources */,
 				69B4DD691BED1FE1005EA7D5 /* DictionaryTests.swift in Sources */,
 				69B4DD6A1BED1FE1005EA7D5 /* ExcessiveParameterListRuleTests.swift in Sources */,
-				694C26D71BF0AF5C002A543F /* ReRegexObjectTests.swift in Sources */,
 				69461E0A1BF61D2C00AF5B5C /* CLIReporterTests.swift in Sources */,
 				69B4DD6D1BED1FE1005EA7D5 /* NSFileManagerTests.swift in Sources */,
 				69B4DD751BED1FE1005EA7D5 /* TestsHelper.swift in Sources */,
@@ -1387,8 +1353,6 @@
 				69B4DD741BED1FE1005EA7D5 /* TemperTests.swift in Sources */,
 				69B4DD701BED1FE1005EA7D5 /* NumberOfMethodsInClassRuleTests.swift in Sources */,
 				69B4DD681BED1FE1005EA7D5 /* CyclomaticComplexityTests.swift in Sources */,
-				694C26D61BF0AF5C002A543F /* ReMatchObjectTests.swift in Sources */,
-				694C26D81BF0AF5C002A543F /* ReTests.swift in Sources */,
 				69B4DD421BED1FE0005EA7D5 /* MessageProcessorTests.swift in Sources */,
 				69B4DD661BED1FE1005EA7D5 /* ComponentExtensionsTests.swift in Sources */,
 				69B4DD481BED1FE0005EA7D5 /* FinderTests.swift in Sources */,
