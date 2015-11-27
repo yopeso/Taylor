@@ -38,13 +38,7 @@ extension String {
     func deleteSuffix(suffix: String) -> String {
         guard self.hasSuffix(suffix) else { return self }
         
-        var modifiedString = self
-        let numberOfLetters = suffix.characters.count
-        for _ in 0 ..< numberOfLetters {
-            modifiedString = modifiedString.substringToIndex(modifiedString.endIndex.predecessor())
-        }
-        
-        return modifiedString
+        return (self as NSString).substringToIndex(self.characters.count - suffix.characters.count)
     }
     
     func hasDirectory(named name: String) -> Bool {

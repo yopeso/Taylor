@@ -76,11 +76,10 @@ final class Violation {
     
     func toXMLElement() -> NSXMLElement {
         let violationElement = NSXMLElement(name: "violation", stringValue: message)
-        let violationAttributes = XMLNodes()
-        for attribute in violationAttributes {
-            violationElement.addAttribute(attribute)
+        return XMLNodes().reduce(violationElement) {
+            $0.addAttribute($1)
+            return $0
         }
-        return violationElement
     }
     
     var errorString : String {

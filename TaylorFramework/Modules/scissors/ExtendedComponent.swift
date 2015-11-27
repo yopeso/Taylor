@@ -133,7 +133,7 @@ final class ExtendedComponent {
     
     func removeRedundantClosuresInSelf() {
         components = components.filter() {
-            !($0.type == .Closure && $0.components.count == 0)
+            !($0.type == .Closure && $0.components.isEmpty)
         }
     }
     

@@ -35,6 +35,7 @@ final class OptionsValidator {
     
     
     func validateInformationalOptions(options: [InformationalOption]) throws {
+        if options.isEmpty { return }
         var repeats = CustomizationRule()
         for option in options {
             let optionComponents = option.optionArgument.componentsSeparatedByString(option.argumentSeparator)

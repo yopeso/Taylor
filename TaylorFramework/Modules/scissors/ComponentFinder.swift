@@ -20,14 +20,10 @@ final class ComponentFinder {
     }
     
     func findRanges(pattern: String, text: String) -> [OffsetRange] {
-        var ranges = [OffsetRange]()
         let r = re.compile(pattern, flags: [.DotMatchesLineSeparators])
-        for match in r.finditer(text) {
-            if let range = match.spanNSRange() {
-                ranges.append(OffsetRange(start: range.location, end: range.location+range.length))
-            }
+        return r.finditer(text).flatMap { $0.spanNSRange() }.reduce([OffsetRange]()) {
+            $0 + OffsetRange(start: $1.location, end: $1.location + $1.length)
         }
-        return ranges
     }
     
     func findLogicalOperators() -> [ExtendedComponent] {
@@ -50,60 +46,48 @@ final class ComponentFinder {
     }
     
     func findComments() -> [ExtendedComponent] {
-        var components = [ExtendedComponent]()
-        for token in syntaxMap.tokens {
-            if ComponentType(type: token.type) == ComponentType.Comment {
-                components.append(ExtendedComponent(dict: token.dictionaryValue))
-            }
+        return syntaxMap.tokens.filter {
+                ComponentType(type: $0.type) == ComponentType.Comment
+            }.reduce([ExtendedComponent]()) {
+                $0 + ExtendedComponent(dict: $1.dictionaryValue)
         }
-        return components
     }
     
     func findEmptyLines() -> [ExtendedComponent] {
-        var emptyLines = [ExtendedComponent]()
-        for emptyLineRange in findRanges("(\\n[ \\t\\n]*\\n)", text: text) {
-            let correctEmptyRange = OffsetRange(start: emptyLineRange.start + 1, end: emptyLineRange.end - 1)
-            emptyLines.append(ExtendedComponent(type: .EmptyLines, range: correctEmptyRange))
+        return findRanges("(\\n[ \\t\\n]*\\n)", text: text).reduce([ExtendedComponent]()) {
+            let correctEmptyRange = OffsetRange(start: $1.start + 1, end: $1.end - 1)
+            return $0 + ExtendedComponent(type: .EmptyLines, range: correctEmptyRange)
         }
-        
-        return emptyLines
     }
     
     //Ending points of getters and setters will most probably be wrong unless a nice coding-style is being used "} set {"
     func findGetters(components: [ExtendedComponent]) -> [ExtendedComponent] {
-        let variableComponents = components.filter() { $0.type == .Variable }
-        let nsText = text as NSString
-        var getters = [ExtendedComponent]()
-        for component in variableComponents {
+        return components.filter() { $0.type == .Variable }.reduce([ExtendedComponent]()) { components, component in
             let range = NSMakeRange(component.offsetRange.start, component.offsetRange.end - component.offsetRange.start)
-            let variableText = nsText.substringWithRange(range)
-            let functions = findGetterAndSetter(variableText)
-            for function in functions {
-                function.offsetRange.start += component.offsetRange.start
-                function.offsetRange.end += component.offsetRange.start
-                getters.append(function)
+            return findGetterAndSetter((text as NSString).substringWithRange(range)).reduce(components) {
+                $1.offsetRange.start += component.offsetRange.start
+                $1.offsetRange.end += component.offsetRange.start
+                return $0 + $1
             }
         }
-        return getters
     }
     
     func findGetterAndSetter(text: String) -> [ExtendedComponent] {
         var accessors = [ExtendedComponent]()
         let gettersRanges = findRanges("(get($|[ \\t\\n{}]))", text: text)
         let settersRanges = findRanges("(set($|[ \\t\\n{}]))", text: text)
-        if gettersRanges.count == 0 {
-            return findObserverGetters(text)
-        }
-        accessors.append(ExtendedComponent(type: .Function, range: gettersRanges[0], name: "get", parent: nil))
-        if settersRanges.count > 0 {
-            accessors.append(ExtendedComponent(type: .Function, range: settersRanges[0], name: "set", parent: nil))
+        if gettersRanges.isEmpty { return findObserverGetters(text) }
+        
+        accessors.append(ExtendedComponent(type: .Function, range: gettersRanges.first!, name: "get", parent: nil))
+        if !settersRanges.isEmpty {
+            accessors.append(ExtendedComponent(type: .Function, range: settersRanges.first!, name: "set", parent: nil))
         }
         accessors.sortInPlace( { $0.offsetRange.start < $1.offsetRange.start } )
         if accessors.count == 1 {
-            accessors[0].offsetRange.end = text.characters.count - 1
+            accessors.first!.offsetRange.end = text.characters.count - 1
         } else {
-            accessors[0].offsetRange.end = accessors[1].offsetRange.start - 1
-            accessors[1].offsetRange.end = text.characters.count - 1
+            accessors.first!.offsetRange.end = accessors.second!.offsetRange.start - 1
+            accessors.second!.offsetRange.end = text.characters.count - 1
         }
         
         return accessors
