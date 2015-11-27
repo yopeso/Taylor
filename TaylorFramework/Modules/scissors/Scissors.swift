@@ -9,14 +9,7 @@
 import Foundation
 import SourceKittenFramework
 
-final class Scissors {
-    
-    /**
-    Initialize Scissors by passing in a Printer.
-    - parameter printer: Printer to be used as message or error output.
-    */
-    init() { }
-    
+struct Scissors {    
     /**
     Tokenizes contents of file at a given path by converting it to a tree of components.
     
