@@ -42,7 +42,7 @@ class MessageProcessor {
         if arguments.count.isOdd {
             return optionsProcessor.processOptions(arguments)
         } else if arguments.containFlags {
-            FlagBuilder().flag(arguments.second!).execute()
+            FlagBuilder().flag(arguments.second!).execute() //Safe to force unwrap
             exit(0)
         }
         errorPrinter.printError("\nInvalid options was indicated")
@@ -66,10 +66,13 @@ class MessageProcessor {
     
 
     func setDefaultExcludesIfExistsToDictionary(inout dictionary: Options) {
+        guard let pathKey = dictionary[ResultDictionaryPathKey] where !pathKey.isEmpty else {
+            return
+        }
         do {
             let defaultExcludesFilePath = defaultExcludesFilePathForDictionary(dictionary)
             let excludePaths = try ExcludesFileReader().absolutePathsFromExcludesFile(defaultExcludesFilePath,
-                                    forAnalyzePath: dictionary[ResultDictionaryPathKey]![0])
+                                    forAnalyzePath: dictionary[ResultDictionaryPathKey]!.first!)
             if !excludePaths.isEmpty {
                 dictionary[ResultDictionaryExcludesKey] = excludePaths
             }
@@ -80,7 +83,7 @@ class MessageProcessor {
     
 
     func defaultExcludesFilePathForDictionary(dictionary: Options) -> String {
-        guard let resultPathKey = dictionary[ResultDictionaryPathKey] where !resultPathKey.isEmpty else {
+        guard let pathKey = dictionary[ResultDictionaryPathKey] where !pathKey.isEmpty else {
             return ""
         }
         return dictionary[ResultDictionaryPathKey]!.first! + DefaultExcludesFile

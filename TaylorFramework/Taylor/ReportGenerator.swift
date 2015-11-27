@@ -10,7 +10,7 @@ import Cocoa
 
 final class ReportGenerator {
     
-    var temper: Temper!
+    var temper: Temper! // Safe to force
     var arguments: Arguments
     var printer: Printer
     
@@ -26,7 +26,7 @@ final class ReportGenerator {
     
     func configureTemper(rootPath: Path) {
         temper = Temper(outputPath: rootPath)
-        temper?.setLimits(arguments.thresholds)
+        temper!.setLimits(arguments.thresholds)
         setReporters(temper!)
     }
     

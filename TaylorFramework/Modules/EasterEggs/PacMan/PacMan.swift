@@ -42,8 +42,8 @@ final class Pacman {
     }
     
     func getGamePath() -> String {
-        let path =  NSBundle(forClass: self.dynamicType).pathForResource("pacman", ofType: "py")!
-        return (path as NSString).stringByDeletingLastPathComponent
+        let path =  NSBundle(forClass: self.dynamicType).pathForResource("pacman", ofType: "py")
+        return (path ?? "" as NSString).stringByDeletingLastPathComponent
     }
     
     /**
@@ -52,7 +52,7 @@ final class Pacman {
     func createMap() -> Bool {
         let path = getGamePath()
         let mapFile = File(path: path+"/prototype_map.dat")
-        let generator = Generator(map: (mapFile?.contents)!, paths: paths)
+        let generator = Generator(map: (mapFile?.contents) ?? "", paths: paths)
         let mapText = generator.generateMapString(generator.getText())
         let dataPath = "\(NSHomeDirectory())" + "/tmp"
         do {
@@ -114,7 +114,7 @@ final class Generator {
         while file.contents.characters.count < charNumber {
             let path = paths[Int(arc4random_uniform(UInt32(paths.count-1)))]
             if NSFileManager.defaultManager().fileExistsAtPath(path) {
-                file = File(path: path)!
+                file = File(path: path)! // Safe to force unwrap
             } else { return "" }
         }
         return file.contents

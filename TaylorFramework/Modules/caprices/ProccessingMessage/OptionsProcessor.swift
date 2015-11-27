@@ -76,10 +76,13 @@ class OptionsProcessor {
     
     
     private func setDefaultExcludesToDictionary(inout dictionary: Options) {
+        guard let pathKey = dictionary[ResultDictionaryPathKey] where !pathKey.isEmpty else {
+            return
+        }
         var excludePaths = [String]()
         do {
             let excludesFilePath = MessageProcessor().defaultExcludesFilePathForDictionary(dictionary)
-            excludePaths = try ExcludesFileReader().absolutePathsFromExcludesFile(excludesFilePath,  forAnalyzePath:dictionary[ResultDictionaryPathKey]![0])
+            excludePaths = try ExcludesFileReader().absolutePathsFromExcludesFile(excludesFilePath,  forAnalyzePath:dictionary[ResultDictionaryPathKey]!.first!)
         } catch {
             return
         }
@@ -148,7 +151,7 @@ class OptionsProcessor {
     func configureOption<T: Option>(option: T.Type, argument: String) -> T {
         let option = T(argument: argument)
         if let infoOption = option as? InformationalOption { infoOptions.append(infoOption) }
-        else { executableOptions.append(option as! ExecutableOption) }
+        else { executableOptions.append(option as! ExecutableOption) } // Safe to force unwrap
         
         return option
     }

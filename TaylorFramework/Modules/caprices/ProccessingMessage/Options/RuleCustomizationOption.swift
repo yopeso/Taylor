@@ -42,6 +42,7 @@ final class RuleCustomizationOption: InformationalOption {
     }
     
     func validateArgumentComponents(components: [String]) throws {
+        if components.isEmpty { return }
         if components.count != 2 {
             throw CommandLineError.InvalidInformationalOption("\nRule customization argument contains too many \"=\" symbols")
         }

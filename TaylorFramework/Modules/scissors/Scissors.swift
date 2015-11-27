@@ -25,6 +25,9 @@ final class Scissors {
     - returns: **FileContent** containing 'path' to file and the tree of components.
     */
     func tokenizeFileAtPath(path: String) -> FileContent {
+        guard NSFileManager.defaultManager().fileExistsAtPath(path) else {
+            return FileContent(path: "", components: [])
+        }
         let tree = Tree(file: File(path: path)!)
         let root = tree.makeTree()
         return FileContent(path: path, components: root.components)
