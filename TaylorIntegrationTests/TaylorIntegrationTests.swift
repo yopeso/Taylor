@@ -15,7 +15,7 @@ enum IntegrationTestsError: ErrorType {
     case BundleResourceNotFount(String)
 }
 
-class TaylorIntegrationTest: QuickSpec {
+class TaylorIntegrationTests: QuickSpec {
     
     var runTaskPath : String {
         let testBundle = NSBundle(forClass: self.dynamicType)

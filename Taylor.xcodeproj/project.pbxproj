@@ -16,7 +16,7 @@
 		542EF2771C076FBB004C7477 /* ReporterComparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542EF2711C076FBB004C7477 /* ReporterComparator.swift */; };
 		542EF2781C076FBB004C7477 /* TaylorIntegrationTestResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 542EF2731C076FBB004C7477 /* TaylorIntegrationTestResources.bundle */; };
 		542EF2791C076FBB004C7477 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542EF2741C076FBB004C7477 /* StringExtensions.swift */; };
-		542EF27A1C076FBB004C7477 /* TaylorIntegrationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542EF2751C076FBB004C7477 /* TaylorIntegrationTest.swift */; };
+		542EF27A1C076FBB004C7477 /* TaylorIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542EF2751C076FBB004C7477 /* TaylorIntegrationTests.swift */; };
 		692E462F1BF3AEF100D0886E /* Help.txt in Resources */ = {isa = PBXBuildFile; fileRef = 692E462E1BF3AEF100D0886E /* Help.txt */; };
 		692FCBEB1BED2B7F00DB5F16 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692FCBEA1BED2B7F00DB5F16 /* main.swift */; };
 		692FCBEE1BED2C2A00DB5F16 /* TaylorFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B4DC891BED1BD3005EA7D5 /* TaylorFramework.framework */; };
@@ -319,7 +319,7 @@
 		542EF2711C076FBB004C7477 /* ReporterComparator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReporterComparator.swift; sourceTree = "<group>"; };
 		542EF2731C076FBB004C7477 /* TaylorIntegrationTestResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TaylorIntegrationTestResources.bundle; sourceTree = "<group>"; };
 		542EF2741C076FBB004C7477 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
-		542EF2751C076FBB004C7477 /* TaylorIntegrationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaylorIntegrationTest.swift; sourceTree = "<group>"; };
+		542EF2751C076FBB004C7477 /* TaylorIntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaylorIntegrationTests.swift; sourceTree = "<group>"; };
 		692E462E1BF3AEF100D0886E /* Help.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Help.txt; sourceTree = "<group>"; };
 		692FCBDD1BED2A2400DB5F16 /* Taylor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taylor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		692FCBEA1BED2B7F00DB5F16 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -542,7 +542,7 @@
 				542EF2701C076FBB004C7477 /* JSONToViolationParser.swift */,
 				542EF2711C076FBB004C7477 /* ReporterComparator.swift */,
 				542EF2741C076FBB004C7477 /* StringExtensions.swift */,
-				542EF2751C076FBB004C7477 /* TaylorIntegrationTest.swift */,
+				542EF2751C076FBB004C7477 /* TaylorIntegrationTests.swift */,
 			);
 			path = TaylorIntegrationTests;
 			sourceTree = "<group>";
@@ -1332,7 +1332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				542EF2791C076FBB004C7477 /* StringExtensions.swift in Sources */,
-				542EF27A1C076FBB004C7477 /* TaylorIntegrationTest.swift in Sources */,
+				542EF27A1C076FBB004C7477 /* TaylorIntegrationTests.swift in Sources */,
 				542EF2771C076FBB004C7477 /* ReporterComparator.swift in Sources */,
 				542EF2761C076FBB004C7477 /* JSONToViolationParser.swift in Sources */,
 			);
@@ -1773,6 +1773,7 @@
 				542EF2671C076F7F004C7477 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		692FCBE71BED2A2400DB5F16 /* Build configuration list for PBXNativeTarget "Taylor" */ = {
 			isa = XCConfigurationList;
