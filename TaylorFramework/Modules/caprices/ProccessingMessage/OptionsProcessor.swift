@@ -82,7 +82,7 @@ class OptionsProcessor {
         var excludePaths = [String]()
         do {
             let excludesFilePath = MessageProcessor().defaultExcludesFilePathForDictionary(dictionary)
-            excludePaths = try ExcludesFileReader().absolutePathsFromExcludesFile(excludesFilePath,  forAnalyzePath:dictionary[ResultDictionaryPathKey]!.first!)
+            excludePaths = try ExcludesFileReader().absolutePathsFromExcludesFile(excludesFilePath,  forAnalyzePath:pathKey.first!)
         } catch {
             return
         }

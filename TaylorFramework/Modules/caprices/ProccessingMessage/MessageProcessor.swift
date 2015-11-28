@@ -72,7 +72,7 @@ class MessageProcessor {
         do {
             let defaultExcludesFilePath = defaultExcludesFilePathForDictionary(dictionary)
             let excludePaths = try ExcludesFileReader().absolutePathsFromExcludesFile(defaultExcludesFilePath,
-                                    forAnalyzePath: dictionary[ResultDictionaryPathKey]!.first!)
+                                    forAnalyzePath: pathKey.first!)
             if !excludePaths.isEmpty {
                 dictionary[ResultDictionaryExcludesKey] = excludePaths
             }
@@ -86,7 +86,7 @@ class MessageProcessor {
         guard let pathKey = dictionary[ResultDictionaryPathKey] where !pathKey.isEmpty else {
             return ""
         }
-        return dictionary[ResultDictionaryPathKey]!.first! + DefaultExcludesFile
+        return pathKey.first! + DefaultExcludesFile
     }
     
     

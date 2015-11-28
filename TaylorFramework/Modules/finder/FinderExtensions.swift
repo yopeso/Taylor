@@ -44,6 +44,10 @@ extension String {
     func hasDirectory(named name: String) -> Bool {
         return self.lowercaseString.rangeOfString(name.lowercaseString) != nil
     }
+    
+    func stringByAppendingPathComponent(string: String) -> String {
+        return (self as NSString).stringByAppendingPathComponent(string)
+    }
 }
 
 extension SequenceType where Generator.Element == FilePath {
