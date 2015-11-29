@@ -15,6 +15,11 @@ class CyclomaticComplexityTests: QuickSpec {
     var component = TestsHelper().componentForCyclomaticComplexity
     override func spec() {
         describe("Cyclomatic Complexity Rule") {
+            
+            beforeEach {
+                self.component = TestsHelper().componentForCyclomaticComplexity
+            }
+            
             it("should return false and message when there is high cyclomatic complexity") {
                 let result = self.rule.checkComponent(self.component, atPath: "path")
                 expect(result.isOk).to(beFalse())

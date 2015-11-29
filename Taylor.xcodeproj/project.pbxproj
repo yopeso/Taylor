@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		54EFF4E01BF0F92500EE8E94 /* TaylorIntegrationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EFF4DF1BF0F92500EE8E94 /* TaylorIntegrationTest.swift */; };
-		54EFF4E21BF0F92500EE8E94 /* TaylorFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B4DC891BED1BD3005EA7D5 /* TaylorFramework.framework */; };
-		54EFF4ED1BF0F94800EE8E94 /* JSONToViolationParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EFF4E81BF0F94800EE8E94 /* JSONToViolationParser.swift */; };
-		54EFF4EE1BF0F94800EE8E94 /* ReporterComparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EFF4E91BF0F94800EE8E94 /* ReporterComparator.swift */; };
-		54EFF4EF1BF0F94800EE8E94 /* TaylorIntegrationTestResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 54EFF4EB1BF0F94800EE8E94 /* TaylorIntegrationTestResources.bundle */; };
-		54EFF4F01BF0F94800EE8E94 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EFF4EC1BF0F94800EE8E94 /* StringExtensions.swift */; };
-		54EFF4F21BF0F98000EE8E94 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A3CB26501B9DF6FA00802E80 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		54EFF4F31BF0F98000EE8E94 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A3CB26511B9DF6FA00802E80 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		54EFF4F41BF0F98B00EE8E94 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CB26501B9DF6FA00802E80 /* Nimble.framework */; };
-		54EFF4F51BF0F98B00EE8E94 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CB26511B9DF6FA00802E80 /* Quick.framework */; };
+		542EF26A1C076F8C004C7477 /* TaylorFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B4DC891BED1BD3005EA7D5 /* TaylorFramework.framework */; };
+		542EF26C1C076F97004C7477 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A3CB26501B9DF6FA00802E80 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		542EF26D1C076F97004C7477 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A3CB26511B9DF6FA00802E80 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		542EF26E1C076F9D004C7477 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CB26501B9DF6FA00802E80 /* Nimble.framework */; };
+		542EF26F1C076F9D004C7477 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CB26511B9DF6FA00802E80 /* Quick.framework */; };
+		542EF2761C076FBB004C7477 /* JSONToViolationParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542EF2701C076FBB004C7477 /* JSONToViolationParser.swift */; };
+		542EF2771C076FBB004C7477 /* ReporterComparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542EF2711C076FBB004C7477 /* ReporterComparator.swift */; };
+		542EF2781C076FBB004C7477 /* TaylorIntegrationTestResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 542EF2731C076FBB004C7477 /* TaylorIntegrationTestResources.bundle */; };
+		542EF2791C076FBB004C7477 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542EF2741C076FBB004C7477 /* StringExtensions.swift */; };
+		542EF27A1C076FBB004C7477 /* TaylorIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542EF2751C076FBB004C7477 /* TaylorIntegrationTests.swift */; };
 		692E462F1BF3AEF100D0886E /* Help.txt in Resources */ = {isa = PBXBuildFile; fileRef = 692E462E1BF3AEF100D0886E /* Help.txt */; };
 		692FCBEB1BED2B7F00DB5F16 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692FCBEA1BED2B7F00DB5F16 /* main.swift */; };
 		692FCBEE1BED2C2A00DB5F16 /* TaylorFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B4DC891BED1BD3005EA7D5 /* TaylorFramework.framework */; };
@@ -187,7 +187,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		692E46301BF3B18500D0886E /* PBXContainerItemProxy */ = {
+		542EF2681C076F88004C7477 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A36B2EEE1B98244F0049F590 /* Project object */;
 			proxyType = 1;
@@ -211,14 +211,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		54EFF4F11BF0F97200EE8E94 /* CopyFiles */ = {
+		542EF26B1C076F8E004C7477 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				54EFF4F21BF0F98000EE8E94 /* Nimble.framework in CopyFiles */,
-				54EFF4F31BF0F98000EE8E94 /* Quick.framework in CopyFiles */,
+				542EF26C1C076F97004C7477 /* Nimble.framework in CopyFiles */,
+				542EF26D1C076F97004C7477 /* Quick.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,13 +296,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		54EFF4DD1BF0F92500EE8E94 /* TaylorIntegrationTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaylorIntegrationTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		54EFF4DF1BF0F92500EE8E94 /* TaylorIntegrationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaylorIntegrationTest.swift; sourceTree = "<group>"; };
-		54EFF4E11BF0F92500EE8E94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		54EFF4E81BF0F94800EE8E94 /* JSONToViolationParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONToViolationParser.swift; sourceTree = "<group>"; };
-		54EFF4E91BF0F94800EE8E94 /* ReporterComparator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReporterComparator.swift; sourceTree = "<group>"; };
-		54EFF4EB1BF0F94800EE8E94 /* TaylorIntegrationTestResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TaylorIntegrationTestResources.bundle; sourceTree = "<group>"; };
-		54EFF4EC1BF0F94800EE8E94 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		542EF2601C076F7F004C7477 /* TaylorIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaylorIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		542EF2641C076F7F004C7477 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		542EF2701C076FBB004C7477 /* JSONToViolationParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONToViolationParser.swift; sourceTree = "<group>"; };
+		542EF2711C076FBB004C7477 /* ReporterComparator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReporterComparator.swift; sourceTree = "<group>"; };
+		542EF2731C076FBB004C7477 /* TaylorIntegrationTestResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TaylorIntegrationTestResources.bundle; sourceTree = "<group>"; };
+		542EF2741C076FBB004C7477 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		542EF2751C076FBB004C7477 /* TaylorIntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaylorIntegrationTests.swift; sourceTree = "<group>"; };
 		692E462E1BF3AEF100D0886E /* Help.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Help.txt; sourceTree = "<group>"; };
 		692FCBDD1BED2A2400DB5F16 /* Taylor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taylor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		692FCBEA1BED2B7F00DB5F16 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -466,13 +466,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		54EFF4DA1BF0F92500EE8E94 /* Frameworks */ = {
+		542EF25D1C076F7F004C7477 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54EFF4F41BF0F98B00EE8E94 /* Nimble.framework in Frameworks */,
-				54EFF4F51BF0F98B00EE8E94 /* Quick.framework in Frameworks */,
-				54EFF4E21BF0F92500EE8E94 /* TaylorFramework.framework in Frameworks */,
+				542EF26E1C076F9D004C7477 /* Nimble.framework in Frameworks */,
+				542EF26F1C076F9D004C7477 /* Quick.framework in Frameworks */,
+				542EF26A1C076F8C004C7477 /* TaylorFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,23 +509,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		54EFF4DE1BF0F92500EE8E94 /* TaylorIntegrationTest */ = {
+		542EF2611C076F7F004C7477 /* TaylorIntegrationTests */ = {
 			isa = PBXGroup;
 			children = (
-				54EFF4EA1BF0F94800EE8E94 /* Resources */,
-				54EFF4DF1BF0F92500EE8E94 /* TaylorIntegrationTest.swift */,
-				54EFF4E81BF0F94800EE8E94 /* JSONToViolationParser.swift */,
-				54EFF4E91BF0F94800EE8E94 /* ReporterComparator.swift */,
-				54EFF4EC1BF0F94800EE8E94 /* StringExtensions.swift */,
-				54EFF4E11BF0F92500EE8E94 /* Info.plist */,
+				542EF2721C076FBB004C7477 /* Resources */,
+				542EF2641C076F7F004C7477 /* Info.plist */,
+				542EF2701C076FBB004C7477 /* JSONToViolationParser.swift */,
+				542EF2711C076FBB004C7477 /* ReporterComparator.swift */,
+				542EF2741C076FBB004C7477 /* StringExtensions.swift */,
+				542EF2751C076FBB004C7477 /* TaylorIntegrationTests.swift */,
 			);
-			path = TaylorIntegrationTest;
+			path = TaylorIntegrationTests;
 			sourceTree = "<group>";
 		};
-		54EFF4EA1BF0F94800EE8E94 /* Resources */ = {
+		542EF2721C076FBB004C7477 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				54EFF4EB1BF0F94800EE8E94 /* TaylorIntegrationTestResources.bundle */,
+				542EF2731C076FBB004C7477 /* TaylorIntegrationTestResources.bundle */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -987,8 +987,8 @@
 				A3CB264F1B9DF6FA00802E80 /* CommonTestsSources */,
 				69B4DBDC1BED169B005EA7D5 /* TaylorFramework */,
 				69B4DCEC1BED1FE0005EA7D5 /* TaylorFrameworkTests */,
-				54EFF4DE1BF0F92500EE8E94 /* TaylorIntegrationTest */,
 				692FCBF01BED2E2A00DB5F16 /* Resources */,
+				542EF2611C076F7F004C7477 /* TaylorIntegrationTests */,
 				A36B2EF71B98244F0049F590 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -999,7 +999,7 @@
 				69B4DC891BED1BD3005EA7D5 /* TaylorFramework.framework */,
 				69B4DCE21BED1F87005EA7D5 /* TaylorFrameworkTests.xctest */,
 				692FCBDD1BED2A2400DB5F16 /* Taylor.app */,
-				54EFF4DD1BF0F92500EE8E94 /* TaylorIntegrationTest.xctest */,
+				542EF2601C076F7F004C7477 /* TaylorIntegrationTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1092,23 +1092,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		54EFF4DC1BF0F92500EE8E94 /* TaylorIntegrationTest */ = {
+		542EF25F1C076F7F004C7477 /* TaylorIntegrationTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 54EFF4E51BF0F92500EE8E94 /* Build configuration list for PBXNativeTarget "TaylorIntegrationTest" */;
+			buildConfigurationList = 542EF2651C076F7F004C7477 /* Build configuration list for PBXNativeTarget "TaylorIntegrationTests" */;
 			buildPhases = (
-				54EFF4D91BF0F92500EE8E94 /* Sources */,
-				54EFF4DA1BF0F92500EE8E94 /* Frameworks */,
-				54EFF4DB1BF0F92500EE8E94 /* Resources */,
-				54EFF4F11BF0F97200EE8E94 /* CopyFiles */,
+				542EF25C1C076F7F004C7477 /* Sources */,
+				542EF25D1C076F7F004C7477 /* Frameworks */,
+				542EF25E1C076F7F004C7477 /* Resources */,
+				542EF26B1C076F8E004C7477 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				692E46311BF3B18500D0886E /* PBXTargetDependency */,
+				542EF2691C076F88004C7477 /* PBXTargetDependency */,
 			);
-			name = TaylorIntegrationTest;
-			productName = TaylorIntegrationTest;
-			productReference = 54EFF4DD1BF0F92500EE8E94 /* TaylorIntegrationTest.xctest */;
+			name = TaylorIntegrationTests;
+			productName = TaylorIntegrationTests;
+			productReference = 542EF2601C076F7F004C7477 /* TaylorIntegrationTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		692FCBDC1BED2A2400DB5F16 /* Taylor */ = {
@@ -1179,7 +1179,7 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = YOPESO;
 				TargetAttributes = {
-					54EFF4DC1BF0F92500EE8E94 = {
+					542EF25F1C076F7F004C7477 = {
 						CreatedOnToolsVersion = 7.1;
 					};
 					692FCBDC1BED2A2400DB5F16 = {
@@ -1210,17 +1210,17 @@
 				69B4DC881BED1BD3005EA7D5 /* TaylorFramework */,
 				69B4DCE11BED1F87005EA7D5 /* TaylorFrameworkTests */,
 				692FCBDC1BED2A2400DB5F16 /* Taylor */,
-				54EFF4DC1BF0F92500EE8E94 /* TaylorIntegrationTest */,
+				542EF25F1C076F7F004C7477 /* TaylorIntegrationTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		54EFF4DB1BF0F92500EE8E94 /* Resources */ = {
+		542EF25E1C076F7F004C7477 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54EFF4EF1BF0F94800EE8E94 /* TaylorIntegrationTestResources.bundle in Resources */,
+				542EF2781C076FBB004C7477 /* TaylorIntegrationTestResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1253,14 +1253,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		54EFF4D91BF0F92500EE8E94 /* Sources */ = {
+		542EF25C1C076F7F004C7477 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54EFF4F01BF0F94800EE8E94 /* StringExtensions.swift in Sources */,
-				54EFF4E01BF0F92500EE8E94 /* TaylorIntegrationTest.swift in Sources */,
-				54EFF4EE1BF0F94800EE8E94 /* ReporterComparator.swift in Sources */,
-				54EFF4ED1BF0F94800EE8E94 /* JSONToViolationParser.swift in Sources */,
+				542EF2791C076FBB004C7477 /* StringExtensions.swift in Sources */,
+				542EF27A1C076FBB004C7477 /* TaylorIntegrationTests.swift in Sources */,
+				542EF2771C076FBB004C7477 /* ReporterComparator.swift in Sources */,
+				542EF2761C076FBB004C7477 /* JSONToViolationParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1407,10 +1407,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		692E46311BF3B18500D0886E /* PBXTargetDependency */ = {
+		542EF2691C076F88004C7477 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 692FCBDC1BED2A2400DB5F16 /* Taylor */;
-			targetProxy = 692E46301BF3B18500D0886E /* PBXContainerItemProxy */;
+			targetProxy = 542EF2681C076F88004C7477 /* PBXContainerItemProxy */;
 		};
 		692FCBED1BED2BE700DB5F16 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1425,9 +1425,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		54EFF4E61BF0F92500EE8E94 /* Debug */ = {
+		542EF2661C076F7F004C7477 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1437,26 +1438,28 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = TaylorIntegrationTest/Info.plist;
+				INFOPLIST_FILE = TaylorIntegrationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.TaylorIntegrationTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.TaylorIntegrationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		54EFF4E71BF0F92500EE8E94 /* Release */ = {
+		542EF2671C076F7F004C7477 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CommonTestsSources",
 				);
-				INFOPLIST_FILE = TaylorIntegrationTest/Info.plist;
+				INFOPLIST_FILE = TaylorIntegrationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.TaylorIntegrationTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.TaylorIntegrationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -1683,11 +1686,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		54EFF4E51BF0F92500EE8E94 /* Build configuration list for PBXNativeTarget "TaylorIntegrationTest" */ = {
+		542EF2651C076F7F004C7477 /* Build configuration list for PBXNativeTarget "TaylorIntegrationTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				54EFF4E61BF0F92500EE8E94 /* Debug */,
-				54EFF4E71BF0F92500EE8E94 /* Release */,
+				542EF2661C076F7F004C7477 /* Debug */,
+				542EF2671C076F7F004C7477 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
