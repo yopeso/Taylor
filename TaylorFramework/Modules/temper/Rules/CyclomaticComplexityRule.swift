@@ -30,7 +30,7 @@ final class CyclomaticComplexityRule : Rule {
     }
     private let decisionalComponentTypes = [ComponentType.If, .While, .For, .Case, .ElseIf, .Ternary, .NilCoalescing]
     
-    func checkComponent(component: Component, atPath: String) -> (isOk: Bool, message: String?, value: Int?) {
+    func checkComponent(component: Component) -> (isOk: Bool, message: String?, value: Int?) {
         if component.type != ComponentType.Function { return (true, nil, nil) }
         let complexity = findComplexityForComponent(component) + 1
         if complexity > limit {

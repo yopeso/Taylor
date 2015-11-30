@@ -21,53 +21,53 @@ class NPathComplexityRuleTests: QuickSpec {
             }
             it("should not check the non-function components") {
                 let component = Component(type: .For, range: ComponentRange(sl: 0, el: 0))
-                let result = self.rule.checkComponent(component, atPath: "path")
+                let result = self.rule.checkComponent(component)
                 expect(result.isOk).to(beTrue())
                 expect(result.message).to(beNil())
                 expect(result.value).to(beNil())
             }
             it("should calculate the correct NPath for -while- statement") {
-                let result = self.rule.checkComponent(self.helper.whileComponent, atPath: "path")
+                let result = self.rule.checkComponent(self.helper.whileComponent)
                 expect(result.value).to(equal(7))
             }
             it("should calculate the correct NPath for -if- statement") {
-                let result = self.rule.checkComponent(self.helper.ifComponent, atPath: "path")
+                let result = self.rule.checkComponent(self.helper.ifComponent)
                 expect(result.value).to(equal(243))
             }
             it("should calculate the correct NPath for -if-else- statement") {
-                let result = self.rule.checkComponent(self.helper.ifElseComponent, atPath: "path")
+                let result = self.rule.checkComponent(self.helper.ifElseComponent)
                 expect(result.value).to(equal(4))
             }
             it("should calculate the correct NPath for -if-elseif- statement") {
-                let result = self.rule.checkComponent(self.helper.ifElseIfComponent, atPath: "path")
+                let result = self.rule.checkComponent(self.helper.ifElseIfComponent)
                 expect(result.value).to(equal(3))
             }
             it("should calculate the correct NPath for -repeat- statement") {
-                let result = self.rule.checkComponent(self.helper.repeatComponent, atPath: "path")
+                let result = self.rule.checkComponent(self.helper.repeatComponent)
                 expect(result.value).to(equal(5))
             }
             it("should calculate the correct NPath for -for- statement") {
-                let result = self.rule.checkComponent(self.helper.forComponent, atPath: "path")
+                let result = self.rule.checkComponent(self.helper.forComponent)
                 expect(result.value).to(equal(6))
             }
             it("should calculate the correct NPath for -switch -statement") {
-                let result = self.rule.checkComponent(self.helper.switchComponent, atPath: "path")
+                let result = self.rule.checkComponent(self.helper.switchComponent)
                 expect(result.value).to(equal(8))
             }
             it("should calculate the correct NPath for ?: operator") {
-                let result = self.rule.checkComponent(self.helper.ternaryComponent, atPath: "path")
+                let result = self.rule.checkComponent(self.helper.ternaryComponent)
                 expect(result.value).to(equal(9))
             }
             it("should calculate the correct NPath for ?? operator") {
-                let result = self.rule.checkComponent(self.helper.nilCoalescingComponent, atPath: "path")
+                let result = self.rule.checkComponent(self.helper.nilCoalescingComponent)
                 expect(result.value).to(equal(9))
             }
             it("should calculate the correct NPath for nested statements") {
-                let result = self.rule.checkComponent(self.helper.nestedComponent, atPath: "path")
+                let result = self.rule.checkComponent(self.helper.nestedComponent)
                 expect(result.value).to(equal(3600))
             }
             it("should calculate the correct NPath for -if-elseif-else- component with nested statements") {
-                let result = self.rule.checkComponent(self.helper.ifElseIfElseNestedComponent, atPath: "path")
+                let result = self.rule.checkComponent(self.helper.ifElseIfElseNestedComponent)
                 expect(result.value).to(equal(26))
             }
         }

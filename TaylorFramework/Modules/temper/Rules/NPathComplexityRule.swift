@@ -23,7 +23,7 @@ final class NPathComplexityRule : Rule {
         set { if newValue > 0 { privateLimit = newValue } }
     }
     
-    func checkComponent(component: Component, atPath: String) -> (isOk: Bool, message: String?, value: Int?) {
+    func checkComponent(component: Component) -> (isOk: Bool, message: String?, value: Int?) {
         if component.type != ComponentType.Function { return (true, nil, nil) }
         let complexity = component.rangeNPathComplexity()
         if complexity > limit {

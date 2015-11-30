@@ -29,7 +29,7 @@ final class NumberOfMethodsInClassRule : Rule {
         }
     }
     
-    func checkComponent(component: Component, atPath: String) -> (isOk: Bool, message: String?, value: Int?) {
+    func checkComponent(component: Component) -> (isOk: Bool, message: String?, value: Int?) {
         if component.type != ComponentType.Class { return (true, nil, nil) }
         let methodsCount = getMethodsCountForComponent(component)
         let name = component.name ?? "unknown"
