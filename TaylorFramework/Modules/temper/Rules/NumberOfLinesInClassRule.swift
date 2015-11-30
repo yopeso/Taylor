@@ -17,14 +17,10 @@ final class NumberOfLinesInClassRule : Rule {
         }
     }
     let externalInfoUrl = "http://phpmd.org/rules/codesize.html#excessiveclasslength"
-    private var privateLimit = 400
-    var limit : Int {
-        get {
-            return privateLimit
-        }
-        set {
+    var limit : Int = 400 {
+        willSet {
             if newValue > 0 {
-                privateLimit = newValue
+                self.limit = newValue
             }
         }
     }

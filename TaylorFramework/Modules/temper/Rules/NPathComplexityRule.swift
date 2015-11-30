@@ -17,10 +17,12 @@ final class NPathComplexityRule : Rule {
         }
     }
     let externalInfoUrl = "http://phpmd.org/rules/codesize.html#npathcomplexity"
-    private var privateLimit = 100
-    var limit : Int {
-        get { return privateLimit }
-        set { if newValue > 0 { privateLimit = newValue } }
+    var limit : Int = 100{
+        willSet {
+            if newValue > 0 {
+                self.limit = newValue
+            }
+        }
     }
     
     func checkComponent(component: Component) -> (isOk: Bool, message: String?, value: Int?) {

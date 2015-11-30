@@ -17,14 +17,10 @@ final class NumberOfLinesInMethodRule : Rule {
         }
     }
     let externalInfoUrl = "http://phpmd.org/rules/codesize.html#excessivemethodlength"
-    private var privateLimit = 20
-    var limit : Int {
-        get {
-            return privateLimit
-        }
-        set {
+    var limit : Int = 20 {
+        willSet {
             if newValue > 0 {
-                privateLimit = newValue
+                self.limit = newValue
             }
         }
     }

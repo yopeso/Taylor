@@ -17,14 +17,10 @@ final class NumberOfMethodsInClassRule : Rule {
         }
     }
     let externalInfoUrl = "http://phpmd.org/rules/codesize.html#toomanymethods"
-    private var privateLimit = 10
-    var limit : Int {
-        get {
-            return privateLimit
-        }
-        set {
+    var limit : Int = 10 {
+        willSet {
             if newValue > 0 {
-                privateLimit = newValue
+                self.limit = newValue
             }
         }
     }

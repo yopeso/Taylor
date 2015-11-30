@@ -17,14 +17,10 @@ final class CyclomaticComplexityRule : Rule {
         }
     }
     let  externalInfoUrl  = "http://phpmd.org/rules/codesize.html#cyclomaticcomplexity"
-    private var privateLimit = 5
-    var limit : Int {
-        get {
-            return privateLimit
-        }
-        set {
+    var limit : Int = 5 {
+        willSet {
             if newValue > 0 {
-                privateLimit = newValue
+                self.limit = newValue
             }
         }
     }

@@ -18,14 +18,10 @@ final class NestedBlockDepthRule : Rule {
     }
     let externalInfoUrl = "http://docs.oclint.org/en/dev/rules/size.html#nestedblockdepth"
     let admisibleComponents = [ComponentType.If, .While, .For, .Case, .Brace, .Repeat, .Switch, .Brace]
-    private var privateLimit = 3
-    var limit : Int {
-        get {
-            return privateLimit
-        }
-        set {
+    var limit : Int = 3 {
+        willSet {
             if newValue > 0 {
-                privateLimit = newValue
+                self.limit = newValue
             }
         }
     }
