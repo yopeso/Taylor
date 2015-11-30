@@ -48,3 +48,7 @@ extension Array {
         return result.sort { $0.0 < $1.0 }.flatMap { $0.1 }
     }
 }
+
+func +<T>(lhs: [T], rhs: T) -> [T] {
+    return lhs + [rhs]
+}

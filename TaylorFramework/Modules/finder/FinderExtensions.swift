@@ -38,17 +38,15 @@ extension String {
     func deleteSuffix(suffix: String) -> String {
         guard self.hasSuffix(suffix) else { return self }
         
-        var modifiedString = self
-        let numberOfLetters = suffix.characters.count
-        for _ in 0 ..< numberOfLetters {
-            modifiedString = modifiedString.substringToIndex(modifiedString.endIndex.predecessor())
-        }
-        
-        return modifiedString
+        return (self as NSString).substringToIndex(self.characters.count - suffix.characters.count)
     }
     
     func hasDirectory(named name: String) -> Bool {
         return self.lowercaseString.rangeOfString(name.lowercaseString) != nil
+    }
+    
+    func stringByAppendingPathComponent(string: String) -> String {
+        return (self as NSString).stringByAppendingPathComponent(string)
     }
 }
 
@@ -63,7 +61,9 @@ extension SequenceType where Generator.Element == FilePath {
     }
     
     func excludePathsContainingSubpathsInArray(subpaths: [FilePath]) -> [FilePath] {
-        var remainedPaths = self as! [FilePath]
+        guard var remainedPaths = self as? [FilePath] else {
+            return []
+        }
         for subpath in subpaths {
             remainedPaths = remainedPaths.excludePathsContainingSubpath(subpath)
         }
@@ -72,8 +72,9 @@ extension SequenceType where Generator.Element == FilePath {
     }
     
     func excludePathsContainingDirectories(directories: [FilePath]) -> [FilePath] {
-        var remainedPaths = self as! [FilePath]
-        
+        guard var remainedPaths = self as? [FilePath] else {
+            return []
+        }
         for directoryName in directories {
             remainedPaths = remainedPaths.filter { !$0.hasDirectory(named: directoryName) }
         }

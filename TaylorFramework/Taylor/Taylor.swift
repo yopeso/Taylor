@@ -8,7 +8,7 @@
 
 import Foundation
 
-public final class Taylor {
+public struct Taylor {
     let arguments = Arguments()
     let printer: Printer
     

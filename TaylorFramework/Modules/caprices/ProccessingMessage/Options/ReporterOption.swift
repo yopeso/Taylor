@@ -19,14 +19,14 @@ let XcodeType = "xcode"
 let ReporterTypeKey = "type"
 let ReporterFileNameKey = "fileName"
 
-final class ReporterOption: InformationalOption {
+struct ReporterOption: InformationalOption {
     
     var analyzePath = NSFileManager.defaultManager().currentDirectoryPath
     var argumentSeparator = ":"
     var optionArgument : String
     let name = "ReporterOption"
     
-    required init(argument:String = "") {
+    init(argument:String = "") {
         optionArgument = argument
     }
     

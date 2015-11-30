@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class JSONCoordinator : WritingCoordinator {
+struct JSONCoordinator : WritingCoordinator {
     
     func writeViolations(violations: [Violation], atPath path: String) {
         NSFileManager().removeFileAtPath(path)

@@ -11,12 +11,12 @@ import Foundation
 let TypeLong = "--type"
 let TypeShort = "-t"
 
-final class TypeOption: ExecutableOption {
+struct TypeOption: ExecutableOption {
     var analyzePath = NSFileManager.defaultManager().currentDirectoryPath
     var optionArgument : String
     let name = "TypeOption"
     
-    required init(argument:String = EmptyString) {
+    init(argument:String = EmptyString) {
         optionArgument = argument
     }
     

@@ -9,14 +9,7 @@
 import Foundation
 import SourceKittenFramework
 
-final class Scissors {
-    
-    /**
-    Initialize Scissors by passing in a Printer.
-    - parameter printer: Printer to be used as message or error output.
-    */
-    init() { }
-    
+struct Scissors {    
     /**
     Tokenizes contents of file at a given path by converting it to a tree of components.
     
@@ -25,6 +18,9 @@ final class Scissors {
     - returns: **FileContent** containing 'path' to file and the tree of components.
     */
     func tokenizeFileAtPath(path: String) -> FileContent {
+        guard NSFileManager.defaultManager().fileExistsAtPath(path) else {
+            return FileContent(path: "", components: [])
+        }
         let tree = Tree(file: File(path: path)!)
         let root = tree.makeTree()
         return FileContent(path: path, components: root.components)

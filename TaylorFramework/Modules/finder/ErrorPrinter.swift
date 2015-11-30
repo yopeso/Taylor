@@ -7,7 +7,7 @@
 //
 
 
-final class ErrorPrinter {
+struct ErrorPrinter {
     let printer: Printer
     
     init(printer: Printer) {
