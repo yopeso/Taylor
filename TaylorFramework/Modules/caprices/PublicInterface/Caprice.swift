@@ -28,7 +28,7 @@ struct Caprice {
     Returns dictionary with necessary info
     (compulsory keys : "path", "type"; optional keys: "files", "excludes"),
     Retuns empty dictionary if help is requested.
-    Returns current path if an error occurs.
+    Returns dictionary with error key if an error occurs.
     */
     func processArguments(arguments: [String]) -> Options {
         let resultDictionary = messageProcessor.processArguments(arguments)
