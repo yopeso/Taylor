@@ -65,7 +65,7 @@ enum ReporterType {
     }
 }
 
-final class Reporter {
+struct Reporter {
     let type : ReporterType
     let fileName : String
     
@@ -102,7 +102,7 @@ final class Reporter {
         * Xcode
     */
     
-    convenience init (type : ReporterType) {
+    init (type : ReporterType) {
         self.init(type: type, fileName:type.defaultFileName())
     }
 }

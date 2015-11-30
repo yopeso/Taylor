@@ -8,7 +8,7 @@
 
 import Cocoa
 
-final class ExcludesFileReader {
+struct ExcludesFileReader {
     
     let fileManager : NSFileManager
     let ExcludesFileExtension = ".yml"

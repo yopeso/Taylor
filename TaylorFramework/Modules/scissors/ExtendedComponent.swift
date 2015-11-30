@@ -27,10 +27,16 @@ final class ExtendedComponent {
     }
     
     init(dict: [String: AnyObject]) {
-        self.type = ComponentType(type: dict["type"] as! String)
-        let startOffset = dict["offset"] as! Int
-        let endOffset = startOffset + (dict["length"] as! Int)
-        self.offsetRange = OffsetRange(start: startOffset, end: endOffset - 1)
+        if let type = dict["type"] as? String,
+            startOffset = dict["offset"] as? Int,
+            length = dict["length"] as? Int {
+                let endOffset = startOffset + length
+                self.type = ComponentType(type: type)
+                self.offsetRange = OffsetRange(start: startOffset, end: endOffset - 1)
+        } else {
+            self.type = .Other
+            self.offsetRange = OffsetRange(start: 0, end: 0)
+        }
         self.name = nil
         self.components = []
     }
@@ -127,7 +133,7 @@ final class ExtendedComponent {
     
     func removeRedundantClosuresInSelf() {
         components = components.filter() {
-            !($0.type == .Closure && $0.components.count == 0)
+            !($0.type == .Closure && $0.components.isEmpty)
         }
     }
     

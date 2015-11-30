@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class PacmanRunner: NSObject {
+class PacmanRunner {
     
     let printer = Printer(verbosityLevel: .Error)
     let currentPath = NSFileManager.defaultManager().currentDirectoryPath
@@ -34,7 +34,7 @@ class PacmanRunner: NSObject {
     func input() -> String {
         let keyboard = NSFileHandle.fileHandleWithStandardInput()
         let inputData = keyboard.availableData
-        return NSString(data: inputData, encoding: NSUTF8StringEncoding) as! String
+        return (NSString(data: inputData, encoding: NSUTF8StringEncoding) ?? "") as String
     }
     
     func runEasterEgg(paths: [Path]) {

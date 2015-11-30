@@ -10,7 +10,7 @@ import Foundation
 
 typealias ResultOutput = (path: String, warnings: Int)
 
-final class CLIReporter {
+struct CLIReporter {
     let results: [ResultOutput]
     
     init(results: [ResultOutput]) {
