@@ -135,7 +135,7 @@ final class Temper {
         guard let path = currentPath else {
             return
         }
-        let result = rule.checkComponent(component, atPath: path)
+        let result = rule.checkComponent(component)
         if !result.isOk {
             var message = String()
             var value = 0

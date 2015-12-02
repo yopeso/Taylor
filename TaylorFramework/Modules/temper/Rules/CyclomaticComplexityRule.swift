@@ -17,20 +17,16 @@ final class CyclomaticComplexityRule : Rule {
         }
     }
     let  externalInfoUrl  = "http://phpmd.org/rules/codesize.html#cyclomaticcomplexity"
-    private var privateLimit = 5
-    var limit : Int {
-        get {
-            return privateLimit
-        }
-        set {
+    var limit : Int = 5 {
+        willSet {
             if newValue > 0 {
-                privateLimit = newValue
+                self.limit = newValue
             }
         }
     }
     private let decisionalComponentTypes = [ComponentType.If, .While, .For, .Case, .ElseIf, .Ternary, .NilCoalescing]
     
-    func checkComponent(component: Component, atPath: String) -> (isOk: Bool, message: String?, value: Int?) {
+    func checkComponent(component: Component) -> (isOk: Bool, message: String?, value: Int?) {
         if component.type != ComponentType.Function { return (true, nil, nil) }
         let complexity = findComplexityForComponent(component) + 1
         if complexity > limit {

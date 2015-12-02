@@ -17,20 +17,16 @@ final class NumberOfLinesInMethodRule : Rule {
         }
     }
     let externalInfoUrl = "http://phpmd.org/rules/codesize.html#excessivemethodlength"
-    private var privateLimit = 20
-    var limit : Int {
-        get {
-            return privateLimit
-        }
-        set {
+    var limit : Int = 20 {
+        willSet {
             if newValue > 0 {
-                privateLimit = newValue
+                self.limit = newValue
             }
         }
     }
     private var linesCount = 0
     
-    func checkComponent(component: Component, atPath: String) -> (isOk: Bool, message: String?, value: Int?) {
+    func checkComponent(component: Component) -> (isOk: Bool, message: String?, value: Int?) {
         if component.type != ComponentType.Function { return (true, nil, nil) }
         linesCount = component.range.length
         deleteLinesFromComponent(component)

@@ -17,20 +17,16 @@ final class NumberOfLinesInClassRule : Rule {
         }
     }
     let externalInfoUrl = "http://phpmd.org/rules/codesize.html#excessiveclasslength"
-    private var privateLimit = 400
-    var limit : Int {
-        get {
-            return privateLimit
-        }
-        set {
+    var limit : Int = 400 {
+        willSet {
             if newValue > 0 {
-                privateLimit = newValue
+                self.limit = newValue
             }
         }
     }
     private var linesCount = 0
     
-    func checkComponent(component: Component, atPath: String) -> (isOk: Bool, message: String?, value: Int?) {
+    func checkComponent(component: Component) -> (isOk: Bool, message: String?, value: Int?) {
         if component.type != ComponentType.Class { return (true, nil, nil) }
         linesCount = component.range.length
         deleteLinesFromComponent(component)

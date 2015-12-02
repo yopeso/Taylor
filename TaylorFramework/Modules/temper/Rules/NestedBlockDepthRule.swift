@@ -18,19 +18,15 @@ final class NestedBlockDepthRule : Rule {
     }
     let externalInfoUrl = "http://docs.oclint.org/en/dev/rules/size.html#nestedblockdepth"
     let admisibleComponents = [ComponentType.If, .While, .For, .Case, .Brace, .Repeat, .Switch, .Brace]
-    private var privateLimit = 3
-    var limit : Int {
-        get {
-            return privateLimit
-        }
-        set {
+    var limit : Int = 3 {
+        willSet {
             if newValue > 0 {
-                privateLimit = newValue
+                self.limit = newValue
             }
         }
     }
     
-    func checkComponent(component: Component, atPath: String) -> (isOk: Bool, message: String?, value: Int?) {
+    func checkComponent(component: Component) -> (isOk: Bool, message: String?, value: Int?) {
         if component.type != ComponentType.Function { return (true, nil, nil) }
         let depth = findMaxDepthForComponent(component)
         if depth > limit {

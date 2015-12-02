@@ -25,7 +25,6 @@ class OptionsProcessor {
     func processOptions(arguments: [String]) -> Options {
         let options = optionsFromArguments(arguments)
         if options.isEmpty {
-            errorPrinter.printError("\nInvalid option was indicated")
             return EmptyResultDictionary
         }
         analyzePath = currentAnalyzedPath(options)
@@ -102,6 +101,8 @@ class OptionsProcessor {
             option.executeOnDictionary(&dictionary)
             if dictionary[ResultDictionaryErrorKey] != nil {
                 dictionary = EmptyResultDictionary
+                errorPrinter.printError("Error committed on option `\(option.name)` " +
+                    "with argument \(option.optionArgument).")
                 return false
             }
         }
@@ -116,7 +117,10 @@ class OptionsProcessor {
             let option = arguments[index]
             let optionArgument = arguments[index + 1]
             let optionObject = optionObjectFromOption(option, argument: optionArgument)
-            if optionObject == nil { return [] }
+            if optionObject == nil {
+                errorPrinter.printError("Error committed on option `\(option)`.")
+                return []
+            }
             options.append(optionObject!)
         }
         

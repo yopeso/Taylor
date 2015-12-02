@@ -17,8 +17,14 @@ final class ExcessiveParameterListRule : Rule {
         }
     }
     var externalInfoUrl = "http://phpmd.org/rules/codesize.html#excessiveparameterlist"
-    var limit = 3
-    func checkComponent(component: Component, atPath: String) -> (isOk: Bool, message: String?, value: Int?) {
+    var limit = 3 {
+        willSet {
+            if newValue > 0 {
+                self.limit = newValue
+            }
+        }
+    }
+    func checkComponent(component: Component) -> (isOk: Bool, message: String?, value: Int?) {
         if component.type != ComponentType.Function { return (true, nil, nil) }
         let parametersCount = parametersCountForFunction(component)
         if parametersCount > limit {
