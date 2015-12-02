@@ -41,7 +41,7 @@ To use Taylor from command line run it as follows:
 |`-h`/`--help`| Print **help**.|
 |`-v`/`--version`| Print Taylor **version**.|
 |`-p`/`--path` `path`| **Path** to the folder to be analysed (current folder by default).|
-|`-e`/`--excludeFile` `file`| Path to either **directory or file to be excluded** from analysis.|
+|`-e`/`--exclude` `file`| Path to either **directory or file to be excluded** from analysis.|
 |`-ef`/`--excludeFile` `file`| Path to **exclude file** in `.yml` format.|
 |`-f`/`--file` `file`| File to be **included** in analysis (may be from an external source).|
 |`-t`/`--type` `type`| **Type of files** to be analysed.|
@@ -95,7 +95,7 @@ Example: `taylor -rc CyclomaticComplexity=10`.
 
 #### Nested Block Depth
 
-[Block Depth](http://docs.oclint.org/en/dev/rules/size.html#nestedblockdepth) of a method must not exceed maximal admitted value. Default = `5`.  
+[Block Depth](http://docs.oclint.org/en/dev/rules/size.html#nestedblockdepth) of a method must not exceed maximal admitted value. Default = `3`.  
 Example: `taylor -rc NestedBlockDepth=7`.
 
 #### N-Path Complexity
