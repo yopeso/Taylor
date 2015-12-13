@@ -63,10 +63,10 @@ final class ReportGenerator {
     
     func reporterWithType(type: String, withRepresentation representation: OutputReporter) -> Reporter {
         if let fileName = representation[ReporterFileNameKey] {
-            return reporterWith(type: type, fileName: fileName)
+            return Reporter(type: type, fileName: fileName)
         }
         
-        return reporterWith(type: type)
+        return Reporter(type: type)
     }
 
 }

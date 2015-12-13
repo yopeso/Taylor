@@ -53,7 +53,7 @@ final class Temper {
         rules = RulesFactory().getRules()
         violations = [Violation]()
         output = OutputCoordinator(filePath: outputPath)
-        reporters = [PMDReporter()]
+        reporters = [Reporter(PMDReporter())]
     }
     
     /**

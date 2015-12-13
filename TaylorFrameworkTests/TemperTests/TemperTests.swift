@@ -28,7 +28,7 @@ class TemperTests : QuickSpec {
             aComponent.components = [anotherComponent]
             let content = FileContent(path: "blablabla", components: [aComponent])
             let reporter = JSONReporter()
-            temper.setReporters([reporter])
+            temper.setReporters([Reporter(reporter)])
             temper.checkContent(content)
             temper.finishTempering()
             let jsonData = NSData(contentsOfFile: filePath)

@@ -44,7 +44,7 @@ class OutputCoordinatorTests : QuickSpec {
                 let aRule = TestsHelper().aRule
                 let violation = Violation(component: aComponent, rule: aRule, message: "msg", path: "path", value: 100)
                 let filePath = (self.reporterPath as NSString).stringByAppendingPathComponent(JSONReporter().defaultFileName())
-                OutputCoordinator(filePath: self.reporterPath).writeTheOutput([violation], reporters: [JSONReporter()])
+                OutputCoordinator(filePath: self.reporterPath).writeTheOutput([violation], reporters: [Reporter(JSONReporter())])
                 let jsonData = NSData(contentsOfFile: filePath)
                 var jsonResult : NSDictionary? = nil
                 guard let data = jsonData else {
@@ -70,7 +70,7 @@ class OutputCoordinatorTests : QuickSpec {
                     }
                 }
                 let path = "trololo"
-                OutputCoordinator(filePath: path).writeTheOutput([violation], reporters: [JSONReporter()])
+                OutputCoordinator(filePath: path).writeTheOutput([violation], reporters: [Reporter(JSONReporter())])
                 expect(NSFileManager.defaultManager().fileExistsAtPath(path)).to(beFalse())
             }
             it("should write the violations in XML file") {
@@ -80,7 +80,7 @@ class OutputCoordinatorTests : QuickSpec {
                 let childComponent = component.makeComponent(type: ComponentType.Function, range: ComponentRange(sl: 10, el: 30), name: "justFunction")
                 let violation = Violation(component: childComponent, rule: aRule, message: "msg", path: "path", value: 100)
                 let filePath = (self.reporterPath as NSString).stringByAppendingPathComponent(PMDReporter().defaultFileName())
-                OutputCoordinator(filePath: self.reporterPath).writeTheOutput([violation], reporters: [PMDReporter()])
+                OutputCoordinator(filePath: self.reporterPath).writeTheOutput([violation], reporters: [Reporter(PMDReporter())])
                 let xmlData = NSData(contentsOfFile: filePath)
                 guard let data = xmlData else {
                     return
@@ -107,7 +107,7 @@ class OutputCoordinatorTests : QuickSpec {
                 let elementAttributes = element.attributes
                 expect(violationAttributes).to(equal(elementAttributes))
                 let path = "trololo"
-                OutputCoordinator(filePath: path).writeTheOutput([violation], reporters: [PMDReporter()])
+                OutputCoordinator(filePath: path).writeTheOutput([violation], reporters: [Reporter(PMDReporter())])
                 expect(NSFileManager.defaultManager().fileExistsAtPath(path)).to(beFalse())
             }
             it("should write the violations in TXT file") {
@@ -124,13 +124,13 @@ class OutputCoordinatorTests : QuickSpec {
                 let fileContent = FileContent(path: "path", components: [aComponent, aComponent, aComponent, aComponent, aComponent])
                 let reporter = PlainReporter()
                 let temper = Temper(outputPath: folderPath)
-                temper.setReporters([reporter])
+                temper.setReporters([Reporter(reporter)])
                 temper.checkContent(fileContent)
                 temper.finishTempering()
                 expect(NSFileManager.defaultManager().fileExistsAtPath(filePath)).to(beTrue())
                 let path = "trololo"
                 let violation = Violation(component: aComponent, rule: NestedBlockDepthRule(), message: "msg", path: "path", value: 100)
-                OutputCoordinator(filePath: path).writeTheOutput([violation], reporters: [PlainReporter()])
+                OutputCoordinator(filePath: path).writeTheOutput([violation], reporters: [Reporter(PlainReporter())])
                 expect(NSFileManager.defaultManager().fileExistsAtPath(path)).to(beFalse())
                 NSFileManager.defaultManager().removeFileAtPath(folderPath)
             }
@@ -139,7 +139,7 @@ class OutputCoordinatorTests : QuickSpec {
                 let fileContent = FileContent(path: "path", components: [aComponent, aComponent, aComponent, aComponent, aComponent])
                 let reporter = XcodeReporter()
                 let temper = Temper(outputPath: "")
-                temper.setReporters([reporter])
+                temper.setReporters([Reporter(reporter)])
                 temper.checkContent(fileContent)
                 temper.finishTempering()
             }

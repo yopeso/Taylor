@@ -6,7 +6,7 @@
 //  Copyright © 2015 Yopeso. All rights reserved.
 //
 
-protocol Reporter {
+protocol Reporting {
     /**
      This method should return the file extension for reporter file
      
@@ -29,7 +29,7 @@ protocol Reporter {
 }
 
 
-struct PlainReporter: Reporter {
+struct PlainReporter: Reporting {
     func fileExtension() -> String {
         return "txt"
     }
@@ -43,7 +43,7 @@ struct PlainReporter: Reporter {
     }
 }
 
-struct PMDReporter: Reporter {
+struct PMDReporter: Reporting {
     func fileExtension() -> String {
         return "pmd"
     }
@@ -57,7 +57,7 @@ struct PMDReporter: Reporter {
     }
 }
 
-struct XcodeReporter: Reporter {
+struct XcodeReporter: Reporting {
     func fileExtension() -> String {
         return ""
     }
@@ -71,7 +71,7 @@ struct XcodeReporter: Reporter {
     }
 }
 
-struct JSONReporter: Reporter {
+struct JSONReporter: Reporting {
     func fileExtension() -> String {
         return "json"
     }
@@ -86,43 +86,54 @@ struct JSONReporter: Reporter {
 }
 
 
+struct Reporter: Reporting {
+    let concreteReporter : Reporting
+    let fileName : String
+    
+    /**
+     Initialize the reporter with type and name
+     
+     If no file name is given the default file name is used:
+     * PMD (temper_report.pmd)
+     * JSON (temper_report.json)
+     * Plain (temper_report.txt)
+     * Xcode (dan't have a file name)
+     
+     :param: type The type of the reporter
+     * JSON
+     * PMD
+     * Plain
+     * Xcode
+     */
 
-/**
- Initialize the reporter with type and name
- 
- :param: type The type of the reporter
- * JSON
- * PMD
- * Plain
- * Xcode
- 
- :param: fileName The file name of the reporter
- */
-
-func reporterWith(type type: String, fileName : String) -> Reporter {
-    return reporterWithName(type)
+    
+    init(type : String, fileName : String? = nil) {
+        self.concreteReporter = reporterWithName(type)
+        guard let fileName = fileName else {
+            self.fileName = self.concreteReporter.defaultFileName()
+            return
+        }
+        self.fileName  = fileName
+    }
+    
+    init(_ concreteReporter: Reporting) {
+        self.concreteReporter = concreteReporter
+        self.fileName = concreteReporter.defaultFileName()
+    }
+    
+    func fileExtension() -> String {
+        return concreteReporter.fileExtension()
+    }
+    
+    func defaultFileName() -> String {
+        return concreteReporter.defaultFileName()
+    }
+    
+    func coordinator() -> WritingCoordinator {
+        return concreteReporter.coordinator()
+    }
+    
 }
-
-/**
- Initialize the reporter with type and name
- 
- For reporter file name will be used the default file name for reporter type:
- * PMD (temper_report.pmd)
- * JSON (temper_report.json)
- * Plain (temper_report.txt)
- * Xcode (dan't have a file name)
- 
- :param: type The type of the reporter
- * JSON
- * PMD
- * Plain
- * Xcode
- */
-
-func reporterWith(type type: String) -> Reporter {
-    return reporterWithName(type)
-}
-
 
 /**
  Initialize the reporter type with a string
@@ -136,7 +147,7 @@ func reporterWith(type type: String) -> Reporter {
  * XCODE
  */
 
-func reporterWithName(string: String) -> Reporter {
+func reporterWithName(string: String) -> Reporting {
     switch string.uppercaseString {
     case "JSON": return JSONReporter()
     case "PMD": return PMDReporter()
