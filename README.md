@@ -4,6 +4,8 @@
 
 A tool aimed to increase Swift code quality, by checking for conformance to code metrics.
 
+[![Build Status](https://travis-ci.org/yopeso/Taylor.svg?branch=master)](https://travis-ci.org/yopeso/Taylor)
+
 Taylor uses [SourceKitten](https://github.com/S2dentik/SourceKitten) to a more
 accurate [AST](http://clang.llvm.org/docs/IntroductionToTheClangAST.html)
 representation and generates the final report in either **Xcode, JSON, PMD** or **plain text** formats.
