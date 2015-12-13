@@ -1,0 +1,7 @@
+func testIf() {
+    if(true){
+    }else{}
+    if (false) {}
+    else {
+    }
+}

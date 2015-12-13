@@ -1,0 +1,8 @@
+class TestComputedProperties {
+var b: Double {
+if true { return 0 }
+}
+var c: Double = 0.0 {
+    return 1
+}
+}

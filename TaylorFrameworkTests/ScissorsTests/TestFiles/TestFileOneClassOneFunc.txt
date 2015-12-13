@@ -1,0 +1,5 @@
+import Foundation
+class Test {
+}
+func testFunc() {
+}

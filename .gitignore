@@ -131,3 +131,7 @@ xcuserdata
 /Frank/frankified_build/
 /Frank/results/
 *.idea/
+*.xcscmblueprint
+
+####
+taylor_report.*

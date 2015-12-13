@@ -1,0 +1,20 @@
+class TestClosures {
+    let a44 = [1].map({ i in
+        i * 2
+    })
+    let a1 = [1,1].map() { $0 }
+    let a2 = { (param)-> Int in
+        return 1
+    }()
+    let a3: Double = {
+        if true {}
+        return 1.0
+    }()
+    func test() {
+        [1].map( { $0 } )
+        var reversed = [].sort({ (s1: String, s2: String) -> Bool in
+        return s1 > s2
+        })
+        reversed = [].sort( { s1, s2 in s1 > s2 } )
+    }
+}

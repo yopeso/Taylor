@@ -1,0 +1,6 @@
+- “file.txt”
+- "path/to/file.txt"
+- “folder/*”   
+- “path/to/folder/*”
+
+- “**.h”

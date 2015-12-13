@@ -1,0 +1,6 @@
+func testRepeatWhile() {
+    repeat {
+        _ = 2
+    } while true
+        && true || false
+}
