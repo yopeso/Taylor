@@ -1,0 +1,5 @@
+language: objective-c
+xcode_project: Taylor.xcodeproj
+xcode_scheme: Taylor
+xcode_sdk: macosx
+osx_image: xcode7.1
