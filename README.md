@@ -11,9 +11,12 @@ accurate [AST](http://clang.llvm.org/docs/IntroductionToTheClangAST.html)
 representation and generates the final report in either **Xcode, JSON, PMD** or **plain text** formats.
 
 ## Installation
+You can install Taylor by cloning the project and running `make install` (**latest version of Xcode required**).
 
-You can install Taylor by cloning the project and running `make install`
-(**latest version of Xcode required**).
+Or you can download the latest [release](https://github.com/yopeso/Taylor/releases) and run:
+```shell
+Taylor.app/Contents/Resources/install
+```
 
 ## Usage
 
