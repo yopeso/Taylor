@@ -12,12 +12,6 @@ representation and generates the final report in either **Xcode, JSON, PMD** or 
 
 ## Installation
 
-Install with [Homebrew](http://brew.sh/)
-
-```
-brew install taylor
-```
-
 You can install Taylor by cloning the project and running `make install` (**latest version of Xcode required**).
 
 Or you can download the latest [release](https://github.com/yopeso/Taylor/releases) and run:
