@@ -16,7 +16,7 @@ install:
 	mkdir -p "$(PREFIX)"
 
 	cp -rf "$(TEMPORARY_FOLDER)/Build/Products/Release/$(PACKAGE_NAME)" "$(PREFIX)/bin/"
-	ln -sf "$(PREFIX)/bin/Contents/MacOS/Taylor /usr/local/bin/taylor"
+	ln -sf "$(PREFIX)/bin/Contents/MacOS/Taylor" "/usr/local/bin/taylor"
 	make remove
 
 install_homebrew:
