@@ -6,4 +6,5 @@
 //  Copyright © 2015 YOPESO. All rights reserved.
 //
 
-let version = "0.1.0"
+let version = "0.1.1"
+
