@@ -16,19 +16,19 @@ class TemperTests : QuickSpec {
     override func spec() {
         afterEach {
             let path = NSFileManager.defaultManager().currentDirectoryPath as NSString
-            let filePath = path.stringByAppendingPathComponent(ReporterType.JSON.defaultFileName())
+            let filePath = path.stringByAppendingPathComponent(JSONReporter().defaultFileName())
             NSFileManager().removeFileAtPath(filePath)
         }
         it("should detect the violations and create the file/files") {
             let aComponent = TestsHelper().aComponent
             let anotherComponent = TestsHelper().anotherComponent
             let path =  NSHomeDirectory() as NSString
-            let filePath = path.stringByAppendingPathComponent(ReporterType.JSON.defaultFileName())
+            let filePath = path.stringByAppendingPathComponent(JSONReporter().defaultFileName())
             let temper = Temper(outputPath: (path as String))
             aComponent.components = [anotherComponent]
             let content = FileContent(path: "blablabla", components: [aComponent])
-            let reporter = Reporter(type: .JSON, fileName: ReporterType.JSON.defaultFileName())
-            temper.setReporters([reporter])
+            let reporter = JSONReporter()
+            temper.setReporters([Reporter(reporter)])
             temper.checkContent(content)
             temper.finishTempering()
             let jsonData = NSData(contentsOfFile: filePath)

@@ -27,9 +27,8 @@ class ReportGeneratorTests : QuickSpec {
             }
             
             it("should initialize reporter with default report file name if it is not gived") {
-                let type = ReporterType(string: "json")
                 let outputReporter = [ReporterTypeKey : "json"]
-                let resultReporter = reportGenerator.reporterWithType(type, withRepresentation: outputReporter)
+                let resultReporter = reportGenerator.reporterWithType("json", withRepresentation: outputReporter)
                 let expectedFileName = "taylor_report.json"
                 expect(resultReporter.fileName).to(equal(expectedFileName))
             }

@@ -18,16 +18,9 @@ final class OutputCoordinator {
     
     func writeTheOutput(violations: [Violation], reporters: [Reporter]) {
         self.reporters = reporters
-        var coordinator : WritingCoordinator
         for reporter in reporters {
-            switch reporter.type {
-            case .JSON:  coordinator = JSONCoordinator()
-            case .PMD:   coordinator = PMDCoordinator()
-            case .Plain: coordinator = PLAINCoordinator()
-            case .Xcode: coordinator = XcodeCoordinator()
-            }
             let path = (filePath as NSString).stringByAppendingPathComponent(reporter.fileName)
-            coordinator.writeViolations(violations, atPath: path)
+            reporter.coordinator().writeViolations(violations, atPath: path)
         }
     }
 }

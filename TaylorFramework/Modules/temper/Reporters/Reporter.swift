@@ -6,103 +6,152 @@
 //  Copyright © 2015 Yopeso. All rights reserved.
 //
 
+protocol Reporting {
+    /**
+     This method should return the file extension for reporter file
+     
+     For Xcode type it return "" because Xcode type don't have a file name
+     
+     :returns: String The file extension
+     */
+    func fileExtension() -> String
+    
+    /**
+     This method should return the default reporter file the type
+     
+     For Xcode type it return "" because Xcode type don't have a file name
+     
+     :returns: String The file name of the reporter
+     */
+    func defaultFileName() -> String
+    
+    func coordinator() -> WritingCoordinator
+}
 
-enum ReporterType {
-    case JSON
-    case PMD
-    case Plain
-    case Xcode
-    
-    /**
-        Initialize the reporter type with a string
-        
-        If the string is different from "JSON", "PMD" and "XCODE", by default the type will be Plain
-    
-        :param: string The uppercase string with the name of the reporter type
-        * JSON
-        * PMD
-        * PLAIN
-        * XCODE
-    */
-    
-    init(string: String) {
-        switch string.uppercaseString {
-        case "JSON": self = .JSON
-        case "PMD": self = .PMD
-        case "XCODE": self = .Xcode
-        default: self = .Plain
-        }
-    }
-    
-    /**
-        This method return the file extension for reporter file
-    
-        For Xcode type it return "" because Xcode type don't have a file name
-        
-        :returns: String The file extension
-    */
-    
+
+struct PlainReporter: Reporting {
     func fileExtension() -> String {
-        switch self {
-        case .JSON: return "json"
-        case .PMD: return "pmd"
-        case .Plain: return "txt"
-        case .Xcode: return ""
-        }
+        return "txt"
     }
-    
-    /**
-        This method return the default reporter file the type
-    
-        For Xcode type it return "" because Xcode type don't have a file name
-        
-        :returns: String The file name of the reporter
-    */
     
     func defaultFileName() -> String {
-        if self == .Xcode { return "" }
         return "taylor_report" + "." + fileExtension()
+    }
+    
+    func coordinator() -> WritingCoordinator {
+        return PLAINCoordinator()
     }
 }
 
-struct Reporter {
-    let type : ReporterType
+struct PMDReporter: Reporting {
+    func fileExtension() -> String {
+        return "pmd"
+    }
+    
+    func defaultFileName() -> String {
+        return "taylor_report" + "." + fileExtension()
+    }
+    
+    func coordinator() -> WritingCoordinator {
+        return PMDCoordinator()
+    }
+}
+
+struct XcodeReporter: Reporting {
+    func fileExtension() -> String {
+        return ""
+    }
+    
+    func defaultFileName() -> String {
+        return ""
+    }
+    
+    func coordinator() -> WritingCoordinator {
+        return XcodeCoordinator()
+    }
+}
+
+struct JSONReporter: Reporting {
+    func fileExtension() -> String {
+        return "json"
+    }
+    
+    func defaultFileName() -> String {
+        return "taylor_report" + "." + fileExtension()
+    }
+    
+    func coordinator() -> WritingCoordinator {
+        return JSONCoordinator()
+    }
+}
+
+
+struct Reporter: Reporting {
+    let concreteReporter : Reporting
     let fileName : String
     
     /**
-        Initialize the reporter with type and name
+     Initialize the reporter with type and name
+     
+     If no file name is given the default file name is used:
+     * PMD (temper_report.pmd)
+     * JSON (temper_report.json)
+     * Plain (temper_report.txt)
+     * Xcode (dan't have a file name)
+     
+     :param: type The type of the reporter
+     * JSON
+     * PMD
+     * Plain
+     * Xcode
+     */
+
     
-        :param: type The type of the reporter
-        * JSON
-        * PMD
-        * Plain
-        * Xcode
-        
-        :param: fileName The file name of the reporter
-    */
-    
-    init(type : ReporterType, fileName : String) {
-        self.type = type
-        self.fileName = fileName
+    init(type : String, fileName : String? = nil) {
+        self.concreteReporter = reporterWithName(type)
+        guard let fileName = fileName else {
+            self.fileName = self.concreteReporter.defaultFileName()
+            return
+        }
+        self.fileName  = fileName
     }
     
-    /**
-        Initialize the reporter with type and name
+    init(_ concreteReporter: Reporting) {
+        self.concreteReporter = concreteReporter
+        self.fileName = concreteReporter.defaultFileName()
+    }
     
-        For reporter file name will be used the default file name for reporter type:
-        * PMD (temper_report.pmd)
-        * JSON (temper_report.json)
-        * Plain (temper_report.txt)
-        * Xcode (dan't have a file name)
-        
-        :param: type The type of the reporter
-        * JSON
-        * PMD
-        * Plain
-        * Xcode
-    */
+    func fileExtension() -> String {
+        return concreteReporter.fileExtension()
+    }
     
-    init (type : ReporterType) {
-        self.init(type: type, fileName:type.defaultFileName())
+    func defaultFileName() -> String {
+        return concreteReporter.defaultFileName()
+    }
+    
+    func coordinator() -> WritingCoordinator {
+        return concreteReporter.coordinator()
+    }
+    
+}
+
+/**
+ Initialize the reporter type with a string
+ 
+ If the string is different from "JSON", "PMD" and "XCODE", by default the type will be Plain
+ 
+ :param: string The uppercase string with the name of the reporter type
+ * JSON
+ * PMD
+ * PLAIN
+ * XCODE
+ */
+
+func reporterWithName(string: String) -> Reporting {
+    switch string.uppercaseString {
+    case "JSON": return JSONReporter()
+    case "PMD": return PMDReporter()
+    case "XCODE": return XcodeReporter()
+    default: return PlainReporter()
     }
 }
