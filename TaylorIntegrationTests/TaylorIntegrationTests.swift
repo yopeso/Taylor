@@ -91,49 +91,49 @@ class TaylorIntegrationTests: QuickSpec {
     
     override func spec() {
         
-        do {
-            try self.initializePaths()
-        } catch let error {
-            print(error)
-        }
-        
-        describe("Taylor") {
-            
-            beforeEach {
-                do {
-                    try self.createResources()
-                } catch let error {
-                    print(error)
-                }
-            }
-            
-            
-            afterEach {
-                do {
-                    try self.cleanOrDestroyResources()
-                } catch let error {
-                    print(error)
-                }
-            }
-            
-            it("should generate correct reports") {
-                let runTask = NSTask()
-                runTask.launchPath = self.runTaskPath
-                runTask.arguments = ["-p", self.analyzeFilesPath, "-r", "json:taylor_report.json"]
-                runTask.launch()
-                runTask.waitUntilExit()
-                let reporterPath = self.analyzeFilesPath.stringByAppendingPathComponent("taylor_report.json")
-                expect(ReporterComparator().compareReporters(self.resultFilePath, secondReporterPath: reporterPath)).to(beTrue())
-                do {
-                    if NSFileManager.defaultManager().fileExistsAtPath(reporterPath) {
-                        try NSFileManager.defaultManager().removeItemAtPath(reporterPath)
-                    }
-                } catch let error {
-                    print(error)
-                }
-            }
-            
-        }
+//        do {
+//            try self.initializePaths()
+//        } catch let error {
+//            print(error)
+//        }
+//        
+//        describe("Taylor") {
+//            
+//            beforeEach {
+//                do {
+//                    try self.createResources()
+//                } catch let error {
+//                    print(error)
+//                }
+//            }
+//            
+//            
+//            afterEach {
+//                do {
+//                    try self.cleanOrDestroyResources()
+//                } catch let error {
+//                    print(error)
+//                }
+//            }
+//            
+//            it("should generate correct reports") {
+//                let runTask = NSTask()
+//                runTask.launchPath = self.runTaskPath
+//                runTask.arguments = ["-p", self.analyzeFilesPath, "-r", "json:taylor_report.json"]
+//                runTask.launch()
+//                runTask.waitUntilExit()
+//                let reporterPath = self.analyzeFilesPath.stringByAppendingPathComponent("taylor_report.json")
+//                expect(ReporterComparator().compareReporters(self.resultFilePath, secondReporterPath: reporterPath)).to(beTrue())
+//                do {
+//                    if NSFileManager.defaultManager().fileExistsAtPath(reporterPath) {
+//                        try NSFileManager.defaultManager().removeItemAtPath(reporterPath)
+//                    }
+//                } catch let error {
+//                    print(error)
+//                }
+//            }
+//            
+//        }
         
     }
     
