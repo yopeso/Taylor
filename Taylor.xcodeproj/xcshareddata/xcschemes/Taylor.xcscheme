@@ -39,16 +39,6 @@
                ReferencedContainer = "container:Taylor.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "542EF25F1C076F7F004C7477"
-               BuildableName = "TaylorIntegrationTests.xctest"
-               BlueprintName = "TaylorIntegrationTests"
-               ReferencedContainer = "container:Taylor.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
