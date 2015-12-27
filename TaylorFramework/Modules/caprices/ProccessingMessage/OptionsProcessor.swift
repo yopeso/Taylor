@@ -10,6 +10,18 @@ import Cocoa
 
 private let EmptyResultDictionary = Options()
 
+private let optionReporterType: [String: Option.Type] = [
+    PathLong: PathOption.self, PathShort: PathOption.self,
+    TypeLong: TypeOption.self, TypeShort: TypeOption.self,
+    FileLong: FileOption.self, FileShort: FileOption.self,
+    ExcludeLong: ExcludeOption.self, ExcludeShort: ExcludeOption.self,
+    ExcludesFileLong: ExcludesFileOption.self, ExcludesFileShort: ExcludesFileOption.self,
+    ReporterLong: ReporterOption.self, ReporterShort: ReporterOption.self,
+    RuleCustomizationLong: RuleCustomizationOption.self,
+    RuleCustomizationShort: RuleCustomizationOption.self,
+    VerbosityLong: VerbosityOption.self, VerbosityShort: VerbosityOption.self
+]
+
 /*
 If you change this class don't forget to fix his mock for actual right tests (if is case)
 */
@@ -23,11 +35,12 @@ class OptionsProcessor {
     var executableOptions = [ExecutableOption]()
     
     func processOptions(arguments: [String]) -> Options {
-        let options = optionsFromArguments(arguments)
-        if options.isEmpty {
-            return EmptyResultDictionary
+        let options = try! Array(arguments[1..<arguments.count]).reduceTwoElements([Option]()) {
+            if let optionObject = optionObjectFromOption($1, argument: $2) { return $0 + optionObject }
+            throw CommandLineError.InvalidArguments("Error committed on option `\($1)`.")
         }
-        analyzePath = currentAnalyzedPath(options)
+        if options.isEmpty { return EmptyResultDictionary }
+        analyzePath = options.filter{ $0 is PathOption }.first?.optionArgument.absolutePath() ?? analyzePath
         if !OptionsValidator().validateForSingleOptions(options) { return EmptyResultDictionary }
         let resultDictionary = buildResultDictionaryFromOptions(executableOptions)
         guard processInformationalOptions() else { return EmptyResultDictionary }
@@ -45,11 +58,6 @@ class OptionsProcessor {
         
         return true
     }
-    
-    func currentAnalyzedPath(options:[Option]) -> String {
-        return options.filter{ $0 is PathOption }.first?.optionArgument.absolutePath() ?? analyzePath
-    }
-    
     
     private func buildResultDictionaryFromOptions(options: [ExecutableOption]) -> Options {
         var resultDictionary = EmptyResultDictionary
@@ -111,52 +119,36 @@ class OptionsProcessor {
     }
     
     
-    private func optionsFromArguments(arguments: [String]) -> [Option] {
-        var options = [Option]()
-        for var index = 1; index < arguments.count; index+=2 {
-            let option = arguments[index]
-            let optionArgument = arguments[index + 1]
-            let optionObject = optionObjectFromOption(option, argument: optionArgument)
-            if optionObject == nil {
-                errorPrinter.printError("Error committed on option `\(option)`.")
-                return []
-            }
-            options.append(optionObject!)
+    private func optionObjectFromOption(option: String, argument: String) -> Option? {
+        if option == ExcludesFileLong || option == ExcludesFileShort { isExcludesFileIndicated = true }
+        if let optionType = optionReporterType[option] {
+            return configureOption(optionType, argument: argument)
         }
-        
-        return options
+        return nil
     }
     
-    
-    private func optionObjectFromOption(option:String, argument:String) -> Option? {
-        switch option {
-        case PathLong, PathShort:
-            return configureOption(PathOption.self, argument: argument)
-        case TypeLong, TypeShort:
-            return configureOption(TypeOption.self, argument: argument)
-        case FileLong, FileShort:
-            return configureOption(FileOption.self, argument: argument)
-        case ExcludeLong, ExcludeShort:
-            return configureOption(ExcludeOption.self, argument: argument)
-        case ExcludesFileLong, ExcludesFileShort:
-            isExcludesFileIndicated = true
-            return configureOption(ExcludesFileOption.self, argument: argument)
-        case ReporterLong, ReporterShort:
-            return configureOption(ReporterOption.self, argument: argument)
-        case RuleCustomizationLong, RuleCustomizationShort:
-            return configureOption(RuleCustomizationOption.self, argument: argument)
-        case VerbosityLong, VerbosityShort:
-            return configureOption(VerbosityOption.self, argument: argument)
-        default:
-            return nil
-        }
-    }
-    
-    func configureOption<T: Option>(option: T.Type, argument: String) -> T {
-        let option = T(argument: argument)
+    func configureOption(optionType: Option.Type, argument: String) -> Option {
+        let option = optionType.init(argument: argument)
         if let infoOption = option as? InformationalOption { infoOptions.append(infoOption) }
         else { executableOptions.append(option as! ExecutableOption) } // Safe to force unwrap
         
         return option
+    }
+}
+
+extension Array {
+    func reduceTwoElements<T>(initial: T, @noescape combine: (T, Array.Generator.Element, Array.Generator.Element) throws -> T) rethrows -> T {
+        var result = initial
+        for (first, second) in Zip2Sequence(self.enumerate().filter { $0.0.isEven }.map { $0.1 },
+                                            self.enumerate().filter {$0.0.isOdd }.map {$0.1}) {
+            do {
+                result = try combine(result, first, second)
+            } catch let error as NSError {
+                errorPrinter.printError(error.localizedDescription)
+                return initial
+            }
+            
+        }
+        return result
     }
 }

@@ -44,7 +44,7 @@ protocol Rule {
         :returns: Int? value The value of the violation, if the component is violation the rule
     */
     
-    func checkComponent(component: Component) -> (isOk: Bool, message: String?, value: Int?)
+    func checkComponent(component: Component) -> Result
     
     /**
         The method format the message for reporters

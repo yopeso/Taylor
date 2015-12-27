@@ -125,14 +125,14 @@ class MessageProcessorTests: QuickSpec {
                     expect(messageProcessor.processArguments(inputArguments)).to(beEmpty())
                 }
                 
-                it("default excludes file must be readed and setted to result dictionary if it exists, in plus at default path and type") {
+                it("default excludes file must be read and set to result dictionary if it exists, in plus at default path and type") {
                     let mockMessageProcessor = MockMessageProcessor()
                     let inputArguments = [currentPath]
                     let resultsArrayOfExcludes = ["file.txt".formattedExcludePath(currentPath), "path/to/file.txt".formattedExcludePath(currentPath), "folder".formattedExcludePath(currentPath), "path/to/folder".formattedExcludePath(currentPath)]
                     expect(mockMessageProcessor.processArguments(inputArguments)).to(equal(["path" : [currentPath], "type" : ["swift"], "excludes" : resultsArrayOfExcludes]))
                 }
                 
-                it("should set exclude path and paths from excludeFile toghether") {
+                it("should set exclude path and paths from excludeFile together") {
                     let mockMessageProcessor = MockMessageProcessor()
                     let somePath = "/somePath"
                     let pathToExcludesFile = MockFileManager().testFile("excludes", fileType: "yml")
@@ -154,7 +154,7 @@ class MessageProcessorTests: QuickSpec {
             
             context("when single option is indicated") {
                 
-                it("should return error dictionary if help file wasnt found") {
+                it("should return error dictionary if help file was not found") {
                     let mockMessageProcessor = MockMessageProcessor()
                     let inputArguments = [currentPath, FlagKey]
                     expect(mockMessageProcessor.processArguments(inputArguments)).to(beEmpty())

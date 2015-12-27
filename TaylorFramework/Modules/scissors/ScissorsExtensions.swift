@@ -170,21 +170,26 @@ extension ExtendedComponent {
     var containsClosure: Bool {
         return self.components.filter(){ $0.type == ComponentType.Closure }.count > 0
     }
+    
     var containsParameter: Bool {
         return self.components.filter(){ $0.type == ComponentType.Parameter }.count > 0
     }
+    
     var hasNoChildrenExceptELComment: Bool {
         return self.components.filter() { !$0.type.isComment && !$0.type.isEmptyLine }.count > 0 && self.type == .Variable
     }
+    
     var isActuallyClosure: Bool {
         return self.children == 1 && self.containsClosure
     }
+    
     var isFirstComponentBrace: Bool {
         guard self.components.count > 0 else {
             return false
         }
         return self.components[0].type == .Brace
     }
+    
     func isElseIf(type: ComponentType) -> Bool {
         return type == .If && self.isElseIfOrIf
     }
@@ -192,14 +197,51 @@ extension ExtendedComponent {
     func isElse(type: ComponentType) -> Bool {
         return type == .Brace && self.isElseIfOrIf
     }
+    
     func changeChildToParent(index: Int) {
         parent?.addChild(components[index])
         components.removeAtIndex(index)
     }
+    
     func takeChildrenOfChild(index: Int) {
         for child in components[index].components {
             addChild(child)
         }
+    }
+    
+    func addChild(child: ExtendedComponent) -> ExtendedComponent {
+        self.components.append(child)
+        child.parent = self
+        return child
+    }
+    
+    func addChild(type: ComponentType, range: OffsetRange, name: String? = nil) -> ExtendedComponent {
+        let child = ExtendedComponent(type: type, range: range, name: name)
+        child.parent = self
+        self.components.append(child)
+        return child
+    }
+    
+    func contains(node: ExtendedComponent) -> Bool {
+        return (node.offsetRange.start >= self.offsetRange.start)
+            && (node.offsetRange.end <= self.offsetRange.end)
+    }
+    
+    func insert(node: ExtendedComponent) {
+        for child in self.components {
+            if child.contains(node) {
+                child.insert(node)
+                return
+            } else if node.contains(child) {
+                remove(child)
+                node.addChild(child)
+            }
+        }
+        self.addChild(node)
+    }
+    
+    func remove(component: ExtendedComponent) {
+        components = components.filter() { $0 != component }
     }
 }
 
