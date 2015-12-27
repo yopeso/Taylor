@@ -42,7 +42,7 @@ class OutputCoordinatorTests : QuickSpec {
             it("should write the violations in JSON file") {
                 let aComponent = TestsHelper().aComponent
                 let aRule = TestsHelper().aRule
-                let violation = Violation(component: aComponent, rule: aRule, message: "msg", path: "path", value: 100)
+                let violation = Violation(component: aComponent, rule: aRule, violationData: ViolationData(message: "msg", path: "path", value: 100))
                 let filePath = (self.reporterPath as NSString).stringByAppendingPathComponent(JSONReporter().defaultFileName())
                 OutputCoordinator(filePath: self.reporterPath).writeTheOutput([violation], reporters: [Reporter(JSONReporter())])
                 let jsonData = NSData(contentsOfFile: filePath)
@@ -78,7 +78,7 @@ class OutputCoordinatorTests : QuickSpec {
                 let aRule = TestsHelper().aRule
                 let component = aComponent
                 let childComponent = component.makeComponent(type: ComponentType.Function, range: ComponentRange(sl: 10, el: 30), name: "justFunction")
-                let violation = Violation(component: childComponent, rule: aRule, message: "msg", path: "path", value: 100)
+                let violation = Violation(component: childComponent, rule: aRule, violationData: ViolationData(message: "msg", path: "path", value: 100))
                 let filePath = (self.reporterPath as NSString).stringByAppendingPathComponent(PMDReporter().defaultFileName())
                 OutputCoordinator(filePath: self.reporterPath).writeTheOutput([violation], reporters: [Reporter(PMDReporter())])
                 let xmlData = NSData(contentsOfFile: filePath)
@@ -129,7 +129,7 @@ class OutputCoordinatorTests : QuickSpec {
                 temper.finishTempering()
                 expect(NSFileManager.defaultManager().fileExistsAtPath(filePath)).to(beTrue())
                 let path = "trololo"
-                let violation = Violation(component: aComponent, rule: NestedBlockDepthRule(), message: "msg", path: "path", value: 100)
+                let violation = Violation(component: aComponent, rule: NestedBlockDepthRule(), violationData: ViolationData(message: "msg", path: "path", value: 100))
                 OutputCoordinator(filePath: path).writeTheOutput([violation], reporters: [Reporter(PlainReporter())])
                 expect(NSFileManager.defaultManager().fileExistsAtPath(path)).to(beFalse())
                 NSFileManager.defaultManager().removeFileAtPath(folderPath)

@@ -23,7 +23,7 @@ struct ComponentFinder {
         do {
             let regex = try NSRegularExpression(pattern: pattern, options: [.DotMatchesLineSeparators])
             return regex.matchesInString(text, options: [], range: NSMakeRange(0, text.characters.count)).map {
-                    $0.range
+                $0.range
                 }.reduce([OffsetRange]()) {
                     $0 + OffsetRange(start: $1.location, end: $1.location + $1.length)
             }
@@ -52,7 +52,7 @@ struct ComponentFinder {
     
     func findComments() -> [ExtendedComponent] {
         return syntaxMap.tokens.filter {
-                ComponentType(type: $0.type) == ComponentType.Comment
+            ComponentType(type: $0.type) == ComponentType.Comment
             }.reduce([ExtendedComponent]()) {
                 $0 + ExtendedComponent(dict: $1.dictionaryValue)
         }
@@ -83,9 +83,9 @@ struct ComponentFinder {
         let settersRanges = findRanges("(set($|[ \\t\\n{}]))", text: text)
         if gettersRanges.isEmpty { return findObserverGetters(text) }
         
-        accessors.append(ExtendedComponent(type: .Function, range: gettersRanges.first!, name: "get", parent: nil))
+        accessors.append(ExtendedComponent(type: .Function, range: gettersRanges.first!, name: "get"))
         if !settersRanges.isEmpty {
-            accessors.append(ExtendedComponent(type: .Function, range: settersRanges.first!, name: "set", parent: nil))
+            accessors.append(ExtendedComponent(type: .Function, range: settersRanges.first!, name: "set"))
         }
         accessors.sortInPlace( { $0.offsetRange.start < $1.offsetRange.start } )
         if accessors.count == 1 {
@@ -103,18 +103,17 @@ struct ComponentFinder {
         var didSetRanges = findRanges("(didSet($|[ \\t\\n{}]))", text: text)
         var observers = [ExtendedComponent]()
         if willSetRanges.count > 0 {
-            observers.append(ExtendedComponent(type: .Function, range: willSetRanges[0], name: "willSet", parent: nil))
+            observers.append(ExtendedComponent(type: .Function, range: willSetRanges[0], name: "willSet"))
         }
         if didSetRanges.count > 0 {
-            observers.append(ExtendedComponent(type: .Function, range: didSetRanges[0], name: "didSet", parent: nil))
+            observers.append(ExtendedComponent(type: .Function, range: didSetRanges[0], name: "didSet"))
         }
-        observers.sortInPlace( { $0.offsetRange.start < $1.offsetRange.start } )
-        switch observers.count {
-        case 0: return []
-        case 1: observers[0].offsetRange.end = text.characters.count - 1
-        case 2: observers[0].offsetRange.end = observers[1].offsetRange.start - 1
-        observers[1].offsetRange.end = text.characters.count - 1
-        default: break
+        observers.sortInPlace { $0.offsetRange.start < $1.offsetRange.start }
+        if observers.count == 1 {
+            observers[0].offsetRange.end = text.characters.count - 1
+        } else if observers.count == 2 {
+            observers[0].offsetRange.end = observers[1].offsetRange.start - 1
+            observers[1].offsetRange.end = text.characters.count - 1
         }
         
         return observers

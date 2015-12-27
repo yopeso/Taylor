@@ -48,16 +48,3 @@ final class PMDCoordinator : WritingCoordinator {
         return violations.map({ $0.path }).unique
     }
 }
-
-extension Array where Element : Hashable {
-    
-    /**
-        This property delete the duplicated objects in the array
-        
-        :returns: [Element] An array with distinct objects
-    */
-    
-    var unique: [Element] {
-        return Array(Set(self))
-    }
-}

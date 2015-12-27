@@ -92,9 +92,9 @@ class TemperTests : QuickSpec {
             temper.rules = [rule1, rule2, rule3, rule4]
             let content = FileContent(path: "", components: [self.helper.whileComponent])
             temper.checkContent(content)
-            expect(Temper.violationsWithP1).to(beGreaterThan(0))
-            expect(Temper.violationsWithP2).to(beGreaterThan(0))
-            expect(Temper.violationsWithP3).to(beGreaterThan(0))
+            expect(Temper.statistics.violationsWithP1).to(beGreaterThan(0))
+            expect(Temper.statistics.violationsWithP2).to(beGreaterThan(0))
+            expect(Temper.statistics.violationsWithP3).to(beGreaterThan(0))
         }
     }
 }

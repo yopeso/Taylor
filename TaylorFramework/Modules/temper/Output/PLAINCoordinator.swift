@@ -25,8 +25,7 @@ final class PLAINCoordinator : WritingCoordinator {
     }
     
     private func generateFileContentHeader() -> String {
-        var content =  "\nSummary: TotalFiles=\(Temper.totalFiles) FilesWithViolations=\(Temper.filesWithViolations) "
-        content += "P1=\(Temper.violationsWithP1) P2=\(Temper.violationsWithP2) P3=\(Temper.violationsWithP3)\n\n"
-        return content
+        return "\nSummary: TotalFiles=\(Temper.statistics.totalFiles) FilesWithViolations=\(Temper.statistics.filesWithViolations) " +
+            "P1=\(Temper.statistics.violationsWithP1) P2=\(Temper.statistics.violationsWithP2) P3=\(Temper.statistics.violationsWithP3)\n\n"
     }
 }
