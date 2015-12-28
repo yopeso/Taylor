@@ -216,3 +216,21 @@ func componentsForBraceWithParameters() -> [Component] {
     var1.makeComponent(type: .If, range: ComponentRange(sl: 3, el: 3))
     return [root]
 }
+
+func componentsForClosureParameters() -> [Component] {
+    let function1 = Component(type: .Function, range: ComponentRange(sl: 1, el: 3))
+    function1.makeComponent(type: .Parameter, range: ComponentRange(sl: 1, el: 1))
+    function1.makeComponent(type: .Parameter, range: ComponentRange(sl: 1, el: 1))
+    function1.makeComponent(type: .Parameter, range: ComponentRange(sl: 1, el: 1))
+    let closure = function1.makeComponent(type: .Closure, range: ComponentRange(sl: 2, el: 2))
+    closure.makeComponent(type: .Parameter, range: ComponentRange(sl: 2, el: 2))
+    closure.makeComponent(type: .Parameter, range: ComponentRange(sl: 2, el: 2))
+    closure.makeComponent(type: .Parameter, range: ComponentRange(sl: 2, el: 2))
+    
+    let function2 = Component(type: .Function, range: ComponentRange(sl: 4, el: 7))
+    function2.makeComponent(type: .Parameter, range: ComponentRange(sl: 4, el: 4))
+    function2.makeComponent(type: .Parameter, range: ComponentRange(sl: 4, el: 4))
+    function2.makeComponent(type: .Parameter, range: ComponentRange(sl: 4, el: 4))
+
+    return [function1, function2]
+}

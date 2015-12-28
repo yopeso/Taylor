@@ -163,6 +163,12 @@ class TokenizerTests: QuickSpec {
                 let path = reader.pathForFile("TestFileMoreThan3K", fileType: "swift")
                 _ = Scissors().tokenizeFileAtPath(path)
             }
+            it("should distinguish function parameters from shorthand closure ones") {
+                let path = reader.pathForFile("TestFileClosureParameters", fileType: "txt")
+                let returnContent = Scissors().tokenizeFileAtPath(path)
+                let expectedContent = FileContent(path: path, components: componentsForClosureParameters())
+                expect(returnContent).to(equal(expectedContent))
+            }
         }
     }
 }

@@ -10,19 +10,36 @@ import Foundation
 import SourceKittenFramework
 import SwiftXPC
 
+typealias Names = (name: String?, typeName: String?)
+
 final class ExtendedComponent {
     
     var offsetRange: OffsetRange
     var type: ComponentType
-    var name: String?
+    var names: Names
     var parent: ExtendedComponent? = nil
     var components: [ExtendedComponent]
     
-    init(type: ComponentType, range: OffsetRange, name: String? = nil) {
+    var name: String? {
+        get {
+            return names.name
+        }
+        set {
+            names.name = name
+        }
+    }
+    
+    var typeName: String? {
+        get {
+            return names.typeName
+        }
+    }
+    
+    init(type: ComponentType, range: OffsetRange, names: Names = (nil, nil)) {
         self.type = type
         self.offsetRange = range
         self.components = []
-        self.name = name
+        self.names = names
     }
     
     init(dict: [String: AnyObject]) {
@@ -36,7 +53,7 @@ final class ExtendedComponent {
             self.type = .Other
             self.offsetRange = OffsetRange(start: 0, end: 0)
         }
-        self.name = nil
+        self.names = (nil, nil)
         self.components = []
     }
     
@@ -50,7 +67,7 @@ final class ExtendedComponent {
                 if bodyOffsetEnd != 0 { offsetRange.end = bodyOffsetEnd }
             } else if type.isOther { return }
             if type.isBrace { braces++ }
-            let child = ExtendedComponent(type: type, range: offsetRange, name: structure.asDictionary.name)
+            let child = ExtendedComponent(type: type, range: offsetRange, names: (structure.asDictionary.name, structure.asDictionary.typeName))
             components.append(child)
             components = child.appendComponents(components, array: structure.asDictionary.substructure)
         }
