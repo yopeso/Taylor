@@ -37,9 +37,7 @@ extension Array {
                     }
                 }
                 
-                dispatch_group_async(group, lock) {
-                    result += [(capturedStepIndex, stepResult)]
-                }
+                dispatch_group_async(group, lock) { result += [(capturedStepIndex, stepResult)] }
             }
         }
         

@@ -28,7 +28,7 @@ final class Finder {
         excludes = Excludes(paths: parameters!.excludes, rootPath: parameters!.rootPath)
         let pathsFromDirectory = findPathsInDirectory(parameters!.rootPath)
         
-        return removeDuplicatedPaths(pathsFromDirectory + parameters!.files)
+        return (pathsFromDirectory + parameters!.files).unique
     }
     
     private func validateParameters(parameters: Parameters) -> Bool {
@@ -36,10 +36,8 @@ final class Finder {
     }
     
     private func findPathsInDirectory(path: String) -> [String] {
+        guard parameters != nil && excludes != nil else { return [] }
         do {
-            guard parameters != nil && excludes != nil else {
-                return []
-            }
             let pathsInDirectory = try fileManager.subpathsOfDirectoryAtPath(path)
             let paths = exclude(excludes!, fromPaths: pathsInDirectory)
             return paths.map { absolutePath(parameters!.rootPath, fileName: $0) }
@@ -50,18 +48,14 @@ final class Finder {
     }
     
     private func exclude(excludes: Excludes, fromPaths files: [FilePath]) -> [FilePath] {
-        guard parameters != nil else {
-            return []
-        }
+        guard parameters != nil else { return [] }
         return files.keepPathsMatchingType(parameters!.type)
             .excludePathsContainingSubpathsInArray(excludes.absolutePaths)
             .excludePathsContainingDirectories(excludes.relativePaths)
     }
     
     private func validateFiles(files:[FilePath]) -> Bool {
-        guard parameters != nil else {
-            return true
-        }
+        guard parameters != nil else { return true }
         for file in files {
             if !existsFileOfTypeAtPath(file, type: parameters!.type) {
                 printer.printWrongFilePath(file)
@@ -72,11 +66,7 @@ final class Finder {
     }
     
     private func existsFileOfTypeAtPath(path: FilePath, type: String) -> Bool {
-        return fileExistsAtPath(path) && path.isKindOfType(type)
-    }
-    
-    private func removeDuplicatedPaths(paths: [FilePath]) -> [FilePath] {
-        return Array(Set(paths))
+        return fileManager.fileExistsAtPath(path) && path.isKindOfType(type)
     }
     
     private func validatePath(path: FilePath) -> Bool {
@@ -88,24 +78,17 @@ final class Finder {
     }
     
     private func directoryExistsAtPath(path: FilePath) -> Bool {
-        guard parameters != nil else {
-            return false
-        }
-        return fileExistsAtPath(path) && isDirectoryAtPath(parameters!.rootPath)
-    }
-    
-    private func fileExistsAtPath(path: FilePath) -> Bool {
-        return fileManager.fileExistsAtPath(path)
-    }
-    
-    private func isDirectoryAtPath(path: FilePath) -> Bool {
-        var isDirectory = ObjCBool(false)
-        fileManager.fileExistsAtPath(path, isDirectory: &isDirectory)
-        
-        return isDirectory.boolValue
+        guard let rootPath = parameters?.rootPath else { return false }
+        return fileManager.fileExistsAtPath(path) && fileManager.isDirectory(rootPath)
     }
     
     private func absolutePath(path: FilePath, fileName: String) -> FilePath {
         return path + DirectorySuffix.Slash + fileName
+    }
+}
+
+extension Array where Element: Equatable {
+    var unique: [Element] {
+        return self.reduce([Element]()) { !$0.contains($1) ? $0 + $1 : $0 }
     }
 }

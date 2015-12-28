@@ -8,6 +8,17 @@
 
 import Foundation
 
+struct ViolationData {
+    let message: String
+    let path: String
+    let value: Int
+    init(message: String, path: String, value: Int) {
+        self.message = message
+        self.path = path
+        self.value = value
+    }
+}
+
 struct Violation {
     
     var path : String
@@ -16,12 +27,12 @@ struct Violation {
     let message : String
     let value : Int
     
-    init(component: Component, rule: Rule, message: String, path: String, value: Int) {
+    init(component: Component, rule: Rule, violationData: ViolationData) {
         self.component = component
         self.rule = rule
-        self.message = message
-        self.value = value
-        self.path = path.stringByReplacingOccurrencesOfString("\\", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        self.message = violationData.message
+        self.value = violationData.value
+        self.path = violationData.path.stringByReplacingOccurrencesOfString("\\", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
     }
     
     func toDictionary() -> Dictionary<String, AnyObject> {
