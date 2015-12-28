@@ -3,43 +3,17 @@
 BASEDIR=$(dirname $0)
 APPPATH="$(dirname $(dirname $BASEDIR))"
 LOCALDIR="/usr/local/bin"
-BASH_PROFILE=~/.bash_profile
 APPNAME=$(basename "$APPPATH" ".app")
-EXEPATH="$LOCALDIR/$APPNAME.app/Contents/MacOS"
+TOOLDIR="/usr/local/AppTool"
+EXEPATH="$TOOLDIR/$APPNAME.app/Contents/MacOS"
 ALIASNAME="taylor"
 
-# Create /usr/local/bin if not exist
-if [ ! -d $LOCALDIR ]
-then
-    echo "Make Dir $LOCALDIR"
-    mkdir -p $LOCALDIR
-fi
+# Copy application to /usr/local/AppTool
+echo "Copy $ALIASNAME to $TOOLDIR"
+rm -rf "$TOOLDIR/$APPNAME.app"
+cp -R $APPPATH $TOOLDIR
 
-# Copy application to /usr/local/bin
-echo "Copy $ALIASNAME to $LOCALDIR"
-rm -rf "$LOCALDIR/$APPNAME.app"
-cp -R $APPPATH $LOCALDIR
-
-# Make shortcut from /usr/local/bin/Taylor/Contents/MacOS/Taylor to /usr/local/bin
+# Make shortcut from /usr/local/AppTool/Taylor/Contents/MacOS/Taylor to /usr/local/bin
 echo "Make $ALIASNAME shortcut to $LOCALDIR"
-cd $LOCALDIR
 rm $LOCALDIR/$ALIASNAME
-ln -s "$EXEPATH/$ALIASNAME"
-
-# Create ~/.bash_profile if not exist
-if [ ! -e $BASH_PROFILE ]
-then
-    echo "Create .bash_profile"
-    touch $BASH_PROFILE
-fi
-
-# Remove all taylor alias
-sed -i -e "s/alias $ALIASNAME=\/usr\/local\/bin\/$ALIASNAME//g" $BASH_PROFILE
-
-# Write alias in ~/.bash_profile
-echo "Make $ALIASNAME alias"
-echo "alias $ALIASNAME=$LOCALDIR/$ALIASNAME" >> $BASH_PROFILE
-
-# Reload alias from ~/.bash_profile
-echo "Update bash profile"
-source $BASH_PROFILE
+ln -sf "$EXEPATH/$ALIASNAME" "$LOCALDIR"
