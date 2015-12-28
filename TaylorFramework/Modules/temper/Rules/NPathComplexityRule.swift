@@ -17,7 +17,7 @@ final class NPathComplexityRule : Rule {
         }
     }
     let externalInfoUrl = "http://phpmd.org/rules/codesize.html#npathcomplexity"
-    var limit : Int = 100{
+    var limit : Int = 100 {
         willSet {
             if newValue > 0 {
                 self.limit = newValue
@@ -48,24 +48,9 @@ extension Component {
     }
     
     func NPathComplexity() -> Int {
-        switch type {
-        case .Repeat, .While, .For:
-            return 1 + rangeNPathComplexity() + expresionNPath()
-        case .If:
-            return NPathForIfComponent()
-        case .ElseIf:
-            return NPathForElseIfComponent()
-        case .Else, .Case, .Brace:
-            return rangeNPathComplexity()
-        case .Switch:
-            return expresionNPath() + rangeNPathComplexity()
-        case .NilCoalescing, .Ternary:
-            return 2 + expresionNPath()
-        default: break
-        }
-        return 0
+        return type.NPathComplexityForComponent(self)
     }
-
+    
     func rangeNPathComplexity() -> Int {
         if type == .Switch {
             return components.map({ $0.NPathComplexity() }).reduce(0, combine: +)
@@ -93,5 +78,36 @@ extension Component {
             }
         }
         return complexity
+    }
+}
+
+
+extension ComponentType {
+    
+    var hasRange: Bool {
+        return [ComponentType.Repeat, .While, .For, .Else, .Case, .Brace, .Switch].contains(self)
+    }
+    
+    func NPathComplexityForComponent(component: Component) -> Int {
+        if component.type.hasRange { return NPathForRangeComponent(component) }
+        return NPathForNonRangeComponent(component)
+    }
+    
+    private func NPathForRangeComponent(component: Component) -> Int {
+        switch component.type {
+        case .Repeat, .While, .For: return 1 + component.rangeNPathComplexity() + component.expresionNPath()
+        case .Else, .Case, .Brace: return component.rangeNPathComplexity()
+        case .Switch: return component.expresionNPath() + component.rangeNPathComplexity()
+        default: return 0
+        }
+    }
+    
+    private  func NPathForNonRangeComponent(component: Component) -> Int {
+        switch component.type {
+        case .If: return component.NPathForIfComponent()
+        case .ElseIf: return component.NPathForElseIfComponent()
+        case .NilCoalescing, .Ternary: return 2 + component.expresionNPath()
+        default: return 0
+        }
     }
 }

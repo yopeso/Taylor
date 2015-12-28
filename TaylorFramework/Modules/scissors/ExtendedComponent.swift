@@ -15,13 +15,12 @@ final class ExtendedComponent {
     var offsetRange: OffsetRange
     var type: ComponentType
     var name: String?
-    var parent: ExtendedComponent?
+    var parent: ExtendedComponent? = nil
     var components: [ExtendedComponent]
     
-    init(type: ComponentType, range: OffsetRange, name: String? = nil, parent: ExtendedComponent? = nil) {
+    init(type: ComponentType, range: OffsetRange, name: String? = nil) {
         self.type = type
         self.offsetRange = range
-        self.parent = parent
         self.components = []
         self.name = name
     }
@@ -43,24 +42,15 @@ final class ExtendedComponent {
     
     func appendComponents(var components: [ExtendedComponent], array: XPCArray) -> [ExtendedComponent] {
         var braces = 0
-        for (var childNumber = 0; childNumber < array.count; childNumber++) {
-            let structure = array[childNumber]
-            let typeString = structure.asDictionary.type
-            
+        array.enumerate().forEach { (childNumber, structure) in
             var offsetRange = structure.asDictionary.offsetRange
-            var componentType = ComponentType(type: typeString)
-            if isElseIf(componentType) { componentType = .ElseIf }
-            else if isElse(componentType) && childNumber == array.count-1 && braces > 0 { componentType = .Else }
-            else if componentType.isVariable {
+            let type = getComponentType(structure.asDictionary.type, bracesCount: braces, isLast: childNumber == array.count - 1)
+            if type.isVariable {
                 let bodyOffsetEnd = structure.asDictionary.bodyLength + structure.asDictionary.bodyOffset
-                if bodyOffsetEnd != 0 {
-                    offsetRange.end = bodyOffsetEnd
-                }
-            }
-            else if componentType.isOther { continue }
-            if componentType.isBrace { braces++ }
-            
-            let child = ExtendedComponent(type: componentType, range: offsetRange, name: structure.asDictionary.name)
+                if bodyOffsetEnd != 0 { offsetRange.end = bodyOffsetEnd }
+            } else if type.isOther { return }
+            if type.isBrace { braces++ }
+            let child = ExtendedComponent(type: type, range: offsetRange, name: structure.asDictionary.name)
             components.append(child)
             components = child.appendComponents(components, array: structure.asDictionary.substructure)
         }
@@ -68,38 +58,11 @@ final class ExtendedComponent {
         return components
     }
     
-    func addChild(child: ExtendedComponent) -> ExtendedComponent {
-        self.components.append(child)
-        child.parent = self
-        return child
-    }
-    
-    func addChild(type: ComponentType, range: OffsetRange, name: String? = nil) -> ExtendedComponent {
-        let child = ExtendedComponent(type: type, range: range, name: name, parent: self)
-        self.components.append(child)
-        return child
-    }
-    
-    func contains(node: ExtendedComponent) -> Bool {
-        return (node.offsetRange.start >= self.offsetRange.start)
-            && (node.offsetRange.end <= self.offsetRange.end)
-    }
-    
-    func insert(node: ExtendedComponent) {
-        for child in self.components {
-            if child.contains(node) {
-                child.insert(node)
-                return
-            } else if node.contains(child) {
-                remove(child)
-                node.addChild(child)
-            }
-        }
-        self.addChild(node)
-    }
-    
-    func remove(component: ExtendedComponent) {
-        components = components.filter() { $0 != component }
+    func getComponentType(type: String, bracesCount: Int, isLast: Bool) -> ComponentType {
+        let type = ComponentType(type: type)
+        if isElseIf(type) { return .ElseIf }
+        else if isElse(type) && isLast && bracesCount > 0 { return .Else }
+        else { return type }
     }
     
     func insert(components: [ExtendedComponent]) {
