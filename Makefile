@@ -1,5 +1,5 @@
 TEMPORARY_FOLDER?=$(HOME)/tmp
-PREFIX?=/usr/local/Taylor
+PREFIX?=/usr/local/AppTool/Taylor
 BUILD_TOOL?=xcodebuild
 PACKAGE_NAME?=Taylor.app
 BUILD_DESTINATION?=$(TEMPORARY_FOLDER)/Build/Products/Release
