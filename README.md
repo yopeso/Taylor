@@ -6,7 +6,7 @@ A tool aimed to increase Swift code quality, by checking for conformance to code
 
 [![Build Status](https://travis-ci.org/yopeso/Taylor.svg?branch=master)](https://travis-ci.org/yopeso/Taylor)
 [![codecov.io](https://codecov.io/github/yopeso/Taylor/coverage.svg?branch=master)](https://codecov.io/github/yopeso/Taylor?branch=master)
-[![Release version](https://img.shields.io/badge/release-0.1.0-blue.svg)](https://github.com/yopeso/Taylor/releases/tag/0.1.0)
+[![Release version](https://img.shields.io/badge/release-0.1.1-blue.svg)](https://github.com/yopeso/Taylor/releases/tag/0.1.1)
 [![Swift Code](https://img.shields.io/badge/language-swift-orange.svg)](https://github.com/yopeso/Taylor)
 [![Platform](https://img.shields.io/badge/platform-osx-yellow.svg)](https://github.com/yopeso/Taylor)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/yopeso/Taylor/blob/master/LICENSE)
@@ -17,9 +17,17 @@ representation and generates the final report in either **Xcode, JSON, PMD** or 
 
 ## Installation
 
-You can install Taylor by cloning the project and running `make install` (**latest version of Xcode required**).
+### Homebrew (recommended)
+You need to have [Homebrew](http://brew.sh) installed.
+```shell
+brew update
+brew install taylor
+```
+### Source
+Clone the project and run `make install` (**latest version of Xcode required**).
 
-Or you can download the latest [release](https://github.com/yopeso/Taylor/releases) and run:
+### Package
+Download the latest [release](https://github.com/yopeso/Taylor/releases) and run:
 ```shell
 Taylor.app/Contents/Resources/install
 ```
@@ -126,4 +134,3 @@ Thanks to [JP Simard](https://github.com/jpsim) for developing [SourceKitten](ht
 ## License
 
 MIT Licensed.
-
