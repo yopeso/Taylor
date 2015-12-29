@@ -1,0 +1,7 @@
+func testClosureParameters(a: Int, b: String, c: Float) {
+[1, 2, 3].reduce(0) { $0 + $1 }
+}
+func testFilterClosureParameters(a: Int, b: String, c: Float) {
+    let test = [1, 2, 3].filter { $0 == 1 }
+    let test2 = [1, 2, 3, 4].map { a in a * 2 }
+}

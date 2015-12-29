@@ -27,7 +27,7 @@ struct Tree {
     //MARK: Dictionary to tree methods
     
     func makeTree() -> Component {
-        let root = ExtendedComponent(type: .Other, range: dictionary.offsetRange)
+        let root = ExtendedComponent(type: .Other, range: dictionary.offsetRange, names: (nil, nil))
         let noStringsText = replaceStringsWithSpaces(parts.map() { $0.contents })
         
         let finder = ComponentFinder(text: noStringsText, syntaxMap: syntaxMap)
@@ -37,14 +37,20 @@ struct Tree {
         root.removeRedundantClosures()
         processBraces(root)
         arrayToTree(additionalComponents(finder), root: root)
-        root.variablesToFunctions()
-        sortTree(root)
+        processTree(root)
         
         return convertTree(root)
     }
     
     func additionalComponents(finder: ComponentFinder) -> [ExtendedComponent] {
         return finder.findComments() + finder.findLogicalOperators() + finder.findEmptyLines()
+    }
+    
+    func processTree(root: ExtendedComponent) {
+        root.variablesToFunctions()
+        root.processParameters()
+        root.removeRedundantParameters()
+        sortTree(root)
     }
     
     //MARK: Conversion to Component type
@@ -66,11 +72,9 @@ struct Tree {
     }
     
     func offsetToLine(offsetRange: OffsetRange) -> ComponentRange {
-        
         let startIndex = parts.filter() { $0.startOffset <= offsetRange.start }.count - 1
         let endIndex = parts.filter() { $0.startOffset <= offsetRange.end }.count - 1
     
-        
         return ComponentRange(sl: parts[startIndex].getLineRange(offsetRange.start), el: parts[endIndex].getLineRange(offsetRange.end))
     }
     
@@ -98,7 +102,7 @@ struct Tree {
             processBraces(component)
         }
     }
-    
+
     func sortTree(root: ExtendedComponent) {
         for component in root.components {
             sortTree(component)

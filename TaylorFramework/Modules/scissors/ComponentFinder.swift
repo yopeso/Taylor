@@ -83,9 +83,9 @@ struct ComponentFinder {
         let settersRanges = findRanges("(set($|[ \\t\\n{}]))", text: text)
         if gettersRanges.isEmpty { return findObserverGetters(text) }
         
-        accessors.append(ExtendedComponent(type: .Function, range: gettersRanges.first!, name: "get"))
+        accessors.append(ExtendedComponent(type: .Function, range: gettersRanges.first!, names: ("get", nil)))
         if !settersRanges.isEmpty {
-            accessors.append(ExtendedComponent(type: .Function, range: settersRanges.first!, name: "set"))
+            accessors.append(ExtendedComponent(type: .Function, range: settersRanges.first!, names: ("set", nil)))
         }
         accessors.sortInPlace( { $0.offsetRange.start < $1.offsetRange.start } )
         if accessors.count == 1 {
@@ -103,10 +103,10 @@ struct ComponentFinder {
         var didSetRanges = findRanges("(didSet($|[ \\t\\n{}]))", text: text)
         var observers = [ExtendedComponent]()
         if willSetRanges.count > 0 {
-            observers.append(ExtendedComponent(type: .Function, range: willSetRanges[0], name: "willSet"))
+            observers.append(ExtendedComponent(type: .Function, range: willSetRanges[0], names: ("willSet", nil)))
         }
         if didSetRanges.count > 0 {
-            observers.append(ExtendedComponent(type: .Function, range: didSetRanges[0], name: "didSet"))
+            observers.append(ExtendedComponent(type: .Function, range: didSetRanges[0], names: ("didSet", nil)))
         }
         observers.sortInPlace { $0.offsetRange.start < $1.offsetRange.start }
         if observers.count == 1 {

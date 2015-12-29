@@ -85,6 +85,7 @@ extension Dictionary where Key: StringType {
         let endOffset = Int(startOffset + length)
         return OffsetRange(start: Int(startOffset), end: endOffset)
     }
+    var typeName: String? { return SwiftDocKey.getTypeName(self.asDictionary) }
     var name: String? { return SwiftDocKey.getName(self.asDictionary) }
     var substructure: XPCArray { return SwiftDocKey.getSubstructure(self.asDictionary) ?? [] }
     var type: String { return SwiftDocKey.getKind(self.asDictionary) ?? "" }
@@ -171,6 +172,18 @@ extension ExtendedComponent {
         return self.components.filter(){ $0.type == ComponentType.Closure }.count > 0
     }
     
+    var isCorrectParameter: Bool {
+        guard self.isParameter else { return true }
+        guard name != nil else { return true }
+        let startsWithDollar = name![name!.startIndex] == "$"
+        
+        if typeName == nil {
+            return !startsWithDollar || parent!.isClosure
+        } else {
+            return (!startsWithDollar && name != typeName) || parent!.isClosure
+        }
+    }
+    
     var containsParameter: Bool {
         return self.components.filter(){ $0.type == ComponentType.Parameter }.count > 0
     }
@@ -181,6 +194,14 @@ extension ExtendedComponent {
     
     var isActuallyClosure: Bool {
         return self.children == 1 && self.containsClosure
+    }
+    
+    var isParameter: Bool {
+        return type == .Parameter
+    }
+    
+    var isClosure: Bool {
+        return type == .Closure
     }
     
     var isFirstComponentBrace: Bool {
@@ -216,7 +237,7 @@ extension ExtendedComponent {
     }
     
     func addChild(type: ComponentType, range: OffsetRange, name: String? = nil) -> ExtendedComponent {
-        let child = ExtendedComponent(type: type, range: range, name: name)
+        let child = ExtendedComponent(type: type, range: range, names: (name, nil))
         child.parent = self
         self.components.append(child)
         return child
@@ -238,6 +259,34 @@ extension ExtendedComponent {
             }
         }
         self.addChild(node)
+    }
+    
+    func processParameters() {
+        for child in components {
+            if isParameter && child.isParameter {
+                if offsetRange == child.offsetRange {
+                    remove(child)
+                    parent?.addChild(child)
+                } else {
+                    parent?.addChild(child)
+                    parent?.remove(self)
+                    child.processParameters()
+                    break
+                }
+            }
+            child.processParameters()
+        }
+    }
+    
+    
+    func removeRedundantParameters() {
+        for child in components {
+            if !child.isCorrectParameter {
+                remove(child)
+            } else {
+                child.removeRedundantParameters()
+            }
+        }
     }
     
     func remove(component: ExtendedComponent) {
