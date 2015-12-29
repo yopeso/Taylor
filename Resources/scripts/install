@@ -4,16 +4,17 @@ BASEDIR=$(dirname $0)
 APPPATH="$(dirname $(dirname $BASEDIR))"
 LOCALDIR="/usr/local/bin"
 APPNAME=$(basename "$APPPATH" ".app")
-TOOLDIR="/usr/local/AppTool"
-EXEPATH="$TOOLDIR/$APPNAME.app/Contents/MacOS"
+TOOLDIR="/usr/local/AppTool/$APPNAME"
+EXEPATH="$TOOLDIR/bin/Contents/MacOS/$APPNAME"
 ALIASNAME="taylor"
 
 # Copy application to /usr/local/AppTool
 echo "Copy $ALIASNAME to $TOOLDIR"
-rm -rf "$TOOLDIR/$APPNAME.app"
-cp -R $APPPATH $TOOLDIR
+rm -rf "$TOOLDIR"
+mkdir -p "$TOOLDIR/bin"
+cp -rf "$APPPATH/" "$TOOLDIR/bin"
 
 # Make shortcut from /usr/local/AppTool/Taylor/Contents/MacOS/Taylor to /usr/local/bin
 echo "Make $ALIASNAME shortcut to $LOCALDIR"
-rm $LOCALDIR/$ALIASNAME
-ln -sf "$EXEPATH/$ALIASNAME" "$LOCALDIR"
+rm "$LOCALDIR/$ALIASNAME"
+ln -sf "$EXEPATH" "$LOCALDIR/$ALIASNAME"
