@@ -52,7 +52,8 @@ public struct Taylor {
     }
     
     func parallelizeTokenization(paths: [String]) -> [FileContent] {
-        return paths.pmap { Scissors().tokenizeFileAtPath($0) }
+        let scissors = Scissors()
+        return paths.pmap { scissors.tokenizeFileAtPath($0) }
     }
     
     func inputArgumentsErrorCommited(arguments: Options) -> Bool {

@@ -9,7 +9,7 @@
 import Foundation
 import SourceKittenFramework
 
-struct Scissors {    
+struct Scissors {
     /**
     Tokenizes contents of file at a given path by converting it to a tree of components.
     

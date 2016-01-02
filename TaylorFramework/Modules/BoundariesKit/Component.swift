@@ -21,6 +21,7 @@ enum ComponentType {
     case If
     case ElseIf
     case Else
+    case Guard
     case For
     case Switch
     case Case
@@ -31,7 +32,6 @@ enum ComponentType {
     case Ternary
     case Variable
     case Closure
-    
     case Other
 }
 

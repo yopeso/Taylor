@@ -26,7 +26,7 @@ final class NumberOfLinesInClassRule : Rule {
     }
     private var linesCount = 0
     
-    func checkComponent(component: Component) -> (isOk: Bool, message: String?, value: Int?) {
+    func checkComponent(component: Component) -> Result {
         if component.type != ComponentType.Class { return (true, nil, nil) }
         linesCount = component.range.length
         deleteLinesFromComponent(component)

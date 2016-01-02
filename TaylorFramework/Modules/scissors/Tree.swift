@@ -92,7 +92,7 @@ struct Tree {
         while i < parent.components.count {
             let component = parent.components[i]; i++
             let type = component.type
-            let bracedTypes = [ComponentType.If, .ElseIf, .For, .While, .Repeat, .Closure]
+            let bracedTypes = [ComponentType.If, .ElseIf, .For, .While, .Repeat, .Closure, .Guard]
             if bracedTypes.contains(type)  {
                 guard component.isFirstComponentBrace else {
                     continue
