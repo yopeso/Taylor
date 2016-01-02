@@ -13,13 +13,13 @@ import Quick
 class ReporterTests: QuickSpec {
     override func spec() {
         describe("Reporter") {
-            it("should inittilize with type and file name") {
+            it("should initialize with type and file name") {
                 let reporter = Reporter(type: "", fileName: "just a name")
                 expect(reporter).toNot(beNil())
                 expect(reporter.concreteReporter is PlainReporter).to(beTrue())
                 expect(reporter.fileName).to(equal("just a name"))
             }
-            it("should inittilize with type") {
+            it("should initialize with type") {
                 let reporter = Reporter(type: "JSON")
                 expect(reporter).toNot(beNil())
                 expect(reporter.concreteReporter is JSONReporter).to(beTrue())
