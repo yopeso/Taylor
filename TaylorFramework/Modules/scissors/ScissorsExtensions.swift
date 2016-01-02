@@ -336,3 +336,31 @@ Returns new string consisting of rhs copies of lhs concatenated.
 func *(lhs: String, rhs: Int) -> String {
     return (0..<rhs).reduce("") { (string, _) in string + lhs }
 }
+
+protocol RangeType {
+    init(range: NSRange)
+}
+
+extension String {
+    func findMatchRanges<T: RangeType>(pattern: String) -> [T] {
+        do {
+            let regex = try NSRegularExpression(pattern: pattern, options: [.DotMatchesLineSeparators])
+            return regex.matchesInString(self, options: [], range: NSMakeRange(0, self.characters.count)).map {
+                T(range: $0.range)
+            }
+        } catch { return [] }
+    }
+}
+
+extension OffsetRange: RangeType {
+    init(range: NSRange) {
+        start = range.location
+        end = range.location + range.length
+    }
+}
+
+extension OffsetRange {
+    func toEmptyLineRange() -> OffsetRange {
+        return OffsetRange(start: self.start + 1, end: self.end - 1)
+    }
+}

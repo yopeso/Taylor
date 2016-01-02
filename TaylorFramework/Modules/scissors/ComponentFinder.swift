@@ -9,6 +9,8 @@
 import Foundation
 import SourceKittenFramework
 
+
+
 struct ComponentFinder {
     
     let text: String
@@ -19,55 +21,34 @@ struct ComponentFinder {
         self.syntaxMap = syntaxMap
     }
     
-    func findRanges(pattern: String, text: String) -> [OffsetRange] {
-        do {
-            let regex = try NSRegularExpression(pattern: pattern, options: [.DotMatchesLineSeparators])
-            return regex.matchesInString(text, options: [], range: NSMakeRange(0, text.characters.count)).map {
-                $0.range
-                }.reduce([OffsetRange]()) {
-                    $0 + OffsetRange(start: $1.location, end: $1.location + $1.length)
-            }
-        } catch { return [] }
-        
-    }
-    
     func findLogicalOperators() -> [ExtendedComponent] {
-        var operators = [ExtendedComponent]()
-        
-        for ternaryRange in findRanges("(\\s+\\?(?!\\?).*?:)", text: text) {
-            operators.append(ExtendedComponent(type: .Ternary, range: ternaryRange))
-        }
-        for nilcRange in findRanges("(\\?\\?)", text: text) {
-            operators.append(ExtendedComponent(type: .NilCoalescing, range: nilcRange))
-        }
-        for orRange in findRanges("(\\|\\|)", text: text) {
-            operators.append(ExtendedComponent(type: .Or, range: orRange))
-        }
-        for andRange in findRanges("(\\&\\&)", text: text) {
-            operators.append(ExtendedComponent(type: .And, range: andRange))
-        }
-        
-        return operators
+        let boolOperators =
+            text.findMatchRanges("(\\|\\|)").map { ExtendedComponent(type: .Or, range: $0) } +
+            text.findMatchRanges("(\\&\\&)").map { ExtendedComponent(type: .And, range: $0) }
+        return text.findMatchRanges("(\\s+\\?(?!\\?).*?:)").map {
+                ExtendedComponent(type: .Ternary, range: $0)
+            } + text.findMatchRanges("(\\?\\?)").map {
+                ExtendedComponent(type: .NilCoalescing, range: $0)
+        } + boolOperators
     }
     
     func findComments() -> [ExtendedComponent] {
         return syntaxMap.tokens.filter {
-            ComponentType(type: $0.type) == ComponentType.Comment
+                types[$0.type] == .Comment
             }.reduce([ExtendedComponent]()) {
                 $0 + ExtendedComponent(dict: $1.dictionaryValue)
         }
     }
     
     func findEmptyLines() -> [ExtendedComponent] {
-        return findRanges("(\\n[ \\t\\n]*\\n)", text: text).reduce([ExtendedComponent]()) {
-            let correctEmptyRange = OffsetRange(start: $1.start + 1, end: $1.end - 1)
-            return $0 + ExtendedComponent(type: .EmptyLines, range: correctEmptyRange)
+        return text.findMatchRanges("(\\n[ \\t\\n]*\\n)").map {
+            return ExtendedComponent(type: .EmptyLines, range: ($0 as OffsetRange).toEmptyLineRange())
         }
     }
     
     //Ending points of getters and setters will most probably be wrong unless a nice coding-style is being used "} set {"
     func findGetters(components: [ExtendedComponent]) -> [ExtendedComponent] {
-        return components.filter() { $0.type == .Variable }.reduce([ExtendedComponent]()) { components, component in
+        return components.filter { ($0 as ExtendedComponent).type == .Variable }.reduce([ExtendedComponent]()) { components, component in
             let range = NSMakeRange(component.offsetRange.start, component.offsetRange.end - component.offsetRange.start)
             return findGetterAndSetter((text as NSString).substringWithRange(range)).reduce(components) {
                 $1.offsetRange.start += component.offsetRange.start
@@ -79,8 +60,8 @@ struct ComponentFinder {
     
     func findGetterAndSetter(text: String) -> [ExtendedComponent] {
         var accessors = [ExtendedComponent]()
-        let gettersRanges = findRanges("(get($|[ \\t\\n{}]))", text: text)
-        let settersRanges = findRanges("(set($|[ \\t\\n{}]))", text: text)
+        let gettersRanges: [OffsetRange] = text.findMatchRanges("(get($|[ \\t\\n{}]))")
+        let settersRanges: [OffsetRange] = text.findMatchRanges("(set($|[ \\t\\n{}]))")
         if gettersRanges.isEmpty { return findObserverGetters(text) }
         
         accessors.append(ExtendedComponent(type: .Function, range: gettersRanges.first!, names: ("get", nil)))
@@ -99,8 +80,8 @@ struct ComponentFinder {
     }
     
     func findObserverGetters(text:String) -> [ExtendedComponent] {
-        var willSetRanges = findRanges("(willSet($|[ \\t\\n{}]))", text: text)
-        var didSetRanges = findRanges("(didSet($|[ \\t\\n{}]))", text: text)
+        var willSetRanges: [OffsetRange] = text.findMatchRanges("(willSet($|[ \\t\\n{}]))")
+        var didSetRanges: [OffsetRange] = text.findMatchRanges("(didSet($|[ \\t\\n{}]))")
         var observers = [ExtendedComponent]()
         if willSetRanges.count > 0 {
             observers.append(ExtendedComponent(type: .Function, range: willSetRanges[0], names: ("willSet", nil)))
