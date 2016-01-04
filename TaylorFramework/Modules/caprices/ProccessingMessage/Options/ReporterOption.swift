@@ -34,21 +34,29 @@ struct ReporterOption: InformationalOption {
         var reporterDictionary = OutputReporter()
         let reporterComponents = optionArgument.componentsSeparatedByString(argumentSeparator)
         reporterDictionary[ReporterTypeKey] = reporterComponents.first
-        reporterDictionary[ReporterFileNameKey] = getOutputPathKey(reporterComponents)
+        do {
+            reporterDictionary[ReporterFileNameKey] = try getOutputPathKey(reporterComponents)
+        } catch CommandLineError.InvalidInformationalOption(let errorMessage) {
+            errorPrinter.printError(errorMessage)
+        } catch { }
         
         return reporterDictionary
     }
     
-    private func getOutputPathKey(reporterComponents: [String]) -> String {
-        if reporterComponents.first == XcodeType { return "" }
-        return reporterComponents.second ?? ""
+    private func getOutputPathKey(reporterComponents: [String]) throws -> String {
+        guard let reporterType = reporterComponents.first where reporterType != XcodeType else { return "" }
+        guard let fileName = reporterComponents.second where fileName != "" else {
+            throw CommandLineError.InvalidInformationalOption("\nNo file name indicated for \(reporterType) report.")
+        }
+        
+        return fileName
     }
     
     func validateArgumentComponents(components: [String]) throws {
         if components.isEmpty { return }
         let type = components.first!
         if components.count != 2 && type != "xcode" {
-            throw CommandLineError.InvalidInformationalOption("\nReporter argument contain too many \":\" symbols")
+            throw CommandLineError.InvalidInformationalOption("\nReporter argument contain too \(components.count > 2 ? "many" : "few") \":\" symbols")
         }
         if reporterTypeDoesNotMatchPosibleTypes(type) {
             throw CommandLineError.InvalidInformationalOption("\nInvalid reporter type was indicated")

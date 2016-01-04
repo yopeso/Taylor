@@ -30,9 +30,9 @@ class ReporterOptionTests: QuickSpec {
                 }.toNot(throwError())
             }
             
-            it("should set empty value for path key if second component of arguments is nil") {
+            it("should not set a value for path key if second component of arguments is nil") {
                 reporter.optionArgument = JsonType
-                expect(reporter.dictionaryFromArgument()).to(equal(["fileName" : "", "type" : JsonType]))
+                expect(reporter.dictionaryFromArgument()).to(equal(["type" : JsonType]))
             }
             
         }
