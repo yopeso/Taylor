@@ -143,6 +143,14 @@ class OutputCoordinatorTests : QuickSpec {
                 temper.checkContent(fileContent)
                 temper.finishTempering()
             }
+            it("should catch json errors itself and print error if any problems with json serializing appeared") {
+                let messageString = String(bytes: [0xD8, 0x00] as [UInt8],
+                                           encoding: NSUTF16BigEndianStringEncoding)!
+                let aComponent = TestsHelper().aComponent
+                let aRule = TestsHelper().aRule
+                let violation = Violation(component: aComponent, rule: aRule, violationData: ViolationData(message: messageString, path: "path", value: 100))
+                expect(JSONCoordinator().writeViolations([violation], atPath: "")).toNot(throwError())
+            }
         }
     }
 }

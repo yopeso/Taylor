@@ -25,6 +25,10 @@ class TokenizerTests: QuickSpec {
         let reader = MockFileReader()
         
         describe("tokenizer") {
+            it("should return empty tree if given file does not exist") {
+                expect(Scissors().tokenizeFileAtPath("unexisting.path")).to(equal(
+                    FileContent(path: "", components: [])))
+            }
             it("should build the tree from a given array of components") {
                 let components = arrayComponents()
                 let expectedTree = componentsForArrayComponents()
