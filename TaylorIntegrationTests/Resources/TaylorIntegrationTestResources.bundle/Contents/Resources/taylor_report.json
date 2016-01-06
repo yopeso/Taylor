@@ -22,6 +22,18 @@
       "rule" : "ExcessiveMethodLength",
       "externalInfoUrl" : "http:\/\/phpmd.org\/rules\/codesize.html#excessivemethodlength",
       "priority" : 3
+    },
+    {
+      "endLine" : 58,
+      "value" : 6,
+      "startLine" : 36,
+      "message" : "The method 'init(verbosity:parameters:)' has a Cyclomatic Complexity of 6. The configured cyclomatic complexity is 5",
+      "class" : "Wrapper",
+      "method" : "init(verbosity:parameters:)",
+      "path" : "\/Users\/seremetmihai\/Desktop\/1\/Wrapper.swift",
+      "rule" : "CyclomaticComplexity",
+      "externalInfoUrl" : "http:\/\/phpmd.org\/rules\/codesize.html#cyclomaticcomplexity",
+      "priority" : 2
     }
   ]
 }

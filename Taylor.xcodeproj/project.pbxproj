@@ -23,6 +23,7 @@
 		692FCBF31BED2E2A00DB5F16 /* install in Resources */ = {isa = PBXBuildFile; fileRef = 692FCBF21BED2E2A00DB5F16 /* install */; };
 		692FCBF41BED2E8400DB5F16 /* TaylorFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69B4DC891BED1BD3005EA7D5 /* TaylorFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		69400EC81C32935B0065CDB0 /* TestFileClosureParameters.txt in Copy Files (23 items) */ = {isa = PBXBuildFile; fileRef = 69400EC61C32934B0065CDB0 /* TestFileClosureParameters.txt */; };
+		6943F84D1C38205A00208BBC /* TestFileGuard.txt in Copy Files (23 items) */ = {isa = PBXBuildFile; fileRef = 6943F84B1C381E0000208BBC /* TestFileGuard.txt */; };
 		69461E0A1BF61D2C00AF5B5C /* CLIReporterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69461E091BF61D2C00AF5B5C /* CLIReporterTests.swift */; };
 		69517A1A1BF25C31000B3F1B /* CLIReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69517A191BF25C31000B3F1B /* CLIReporter.swift */; };
 		69B4DC951BED1BF6005EA7D5 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B4DBE41BED169B005EA7D5 /* Component.swift */; };
@@ -246,6 +247,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				6943F84D1C38205A00208BBC /* TestFileGuard.txt in Copy Files (23 items) */,
 				69400EC81C32935B0065CDB0 /* TestFileClosureParameters.txt in Copy Files (23 items) */,
 				69B4DDA81BED209C005EA7D5 /* emptyExcludes.yml in Copy Files (23 items) */,
 				69B4DDA91BED209C005EA7D5 /* excludes.yml in Copy Files (23 items) */,
@@ -305,6 +307,7 @@
 		692FCBEA1BED2B7F00DB5F16 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		692FCBF21BED2E2A00DB5F16 /* install */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = install; sourceTree = "<group>"; };
 		69400EC61C32934B0065CDB0 /* TestFileClosureParameters.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TestFileClosureParameters.txt; sourceTree = "<group>"; };
+		6943F84B1C381E0000208BBC /* TestFileGuard.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TestFileGuard.txt; sourceTree = "<group>"; };
 		69461E091BF61D2C00AF5B5C /* CLIReporterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLIReporterTests.swift; sourceTree = "<group>"; };
 		69517A191BF25C31000B3F1B /* CLIReporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLIReporter.swift; sourceTree = "<group>"; };
 		69B4DBDE1BED169B005EA7D5 /* TaylorFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaylorFramework.h; path = Headers/TaylorFramework.h; sourceTree = "<group>"; };
@@ -917,6 +920,7 @@
 				69B4DD201BED1FE0005EA7D5 /* TestFileStrings.txt */,
 				69B4DD211BED1FE0005EA7D5 /* TestFileTernary.txt */,
 				69B4DD221BED1FE0005EA7D5 /* TestFileTernaryNilc.txt */,
+				6943F84B1C381E0000208BBC /* TestFileGuard.txt */,
 			);
 			path = TestFiles;
 			sourceTree = "<group>";
@@ -1128,7 +1132,6 @@
 			buildPhases = (
 				69B4DCDE1BED1F87005EA7D5 /* Sources */,
 				69B4DCDF1BED1F87005EA7D5 /* Frameworks */,
-				69B4DCE01BED1F87005EA7D5 /* Resources */,
 				69B4DD771BED1FF1005EA7D5 /* Copy Files (23 items) */,
 				69B4DDAC1BED21F1005EA7D5 /* CopyFiles */,
 			);
@@ -1212,13 +1215,6 @@
 				692E462F1BF3AEF100D0886E /* Help.txt in Resources */,
 				B143B2151BF381D8009BFC99 /* pacman.py in Resources */,
 				B143B2171BF381D8009BFC99 /* prototype_map.dat in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		69B4DCE01BED1F87005EA7D5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

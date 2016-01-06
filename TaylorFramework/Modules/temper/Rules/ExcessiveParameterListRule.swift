@@ -24,7 +24,7 @@ final class ExcessiveParameterListRule : Rule {
             }
         }
     }
-    func checkComponent(component: Component) -> (isOk: Bool, message: String?, value: Int?) {
+    func checkComponent(component: Component) -> Result {
         if component.type != ComponentType.Function { return (true, nil, nil) }
         let parametersCount = parametersCountForFunction(component)
         if parametersCount > limit {

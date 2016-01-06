@@ -17,7 +17,7 @@ final class NestedBlockDepthRule : Rule {
         }
     }
     let externalInfoUrl = "http://docs.oclint.org/en/dev/rules/size.html#nestedblockdepth"
-    let admisibleComponents = [ComponentType.If, .While, .For, .Case, .Brace, .Repeat, .Switch, .Brace]
+    let admissibleComponents = [ComponentType.If, .While, .For, .Case, .Brace, .Repeat, .Switch, .Brace, .Guard]
     var limit : Int = 3 {
         willSet {
             if newValue > 0 {
@@ -26,7 +26,7 @@ final class NestedBlockDepthRule : Rule {
         }
     }
     
-    func checkComponent(component: Component) -> (isOk: Bool, message: String?, value: Int?) {
+    func checkComponent(component: Component) -> Result {
         if component.type != ComponentType.Function { return (true, nil, nil) }
         let depth = findMaxDepthForComponent(component)
         if depth > limit {
@@ -55,7 +55,7 @@ final class NestedBlockDepthRule : Rule {
     }
     
     private func checkForAdmisibleComponents(components: [Component]) -> Bool {
-        let commonTypes = Set(components.map({ $0.type })).intersect(Set(admisibleComponents))
+        let commonTypes = Set(components.map({ $0.type })).intersect(Set(admissibleComponents))
         
         return !commonTypes.isEmpty
     }

@@ -1,0 +1,3 @@
+func testFunc() {
+guard 1 < 2 else { return }
+}

@@ -82,12 +82,6 @@ final class ExtendedComponent {
         else { return type }
     }
     
-    func insert(components: [ExtendedComponent]) {
-        let _ = components.map {
-            self.insert($0)
-        }
-    }
-    
     func variablesToFunctions() {
         for component in self.components {
             if component.hasNoChildrenExceptELComment {
@@ -101,19 +95,6 @@ final class ExtendedComponent {
                 component.type = .Closure
             }
             component.variablesToFunctions()
-        }
-    }
-    
-    func removeRedundantClosures() {
-        for component in components {
-            component.removeRedundantClosures()
-        }
-        removeRedundantClosuresInSelf()
-    }
-    
-    func removeRedundantClosuresInSelf() {
-        components = components.filter() {
-            !($0.type == .Closure && $0.components.isEmpty)
         }
     }
     

@@ -234,3 +234,10 @@ func componentsForClosureParameters() -> [Component] {
 
     return [function1, function2]
 }
+
+func componentsForGuard() -> [Component] {
+    let function = Component(type: .Function, range: ComponentRange(sl: 1, el: 3))
+    function.makeComponent(type: .Guard, range: ComponentRange(sl: 2, el: 2))
+    
+    return [function]
+}

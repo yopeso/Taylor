@@ -39,9 +39,8 @@ class OptionsProcessor {
             if let optionObject = optionObjectFromOption($1, argument: $2) { return $0 + optionObject }
             throw CommandLineError.InvalidArguments("Error committed on option `\($1)`.")
         }
-        if options.isEmpty { return EmptyResultDictionary }
+        if options.isEmpty || !OptionsValidator().validateForSingleOptions(options) { return EmptyResultDictionary }
         analyzePath = options.filter{ $0 is PathOption }.first?.optionArgument.absolutePath() ?? analyzePath
-        if !OptionsValidator().validateForSingleOptions(options) { return EmptyResultDictionary }
         let resultDictionary = buildResultDictionaryFromOptions(executableOptions)
         guard processInformationalOptions() else { return EmptyResultDictionary }
         factory = InformationalOptionsFactory(infoOptions: infoOptions)

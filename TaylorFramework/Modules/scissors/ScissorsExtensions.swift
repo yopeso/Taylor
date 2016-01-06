@@ -39,6 +39,7 @@ let types = [
     "source.lang.swift.stmt.for": .For,
     "source.lang.swift.stmt.foreach": .For,
     "source.lang.swift.stmt.if": .If,
+    "source.lang.swift.stmt.guard": .Guard,
     "source.lang.swift.stmt.repeatwhile": .Repeat,
     "source.lang.swift.stmt.while": .While,
     "source.lang.swift.stmt.switch": .Switch,
@@ -211,6 +212,12 @@ extension ExtendedComponent {
         return self.components[0].type == .Brace
     }
     
+    func insert(components: [ExtendedComponent]) {
+        components.forEach {
+            self.insert($0)
+        }
+    }
+    
     func isElseIf(type: ComponentType) -> Bool {
         return type == .If && self.isElseIfOrIf
     }
@@ -278,6 +285,18 @@ extension ExtendedComponent {
         }
     }
     
+    func removeRedundantClosures() {
+        for component in components {
+            component.removeRedundantClosures()
+        }
+        removeRedundantClosuresInSelf()
+    }
+    
+    func removeRedundantClosuresInSelf() {
+        components = components.filter() {
+            !($0.type == .Closure && $0.components.isEmpty)
+        }
+    }
     
     func removeRedundantParameters() {
         for child in components {
@@ -335,4 +354,32 @@ Returns new string consisting of rhs copies of lhs concatenated.
 */
 func *(lhs: String, rhs: Int) -> String {
     return (0..<rhs).reduce("") { (string, _) in string + lhs }
+}
+
+protocol RangeType {
+    init(range: NSRange)
+}
+
+extension String {
+    func findMatchRanges<T: RangeType>(pattern: String) -> [T] {
+        do {
+            let regex = try NSRegularExpression(pattern: pattern, options: [.DotMatchesLineSeparators])
+            return regex.matchesInString(self, options: [], range: NSMakeRange(0, self.characters.count)).map {
+                T(range: $0.range)
+            }
+        } catch { return [] }
+    }
+}
+
+extension OffsetRange: RangeType {
+    init(range: NSRange) {
+        start = range.location
+        end = range.location + range.length
+    }
+}
+
+extension OffsetRange {
+    func toEmptyLineRange() -> OffsetRange {
+        return OffsetRange(start: self.start + 1, end: self.end - 1)
+    }
 }
