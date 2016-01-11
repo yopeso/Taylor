@@ -11,7 +11,7 @@ import Foundation
 let HelpLong = "--help"
 let HelpShort = "-h"
 
-class HelpFlag: Flag {
+final class HelpFlag: Flag {
     
     let name = "HelpFlag"
     

@@ -10,15 +10,6 @@ import Quick
 import Nimble
 @testable import TaylorFramework
 
-class HelpFlagMock: HelpFlag {
-    func executeTest() -> Bool {
-        do {
-            try printHelp("aa", "aa")
-            return true
-        } catch { return false }
-    }
-}
-
 class FlagsTests: QuickSpec {
     override func spec() {
         describe("Flags") {
@@ -68,7 +59,12 @@ class FlagsTests: QuickSpec {
             
             context("when requesting help") {
                 it("should throw error if help file is missing") {
-                    expect(HelpFlagMock().executeTest()).to(beFalse())
+                    var fileExists = true
+                    do {
+                        try HelpFlag().printHelp("aa", "aa")
+                        fileExists = true
+                    } catch { fileExists = false }
+                    expect(fileExists).to(beFalse())
                 }
             }
             
