@@ -37,8 +37,6 @@ extension NSFileManager {
         if !NSFileManager.defaultManager().fileExistsAtPath(path, isDirectory: &isDirectory) && !isDirectory { return }
         do {
             try NSFileManager.defaultManager().removeItemAtPath(path)
-        } catch {
-            print("Error while removing item at path: \(path)")
-        }
+        } catch { print("Error while removing item at path: \(path)") }
     }
 }

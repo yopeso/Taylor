@@ -99,6 +99,12 @@ class MessageProcessorTests: QuickSpec {
                 expect(messageProcessor.processArguments(inputArguments)).to(beEmpty())
             }
             
+            it("should early return if dictionary has no path key") {
+                var dictionary: Options = [:]
+                MessageProcessor().setDefaultExcludesIfExistsToDictionary(&dictionary)
+                expect(dictionary.isEmpty).to(beTrue())
+            }
+            
             
             context("File search (.*)") {
                 
@@ -118,6 +124,10 @@ class MessageProcessorTests: QuickSpec {
             }
             
             context("Excludes File") {
+                
+                it("should return empty string when requested default excludes file if no path existing") {
+                    expect(MessageProcessor().defaultExcludesFilePathForDictionary([:])).to(beEmpty())
+                }
                 
                 it("should return empty dictionary if multiple excludesFiles was indicated") {
                     let somePath = "somePath"

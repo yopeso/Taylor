@@ -20,16 +20,16 @@ final class HelpFlag: Flag {
     
     func execute() {
         do {
-            try printHelp()
+            try printHelp(HelpFileName, HelpFileExtension)
         } catch {
             errorPrinter.printError("\nCan't find help file")
             exit(1)
         }
     }
     
-    private func printHelp() throws {
+    func printHelp(path: String, _ ext: String) throws {
         let bundle = NSBundle(forClass: self.dynamicType)
-        guard let helpFile = bundle.pathForResource(HelpFileName, ofType: HelpFileExtension) else {
+        guard let helpFile = bundle.pathForResource(path, ofType: ext) else {
             throw CommandLineError.CannotReadFromHelpFile
         }
         do {

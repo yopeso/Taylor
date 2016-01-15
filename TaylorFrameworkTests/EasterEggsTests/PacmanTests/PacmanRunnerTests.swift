@@ -51,6 +51,11 @@ class PacmanRunnerTests: QuickSpec {
                 mockPacmanRunner.runEasterEggPrompt()
             }
             
+            it("should not crash when given empty array of paths") {
+                let pacmanRunner = PacmanRunner()
+                pacmanRunner.runEasterEgg([])
+            }
+            
         }
         
     }

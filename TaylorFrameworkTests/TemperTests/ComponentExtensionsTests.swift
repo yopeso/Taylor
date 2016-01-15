@@ -33,5 +33,16 @@ class ComponentExtensionsTests: QuickSpec {
             expect(component2.nextComponent()).to(equal(component3))
             expect(component3.nextComponent()).to(beNil())
         }
+        
+        describe("deserializer") {
+            context("when given wrong dict") {
+                it("should return nil when no startLine key present") {
+                    expect(ComponentRange.deserialize(["endline": 12])).to(beNil())
+                }
+                it("should return nil when no endLine key present") {
+                    expect(ComponentRange.deserialize(["path": "somepath"])).to(beNil())
+                }
+            }
+        }
     }
 }
