@@ -1,3 +1,4 @@
 [
-  "-scheme", "Taylor"
+  "-scheme", "Taylor",
+  "-sdk", "macosx"
 ]
