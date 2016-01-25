@@ -12,7 +12,7 @@ final class Finder {
     private let fileManager: NSFileManager
     private let printer: ErrorPrinter
     private var parameters: Parameters?
-    private var excludes: Excludes?
+    private var excludes: [FilePath]!
     
     init(fileManager: NSFileManager = NSFileManager.defaultManager(), printer: Printer = Printer(verbosityLevel: .Error)) {
         self.fileManager = fileManager
@@ -24,8 +24,8 @@ final class Finder {
         guard parameters != nil && validateParameters(parameters!) else {
             return []
         }
-        parameters!.rootPath.deleteSuffixes()
-        excludes = Excludes(paths: parameters!.excludes, rootPath: parameters!.rootPath)
+        parameters!.rootPath.deleteSuffix(FilePath.Separator)
+        excludes = parameters!.excludes.deleteRootPath(parameters!.rootPath)
         let pathsFromDirectory = findPathsInDirectory(parameters!.rootPath)
         
         return (pathsFromDirectory + parameters!.files).unique
@@ -36,10 +36,9 @@ final class Finder {
     }
     
     private func findPathsInDirectory(path: String) -> [String] {
-        guard parameters != nil && excludes != nil else { return [] }
         do {
             let pathsInDirectory = try fileManager.subpathsOfDirectoryAtPath(path)
-            let paths = exclude(excludes!, fromPaths: pathsInDirectory)
+            let paths = exclude(excludes, fromPaths: pathsInDirectory)
             return paths.map { absolutePath(parameters!.rootPath, fileName: $0) }
         } catch _ {
             printer.printFileManagerError(path)
@@ -47,15 +46,12 @@ final class Finder {
         }
     }
     
-    private func exclude(excludes: Excludes, fromPaths files: [FilePath]) -> [FilePath] {
-        guard parameters != nil else { return [] }
+    private func exclude(excludes: [FilePath], fromPaths files: [FilePath]) -> [FilePath] {
         return files.keepPathsMatchingType(parameters!.type)
-            .excludePathsContainingSubpathsInArray(excludes.absolutePaths)
-            .excludePathsContainingDirectories(excludes.relativePaths)
+            .excludePathsContainingSubpathsInArray(excludes)
     }
     
     private func validateFiles(files:[FilePath]) -> Bool {
-        guard parameters != nil else { return true }
         for file in files {
             if !existsFileOfTypeAtPath(file, type: parameters!.type) {
                 printer.printWrongFilePath(file)
@@ -78,17 +74,17 @@ final class Finder {
     }
     
     private func directoryExistsAtPath(path: FilePath) -> Bool {
-        guard let rootPath = parameters?.rootPath else { return false }
+        let rootPath = parameters!.rootPath
         return fileManager.fileExistsAtPath(path) && fileManager.isDirectory(rootPath)
     }
     
     private func absolutePath(path: FilePath, fileName: String) -> FilePath {
-        return path + DirectorySuffix.Slash + fileName
+        return path + FilePath.Separator + fileName
     }
 }
 
 extension Array where Element: Equatable {
     var unique: [Element] {
-        return self.reduce([Element]()) { !$0.contains($1) ? $0 + $1 : $0 }
+        return self.reduce([]) { !$0.contains($1) ? $0 + $1 : $0 }
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ExcludesFileReader
 
 let ExcludesFileLong = "--excludeFile"
 let ExcludesFileShort = "-ef"
@@ -16,7 +17,7 @@ struct ExcludesFileOption: ExecutableOption {
     var optionArgument : Path
     let name = "ExcludesFileOption"
     
-    init(argument: Path = EmptyString) {
+    init(argument: Path = String.Empty) {
         optionArgument = argument
     }
     
@@ -32,14 +33,12 @@ struct ExcludesFileOption: ExecutableOption {
     
     
     private func pathsFromExcludesFile(path:String) -> [String]? {
-        var excludePaths = [String]()
         do {
-            excludePaths = try ExcludesFileReader().absolutePathsFromExcludesFile(path, forAnalyzePath: analyzePath)
-        } catch CommandLineError.ExcludesFileError(let errorMsg) {
+            return try ExcludesFileReader().absolutePathsFromExcludesFile(path, forAnalyzePath: analyzePath)
+        } catch FileReaderError.ExcludesFile(let errorMsg) {
             errorPrinter.printError(errorMsg)
-            return nil
-        } catch { return nil }
-        return excludePaths
+        } catch _ { }
+        return nil
     }
     
     

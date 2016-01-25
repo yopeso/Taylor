@@ -7,10 +7,10 @@
 //
 
 struct Parameters {
-    var rootPath: String
-    var excludes: [String]
-    var files: [String]
-    var type: String
+    let rootPath: String
+    let excludes: [String]
+    let files: [String]
+    let type: String
     
     private init(parameters: (path: String, excludes: [String], files: [String], type: String)) {
         rootPath = parameters.path
@@ -20,25 +20,19 @@ struct Parameters {
     }
     
     init?(dictionary: Options, printer: ErrorPrinter) {
-        let pathValue = dictionary[ParametersKeys.Path]
+        let pathValue = dictionary[ParameterKey.Path.rawValue]
         if pathValue == nil || pathValue!.isEmpty || pathValue!.first!.isEmpty {
             printer.printWrongRootPathMessage()
             return nil
         }
-        let fileType = dictionary[ParametersKeys.FileType]
+        let fileType = dictionary[ParameterKey.FileType.rawValue]
         if  fileType == nil || fileType!.isEmpty || fileType!.first!.isEmpty {
             printer.printWrongTypeFile()
             return nil
         }
-        var excludesValue = dictionary[ParametersKeys.Excludes]
-        if excludesValue == nil {
-            excludesValue = []
-        }
-        var filesValue = dictionary[ParametersKeys.Files]
-        if filesValue == nil {
-            filesValue = []
-        }
-        self.init(parameters: (pathValue!.first!, excludesValue!, filesValue!, fileType!.first!))
+        let excludesValue = dictionary[ParameterKey.Excludes.rawValue] ?? []
+        let filesValue = dictionary[ParameterKey.Files.rawValue] ?? []
+
+        self.init(parameters: (pathValue!.first!, excludesValue, filesValue, fileType!.first!))
     }
-    
 }

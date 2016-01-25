@@ -30,7 +30,7 @@ class FinderTests: QuickSpec {
             context("when init with excluded directories and files") {
                 it("should return list without excluded paths") {
                     input = ["path": ["/Home/Finder"],
-                        "excludes": ["/Home/Finder/FinderTests/*", "/Home/Finder/Finder/Controllers/AccountViewController.swift"],
+                        "excludes": ["/Home/Finder/FinderTests", "/Home/Finder/Finder/Controllers/AccountViewController.swift"],
                         "files": [],
                         "type": ["swift"]]
                     expect(finder.findFilePaths(parameters: input).count).to(equal(2))
@@ -38,19 +38,11 @@ class FinderTests: QuickSpec {
                 }
                 it("should return list without files from all directory with name Controllers") {
                     input = ["path": ["/Home/Finder"],
-                        "excludes": [".*Controllers.*"],
+                        "excludes": ["/Home/Finder/Finder/Controllers/MainViewController.swift", "/Home/Finder/Finder/Controllers/AccountViewController.swift"],
                         "files": [],
                         "type": ["swift"]]
                     expect(finder.findFilePaths(parameters: input).count).to(equal(2))
                     expect(finder.findFilePaths(parameters: input)).to(contain("/Home/Finder/FinderTests/FinderTests.swift", "/Home/Finder/Finder/main.swift"))
-                }
-                it("should return list without files from all directory with name contains Tests") {
-                    input = ["path": ["/Home/Finder"],
-                        "excludes": [".*Tests.*"],
-                        "files": [],
-                        "type": ["swift"]]
-                    expect(finder.findFilePaths(parameters: input).count).to(equal(3))
-                    expect(finder.findFilePaths(parameters: input)).to(contain("/Home/Finder/Finder/main.swift", "/Home/Finder/Finder/Controllers/AccountViewController.swift", "/Home/Finder/Finder/Controllers/MainViewController.swift"))
                 }
             }
             context("when init with wrong excluded directory name") {
@@ -76,7 +68,7 @@ class FinderTests: QuickSpec {
                 }
                 it("should return explicitly included files no matter what") {
                     input = ["path": ["/Home/Finder"],
-                        "excludes": ["/Home/Finder/Finder/*"],
+                        "excludes": ["/Home/Finder/Finder"],
                         "files": ["/Home/Finder/FinderTests/FinderTests.swift"],
                         "type": ["swift"]]
                     expect(finder.findFilePaths(parameters: input)).to(contain("/Home/Finder/FinderTests/FinderTests.swift"))
@@ -85,7 +77,7 @@ class FinderTests: QuickSpec {
             context("when init with empty root Path") {
                 it("should return empty array") {
                     input = ["path": [],
-                        "excludes": ["/Home/Finder/FinderTests/*"],
+                        "excludes": ["/Home/Finder/FinderTests"],
                         "files": ["/Home/Finder/FinderTests/FinderTests.swift"],
                         "type": ["swift"]]
                     expect(finder.findFilePaths(parameters: input).count).to(equal(0))
@@ -94,7 +86,7 @@ class FinderTests: QuickSpec {
             context("when init with empty type") {
                 it("should return empty array") {
                     input = ["path": ["/Home/Finder"],
-                        "excludes": ["/Home/Finder/FinderTests/*"],
+                        "excludes": ["/Home/Finder/FinderTests"],
                         "files": ["/Home/Finder/FinderTests/FinderTests.swift"],
                         "type": []]
                     expect(finder.findFilePaths(parameters: input).count).to(equal(0))
@@ -103,7 +95,7 @@ class FinderTests: QuickSpec {
             context("when init with wrong included file paths") {
                 it("should return empty array") {
                     input = ["path": ["/Home/Finder"],
-                        "excludes": ["/Home/Finder/FinderTests/*"],
+                        "excludes": ["/Home/Finder/FinderTests"],
                         "files": ["/Home/Finder/FinderTests/FinderTests.swift",  "/Home/Finder/FinderTests/Info.plist"],
                         "type": ["swift"]]
                     expect(finder.findFilePaths(parameters: input).count).to(equal(0))

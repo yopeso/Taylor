@@ -6,23 +6,13 @@
 //  Copyright © 2015 YOPESO. All rights reserved.
 //
 
-import Foundation
-
 enum FinderError: ErrorType {
-    case NotSpecifiedRootPath
-    case NotSpecifiedType
     case WrongFilePath(path: String)
 }
 
-struct DirectorySuffix {
-    static let AllFiles = "/*"
-    static let AnyCombination = ".*"
-    static let Slash = "/"
-}
-
-struct ParametersKeys {
-    static let Path = "path"
-    static let Excludes = "excludes"
-    static let Files = "files"
-    static let FileType = "type"
+enum ParameterKey: String {
+    case Path = "path"
+    case Excludes = "excludes"
+    case Files = "files"
+    case FileType = "type"
 }

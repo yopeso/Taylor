@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ExcludesFileReader
 @testable import TaylorFramework
 
 class MockMessageProcessor : MessageProcessor {

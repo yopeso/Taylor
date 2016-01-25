@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import ExcludesFileReader
 
 let DefaultExtensionType = "swift"
 let DefaultExcludesFile = "/excludes.yml"
@@ -84,7 +85,7 @@ class MessageProcessor {
 
     func defaultExcludesFilePathForDictionary(dictionary: Options) -> String {
         guard let pathKey = dictionary[ResultDictionaryPathKey] where !pathKey.isEmpty else {
-            return ""
+            return String.Empty
         }
         return pathKey.first! + DefaultExcludesFile
     }
