@@ -39,6 +39,11 @@ class PathFormatterTests: QuickSpec {
                 expect(path.formattedExcludePath()).to(equal(path))
             }
             
+            it("should return formatted absolute path") {
+                let path = "path/to/directory/*"
+                expect(path.absolutePath("/root")).to(equal("/root/path/to/directory"))
+            }
+            
             it("should return empty string if excludes path contains .* prefix or sufix") {
                 let path = ".*somePath"
                 let path1 = "somePath.*"

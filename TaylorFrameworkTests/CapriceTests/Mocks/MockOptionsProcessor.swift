@@ -7,6 +7,7 @@
 //
 
 @testable import TaylorFramework
+import ExcludesFileReader
 
 class MockOptionsProcessor: OptionsProcessor {
     

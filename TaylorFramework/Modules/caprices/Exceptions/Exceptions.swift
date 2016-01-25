@@ -11,7 +11,6 @@ enum CommandLineError: ErrorType {
     case AbuseOfOptions(String)
     case InvalidExclude(String)
     case InvalidArguments(String)
-    case ExcludesFileError(String)
     case CannotReadFromHelpFile
     case InvalidInformationalOption(String)
 }

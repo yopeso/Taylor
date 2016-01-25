@@ -1,0 +1,10 @@
+framework module ExcludesFileReader {
+  umbrella header "ExcludesFileReader.h"
+
+  export *
+  module * { export * }
+}
+
+module ExcludesFileReader.Swift {
+    header "ExcludesFileReader-Swift.h"
+}

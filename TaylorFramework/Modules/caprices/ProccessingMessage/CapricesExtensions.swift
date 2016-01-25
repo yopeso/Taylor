@@ -8,7 +8,7 @@
 
 import Foundation
 
-let defaultErrorDictionary = [ResultDictionaryErrorKey : [EmptyString]]
+let defaultErrorDictionary = [ResultDictionaryErrorKey : [String.Empty]]
 
 extension Int {
     var isEven: Bool { return self % 2 == 0 }
@@ -39,22 +39,6 @@ extension String: Summable { }
 
 extension Array {
     var second: Element? { return self.count > 1 ? self[1] : nil }
-}
-
-extension String {
-    var lines: [String] {
-        return self.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet())
-    }
-    
-    var firstQuotedSubstring: String {
-        do {
-            let regex = try NSRegularExpression(pattern: "“([^”]*)”|\"([^\"]*)\"", options: [])
-            let range = regex.rangeOfFirstMatchInString(self, options: [],
-                range: NSMakeRange(0, self.characters.count))
-            guard range.length > 2 else { return "" }
-            return (self as NSString).substringWithRange(NSMakeRange(range.location + 1, range.length - 2))
-        } catch { return "" }
-    }
 }
 
 extension Array where Element: StringType {
