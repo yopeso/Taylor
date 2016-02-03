@@ -60,7 +60,8 @@ final class Component {
 
 extension Component : Hashable {
     var hashValue: Int {
-        return components.reduce(range.startLine.hashValue + range.endLine.hashValue + type.hashValue) { $0 + $1.hashValue }
+        let initialValue = range.startLine.hashValue + range.endLine.hashValue + type.hashValue
+        return components.reduce(initialValue) { $0 + $1.hashValue }
     }
 }
 

@@ -47,7 +47,8 @@ final class NestedBlockDepthRule : Rule {
             return 0
         }
         
-        if let maxElement = component.components.map({ [findMaxDepthForComponent($0)] }).reduce([Int](), combine: { $0 + $1 }).maxElement() {
+        let depths = component.components.map { findMaxDepthForComponent($0) }
+        if let maxElement = depths.maxElement() {
             return maxElement + 1
         }
         
