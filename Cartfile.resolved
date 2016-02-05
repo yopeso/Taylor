@@ -1,0 +1,5 @@
+github "Quick/Nimble" "v3.1.0"
+github "Quick/Quick" "v0.9.0"
+github "drmohundro/SWXMLHash" "2.1.0"
+github "jpsim/SwiftXPC" "1.1.1"
+github "S2dentik/SourceKitten" "95c3a3d081fc7b258fc212c2e4bf38d6c9e38396"

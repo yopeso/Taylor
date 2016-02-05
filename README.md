@@ -24,6 +24,7 @@ brew update
 brew install taylor
 ```
 ### Source
+Rebuild dependencies by running `carthage bootstrap --platform Mac` ([Carthage](https://github.com/Carthage/Carthage) required)  
 Clone the project and run `make install` (**latest version of Xcode required**).
 
 ### Package
