@@ -315,7 +315,8 @@ extension ExtendedComponent {
 
 extension ExtendedComponent : Hashable {
     var hashValue: Int {
-        return components.reduce(offsetRange.start.hashValue + offsetRange.end.hashValue + type.hashValue) { $0 + $1.hashValue }
+        let initialValue = offsetRange.start.hashValue + offsetRange.end.hashValue + type.hashValue
+        return components.reduce(initialValue) { $0 + $1.hashValue }
     }
 }
 

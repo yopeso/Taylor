@@ -22,19 +22,41 @@ struct ComponentFinder {
     }
     
     func findLogicalOperators() -> [ExtendedComponent] {
-        let boolOperators =
-            text.findMatchRanges("(\\|\\|)").map { ExtendedComponent(type: .Or, range: $0) } +
-            text.findMatchRanges("(\\&\\&)").map { ExtendedComponent(type: .And, range: $0) }
+        var operators = findOROperators()
+        operators.appendContentsOf(findANDOperators())
+        operators.appendContentsOf(findTernaryOperators())
+        operators.appendContentsOf(findNilCoalescingOperators())
+        
+        return operators
+    }
+    
+    func findOROperators() -> [ExtendedComponent] {
+        return text.findMatchRanges("(\\|\\|)").map {
+            ExtendedComponent(type: .Or, range: $0)
+        }
+    }
+    
+    func findANDOperators() -> [ExtendedComponent] {
+        return text.findMatchRanges("(\\&\\&)").map {
+            ExtendedComponent(type: .And, range: $0)
+        }
+    }
+    
+    func findTernaryOperators() -> [ExtendedComponent] {
         return text.findMatchRanges("(\\s+\\?(?!\\?).*?:)").map {
-                ExtendedComponent(type: .Ternary, range: $0)
-            } + text.findMatchRanges("(\\?\\?)").map {
-                ExtendedComponent(type: .NilCoalescing, range: $0)
-        } + boolOperators
+            ExtendedComponent(type: .Ternary, range: $0)
+        }
+    }
+    
+    func findNilCoalescingOperators() -> [ExtendedComponent] {
+        return text.findMatchRanges("(\\?\\?)").map {
+            ExtendedComponent(type: .NilCoalescing, range: $0)
+        }
     }
     
     func findComments() -> [ExtendedComponent] {
         return syntaxMap.tokens.filter {
-                types[$0.type] == .Comment
+            types[$0.type] == .Comment
             }.reduce([ExtendedComponent]()) {
                 $0 + ExtendedComponent(dict: $1.dictionaryValue)
         }
