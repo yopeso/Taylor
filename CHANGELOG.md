@@ -16,6 +16,11 @@
 * Edited Makefile. Homebrew will use `make install` to deploy the binaries.  
   [Andrei Raifura](https://github.com/thelvis4)
 
+* Taylor now uses Carthage as dependency manager.  
+  [Andrei Raifura](https://github.com/thelvis4)
+
+* Improved compile time.  
+  [Andrei Raifura](https://github.com/thelvis4)
 
 ## 0.1.1: Before New Year's Eve Party
 
