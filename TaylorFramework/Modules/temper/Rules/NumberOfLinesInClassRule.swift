@@ -40,7 +40,7 @@ final class NumberOfLinesInClassRule : Rule {
     }
     
     func formatMessage(name: String, value: Int) -> String {
-        return "Class '\(name)' has to many lines: \(value). The configured number of lines in class is \(limit)"
+        return "Class '\(name)' has too many lines: \(value). The allowed number of lines in a class is \(limit)"
     }
 
     private func deleteLinesFromComponent(component: Component) {

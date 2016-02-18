@@ -38,7 +38,7 @@ final class CyclomaticComplexityRule : Rule {
     }
     
     func formatMessage(name: String, value: Int) -> String {
-        return "The method '\(name)' has a Cyclomatic Complexity of \(value). The configured cyclomatic complexity is \(limit)"
+        return "The method '\(name)' has a Cyclomatic Complexity of \(value). The allowed Cyclomatic Complexity is \(limit)"
     }
     
     private func findComplexityForComponent(component: Component) -> Int {

@@ -33,12 +33,12 @@ final class NumberOfMethodsInClassRule : Rule {
             let message = formatMessage(name, value: methodsCount)
             return (false, message, methodsCount)
         }
-
+        
         return (true, nil, methodsCount)
     }
     
     func formatMessage(name: String, value: Int) -> String {
-        return "Class '\(name)' has to many methods: \(value). The configured number of methods in class is \(limit)"
+        return "Class '\(name)' has too many methods: \(value). The allowed number of methods in class is \(limit)"
     }
     
     private func getMethodsCountForComponent(component: Component) -> Int {

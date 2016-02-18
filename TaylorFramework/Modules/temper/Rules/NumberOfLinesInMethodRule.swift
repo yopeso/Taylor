@@ -40,7 +40,7 @@ final class NumberOfLinesInMethodRule : Rule {
     }
     
     func formatMessage(name: String, value: Int) -> String {
-        return "Method '\(name)' has to many lines: \(value). The configured number of lines in method is \(limit)"
+        return "Method '\(name)' has too many lines: \(value). The allowed number of lines in a method is \(limit)"
     }
     
     private func deleteLinesFromComponent(component: Component) {
