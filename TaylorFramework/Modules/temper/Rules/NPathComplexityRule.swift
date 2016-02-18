@@ -24,7 +24,7 @@ final class NPathComplexityRule : Rule {
             }
         }
     }
-    
+
     func checkComponent(component: Component) -> Result {
         if component.type != ComponentType.Function { return (true, nil, nil) }
         let complexity = component.rangeNPathComplexity()
@@ -35,22 +35,22 @@ final class NPathComplexityRule : Rule {
         }
         return (true , nil, complexity)
     }
-    
+
     func formatMessage(name: String, value: Int) -> String {
-        return "Method '\(name)' has a NPath Complexity of \(value). The configured NPath Complexity is \(limit)"
+        return "Method '\(name)' has a NPath Complexity of \(value). The allowed NPath Complexity is \(limit)"
     }
 }
 
 extension Component {
-    
+
     func expressionNPath() -> Int {
         return components.filter { $0.type == ComponentType.Or || $0.type == ComponentType.And }.count
     }
-    
+
     func NPathComplexity() -> Int {
         return type.NPathComplexityForComponent(self)
     }
-    
+
     func rangeNPathComplexity() -> Int {
         if type == .Switch {
             return components.map({ $0.NPathComplexity() }).reduce(0, combine: +)
@@ -60,7 +60,7 @@ extension Component {
         let complexities = filteredComponents.map { $0.NPathComplexity() }
         return complexities.reduce(1, combine: *)
     }
-    
+
     func NPathForIfComponent() -> Int {
         if let nextComponent = nextComponent() where
             nextComponent.type == .Else || nextComponent.type == .ElseIf {
@@ -68,7 +68,7 @@ extension Component {
         }
         return 1 + expressionNPath() + rangeNPathComplexity()
     }
-    
+
     func NPathForElseIfComponent() -> Int {
         var complexity = expressionNPath() + rangeNPathComplexity()
         if let nextComponent = nextComponent() {
@@ -82,16 +82,16 @@ extension Component {
 
 
 extension ComponentType {
-    
+
     var hasRange: Bool {
         return [ComponentType.Repeat, .While, .For, .Else, .Case, .Brace, .Switch].contains(self)
     }
-    
+
     func NPathComplexityForComponent(component: Component) -> Int {
         if component.type.hasRange { return NPathForRangeComponent(component) }
         return NPathForNonRangeComponent(component)
     }
-    
+
     private func NPathForRangeComponent(component: Component) -> Int {
         switch component.type {
         case .Repeat, .While, .For: return 1 + component.rangeNPathComplexity() + component.expressionNPath()
@@ -100,7 +100,7 @@ extension ComponentType {
         default: return 0
         }
     }
-    
+
     private  func NPathForNonRangeComponent(component: Component) -> Int {
         switch component.type {
         case .If, .Guard: return component.NPathForIfComponent()

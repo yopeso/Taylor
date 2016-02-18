@@ -24,7 +24,7 @@ final class NumberOfMethodsInClassRule : Rule {
             }
         }
     }
-    
+
     func checkComponent(component: Component) -> Result {
         if component.type != ComponentType.Class { return (true, nil, nil) }
         let methodsCount = getMethodsCountForComponent(component)
@@ -36,11 +36,11 @@ final class NumberOfMethodsInClassRule : Rule {
 
         return (true, nil, methodsCount)
     }
-    
+
     func formatMessage(name: String, value: Int) -> String {
-        return "Class '\(name)' has to many methods: \(value). The configured number of methods in class is \(limit)"
+        return "Class '\(name)' has too many methods: \(value). The allowed number of methods in class is \(limit)"
     }
-    
+
     private func getMethodsCountForComponent(component: Component) -> Int {
         return component.components.filter({ $0.type == ComponentType.Function }).count
     }

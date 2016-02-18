@@ -25,7 +25,7 @@ final class NestedBlockDepthRule : Rule {
             }
         }
     }
-    
+
     func checkComponent(component: Component) -> Result {
         if component.type != ComponentType.Function { return (true, nil, nil) }
         let depth = findMaxDepthForComponent(component)
@@ -34,30 +34,29 @@ final class NestedBlockDepthRule : Rule {
             let message = formatMessage(name, value: depth)
             return (false, message, depth)
         }
-        
+
         return (true, nil, depth)
     }
-    
+
     func formatMessage(name: String, value: Int) -> String {
-        return "Method '\(name)' has a block depth of \(value). The configured block depth is \(limit)"
+        return "Method '\(name)' has a block depth of \(value). The allowed block depth is \(limit)"
     }
-    
+
     private func findMaxDepthForComponent(component: Component) -> Int {
         if !checkForAdmisibleComponents(component.components) || component.components.count == 0 {
             return 0
         }
-        
         let depths = component.components.map { findMaxDepthForComponent($0) }
         if let maxElement = depths.maxElement() {
             return maxElement + 1
         }
-        
+
         return 0
     }
-    
+
     private func checkForAdmisibleComponents(components: [Component]) -> Bool {
         let commonTypes = Set(components.map({ $0.type })).intersect(Set(admissibleComponents))
-        
+
         return !commonTypes.isEmpty
     }
 }

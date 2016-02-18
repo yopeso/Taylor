@@ -34,11 +34,11 @@ final class ExcessiveParameterListRule : Rule {
         }
         return (true , nil, parametersCount)
     }
-    
+
     func formatMessage(name: String, value: Int) -> String {
-        return "Method '\(name)' has \(value) parameters. The configured number of parameters is \(limit)"
+        return "Method '\(name)' has \(value) parameters. The allowed number of parameters is \(limit)"
     }
-    
+
     private func parametersCountForFunction(component: Component) -> Int {
         return component.components.filter { $0.type == ComponentType.Parameter }.count
     }
