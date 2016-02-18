@@ -25,7 +25,7 @@ final class NumberOfLinesInClassRule : Rule {
         }
     }
     private var linesCount = 0
-    
+
     func checkComponent(component: Component) -> Result {
         if component.type != ComponentType.Class { return (true, nil, nil) }
         linesCount = component.range.length
@@ -35,12 +35,12 @@ final class NumberOfLinesInClassRule : Rule {
             let message = formatMessage(name, value: linesCount)
             return (false, message, linesCount)
         }
-        
+
         return (true, nil, linesCount)
     }
-    
+
     func formatMessage(name: String, value: Int) -> String {
-        return "Class '\(name)' has to many lines: \(value). The configured number of lines in class is \(limit)"
+        return "Class '\(name)' has too many lines: \(value). The allowed number of lines in a class is \(limit)"
     }
 
     private func deleteLinesFromComponent(component: Component) {
