@@ -39,7 +39,7 @@ final class NestedBlockDepthRule : Rule {
     }
     
     func formatMessage(name: String, value: Int) -> String {
-        return "Method '\(name)' has a block depth of \(value). The configured block depth is \(limit)"
+        return "Method '\(name)' has a block depth of \(value). The allowed block depth is \(limit)"
     }
     
     private func findMaxDepthForComponent(component: Component) -> Int {

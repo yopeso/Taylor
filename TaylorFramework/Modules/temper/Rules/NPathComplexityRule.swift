@@ -37,7 +37,7 @@ final class NPathComplexityRule : Rule {
     }
     
     func formatMessage(name: String, value: Int) -> String {
-        return "Method '\(name)' has a NPath Complexity of \(value). The configured NPath Complexity is \(limit)"
+        return "Method '\(name)' has a NPath Complexity of \(value). The allowed NPath Complexity is \(limit)"
     }
 }
 
