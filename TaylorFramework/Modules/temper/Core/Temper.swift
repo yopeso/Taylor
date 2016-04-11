@@ -61,7 +61,7 @@ final class Temper {
      */
     
     func checkContent(content: FileContent) {
-        Temper.statistics.totalFiles++
+        Temper.statistics.totalFiles += 1
         fileWasChecked = false
         currentPath = content.path
         let initialViolations = violations.count
@@ -106,11 +106,12 @@ final class Temper {
      */
     
     func setLimits(limits: [String:Int]) {
-        rules = rules.map({ (var rule: Rule) -> Rule in
+        rules = rules.map({ ( rule: Rule) -> Rule in
+            var mutableRule = rule
             if let limit = limits[rule.rule] {
-                rule.limit = limit
+                mutableRule.limit = limit
             }
-            return rule
+            return mutableRule
         })
     }
     
@@ -143,12 +144,12 @@ final class Temper {
     private func updateStatisticsWithViolation(violation: Violation) {
         if !fileWasChecked {
             fileWasChecked = true
-            Temper.statistics.filesWithViolations++
+            Temper.statistics.filesWithViolations += 1
         }
         switch violation.rule.priority {
-        case 1: Temper.statistics.violationsWithP1++
-        case 2: Temper.statistics.violationsWithP2++
-        default: Temper.statistics.violationsWithP3++
+        case 1: Temper.statistics.violationsWithP1 += 1
+        case 2: Temper.statistics.violationsWithP2 += 1
+        default: Temper.statistics.violationsWithP3 += 1
         }
     }
 }

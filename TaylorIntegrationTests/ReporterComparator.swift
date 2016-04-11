@@ -35,17 +35,19 @@ class ReporterComparator {
     
     func compareReporters(firstReporterPath: String, secondReporterPath: String) -> Bool {
         var violations1 = JSONToViolationParser().parseFile(firstReporterPath)
-        violations1 = violations1.map { (var violation: [String:AnyObject]) -> [String:AnyObject] in
-            violation["path"] = ""
-            return violation
+        violations1 = violations1.map { ( violation: [String:AnyObject]) -> [String:AnyObject] in
+            var violationCopy = violation
+            violationCopy["path"] = ""
+            return violationCopy
         }
         var violations2 = JSONToViolationParser().parseFile(secondReporterPath)
-        violations2 = violations2.map { (var violation: [String:AnyObject]) -> [String:AnyObject] in
-            violation["path"] = ""
-            return violation
+        violations2 = violations2.map { (violation: [String:AnyObject]) -> [String:AnyObject] in
+            var violationCopy = violation
+            violationCopy["path"] = ""
+            return violationCopy
         }
         guard violations1.count == violations2.count else { return false }
-        for var i = 0; i < violations1.count; i++ {
+        for i in 0 ..< violations1.count {
             if violations1[i] != violations2[i] {
                 return false
             }

@@ -25,7 +25,7 @@ extension Array {
         
         let step: Int = max(1, self.count / NSProcessInfo.processInfo().activeProcessorCount) // step can never be 0
         
-        for var stepIndex = 0; stepIndex * step < self.count; stepIndex++ {
+        0.stride(to: self.count, by: 1).forEach { stepIndex in
             let capturedStepIndex = stepIndex
             
             var stepResult: [T] = []

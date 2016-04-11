@@ -20,7 +20,7 @@ class ArrayExtensionsTests : QuickSpec {
                 let mappedArray = anArray.pmap({ (element: String) -> Int in
                     return Int(element)!
                 })
-                for var i = 0; i < mappedArray.count; i++ {
+                for i in 0..<mappedArray.count {
                     expect(mappedArray[i]).to(equal(Int(anArray[i])))
                 }
             }

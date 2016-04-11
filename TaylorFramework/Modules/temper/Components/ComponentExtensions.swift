@@ -13,7 +13,7 @@ protocol Serialization {
 }
 
 protocol Deserialization {
-    typealias Type
+    associatedtype Type
     static func deserialize(dictionary: [String:AnyObject]) -> Type?
 }
 
