@@ -7,12 +7,11 @@
 //
 
 import Foundation
-import SwiftXPC
 import SourceKittenFramework
 
 struct Tree {
     let file: File
-    let dictionary: XPCDictionary
+    let dictionary: [String: SourceKitRepresentable]
     let syntaxMap: SyntaxMap
     let parts: [File]
     
@@ -38,6 +37,7 @@ struct Tree {
         processBraces(root)
         arrayToTree(additionalComponents(finder), root: root)
         processTree(root)
+        root.filter(.Array)
         
         return convertTree(root)
     }
@@ -94,7 +94,7 @@ struct Tree {
     func processBraces(parent: ExtendedComponent) {
         var i = 0
         while i < parent.components.count {
-            let component = parent.components[i]; i++
+            let component = parent.components[i]; i += 1
             let type = component.type
             let bracedTypes = [ComponentType.If, .ElseIf, .For, .While, .Repeat, .Closure, .Guard]
             if bracedTypes.contains(type)  {

@@ -35,7 +35,7 @@ struct ExcludesFileOption: ExecutableOption {
     private func pathsFromExcludesFile(path:String) -> [String]? {
         do {
             return try ExcludesFileReader().absolutePathsFromExcludesFile(path, forAnalyzePath: analyzePath)
-        } catch FileReaderError.ExcludesFile(let errorMsg) {
+        } catch CommandLineError.InvalidExclude(let errorMsg) {
             errorPrinter.printError(errorMsg)
         } catch _ { }
         return nil

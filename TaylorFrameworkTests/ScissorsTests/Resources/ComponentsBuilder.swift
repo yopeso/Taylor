@@ -171,15 +171,13 @@ func componentsForClosures() -> [Component] {
     let root = Component(type: .Class, range: ComponentRange(sl: 1, el: 20))
     let var1 = root.makeComponent(type: .Closure, range: ComponentRange(sl: 2, el: 4))
     var1.makeComponent(type: .Parameter, range: ComponentRange(sl: 2, el: 2))
-    let var2 = root.makeComponent(type: .Closure, range: ComponentRange(sl: 5, el: 5))
-    var2.makeComponent(type: .Parameter, range: ComponentRange(sl: 5, el: 5))
+    root.makeComponent(type: .Closure, range: ComponentRange(sl: 5, el: 5))
     let var3 = root.makeComponent(type: .Closure, range: ComponentRange(sl: 6, el: 8))
     var3.makeComponent(type: .Parameter, range: ComponentRange(sl: 6, el: 6))
     let var4 = root.makeComponent(type: .Closure, range: ComponentRange(sl: 9, el: 12))
     var4.makeComponent(type: .If, range: ComponentRange(sl: 10, el: 10))
     let function = root.makeComponent(type: .Function, range: ComponentRange(sl: 13, el: 19))
-    let var5 = function.makeComponent(type: .Closure, range: ComponentRange(sl: 14, el: 14))
-    var5.makeComponent(type: .Parameter, range: ComponentRange(sl: 14, el: 14))
+    function.makeComponent(type: .Closure, range: ComponentRange(sl: 14, el: 14))
     let var6 = function.makeComponent(type: .Closure, range: ComponentRange(sl: 15, el: 17))
     var6.makeComponent(type: .Parameter, range: ComponentRange(sl: 15, el: 15))
     var6.makeComponent(type: .Parameter, range: ComponentRange(sl: 15, el: 15))
@@ -225,12 +223,14 @@ func componentsForClosureParameters() -> [Component] {
     let closure = function1.makeComponent(type: .Closure, range: ComponentRange(sl: 2, el: 2))
     closure.makeComponent(type: .Parameter, range: ComponentRange(sl: 2, el: 2))
     closure.makeComponent(type: .Parameter, range: ComponentRange(sl: 2, el: 2))
-    closure.makeComponent(type: .Parameter, range: ComponentRange(sl: 2, el: 2))
     
     let function2 = Component(type: .Function, range: ComponentRange(sl: 4, el: 7))
     function2.makeComponent(type: .Parameter, range: ComponentRange(sl: 4, el: 4))
     function2.makeComponent(type: .Parameter, range: ComponentRange(sl: 4, el: 4))
     function2.makeComponent(type: .Parameter, range: ComponentRange(sl: 4, el: 4))
+    function2.makeComponent(type: .Closure, range: ComponentRange(sl: 5, el: 5))
+    let closure2 = function2.makeComponent(type: .Closure, range: ComponentRange(sl: 6, el: 6))
+    closure2.makeComponent(type: .Parameter, range: ComponentRange(sl: 6, el: 6))
 
     return [function1, function2]
 }

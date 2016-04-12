@@ -18,9 +18,7 @@ class TimerTests : QuickSpec {
             it("should return the execute time") {
                 let timer = Timer()
                 let executionTime = timer.profile {
-                    for var i = 0; i < 1000000; i++ {
-                        // Do nothing
-                    }
+                    (0 ..< 1000000).forEach { _ in }
                 }
                 expect(executionTime).to(beGreaterThan(0))
             }

@@ -278,23 +278,24 @@ class TestsHelper {
     
     func addComponentsInDepthToComponent(component: Component) -> Component {
         let depth = 10
-        func makeComponent(component: Component, var depth: Int) {
+        func makeComponent(component: Component, depth: Int) {
             let admisibleComponents = [ComponentType.If, ComponentType.While, ComponentType.For, ComponentType.Case, ComponentType.Brace]
             let type = admisibleComponents[Int(arc4random_uniform(5))]
             let component1 = component.makeComponent(type: type, range: ComponentRange(sl: 0, el: 0))
-            if --depth > 0 {
-                makeComponent(component1, depth: depth)
+            let decrementedDepth = depth - 1
+            if decrementedDepth > 0 {
+                makeComponent(component1, depth: decrementedDepth)
             }
         }
         makeComponent(component, depth: 10)
         return component
     }
     
-    func makeClassComponentWithNrOfMethods(var count: Int) -> Component {
+    func makeClassComponentWithNrOfMethods(count: Int) -> Component {
         let component = Component(type: ComponentType.Class, range: ComponentRange(sl: 0, el: 0))
-        repeat {
+        (0..<count).forEach {_ in
             component.makeComponent(type: ComponentType.Function, range: ComponentRange(sl: 1, el: 10))
-        } while --count > 0
+        }
         return component
     }
 }

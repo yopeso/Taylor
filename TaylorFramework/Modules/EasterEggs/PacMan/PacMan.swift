@@ -91,8 +91,7 @@ struct Generator {
     func generateMapString(text: String) -> String {
         if text.isEmpty { return "" }
         let endIndex = mapString.characters.count + Int(arc4random_uniform(UInt32(text.characters.count-mapString.characters.count)))
-        let textRange = Range<String.Index>(start: text.startIndex.advancedBy(endIndex-mapString.characters.count),
-                                              end: text.startIndex.advancedBy(endIndex))
+        let textRange = text.startIndex.advancedBy(endIndex-mapString.characters.count)..<text.startIndex.advancedBy(endIndex)
         let newText = text.substringWithRange(textRange)
         var map = "", i = 0
         let restrictedChars = [PLAYER, GHOST, "\n", POINT]
@@ -101,7 +100,7 @@ struct Generator {
                 let replaceChar = newText.characters[newText.startIndex.advancedBy(i)]
                 if restrictedChars.contains(String(replaceChar)){ map.append(" " as Character) }
                 else { map.append(replaceChar) }
-                i++
+                i += 1
             } else {
                 map.append(character)
             }

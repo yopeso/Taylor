@@ -8,7 +8,6 @@
 
 import Foundation
 import SourceKittenFramework
-import SwiftXPC
 
 typealias Names = (name: String?, typeName: String?)
 
@@ -57,8 +56,9 @@ final class ExtendedComponent {
         self.components = []
     }
     
-    func appendComponents(var components: [ExtendedComponent], array: XPCArray) -> [ExtendedComponent] {
+    func appendComponents(components: [ExtendedComponent], array: [SourceKitRepresentable]) -> [ExtendedComponent] {
         var braces = 0
+        var componentsCopy = components
         array.enumerate().forEach { (childNumber, structure) in
             var offsetRange = structure.asDictionary.offsetRange
             let type = getComponentType(structure.asDictionary.type, bracesCount: braces, isLast: childNumber == array.count - 1)
@@ -66,13 +66,13 @@ final class ExtendedComponent {
                 let bodyOffsetEnd = structure.asDictionary.bodyLength + structure.asDictionary.bodyOffset
                 if bodyOffsetEnd != 0 { offsetRange.end = bodyOffsetEnd }
             } else if type.isOther { return }
-            if type.isBrace { braces++ }
+            if type.isBrace { braces += 1 }
             let child = ExtendedComponent(type: type, range: offsetRange, names: (structure.asDictionary.name, structure.asDictionary.typeName))
-            components.append(child)
-            components = child.appendComponents(components, array: structure.asDictionary.substructure)
+            componentsCopy.append(child)
+            componentsCopy = child.appendComponents(componentsCopy, array: structure.asDictionary.substructure)
         }
         
-        return components
+        return componentsCopy
     }
     
     func getComponentType(type: String, bracesCount: Int, isLast: Bool) -> ComponentType {
@@ -84,7 +84,7 @@ final class ExtendedComponent {
     
     func variablesToFunctions() {
         for component in self.components {
-            if component.hasNoChildrenExceptELComment {
+            if component.hasSignificantChildren {
                 if component.isActuallyClosure {
                     component.components[0].name = component.name
                     component.parent?.components.append(component.components[0])
@@ -96,6 +96,11 @@ final class ExtendedComponent {
             }
             component.variablesToFunctions()
         }
+    }
+    
+    func filter(type: ComponentType) {
+        components = components.filter { $0.type != type }
+        components.forEach { $0.filter(type) }
     }
     
     func processBracedType() {

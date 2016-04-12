@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftXPC
 import SourceKittenFramework
 
 //MARK: BoundariesKit extensions
@@ -49,7 +48,8 @@ let types = [
     "source.lang.swift.syntaxtype.doccomment": .Comment,
     "source.lang.swift.decl.var.instance": .Variable,
     "source.lang.swift.decl.var.global": .Variable,
-    "source.lang.swift.expr.call": .Closure
+    "source.lang.swift.expr.call": .Closure,
+    "source.lang.swift.expr.array": .Array
 ]
 
 extension ComponentType {
@@ -71,27 +71,27 @@ extension ComponentType {
 protocol StringType {}
 extension String: StringType {}
 
-extension XPCRepresentable {
-    var asDictionary: XPCDictionary { return self as! XPCDictionary }
+extension SourceKitRepresentable {
+    var asDictionary: [String: SourceKitRepresentable] { return self as? [String: SourceKitRepresentable] ?? [:] }
 }
 
 protocol XPCType {
-    var value: XPCDictionary { get }
+    var value: SourceKitRepresentable { get }
 }
 
 extension Dictionary where Key: StringType {
     var offsetRange: OffsetRange {
-        let startOffset = SwiftDocKey.getOffset(self.asDictionary) ?? 0
-        let length = SwiftDocKey.getLength(self.asDictionary) ?? 0
+        let startOffset = SwiftDocKey.publicGetOffset(self.asDictionary) ?? 0
+        let length = SwiftDocKey.publicGetLength(self.asDictionary) ?? 0
         let endOffset = Int(startOffset + length)
         return OffsetRange(start: Int(startOffset), end: endOffset)
     }
-    var typeName: String? { return SwiftDocKey.getTypeName(self.asDictionary) }
+    var typeName: String? { return SwiftDocKey.publicGetTypeName(self.asDictionary) }
     var name: String? { return SwiftDocKey.getName(self.asDictionary) }
-    var substructure: XPCArray { return SwiftDocKey.getSubstructure(self.asDictionary) ?? [] }
-    var type: String { return SwiftDocKey.getKind(self.asDictionary) ?? "" }
-    var bodyLength: Int { return Int(SwiftDocKey.getBodyLength(self.asDictionary) ?? 0) }
-    var bodyOffset: Int { return Int(SwiftDocKey.getBodyOffset(self.asDictionary) ?? 0) }
+    var substructure: [SourceKitRepresentable] { return SwiftDocKey.publicGetSubstructure(self.asDictionary) ?? [] }
+    var type: String { return SwiftDocKey.publicGetKind(self.asDictionary) ?? "" }
+    var bodyLength: Int { return Int(SwiftDocKey.publicGetBodyLength(self.asDictionary) ?? 0) }
+    var bodyOffset: Int { return Int(SwiftDocKey.publicGetBodyOffset(self.asDictionary) ?? 0) }
 }
 
 extension File {
@@ -132,9 +132,8 @@ extension File {
     }
 }
 
-func + (var lhs: [File], rhs: File) -> [File] {
-    lhs.append(rhs)
-    return lhs
+func + (lhs: [File], rhs: File) -> [File] {
+    return lhs + [rhs]
 }
 
 extension Array {
@@ -189,8 +188,8 @@ extension ExtendedComponent {
         return self.components.filter(){ $0.type == ComponentType.Parameter }.count > 0
     }
     
-    var hasNoChildrenExceptELComment: Bool {
-        return self.components.filter() { !$0.type.isComment && !$0.type.isEmptyLine }.count > 0 && self.type == .Variable
+    var hasSignificantChildren: Bool {
+        return self.components.filter() { !$0.type.isComment && !$0.type.isEmptyLine && $0.type != .Array }.count > 0 && self.type == .Variable
     }
     
     var isActuallyClosure: Bool {

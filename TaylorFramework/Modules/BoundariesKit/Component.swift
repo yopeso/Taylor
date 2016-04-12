@@ -33,6 +33,8 @@ enum ComponentType {
     case Variable
     case Closure
     case Other
+    case Array
+    case Dictionary
 }
 
 final class Component {
