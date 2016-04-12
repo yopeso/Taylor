@@ -6,37 +6,6 @@
 //  Copyright © 2015 YOPESO. All rights reserved.
 //
 
-enum ComponentType {
-    case Class
-    case Struct
-    case Enum
-    case Protocol
-    case Extension
-    case Function
-    case Parameter
-    case Comment
-    case EmptyLines
-    case Repeat
-    case While
-    case If
-    case ElseIf
-    case Else
-    case Guard
-    case For
-    case Switch
-    case Case
-    case Brace
-    case And
-    case Or
-    case NilCoalescing
-    case Ternary
-    case Variable
-    case Closure
-    case Other
-    case Array
-    case Dictionary
-}
-
 final class Component {
     var parent: Component?
     let type: ComponentType

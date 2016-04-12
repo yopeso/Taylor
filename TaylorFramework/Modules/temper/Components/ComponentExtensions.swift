@@ -83,7 +83,7 @@ func +=<KeyType, KeyValue>(inout left: Dictionary<KeyType, KeyValue>, right: Dic
 extension Component {
     
     var isRedundantLine : Bool {
-        return type == .Comment || type == .EmptyLines
+        return type.isA(.Comment) || type.isA(.EmptyLines)
     }
     
     /**
@@ -93,8 +93,7 @@ extension Component {
     */
     
     var isConstructType : Bool {
-        return type == ComponentType.Class || type == ComponentType.Struct ||
-            type == ComponentType.Enum || type == ComponentType.Extension
+        return type.isA(.Class) || type.isA(.Struct) || type.isA(.Enum) || type.isA(.Extension)
     }
     
     /**

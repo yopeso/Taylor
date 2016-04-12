@@ -21,6 +21,14 @@ struct ComponentFinder {
         self.syntaxMap = syntaxMap
     }
     
+    /**
+        Finds all comments, logical operators (`??`, `? :`, `&&`, `||`) and
+        empty lines in **text**.
+    */
+    var additionalComponents: [ExtendedComponent] {
+        return findComments() + findLogicalOperators() + findEmptyLines()
+    }
+    
     func findLogicalOperators() -> [ExtendedComponent] {
         var operators = findOROperators()
         operators.appendContentsOf(findANDOperators())
@@ -56,7 +64,7 @@ struct ComponentFinder {
     
     func findComments() -> [ExtendedComponent] {
         return syntaxMap.tokens.filter {
-            types[$0.type] == .Comment
+            componentTypeUIDs[$0.type] == .Comment
             }.reduce([ExtendedComponent]()) {
                 $0 + ExtendedComponent(dict: $1.dictionaryValue)
         }
@@ -70,7 +78,7 @@ struct ComponentFinder {
     
     //Ending points of getters and setters will most probably be wrong unless a nice coding-style is being used "} set {"
     func findGetters(components: [ExtendedComponent]) -> [ExtendedComponent] {
-        return components.filter { ($0 as ExtendedComponent).type == .Variable }.reduce([ExtendedComponent]()) { components, component in
+        return components.filter { ($0 as ExtendedComponent).type.isA(.Variable) }.reduce([ExtendedComponent]()) { components, component in
             let range = NSMakeRange(component.offsetRange.start, component.offsetRange.end - component.offsetRange.start)
             return findGetterAndSetter((text as NSString).substringWithRange(range)).reduce(components) {
                 $1.offsetRange.start += component.offsetRange.start
