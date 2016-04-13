@@ -35,17 +35,23 @@ class OptionsProcessor {
     var infoOptions = [InformationalOption]()
     var executableOptions = [ExecutableOption]()
     
-    func processOptions(arguments: [String]) -> Options {
-        let options = try! Array(arguments[1..<arguments.count]).reduceTwoElements([Option]()) {
-            if let optionObject = optionObjectFromOption($1, argument: $2) { return $0 + optionObject }
-            throw CommandLineError.InvalidArguments("Error committed on option `\($1)`.")
-        }
-        if options.isEmpty || !OptionsValidator().validateForSingleOptions(options) { return EmptyResultDictionary }
+    func processOptions(arguments: [String]) throws -> Options {
+        let options = try processArguments(arguments)
+        guard !options.isEmpty && OptionsValidator().validateForSingleOptions(options) else { return EmptyResultDictionary }
         analyzePath = options.filter{ $0 is PathOption }.first?.optionArgument.absolutePath() ?? analyzePath
         let resultDictionary = buildResultDictionaryFromOptions(executableOptions)
         guard processInformationalOptions() else { return EmptyResultDictionary }
         factory = InformationalOptionsFactory(infoOptions: infoOptions)
         return resultDictionary
+    }
+    
+    func processArguments(arguments: [String]) throws -> [Option] {
+         return try Array(arguments[1..<arguments.count]).reduceTwoElements([]) {
+            guard let optionObject = optionObjectFromOption($1, argument: $2) else {
+                throw CommandLineError.InvalidArguments("Error committed on option `\($1)`.")
+            }
+            return $0 + optionObject
+        }
     }
     
     func processInformationalOptions() -> Bool {
@@ -68,12 +74,10 @@ class OptionsProcessor {
         return resultDictionary
     }
     
-    
     func setDefaultValuesToResultDictionary(inout dictionary: Options) {
         setDefaultPathAndTypeToDictionary(&dictionary)
         if !isExcludesFileIndicated { setDefaultExcludesToDictionary(&dictionary) }
     }
-    
     
     private func setDefaultPathAndTypeToDictionary(inout dictionary: Options) {
         let defaultDictionary = MessageProcessor().defaultDictionaryWithPathAndType()
@@ -118,7 +122,6 @@ class OptionsProcessor {
         return true
     }
     
-    
     private func optionObjectFromOption(option: String, argument: String) -> Option? {
         if option == ExcludesFileLong || option == ExcludesFileShort { isExcludesFileIndicated = true }
         if let optionType = optionReporterType[option] {
@@ -127,6 +130,9 @@ class OptionsProcessor {
         return nil
     }
     
+}
+
+extension OptionsProcessor {
     func configureOption(optionType: Option.Type, argument: String) -> Option {
         let option = optionType.init(argument: argument)
         if let infoOption = option as? InformationalOption { infoOptions.append(infoOption) }
@@ -141,13 +147,7 @@ extension Array {
         var result = initial
         for (first, second) in Zip2Sequence(self.enumerate().filter { $0.0.isEven }.map { $0.1 },
                                             self.enumerate().filter {$0.0.isOdd }.map {$0.1}) {
-            do {
-                result = try combine(result, first, second)
-            } catch let error as NSError {
-                errorPrinter.printError(error.localizedDescription)
-                return initial
-            }
-            
+            result = try combine(result, first, second)
         }
         return result
     }

@@ -34,7 +34,7 @@ class PacmanRunner {
     func input() -> String {
         let keyboard = NSFileHandle.fileHandleWithStandardInput()
         let inputData = keyboard.availableData
-        return (NSString(data: inputData, encoding: NSUTF8StringEncoding) ?? "") as String
+        return String(String(data: inputData, encoding: NSUTF8StringEncoding)?.characters.first ?? Character(""))
     }
     
     func runEasterEgg(paths: [Path]) {

@@ -12,8 +12,8 @@ struct Arguments {
     let caprice = Caprice()
     let arguments: Options
     
-    init () {
-        arguments = caprice.processArguments(Process.arguments)
+    init () throws {
+        arguments = try caprice.processArguments(Process.arguments)
     }
     
     var finderParameters: Options {
