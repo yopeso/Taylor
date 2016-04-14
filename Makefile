@@ -7,10 +7,16 @@ BUILD_DESTINATION?=$(TEMPORARY_FOLDER)/Build/Products/Release
 
 XCODEFLAGS=-scheme Taylor -derivedDataPath $(TEMPORARY_FOLDER)/ -configuration Release
 
+BUILD_COMMAND=$(BUILD_TOOL) $(XCODEFLAGS) build
+
 .PHONY: build install
 
 build:
-	$(BUILD_TOOL) $(XCODEFLAGS) build
+ifneq ($(strip $(shell command -v xcpretty)),)
+	$(BUILD_COMMAND) | xcpretty
+else
+	$(BUILD_COMMAND)
+endif
 
 install:
 	make build
