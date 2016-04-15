@@ -42,6 +42,6 @@ final class NumberOfMethodsInClassRule : Rule {
     }
     
     private func getMethodsCountForComponent(component: Component) -> Int {
-        return component.components.filter({ $0.type == ComponentType.Function }).count
+        return component.components.filter({ $0.isA(.Function) }).count
     }
 }

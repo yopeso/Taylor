@@ -28,34 +28,20 @@ struct Tree {
     func makeTree() -> Component {
         let root = ExtendedComponent(type: .Other, range: dictionary.offsetRange, names: (nil, nil))
         let noStringsText = replaceStringsWithSpaces(parts.map() { $0.contents })
-        
         let finder = ComponentFinder(text: noStringsText, syntaxMap: syntaxMap)
-        var componentsArray = root.appendComponents([], array: dictionary.substructure)
-        componentsArray += finder.findGetters(componentsArray)
-        arrayToTree(componentsArray, root: root)
+        let sourcekitComponents = root.appendComponents(dictionary.substructure)
+                
+        root.insert(sourcekitComponents + finder.findGetters(sourcekitComponents))
         root.removeRedundantClosures()
-        processBraces(root)
-        arrayToTree(additionalComponents(finder), root: root)
-        processTree(root)
-        root.filter(.Array)
+        root.processBraces()
+        root.insert(finder.additionalComponents)
+        root.process()
+        root.filter([.Array, .Dictionary, .Object, .EnumElement])
         
         return convertTree(root)
     }
     
-    func additionalComponents(finder: ComponentFinder) -> [ExtendedComponent] {
-        var components = finder.findComments()
-        components.appendContentsOf(finder.findLogicalOperators())
-        components.appendContentsOf(finder.findEmptyLines())
-        
-        return components
-    }
     
-    func processTree(root: ExtendedComponent) {
-        root.variablesToFunctions()
-        root.processParameters()
-        root.removeRedundantParameters()
-        sortTree(root)
-    }
     
     //MARK: Conversion to Component type
     
@@ -87,31 +73,6 @@ struct Tree {
         parent.insert(components)
         
         return parent
-    }
-    
-    //MARK: Processing the tree
-    
-    func processBraces(parent: ExtendedComponent) {
-        var i = 0
-        while i < parent.components.count {
-            let component = parent.components[i]; i += 1
-            let type = component.type
-            let bracedTypes = [ComponentType.If, .ElseIf, .For, .While, .Repeat, .Closure, .Guard]
-            if bracedTypes.contains(type)  {
-                guard component.isFirstComponentBrace else {
-                    continue
-                }
-                component.processBracedType()
-            }
-            processBraces(component)
-        }
-    }
-    
-    func sortTree(root: ExtendedComponent) {
-        for component in root.components {
-            sortTree(component)
-            component.sortChildren()
-        }
     }
     
     //MARK: Text filtering methods

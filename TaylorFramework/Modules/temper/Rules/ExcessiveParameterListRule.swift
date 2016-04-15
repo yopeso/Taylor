@@ -40,6 +40,6 @@ final class ExcessiveParameterListRule : Rule {
     }
     
     private func parametersCountForFunction(component: Component) -> Int {
-        return component.components.filter { $0.type == ComponentType.Parameter }.count
+        return component.components.filter { $0.isA(.Parameter) }.count
     }
 }

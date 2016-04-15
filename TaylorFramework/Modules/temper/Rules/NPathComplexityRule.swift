@@ -44,7 +44,7 @@ final class NPathComplexityRule : Rule {
 extension Component {
     
     func expressionNPath() -> Int {
-        return components.filter { $0.type == ComponentType.Or || $0.type == ComponentType.And }.count
+        return components.filter { $0.isA(.Or) || $0.isA(.And) }.count
     }
     
     func NPathComplexity() -> Int {
@@ -63,7 +63,7 @@ extension Component {
     
     func NPathForIfComponent() -> Int {
         if let nextComponent = nextComponent() where
-            nextComponent.type == .Else || nextComponent.type == .ElseIf {
+            nextComponent.isA(.Else) || nextComponent.isA(.ElseIf) {
             return expressionNPath() + rangeNPathComplexity() + nextComponent.NPathComplexity()
         }
         return 1 + expressionNPath() + rangeNPathComplexity()
@@ -72,7 +72,7 @@ extension Component {
     func NPathForElseIfComponent() -> Int {
         var complexity = expressionNPath() + rangeNPathComplexity()
         if let nextComponent = nextComponent() {
-            if nextComponent.type == .Else {
+            if nextComponent.isA(.Else) {
                 complexity += nextComponent.rangeNPathComplexity()
             }
         }

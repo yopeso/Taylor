@@ -6,7 +6,7 @@ class TestGettersSetters {
             if true {}
         }
     }
-    var b: Double {
+    var b: Double = 0.0 {
         didSet {
         } willSet {
         }
@@ -18,7 +18,7 @@ class TestGetter {
             return 1
         }
     }
-    var c {
+    var c: Int = 0 {
         willSet{
     }}
 }
