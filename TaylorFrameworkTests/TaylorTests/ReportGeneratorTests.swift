@@ -19,7 +19,7 @@ class ReportGeneratorTests : QuickSpec {
             var reportGenerator: ReportGenerator!
             
             beforeEach {
-                reportGenerator = ReportGenerator(arguments: Arguments(), printer: Printer(verbosityLevel: .Info))
+                reportGenerator = ReportGenerator(arguments: try! Arguments(), printer: Printer(verbosityLevel: .Info))
             }
             
             afterEach {

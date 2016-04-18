@@ -30,8 +30,8 @@ struct Caprice {
     Retuns empty dictionary if help is requested.
     Returns dictionary with error key if an error occurs.
     */
-    func processArguments(arguments: [String]) -> Options {
-        let resultDictionary = messageProcessor.processArguments(arguments)
+    func processArguments(arguments: [String]) throws -> Options {
+        let resultDictionary = try messageProcessor.processArguments(arguments)
         return checkIfErrorOccursOrHelpRequested(resultDictionary)
     }
     
