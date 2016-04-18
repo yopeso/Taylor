@@ -54,7 +54,8 @@ public struct Taylor {
         let timer = Timer()
         timer.start()
         generateReportOnPath(rootPath, arguments: arguments, printer: printer)
-        printer.printInfo("Running time: \(timer.stop())")
+        let time = String(format: "%.2f", timer.stop())
+        printer.printInfo("Running time: \(time) seconds")
     }
     
     func generateReportOnPath(path: Path, arguments: Arguments, printer: Printer) {
