@@ -9,11 +9,11 @@
 import Foundation
 import SourceKittenFramework
 
-let WALL_CONST = "#"
-let WALL_VAR = "H"
-let PLAYER = "@"
-let GHOST = "$"
-let POINT = "."
+let WALL_CONST = Character("#")
+let WALL_VAR = Character("H")
+let PLAYER = Character("@")
+let GHOST = Character("$")
+let POINT = Character(".")
 
 final class Pacman {
     let paths: [String]
@@ -33,9 +33,11 @@ final class Pacman {
     If no paths were given, no game instance will run.
     */
     func start() {
-        if paths.isEmpty { return }
+        guard !paths.isEmpty && createMap() else {
+            print("An unexpected error occured when launching Pacman.")
+            return
+        }
         let path = getGamePath()
-        createMap()
         system("cd " + path)
         system("python " + path + "/pacman.py")
         removeMap()
@@ -51,10 +53,11 @@ final class Pacman {
     */
     func createMap() -> Bool {
         let path = getGamePath()
-        let mapFile = File(path: path.stringByAppendingPathComponent("/prototype_map.dat"))
-        if mapFile == nil { return false }
-        let generator = Generator(map: (mapFile!.contents) ?? "", paths: paths)
-        let mapText = generator.generateMapString(generator.getText())
+        guard let mapFile = File(path: path.stringByAppendingPathComponent("/prototype_map.dat")) else {
+            return false
+        }
+        let generator = Generator(map: mapFile.contents, paths: paths)
+        let mapText = generator.generateMapString(generator.getText()) ?? mapFile.contents
         let dataPath = "\(NSHomeDirectory())" + "/tmp"
         do {
             if !fileManager.fileExistsAtPath(dataPath) {
@@ -67,11 +70,7 @@ final class Pacman {
     
     func removeMap() {
         let dataPath = "\(NSHomeDirectory())" + "/tmp"
-        if fileManager.fileExistsAtPath(dataPath) {
-            do {
-                try fileManager.removeItemAtPath(dataPath)
-            } catch { }
-        }
+        _ = try? fileManager.removeItemAtPath(dataPath)
     }
 }
 
@@ -85,38 +84,30 @@ struct Generator {
     }
     
     func countWallCharacters() -> Int {
-        return mapString.characters.filter() { String($0) == WALL_CONST }.count
+        return mapString.characters.filter { $0 == WALL_CONST }.count
     }
     
-    func generateMapString(text: String) -> String {
-        if text.isEmpty { return "" }
-        let endIndex = mapString.characters.count + Int(arc4random_uniform(UInt32(text.characters.count-mapString.characters.count)))
-        let textRange = text.startIndex.advancedBy(endIndex-mapString.characters.count)..<text.startIndex.advancedBy(endIndex)
-        let newText = text.substringWithRange(textRange)
-        var map = "", i = 0
+    func generateMapString(text: String) -> String? {
+        if text.isEmpty || text.characters.count < mapString.characters.count { return nil }
+        let endIndex = mapString.characters.count + Int(arc4random_uniform(UInt32(text.characters.count - mapString.characters.count)))
+        let textRange = text.startIndex.advancedBy(endIndex - mapString.characters.count)..<text.startIndex.advancedBy(endIndex)
+        var charactersGenerator = text.substringWithRange(textRange).characters.generate()
         let restrictedChars = [PLAYER, GHOST, "\n", POINT]
-        for character in mapString.characters {
-            if "\(character)" == WALL_VAR {
-                let replaceChar = newText.characters[newText.startIndex.advancedBy(i)]
-                if restrictedChars.contains(String(replaceChar)){ map.append(" " as Character) }
-                else { map.append(replaceChar) }
-                i += 1
-            } else {
-                map.append(character)
-            }
-        }
-        return map
+        return String(mapString.characters.map { character in
+            if character != WALL_VAR { return character }
+            guard let replaceChar = charactersGenerator.next() where !restrictedChars.contains(replaceChar) else { return Character(" ") }
+            return replaceChar
+        })
     }
     
     func getText() -> String {
-        var file: File = File(contents: "")
+        var pathsGenerator = paths.shuffle().generate()
         let charNumber = countWallCharacters()
-        while file.contents.characters.count < charNumber {
-            let path = paths[Int(arc4random_uniform(UInt32(paths.count-1)))]
-            if NSFileManager.defaultManager().fileExistsAtPath(path) {
-                file = File(path: path)! // Safe to force unwrap
-            } else { return "" }
+        while let path = pathsGenerator.next() {
+            if let file = File(path: path) where charNumber < file.contents.characters.count {
+                return file.contents
+            }
         }
-        return file.contents
+        return ""
     }
 }

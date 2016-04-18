@@ -16,17 +16,17 @@ class PacmanTests: QuickSpec {
         
         describe("generator") {
             it("should find number of WALL characters inside current map") {
-                let testMap = WALL_CONST+WALL_CONST+WALL_CONST+" lafsdkj   "+WALL_CONST
+                let testMap = "\(WALL_CONST)\(WALL_CONST)\(WALL_CONST)lafsdkj   \(WALL_CONST)"
                 expect(Generator(map: testMap, paths: []).countWallCharacters()).to(equal(4))
             }
             
             context("when creating map") {
                 it("should generate a string containing number of wall chars on map") {
-                    let testMap = WALL_VAR+WALL_VAR+WALL_VAR+"\n"+WALL_VAR
+                    let testMap = "\(WALL_VAR)\(WALL_VAR)\(WALL_VAR)\n\(WALL_VAR)"
                     expect(Generator(map: testMap, paths: []).generateMapString("23\n45")).to(equal("23 \n4"))
                 }
                 it("should return string if provided a real path") {
-                    let testMap = WALL_CONST+WALL_CONST+WALL_CONST+WALL_CONST
+                    let testMap = "\(WALL_CONST)\(WALL_CONST)\(WALL_CONST)\(WALL_CONST)"
                     expect(Generator(map: testMap, paths: [MockFileReader().pathForFile("TestFileMoreThan500", fileType: "swift")]).getText()).toNot(beEmpty())
                 }
             }
