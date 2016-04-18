@@ -39,10 +39,8 @@ extension Component : Hashable {
 extension Component : Equatable {}
 
 func ==(lhs: Component, rhs: Component) -> Bool {
-    if lhs.range != rhs.range { return false }
-    if lhs.type != rhs.type { return false }
-    if lhs.name !~== lhs.name { return false }
-    if !(Set(lhs.components) == Set(rhs.components)) { return false }
-    
-    return true
+    return lhs.range == rhs.range &&
+        lhs.type == rhs.type &&
+        lhs.name == lhs.name &&
+        (Set(lhs.components) == Set(rhs.components))
 }
