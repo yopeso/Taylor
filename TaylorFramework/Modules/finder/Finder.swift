@@ -41,7 +41,7 @@ final class Finder {
             let paths = exclude(excludes, fromPaths: pathsInDirectory)
             return paths.map { absolutePath(parameters!.rootPath, fileName: $0) }
         } catch _ {
-            printer.printFileManagerError(path)
+            printer.printSubpathsError(directoryPath: path)
             return []
         }
     }
@@ -52,9 +52,14 @@ final class Finder {
     }
     
     private func validateFiles(files:[FilePath]) -> Bool {
-        for file in files {
-            if !existsFileOfTypeAtPath(file, type: parameters!.type) {
-                printer.printWrongFilePath(file)
+        for filePath in files {
+            guard fileManager.fileExistsAtPath(filePath) else {
+                printer.printMissingFileError(filePath: filePath)
+                return false
+            }
+            
+            guard filePath.isKindOfType(parameters!.type) else {
+                printer.printWrongFileTypeError(filePath: filePath)
                 return false
             }
         }

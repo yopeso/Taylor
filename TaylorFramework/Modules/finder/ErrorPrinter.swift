@@ -22,11 +22,15 @@ struct ErrorPrinter {
         printer.printError("File type not specified")
     }
     
-    func printWrongFilePath(wrongPath: FilePath) {
-        printer.printError("File path not exist or type is wrong \(wrongPath)")
+    func printMissingFileError(filePath path: FilePath) {
+        printer.printError("There is no file at path \(path)")
     }
     
-    func printFileManagerError(path: FilePath) {
-        printer.printError("File manager has not found subpath from \(path)")
+    func printWrongFileTypeError(filePath path: FilePath) {
+        printer.printError("File at path \(path) does not match the type looking for")
+    }
+    
+    func printSubpathsError(directoryPath path: FilePath) {
+        printer.printError("File manager could not fetch subpaths of \(path)")
     }
 }
