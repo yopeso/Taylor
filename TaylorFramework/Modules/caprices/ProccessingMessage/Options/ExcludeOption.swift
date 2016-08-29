@@ -13,10 +13,10 @@ let ExcludeShort = "-e"
 
 struct ExcludeOption: ExecutableOption {
     var analyzePath = NSFileManager.defaultManager().currentDirectoryPath
-    var optionArgument : Path
+    var optionArgument: Path
     let name = "ExcludeOption"
     
-    init(argument:Path = String.Empty) {
+    init(argument: Path = String.Empty) {
         optionArgument = argument
     }
     

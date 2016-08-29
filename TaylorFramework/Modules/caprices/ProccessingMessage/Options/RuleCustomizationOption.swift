@@ -21,7 +21,7 @@ let ExcessiveParameterList = "ExcessiveParameterList"
 
 struct RuleCustomizationOption: InformationalOption {
     var analyzePath = NSFileManager.defaultManager().currentDirectoryPath
-    var optionArgument : String
+    var optionArgument: String
     let name = "RuleCustomizationOption"
     
     let argumentSeparator = "="
@@ -54,7 +54,7 @@ struct RuleCustomizationOption: InformationalOption {
         }
     }
     
-    private func ruleCustomizationTypeDoesNotMatchPosibleTypes(type:String) -> Bool {
+    private func ruleCustomizationTypeDoesNotMatchPosibleTypes(type: String) -> Bool {
         return ![ExcessiveClassLength, ExcessiveMethodLength, TooManyMethods,
             CyclomaticComplexity, NestedBlockDepth, NPathComplexity, ExcessiveParameterList].contains(type)
     }

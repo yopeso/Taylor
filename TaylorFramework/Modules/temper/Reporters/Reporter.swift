@@ -87,8 +87,8 @@ struct JSONReporter: Reporting {
 
 
 struct Reporter: Reporting {
-    let concreteReporter : Reporting
-    let fileName : String
+    let concreteReporter: Reporting
+    let fileName: String
     
     /**
      Initialize the reporter with type and name
@@ -107,7 +107,7 @@ struct Reporter: Reporting {
      */
 
     
-    init(type : String, fileName : String? = nil) {
+    init(type: String, fileName: String? = nil) {
         self.concreteReporter = reporterWithName(type)
         guard let fileName = fileName else {
             self.fileName = self.concreteReporter.defaultFileName()

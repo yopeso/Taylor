@@ -56,7 +56,7 @@ extension Path {
     }
     
     
-    private func editPathComponentsForDotShortcuts(inout pathComponents:[String]) {
+    private func editPathComponentsForDotShortcuts(inout pathComponents: [String]) {
         for (index, element) in pathComponents.enumerate() {
             if element == CurrentDirectorySymbol {
                 pathComponents.removeAtIndex(index)

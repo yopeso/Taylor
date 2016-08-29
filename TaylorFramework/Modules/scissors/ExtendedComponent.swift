@@ -45,9 +45,9 @@ final class ExtendedComponent {
         if let type = dict["type"] as? String,
             startOffset = dict["offset"] as? Int,
             length = dict["length"] as? Int {
-                let endOffset = startOffset + length
-                self.type = ComponentType(rawValue: type)
-                self.offsetRange = OffsetRange(start: startOffset, end: endOffset - 1)
+            let endOffset = startOffset + length
+            self.type = ComponentType(rawValue: type)
+            self.offsetRange = OffsetRange(start: startOffset, end: endOffset - 1)
         } else {
             self.type = .Other
             self.offsetRange = OffsetRange(start: 0, end: 0)
@@ -73,13 +73,18 @@ final class ExtendedComponent {
             child.appendComponents(hashedStructure.substructure, components: components)
         }
         
-        return components as AnyObject as! [ExtendedComponent] // Safe to unwrap, all objects are `ExtendedComponent`
+        // Safe to unwrap, all objects are `ExtendedComponent`
+        return components as NSArray as! [ExtendedComponent]
     }
     
     func getComponentType(type: String, bracesCount: Int, isLast: Bool) -> ComponentType {
         let type = ComponentType(rawValue: type)
-        if isElseIf(type) { return .ElseIf }
-        else if isElse(type) && isLast && bracesCount > 0 { return .Else }
+        if isElseIf(type) {
+            return .ElseIf
+        }
+        if isElse(type) && isLast && bracesCount > 0 {
+            return .Else
+        }
         return type
     }
     
@@ -110,28 +115,28 @@ final class ExtendedComponent {
     }
     
     func processBracedType() {
-        if self.children > 1 {
-            self.changeChildToParent(1)
+        if children > 1 {
+            changeChildToParent(1)
         }
         self.takeChildrenOfChild(0)
         if type != .Repeat {
-            self.offsetRange.end = self.components[0].offsetRange.end
+            offsetRange.end = components[0].offsetRange.end
         }
-        self.components.removeAtIndex(0)
+        components.removeAtIndex(0)
     }
 }
 
 extension ExtendedComponent {
     /**
-        Lifts braces a level upper if their first component is a *Brace* too
-        which is happening in **do**, **catch** and **repeat** blocks.
-    */
+     Lifts braces a level upper if their first component is a *Brace* too
+     which is happening in **do**, **catch** and **repeat** blocks.
+     */
     func processBraces() {
         var i = 0
         while i < components.count {
             let component = components[i]
             i += 1
-            if component.type.isBraced  {
+            if component.type.isBraced {
                 guard component.isFirstComponentBrace else { continue }
                 component.processBracedType()
             }

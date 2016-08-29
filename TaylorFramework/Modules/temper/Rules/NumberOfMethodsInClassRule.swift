@@ -7,9 +7,9 @@
 //
 
 
-final class NumberOfMethodsInClassRule : Rule {
+final class NumberOfMethodsInClassRule: Rule {
     let rule = "TooManyMethods"
-    var priority : Int = 3 {
+    var priority: Int = 3 {
         willSet {
             if newValue > 0 {
                 self.priority = newValue
@@ -17,7 +17,7 @@ final class NumberOfMethodsInClassRule : Rule {
         }
     }
     let externalInfoUrl = "http://phpmd.org/rules/codesize.html#toomanymethods"
-    var limit : Int = 10 {
+    var limit: Int = 10 {
         willSet {
             if newValue > 0 {
                 self.limit = newValue

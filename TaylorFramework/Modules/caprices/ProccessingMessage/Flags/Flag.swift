@@ -7,6 +7,6 @@
 //
 
 protocol Flag {
-    var name : String { get }
+    var name: String { get }
     func execute()
 }

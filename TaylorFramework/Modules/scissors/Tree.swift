@@ -62,8 +62,8 @@ struct Tree {
     }
     
     func offsetToLine(offsetRange: OffsetRange) -> ComponentRange {
-        let startIndex = parts.filter() { $0.startOffset <= offsetRange.start }.count - 1
-        let endIndex = parts.filter() { $0.startOffset <= offsetRange.end }.count - 1
+        let startIndex = parts.filter { $0.startOffset <= offsetRange.start }.count - 1
+        let endIndex = parts.filter { $0.startOffset <= offsetRange.end }.count - 1
         
         return ComponentRange(sl: parts[startIndex].getLineRange(offsetRange.start), el: parts[endIndex].getLineRange(offsetRange.end))
     }

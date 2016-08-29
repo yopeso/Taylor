@@ -10,7 +10,7 @@ struct ComponentRange {
     let startLine: Int
     let endLine: Int
     
-    init(sl:Int, el: Int) {
+    init(sl: Int, el: Int) {
         startLine = sl
         endLine = el
     }

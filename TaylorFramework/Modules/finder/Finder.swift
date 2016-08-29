@@ -51,7 +51,7 @@ final class Finder {
             .excludePathsContainingSubpathsInArray(excludes)
     }
     
-    private func validateFiles(files:[FilePath]) -> Bool {
+    private func validateFiles(files: [FilePath]) -> Bool {
         for filePath in files {
             guard fileManager.fileExistsAtPath(filePath) else {
                 printer.printMissingFileError(filePath: filePath)

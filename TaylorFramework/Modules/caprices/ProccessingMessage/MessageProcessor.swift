@@ -24,7 +24,7 @@ class MessageProcessor {
     
     let optionsProcessor = OptionsProcessor()
     
-    func processArguments(arguments:[String]) throws -> Options {
+    func processArguments(arguments: [String]) throws -> Options {
         guard arguments.count > 1 else { return defaultResultDictionary() }
         
         return try processMultipleArguments(arguments)
@@ -39,7 +39,7 @@ class MessageProcessor {
     }
     
     
-    func processMultipleArguments(arguments:[String]) throws -> Options {
+    func processMultipleArguments(arguments: [String]) throws -> Options {
         if arguments.count.isOdd {
             return try optionsProcessor.processOptions(arguments)
         } else if arguments.containFlags {

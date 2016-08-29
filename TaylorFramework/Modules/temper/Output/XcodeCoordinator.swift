@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct XcodeCoordinator : WritingCoordinator {
+struct XcodeCoordinator: WritingCoordinator {
     func writeViolations(violations: [Violation], atPath path: String) {
         let errorsString = violations.map { $0.errorString }.reduce("", combine: +)
         fputs(errorsString, stderr)

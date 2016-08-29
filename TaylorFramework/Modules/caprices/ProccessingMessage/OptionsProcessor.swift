@@ -38,7 +38,7 @@ class OptionsProcessor {
     func processOptions(arguments: [String]) throws -> Options {
         let options = try processArguments(arguments)
         guard !options.isEmpty && OptionsValidator().validateForSingleOptions(options) else { return EmptyResultDictionary }
-        analyzePath = options.filter{ $0 is PathOption }.first?.optionArgument.absolutePath() ?? analyzePath
+        analyzePath = options.filter { $0 is PathOption }.first?.optionArgument.absolutePath() ?? analyzePath
         let resultDictionary = buildResultDictionaryFromOptions(executableOptions)
         guard processInformationalOptions() else { return EmptyResultDictionary }
         factory = InformationalOptionsFactory(infoOptions: infoOptions)
@@ -93,7 +93,7 @@ class OptionsProcessor {
         var excludePaths = [String]()
         do {
             let excludesFilePath = MessageProcessor().defaultExcludesFilePathForDictionary(dictionary)
-            excludePaths = try ExcludesFileReader().absolutePathsFromExcludesFile(excludesFilePath,  forAnalyzePath:pathKey.first!)
+            excludePaths = try ExcludesFileReader().absolutePathsFromExcludesFile(excludesFilePath, forAnalyzePath:pathKey.first!)
         } catch {
             return
         }
@@ -101,13 +101,13 @@ class OptionsProcessor {
     }
     
     
-    private func addExcludePathsToDictionary(inout dictionary: Options, excludePaths:[String]) {
+    private func addExcludePathsToDictionary(inout dictionary: Options, excludePaths: [String]) {
         if excludePaths.isEmpty { return }
         dictionary.add(excludePaths, toKey: ResultDictionaryExcludesKey)
     }
     
     
-    private func executeOptionsOnDictionary(inout dictionary: Options, options:[ExecutableOption]) -> Bool {
+    private func executeOptionsOnDictionary(inout dictionary: Options, options: [ExecutableOption]) -> Bool {
         for var option in options {
             option.analyzePath = analyzePath
             option.executeOnDictionary(&dictionary)
@@ -135,8 +135,11 @@ class OptionsProcessor {
 extension OptionsProcessor {
     func configureOption(optionType: Option.Type, argument: String) -> Option {
         let option = optionType.init(argument: argument)
-        if let infoOption = option as? InformationalOption { infoOptions.append(infoOption) }
-        else { executableOptions.append(option as! ExecutableOption) } // Safe to force unwrap
+        if let infoOption = option as? InformationalOption {
+            infoOptions.append(infoOption)
+        } else {
+            executableOptions.append(option as! ExecutableOption) // Safe to force unwrap
+        }
         
         return option
     }

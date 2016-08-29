@@ -7,9 +7,9 @@
 //
 
 
-final class NestedBlockDepthRule : Rule {
+final class NestedBlockDepthRule: Rule {
     let rule = "NestedBlockDepth"
-    var priority : Int = 3 {
+    var priority: Int = 3 {
         willSet {
             if newValue > 0 {
                 self.priority = newValue
@@ -18,7 +18,7 @@ final class NestedBlockDepthRule : Rule {
     }
     let externalInfoUrl = "http://docs.oclint.org/en/dev/rules/size.html#nestedblockdepth"
     let admissibleComponents = [ComponentType.If, .While, .For, .Case, .Brace, .Repeat, .Switch, .Brace, .Guard]
-    var limit : Int = 3 {
+    var limit: Int = 3 {
         willSet {
             if newValue > 0 {
                 self.limit = newValue

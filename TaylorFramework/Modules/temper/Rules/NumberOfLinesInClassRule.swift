@@ -7,9 +7,9 @@
 //
 
 
-final class NumberOfLinesInClassRule : Rule {
+final class NumberOfLinesInClassRule: Rule {
     let rule = "ExcessiveClassLength"
-    var priority : Int = 3 {
+    var priority: Int = 3 {
         willSet {
             if newValue > 0 {
                 self.priority = newValue
@@ -17,7 +17,7 @@ final class NumberOfLinesInClassRule : Rule {
         }
     }
     let externalInfoUrl = "http://phpmd.org/rules/codesize.html#excessiveclasslength"
-    var limit : Int = 400 {
+    var limit: Int = 400 {
         willSet {
             if newValue > 0 {
                 self.limit = newValue

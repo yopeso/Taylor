@@ -9,7 +9,7 @@
 import Foundation
 
 final class OutputCoordinator {
-    var filePath : String
+    var filePath: String
     var reporters = [Reporter]()
     
     init(filePath: String) {

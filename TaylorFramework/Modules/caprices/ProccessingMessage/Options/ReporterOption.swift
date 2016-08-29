@@ -23,10 +23,10 @@ struct ReporterOption: InformationalOption {
     
     var analyzePath = NSFileManager.defaultManager().currentDirectoryPath
     var argumentSeparator = ":"
-    var optionArgument : String
+    var optionArgument: String
     let name = "ReporterOption"
     
-    init(argument:String = "") {
+    init(argument: String = "") {
         optionArgument = argument
     }
     

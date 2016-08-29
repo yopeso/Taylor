@@ -13,10 +13,10 @@ let FileShort = "-f"
 
 struct FileOption: ExecutableOption {
     var analyzePath = NSFileManager.defaultManager().currentDirectoryPath
-    var optionArgument : Path
+    var optionArgument: Path
     let name = "FileOption"
     
-    init(argument:Path = String.Empty) {
+    init(argument: Path = String.Empty) {
         optionArgument = argument
     }
     

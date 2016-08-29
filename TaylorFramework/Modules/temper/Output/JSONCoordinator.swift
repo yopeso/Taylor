@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct JSONCoordinator : WritingCoordinator {
+struct JSONCoordinator: WritingCoordinator {
     
     func writeViolations(violations: [Violation], atPath path: String) {
         NSFileManager().removeFileAtPath(path)
         let json = generateJSON(violations)
-        var jsonData : NSData?  = nil
+        var jsonData: NSData?  = nil
         do {
             jsonData = try NSJSONSerialization.dataWithJSONObject(json, options: NSJSONWritingOptions.PrettyPrinted)
         } catch {
@@ -33,7 +33,7 @@ struct JSONCoordinator : WritingCoordinator {
 
 extension NSFileManager {
     func removeFileAtPath(path: String) {
-        var isDirectory : ObjCBool = false
+        var isDirectory: ObjCBool = false
         if !NSFileManager.defaultManager().fileExistsAtPath(path, isDirectory: &isDirectory) && !isDirectory { return }
         do {
             try NSFileManager.defaultManager().removeItemAtPath(path)
