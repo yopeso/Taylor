@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class PLAINCoordinator : WritingCoordinator {
+final class PLAINCoordinator: WritingCoordinator {
     func writeViolations(violations: [Violation], atPath path: String) {
         NSFileManager().removeFileAtPath(path)
         let content = generateFileContentFromViolations(violations)

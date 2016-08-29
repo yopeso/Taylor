@@ -98,7 +98,7 @@ struct ComponentFinder {
         if !settersRanges.isEmpty {
             accessors.append(ExtendedComponent(type: .Function, range: settersRanges.first!, names: ("set", nil)))
         }
-        accessors.sortInPlace( { $0.offsetRange.start < $1.offsetRange.start } )
+        accessors.sortInPlace { $0.offsetRange.start < $1.offsetRange.start }
         if accessors.count == 1 {
             accessors.first!.offsetRange.end = text.characters.count - 1
         } else {
@@ -109,7 +109,7 @@ struct ComponentFinder {
         return accessors
     }
     
-    func findObserverGetters(text:String) -> [ExtendedComponent] {
+    func findObserverGetters(text: String) -> [ExtendedComponent] {
         var willSetRanges: [OffsetRange] = text.findMatchRanges("(willSet($|[ \\t\\n{}]))")
         var didSetRanges: [OffsetRange] = text.findMatchRanges("(didSet($|[ \\t\\n{}]))")
         var observers = [ExtendedComponent]()

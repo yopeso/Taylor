@@ -42,7 +42,7 @@ extension ComponentRange {
         This property return the length of the component
     */
     
-    var length : Int {
+    var length: Int {
         return endLine - startLine
     }
     
@@ -82,7 +82,7 @@ func +=<KeyType, KeyValue>(inout left: Dictionary<KeyType, KeyValue>, right: Dic
 
 extension Component {
     
-    var isRedundantLine : Bool {
+    var isRedundantLine: Bool {
         return type.isA(.Comment) || type.isA(.EmptyLines)
     }
     
@@ -92,7 +92,7 @@ extension Component {
         :returns: Bool true if is construct type
     */
     
-    var isConstructType : Bool {
+    var isConstructType: Bool {
         return type.isA(.Class) || type.isA(.Struct) || type.isA(.Enum) || type.isA(.Extension)
     }
     

@@ -8,7 +8,7 @@
 
 protocol Option {
     init(argument: String)
-    var analyzePath : String {get set} // Path that currently is analyzed(some options can need them)
-    var optionArgument : String {get set}
-    var name : String { get }
+    var analyzePath: String {get set} // Path that currently is analyzed(some options can need them)
+    var optionArgument: String {get set}
+    var name: String { get }
 }

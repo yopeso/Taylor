@@ -19,7 +19,7 @@ final class ReportGenerator {
         self.printer = printer
     }
     
-    func generateReport(rootPath: Path, fileContents:[FileContent]) {
+    func generateReport(rootPath: Path, fileContents: [FileContent]) {
         configureTemper(rootPath)
         checkFileContents(fileContents)
     }

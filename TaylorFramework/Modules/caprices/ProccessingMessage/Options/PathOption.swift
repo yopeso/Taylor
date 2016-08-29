@@ -16,7 +16,7 @@ struct PathOption: ExecutableOption {
     var optionArgument: Path
     let name = "PathOption"
     
-    init(argument:Path = String.Empty) {
+    init(argument: Path = String.Empty) {
         optionArgument = argument
     }
     

@@ -13,25 +13,25 @@ protocol Rule {
         The rule name
     */
     
-    var rule : String { get }
+    var rule: String { get }
     
     /**
         The rule priority
     */
     
-    var priority : Int { get set }
+    var priority: Int { get set }
     
     /**
         The external info about the rule
     */
     
-    var externalInfoUrl : String { get }
+    var externalInfoUrl: String { get }
     
     /**
         The rule limit
     */
     
-    var limit : Int { get set }
+    var limit: Int { get set }
     
     /**
         The method check the component for violations

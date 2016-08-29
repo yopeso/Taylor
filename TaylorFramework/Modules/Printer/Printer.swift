@@ -18,7 +18,7 @@ protocol Printing {
 }
 
 
-struct DefaultReporter : Printing {
+struct DefaultReporter: Printing {
     func printMessage(text: String) {
         print(text)
     }

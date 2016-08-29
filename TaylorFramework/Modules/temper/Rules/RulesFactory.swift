@@ -10,7 +10,7 @@
 struct RulesFactory {
     func getRules() -> [Rule] {
         return [NumberOfLinesInMethodRule(), NumberOfLinesInClassRule(), NumberOfMethodsInClassRule(),
-                CyclomaticComplexityRule(),  NestedBlockDepthRule(),     NPathComplexityRule(),
+                CyclomaticComplexityRule(), NestedBlockDepthRule(), NPathComplexityRule(),
                 ExcessiveParameterListRule()]
     }
 }

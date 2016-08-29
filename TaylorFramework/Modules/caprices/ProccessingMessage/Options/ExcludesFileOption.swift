@@ -14,7 +14,7 @@ let ExcludesFileShort = "-ef"
 
 struct ExcludesFileOption: ExecutableOption {
     var analyzePath = NSFileManager.defaultManager().currentDirectoryPath
-    var optionArgument : Path
+    var optionArgument: Path
     let name = "ExcludesFileOption"
     
     init(argument: Path = String.Empty) {
@@ -32,7 +32,7 @@ struct ExcludesFileOption: ExecutableOption {
     }
     
     
-    private func pathsFromExcludesFile(path:String) -> [String]? {
+    private func pathsFromExcludesFile(path: String) -> [String]? {
         do {
             return try ExcludesFileReader().absolutePathsFromExcludesFile(path, forAnalyzePath: analyzePath)
         } catch CommandLineError.InvalidExclude(let errorMsg) {
@@ -42,7 +42,7 @@ struct ExcludesFileOption: ExecutableOption {
     }
     
     
-    private func addExcludePaths(paths:[String],inout toDictionary dictionary:Options) {
+    private func addExcludePaths(paths: [String], inout toDictionary dictionary: Options) {
         if paths.isEmpty { return }
         dictionary.add(paths, toKey: ResultDictionaryExcludesKey)
     }

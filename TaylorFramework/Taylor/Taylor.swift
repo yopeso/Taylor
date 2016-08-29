@@ -14,7 +14,7 @@ public struct Taylor {
     
     /**
      Runs Taylor which initializes all other modules.
-    */
+     */
     public func run() {
         guard let arguments = processArguments() else { return }
         if arguments.arguments.isEmpty || arguments.arguments[ErrorKey] != nil {
@@ -23,7 +23,7 @@ public struct Taylor {
         }
         let printer = Printer(verbosityLevel: arguments.verbosityLevel)
         guard let rootPath = arguments.rootPath else {
-            printer.printError("No path received.");
+            printer.printError("No path received.")
             return
         }
         printer.printInfo("Output directory: \(rootPath)")
@@ -32,8 +32,9 @@ public struct Taylor {
     }
     
     func processArguments() -> Arguments? {
-        do { return try Arguments() }
-        catch CommandLineError.InvalidArguments(let errorMessage) {
+        do {
+            return try Arguments()
+        } catch CommandLineError.InvalidArguments(let errorMessage) {
             handleError(errorMessage)
         } catch CommandLineError.InvalidInformationalOption(let errorMessage) {
             handleError(errorMessage)

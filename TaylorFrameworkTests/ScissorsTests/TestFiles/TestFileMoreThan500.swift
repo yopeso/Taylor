@@ -92,7 +92,7 @@ class ExtendedComponent {
     }
     
     func remove(component: ExtendedComponent) {
-        components = components.filter() { $0 != component }
+        components = components.filter { $0 != component }
     }
     
     func insert(components: [ExtendedComponent]) {
@@ -126,7 +126,7 @@ class ExtendedComponent {
     }
     
     func removeRedundantClosuresInSelf() {
-        components = components.filter() {
+        components = components.filter {
             !($0.type == .Closure && $0.components.count == 0)
         }
     }
@@ -229,8 +229,8 @@ class Tree {
         //            return ComponentRange(sl: 0, el: 0)
         //        }
         
-        let startIndex = parts.filter() { $0.startOffset <= offsetRange.start }.count - 1
-        let endIndex = parts.filter() { $0.startOffset <= offsetRange.end }.count - 1
+        let startIndex = parts.filter { $0.startOffset <= offsetRange.start }.count - 1
+        let endIndex = parts.filter { $0.startOffset <= offsetRange.end }.count - 1
         
         
         return ComponentRange(sl: parts[startIndex].getLineRange(offsetRange.start), el: parts[endIndex].getLineRange(offsetRange.end))
@@ -355,7 +355,7 @@ class Finder {
     
     //Ending points of getters and setters will most probably be wrong unless a nice coding-style is being used "} set {"
     func findGetters(components: [ExtendedComponent]) -> [ExtendedComponent] {
-        let variableComponents = components.filter() { $0.type == .Variable }
+        let variableComponents = components.filter { $0.type == .Variable }
         let nsText = text as NSString
         var getters = [ExtendedComponent]()
         for component in variableComponents {
@@ -570,7 +570,7 @@ extension ExtendedComponent {
         return self.type == .Variable && self.components.count > 0
     }
     var hasNoChildrenExceptELComment: Bool {
-        return self.components.filter() { !$0.type.isComment && !$0.type.isEmptyLine }.count > 0 && self.type == .Variable
+        return self.components.filter { !$0.type.isComment && !$0.type.isEmptyLine }.count > 0 && self.type == .Variable
     }
     var isActuallyClosure: Bool {
         return self.children == 1 && self.containsClosure

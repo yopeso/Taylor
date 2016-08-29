@@ -7,9 +7,9 @@
 //
 
 
-final class NPathComplexityRule : Rule {
+final class NPathComplexityRule: Rule {
     let rule = "NPathComplexity"
-    var priority : Int = 2 {
+    var priority: Int = 2 {
         willSet {
             if newValue > 0 {
                 self.priority = newValue
@@ -17,7 +17,7 @@ final class NPathComplexityRule : Rule {
         }
     }
     let externalInfoUrl = "http://phpmd.org/rules/codesize.html#npathcomplexity"
-    var limit : Int = 100 {
+    var limit: Int = 100 {
         willSet {
             if newValue > 0 {
                 self.limit = newValue
@@ -33,7 +33,7 @@ final class NPathComplexityRule : Rule {
             let message = formatMessage(name, value: complexity)
             return (false, message, complexity)
         }
-        return (true , nil, complexity)
+        return (true, nil, complexity)
     }
     
     func formatMessage(name: String, value: Int) -> String {

@@ -7,9 +7,9 @@
 //
 
 
-final class NumberOfLinesInMethodRule : Rule {
+final class NumberOfLinesInMethodRule: Rule {
     let rule = "ExcessiveMethodLength"
-    var priority : Int = 3 {
+    var priority: Int = 3 {
         willSet {
             if newValue > 0 {
                 self.priority = newValue
@@ -17,7 +17,7 @@ final class NumberOfLinesInMethodRule : Rule {
         }
     }
     let externalInfoUrl = "http://phpmd.org/rules/codesize.html#excessivemethodlength"
-    var limit : Int = 20 {
+    var limit: Int = 20 {
         willSet {
             if newValue > 0 {
                 self.limit = newValue

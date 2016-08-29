@@ -17,14 +17,19 @@ extension Int {
 
 extension Dictionary where Key: Hashable {
     mutating func setIfNotExist(value: Value, forKey key: Key) {
-        if self[key] == nil { self[key] = value }
+        if self[key] == nil {
+            self[key] = value
+        }
     }
 }
 
 extension Dictionary where Key: Hashable, Value: Summable {
     mutating func add(value: Value, toKey key: Key) {
-        if self[key] == nil { self[key] = value }
-        else { self[key]! = self[key]! + value }
+        if let currentValue = self[key] {
+            self[key] = currentValue + value
+        } else {
+            self[key] = value
+        }
     }
 }
 
@@ -33,7 +38,7 @@ protocol Summable {
     func +(lhs: Self, rhs: Self) -> Self
 }
 
-extension Array: Summable  { }
+extension Array: Summable { }
 extension Int: Summable { }
 extension String: Summable { }
 

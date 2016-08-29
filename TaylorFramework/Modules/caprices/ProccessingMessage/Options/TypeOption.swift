@@ -13,7 +13,7 @@ let TypeShort = "-t"
 
 struct TypeOption: ExecutableOption {
     var analyzePath = NSFileManager.defaultManager().currentDirectoryPath
-    var optionArgument : String
+    var optionArgument: String
     let name = "TypeOption"
     
     init(argument: String = String.Empty) {

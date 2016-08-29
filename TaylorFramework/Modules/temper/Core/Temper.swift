@@ -12,17 +12,17 @@ internal typealias Result = (isOk: Bool, message: String?, value: Int?)
 
 final class Temper {
     
-    var rules : [Rule]
-    private let outputPath : String
-    private var violations : [Violation]
-    private var output : OutputCoordinator
-    private var currentPath : String?
-    private var reporters : [Reporter]
+    var rules: [Rule]
+    private let outputPath: String
+    private var violations: [Violation]
+    private var output: OutputCoordinator
+    private var currentPath: String?
+    private var reporters: [Reporter]
     private var fileWasChecked = false
     static var statistics = TemperStatistics()
     var resultsOutput = [ResultOutput]()
     
-    var path : String {
+    var path: String {
         return outputPath
     }
     
@@ -87,7 +87,7 @@ final class Temper {
      * Plain (text file)
      */
     
-    func setReporters(reporters : [Reporter]) {
+    func setReporters(reporters: [Reporter]) {
         self.reporters = reporters
     }
     

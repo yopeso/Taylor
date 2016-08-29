@@ -28,7 +28,7 @@ class PacmanRunner {
     }
     
     func formatInputString(string: String) -> String {
-        return string.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet());
+        return string.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
     }
     
     func input() -> String {

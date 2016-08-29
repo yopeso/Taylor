@@ -7,9 +7,9 @@
 //
 
 
-final class CyclomaticComplexityRule : Rule {
+final class CyclomaticComplexityRule: Rule {
     let rule = "CyclomaticComplexity"
-    var priority : Int = 2 {
+    var priority: Int = 2 {
         willSet {
             if newValue > 0 {
                 self.priority = newValue
@@ -17,7 +17,7 @@ final class CyclomaticComplexityRule : Rule {
         }
     }
     let  externalInfoUrl  = "http://phpmd.org/rules/codesize.html#cyclomaticcomplexity"
-    var limit : Int = 5 {
+    var limit: Int = 5 {
         willSet {
             if newValue > 0 {
                 self.limit = newValue

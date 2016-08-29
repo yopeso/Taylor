@@ -9,7 +9,7 @@
 struct FileContent {
     let path: String
     let components: [Component]
-    init(path: String, components:[Component]) {
+    init(path: String, components: [Component]) {
         self.path = path
         self.components = components
     }

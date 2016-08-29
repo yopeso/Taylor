@@ -21,11 +21,11 @@ struct ViolationData {
 
 struct Violation {
     
-    var path : String
-    let component : Component
-    let rule : Rule
-    let message : String
-    let value : Int
+    var path: String
+    let component: Component
+    let rule: Rule
+    let message: String
+    let value: Int
     
     init(component: Component, rule: Rule, violationData: ViolationData) {
         self.component = component
@@ -93,11 +93,11 @@ struct Violation {
         }
     }
     
-    var errorString : String {
+    var errorString: String {
         return "\(path):\(component.range.startLine):0: warning: \(rule.rule)(P\(rule.priority)):\(message)\n"
     }
     
-    var toString : String {
+    var toString: String {
         return path + ":" + String(component.range.startLine) + ":" + rule.rule + " P" + String(rule.priority) + " " + message + "\n"
     }
 }

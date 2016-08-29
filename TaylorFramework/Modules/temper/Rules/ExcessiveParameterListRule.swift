@@ -7,9 +7,9 @@
 //
 
 
-final class ExcessiveParameterListRule : Rule {
+final class ExcessiveParameterListRule: Rule {
     var rule = "ExcessiveParameterList"
-    var priority : Int = 3 {
+    var priority: Int = 3 {
         willSet {
             if newValue > 0 {
                 self.priority = newValue
@@ -32,7 +32,7 @@ final class ExcessiveParameterListRule : Rule {
             let message = formatMessage(name, value: parametersCount)
             return (false, message, parametersCount)
         }
-        return (true , nil, parametersCount)
+        return (true, nil, parametersCount)
     }
     
     func formatMessage(name: String, value: Int) -> String {

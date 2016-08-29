@@ -12,7 +12,7 @@ struct OptionsValidator {
     func validateForSingleOptions(options: [Option]) -> Bool {
         do {
             try checkIfSingleOptionsAreRepeated(options)
-        } catch CommandLineError.AbuseOfOptions(let errorMsg){
+        } catch CommandLineError.AbuseOfOptions(let errorMsg) {
             errorPrinter.printError(errorMsg)
             return false
         } catch { return false }
@@ -29,7 +29,7 @@ struct OptionsValidator {
     }
     
     
-    private func optionRepeatsInOptions(options:[Option], optionType:String) -> Int {
+    private func optionRepeatsInOptions(options: [Option], optionType: String) -> Int {
         return options.filter { $0.name == optionType }.count
     }
     

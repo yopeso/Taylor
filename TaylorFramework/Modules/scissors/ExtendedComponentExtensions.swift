@@ -35,7 +35,7 @@ extension ExtendedComponent {
     var isElseIfOrIf: Bool { return isA(.If) || isA(.ElseIf) }
     var children: Int { return self.components.count }
     var containsClosure: Bool {
-        return self.components.filter(){ $0.isA(.Closure) }.count > 0
+        return self.components.filter { $0.isA(.Closure) }.count > 0
     }
     
     var isCorrectParameter: Bool {
@@ -51,11 +51,11 @@ extension ExtendedComponent {
     }
     
     var containsParameter: Bool {
-        return self.components.filter(){ $0.type.isA(.Parameter) }.count > 0
+        return self.components.filter { $0.type.isA(.Parameter) }.count > 0
     }
     
     var hasSignificantChildren: Bool {
-        return self.components.filter() { $0.type.isSignificant }.count > 0
+        return self.components.filter { $0.type.isSignificant }.count > 0
     }
     
     var isActuallyClosure: Bool {
@@ -145,7 +145,7 @@ extension ExtendedComponent {
     }
     
     func removeRedundantClosuresInSelf() {
-        components = components.filter() {
+        components = components.filter {
             !($0.type == .Closure && $0.components.isEmpty)
         }
     }
@@ -155,7 +155,7 @@ extension ExtendedComponent {
     }
     
     func remove(component: ExtendedComponent) {
-        components = components.filter() { $0 != component }
+        components = components.filter { $0 != component }
     }
 }
 

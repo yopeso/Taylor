@@ -25,7 +25,7 @@ struct CLIReporter {
         
         return results.reduce(getBorderString(totalChars)) {
             $0 + getResultOutputString($1, numberOfCharacters: maximalPathChars) + "\n"
-        } + getBorderString(totalChars) + getStatisticsString()
+            } + getBorderString(totalChars) + getStatisticsString()
     }
     
     private func getBorderString(size: Int) -> String {
@@ -47,10 +47,14 @@ struct CLIReporter {
         let warning = "⚠️"
         let explosion = "\u{1F4A5}"
         
-        if warnings == 0 { return "  \(checkmark) " }
-        else if warnings < 10 { return " \(warnings)" + warning + " " }
-        else if warnings < 100 { return " \(warnings)" + warning }
-        else { return "  \(explosion) " }
+        if warnings == 0 {
+            return "  \(checkmark) "
+        } else if warnings < 100 {
+            let string = " \(warnings)" + warning
+            return string.stringByPaddingToLength(5, withString: " ", startingAtIndex: 0)
+        } else {
+            return "  \(explosion) "
+        }
     }
 }
 
