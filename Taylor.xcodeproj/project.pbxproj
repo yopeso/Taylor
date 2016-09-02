@@ -13,6 +13,17 @@
 		542EF2781C076FBB004C7477 /* TaylorIntegrationTestResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 542EF2731C076FBB004C7477 /* TaylorIntegrationTestResources.bundle */; };
 		542EF2791C076FBB004C7477 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542EF2741C076FBB004C7477 /* StringExtensions.swift */; };
 		542EF27A1C076FBB004C7477 /* TaylorIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542EF2751C076FBB004C7477 /* TaylorIntegrationTests.swift */; };
+		65B24B021D797E83006D299A /* SWXMLHash.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65B24B011D797E83006D299A /* SWXMLHash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		65B24B031D797EA8006D299A /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B24B011D797E83006D299A /* SWXMLHash.framework */; };
+		65B24B041D797ECC006D299A /* SWXMLHash.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65B24B011D797E83006D299A /* SWXMLHash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		65B24B151D7982D4006D299A /* SourceKittenFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B24B141D7982D4006D299A /* SourceKittenFramework.framework */; };
+		65B24B161D7982DD006D299A /* SourceKittenFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65B24B141D7982D4006D299A /* SourceKittenFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		65B24B171D7982E6006D299A /* SourceKittenFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65B24B141D7982D4006D299A /* SourceKittenFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		65B24B221D798640006D299A /* SourceKittenFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B24B141D7982D4006D299A /* SourceKittenFramework.framework */; };
+		65B24B231D798640006D299A /* ExcludesFileReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF967AB41CBC025900A42BDB /* ExcludesFileReader.framework */; };
+		65B24B241D798640006D299A /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B24B011D797E83006D299A /* SWXMLHash.framework */; };
+		65B24B251D798748006D299A /* ExcludesFileReader.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF967AB41CBC025900A42BDB /* ExcludesFileReader.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		65B24B261D79875A006D299A /* SourceKittenFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65B24B141D7982D4006D299A /* SourceKittenFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		692E462F1BF3AEF100D0886E /* Help.txt in Resources */ = {isa = PBXBuildFile; fileRef = 692E462E1BF3AEF100D0886E /* Help.txt */; };
 		692FCBEB1BED2B7F00DB5F16 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692FCBEA1BED2B7F00DB5F16 /* main.swift */; };
 		692FCBEE1BED2C2A00DB5F16 /* TaylorFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B4DC891BED1BD3005EA7D5 /* TaylorFramework.framework */; };
@@ -168,14 +179,8 @@
 		FF5DF6A81CBD23FE00768DFE /* OffsetRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5DF6A71CBD23FE00768DFE /* OffsetRange.swift */; };
 		FF5DF6AA1CBD24B300768DFE /* FileExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5DF6A91CBD24B300768DFE /* FileExtensions.swift */; };
 		FF967AB71CBC025900A42BDB /* ExcludesFileReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF967AB41CBC025900A42BDB /* ExcludesFileReader.framework */; };
-		FF967AB81CBC025900A42BDB /* SourceKittenFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF967AB51CBC025900A42BDB /* SourceKittenFramework.framework */; };
-		FF967AB91CBC025900A42BDB /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF967AB61CBC025900A42BDB /* SWXMLHash.framework */; };
 		FF967ABB1CBC0B2300A42BDB /* ExcludesFileReader.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF967AB41CBC025900A42BDB /* ExcludesFileReader.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FF967ABC1CBC0B8000A42BDB /* SourceKittenFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF967AB51CBC025900A42BDB /* SourceKittenFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FF967ABD1CBC0B8000A42BDB /* SWXMLHash.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF967AB61CBC025900A42BDB /* SWXMLHash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF967ABE1CBC0C2300A42BDB /* ExcludesFileReader.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF967AB41CBC025900A42BDB /* ExcludesFileReader.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FF967ABF1CBC0C2300A42BDB /* SourceKittenFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF967AB51CBC025900A42BDB /* SourceKittenFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FF967AC01CBC0C2300A42BDB /* SWXMLHash.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF967AB61CBC025900A42BDB /* SWXMLHash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -211,6 +216,8 @@
 			files = (
 				A32750331C62836200F7DFA2 /* Nimble.framework in CopyFiles */,
 				A32750341C62836200F7DFA2 /* Quick.framework in CopyFiles */,
+				65B24B261D79875A006D299A /* SourceKittenFramework.framework in CopyFiles */,
+				65B24B251D798748006D299A /* ExcludesFileReader.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,9 +237,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				FF967ABC1CBC0B8000A42BDB /* SourceKittenFramework.framework in CopyFiles */,
-				FF967ABD1CBC0B8000A42BDB /* SWXMLHash.framework in CopyFiles */,
+				65B24B021D797E83006D299A /* SWXMLHash.framework in CopyFiles */,
 				FF967ABB1CBC0B2300A42BDB /* ExcludesFileReader.framework in CopyFiles */,
+				65B24B161D7982DD006D299A /* SourceKittenFramework.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,11 +286,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				65B24B171D7982E6006D299A /* SourceKittenFramework.framework in CopyFiles */,
 				FF967ABE1CBC0C2300A42BDB /* ExcludesFileReader.framework in CopyFiles */,
-				FF967ABF1CBC0C2300A42BDB /* SourceKittenFramework.framework in CopyFiles */,
-				FF967AC01CBC0C2300A42BDB /* SWXMLHash.framework in CopyFiles */,
 				A32750351C62836600F7DFA2 /* Nimble.framework in CopyFiles */,
 				A32750361C62836600F7DFA2 /* Quick.framework in CopyFiles */,
+				65B24B041D797ECC006D299A /* SWXMLHash.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +304,8 @@
 		542EF2731C076FBB004C7477 /* TaylorIntegrationTestResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TaylorIntegrationTestResources.bundle; sourceTree = "<group>"; };
 		542EF2741C076FBB004C7477 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		542EF2751C076FBB004C7477 /* TaylorIntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaylorIntegrationTests.swift; sourceTree = "<group>"; };
+		65B24B011D797E83006D299A /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = ../../Carthage/Build/Mac/SWXMLHash.framework; sourceTree = "<group>"; };
+		65B24B141D7982D4006D299A /* SourceKittenFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SourceKittenFramework.framework; path = ../../Carthage/Build/Mac/SourceKittenFramework.framework; sourceTree = "<group>"; };
 		692E462E1BF3AEF100D0886E /* Help.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Help.txt; sourceTree = "<group>"; };
 		692FCBDD1BED2A2400DB5F16 /* Taylor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taylor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		692FCBEA1BED2B7F00DB5F16 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -450,8 +459,6 @@
 		FF5DF6A71CBD23FE00768DFE /* OffsetRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffsetRange.swift; sourceTree = "<group>"; };
 		FF5DF6A91CBD24B300768DFE /* FileExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileExtensions.swift; sourceTree = "<group>"; };
 		FF967AB41CBC025900A42BDB /* ExcludesFileReader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ExcludesFileReader.framework; sourceTree = "<group>"; };
-		FF967AB51CBC025900A42BDB /* SourceKittenFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SourceKittenFramework.framework; sourceTree = "<group>"; };
-		FF967AB61CBC025900A42BDB /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SWXMLHash.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -462,6 +469,9 @@
 				542EF26A1C076F8C004C7477 /* TaylorFramework.framework in Frameworks */,
 				A32750301C62835900F7DFA2 /* Nimble.framework in Frameworks */,
 				A32750321C62835900F7DFA2 /* Quick.framework in Frameworks */,
+				65B24B221D798640006D299A /* SourceKittenFramework.framework in Frameworks */,
+				65B24B231D798640006D299A /* ExcludesFileReader.framework in Frameworks */,
+				65B24B241D798640006D299A /* SWXMLHash.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,9 +487,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65B24B031D797EA8006D299A /* SWXMLHash.framework in Frameworks */,
 				FF967AB71CBC025900A42BDB /* ExcludesFileReader.framework in Frameworks */,
-				FF967AB81CBC025900A42BDB /* SourceKittenFramework.framework in Frameworks */,
-				FF967AB91CBC025900A42BDB /* SWXMLHash.framework in Frameworks */,
+				65B24B151D7982D4006D299A /* SourceKittenFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1045,9 +1055,9 @@
 		FF967AB31CBC025900A42BDB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				65B24B141D7982D4006D299A /* SourceKittenFramework.framework */,
 				FF967AB41CBC025900A42BDB /* ExcludesFileReader.framework */,
-				FF967AB51CBC025900A42BDB /* SourceKittenFramework.framework */,
-				FF967AB61CBC025900A42BDB /* SWXMLHash.framework */,
+				65B24B011D797E83006D299A /* SWXMLHash.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -1391,13 +1401,14 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)/TaylorFramework/Frameworks",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = TaylorIntegrationTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks $(PROJECT_DIR)/Carthage/Build/Mac $(PROJECT_DIR)/TaylorFramework/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.TaylorIntegrationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1413,9 +1424,10 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)/TaylorFramework/Frameworks",
 				);
 				INFOPLIST_FILE = TaylorIntegrationTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks $(PROJECT_DIR)/Carthage/Build/Mac $(PROJECT_DIR)/TaylorFramework/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.TaylorIntegrationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1428,13 +1440,17 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)/TaylorFramework/Frameworks",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Taylor/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks $(PROJECT_DIR)/Carthage/Build/Mac $(PROJECT_DIR)/TaylorFramework/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.Taylor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1448,9 +1464,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)/TaylorFramework/Frameworks",
+				);
 				INFOPLIST_FILE = Taylor/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks $(PROJECT_DIR)/Carthage/Build/Mac $(PROJECT_DIR)/TaylorFramework/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.Taylor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1539,7 +1559,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = TaylorFrameworkTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks $(PROJECT_DIR)/Carthage/Build/Mac";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.TaylorFrameworkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1556,7 +1576,7 @@
 					"$(PROJECT_DIR)/TaylorFramework/Frameworks",
 				);
 				INFOPLIST_FILE = TaylorFrameworkTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks $(PROJECT_DIR)/Carthage/Build/Mac";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.TaylorFrameworkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
