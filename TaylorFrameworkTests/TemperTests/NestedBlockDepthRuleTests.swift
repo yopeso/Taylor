@@ -35,7 +35,7 @@ class NestedBlockDepthRuleTests: QuickSpec {
                 expect(result.value).to(equal(10))
             }
             it("should not check the non-function components") {
-                let component = Component(type: .For, range: ComponentRange(sl: 0, el: 0))
+                let component = Component(type: .for, range: ComponentRange(sl: 0, el: 0))
                 let result = self.rule.checkComponent(component)
                 expect(result.isOk).to(beTrue())
                 expect(result.message).to(beNil())

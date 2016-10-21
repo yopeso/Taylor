@@ -13,10 +13,10 @@ import Nimble
 class CapriceTests: QuickSpec {
     override func spec() {
         describe("Caprice") {
-            let currentPath = NSFileManager.defaultManager().currentDirectoryPath
+            let currentPath = FileManager.default.currentDirectoryPath
             var caprice : Caprice!
             
-            func forceProcessArguments(options: [String]) -> Options {
+            func forceProcessArguments(_ options: [String]) -> Options {
                 return try! caprice.processArguments(options)
             }
             
@@ -32,24 +32,24 @@ class CapriceTests: QuickSpec {
                 
                 it("should set default values for dictionary (no excludesFile)") {
                     let inputArguments = [currentPath]
-                    expect(forceProcessArguments(inputArguments)).to(equal([ResultDictionaryPathKey : [currentPath], ResultDictionaryTypeKey : [DefaultExtensionType]]))
+                    expect(forceProcessArguments(inputArguments) == [ResultDictionaryPathKey : [currentPath], ResultDictionaryTypeKey : [DefaultExtensionType]]).to(beTrue())
                 }
                 
                 it("should return default verbosity") {
                     let inputArguments = [currentPath]
-                    forceProcessArguments(inputArguments)
-                    expect(caprice.getVerbosityLevel()).to(equal(VerbosityLevel.Error))
+                    _ = forceProcessArguments(inputArguments)
+                    expect(caprice.getVerbosityLevel()).to(equal(VerbosityLevel.error))
                 }
                 
                 it("should return empty array of reporters") {
                     let inputArguments = [currentPath]
-                    forceProcessArguments(inputArguments)
+                    _ = forceProcessArguments(inputArguments)
                     expect(caprice.getReporters()).to(beEmpty())
                 }
                 
                 it("should return empty array of reporters") {
                     let inputArguments = [currentPath]
-                    forceProcessArguments(inputArguments)
+                    _ = forceProcessArguments(inputArguments)
                     expect(caprice.getRuleThresholds()).to(beEmpty())
                 }
                 
@@ -59,7 +59,7 @@ class CapriceTests: QuickSpec {
                 
                 it("should return an empty dictionary") {
                     let inputArguments = [currentPath, FlagKey]
-                    forceProcessArguments(inputArguments)
+                    _ = forceProcessArguments(inputArguments)
                     expect(caprice.getRuleThresholds()).to(beEmpty())
                 }
                 
@@ -69,8 +69,8 @@ class CapriceTests: QuickSpec {
                 
                 it("should return them using getReporters function") {
                     let inputArguments = [currentPath, ReporterLong, "plain:/path/to/plain.txt"]
-                    forceProcessArguments(inputArguments)
-                    expect(caprice.getReporters()).to(equal([["type" : "plain", "fileName" : "/path/to/plain.txt"]]))
+                    _ = forceProcessArguments(inputArguments)
+                    expect(caprice.getReporters() == [["type" : "plain", "fileName" : "/path/to/plain.txt"]]).to(beTrue())
                 }
                 
             }
@@ -79,7 +79,7 @@ class CapriceTests: QuickSpec {
                 
                 it("should return them using getRuleThresholds function") {
                     let inputArguments = [currentPath, RuleCustomizationLong, "ExcessiveMethodLength=10"]
-                    forceProcessArguments(inputArguments)
+                    _ = forceProcessArguments(inputArguments)
                     expect(caprice.getRuleThresholds()).to(equal(["ExcessiveMethodLength" : 10]))
                 }
                 
@@ -89,8 +89,8 @@ class CapriceTests: QuickSpec {
                 
                 it("should return it using getVerbosityLevel function") {
                     let inputArguments = [currentPath, VerbosityLong, VerbosityLevelInfo]
-                    forceProcessArguments(inputArguments)
-                    expect(caprice.getVerbosityLevel()).to(equal(VerbosityLevel.Info))
+                    _ = forceProcessArguments(inputArguments)
+                    expect(caprice.getVerbosityLevel()).to(equal(VerbosityLevel.info))
                 }
                 
             }
@@ -105,10 +105,10 @@ class CapriceTests: QuickSpec {
                     let typeArg = "someType"
                     let inputArguments = [currentPath, PathLong, pathArg, ExcludeLong, excludeArg, FileLong, fileArg, TypeLong, typeArg, ReporterLong, "plain:/path/to/plain.txt", RuleCustomizationLong, "ExcessiveMethodLength=10", VerbosityLong, VerbosityLevelWarning]
                     let resultDictionary = try! localCaprice.processArguments(inputArguments)
-                    expect(resultDictionary).to(equal([ResultDictionaryPathKey : [pathArg], ResultDictionaryExcludesKey : [pathArg + "/" + excludeArg], ResultDictionaryFileKey : [pathArg + "/" + fileArg], ResultDictionaryTypeKey : ["someType"]]))
-                    expect(localCaprice.getVerbosityLevel()).to(equal(VerbosityLevel.Warning))
-                    expect(localCaprice.getReporters()).to(equal([["type" : "plain", "fileName" : "/path/to/plain.txt"]]))
-                    expect(localCaprice.getRuleThresholds()).to(equal(["ExcessiveMethodLength" : 10]))
+                    expect(resultDictionary == [ResultDictionaryPathKey : [pathArg], ResultDictionaryExcludesKey : [pathArg + "/" + excludeArg], ResultDictionaryFileKey : [pathArg + "/" + fileArg], ResultDictionaryTypeKey : ["someType"]]).to(beTrue())
+                    expect(localCaprice.getVerbosityLevel() == VerbosityLevel.warning).to(beTrue())
+                    expect(localCaprice.getReporters() == [["type" : "plain", "fileName" : "/path/to/plain.txt"]]).to(beTrue())
+                    expect(localCaprice.getRuleThresholds() == ["ExcessiveMethodLength" : 10]).to(beTrue())
                 }
                 
             }
@@ -123,8 +123,8 @@ class CapriceTests: QuickSpec {
                     let typeArg = "someType"
                     let inputArguments = [currentPath, PathLong, pathArg, ExcludeLong, excludeArg, FileLong, fileArg, TypeLong, typeArg, ReporterLong, "invalidReporter", RuleCustomizationLong, "ExcessiveMethodLength=10", VerbosityLong, VerbosityLevelWarning]
                     let resultDictionary = try! localCaprice.processArguments(inputArguments)
-                    expect(resultDictionary).to(equal([ErrorKey: [""]]))
-                    expect(localCaprice.getVerbosityLevel()).to(equal(VerbosityLevel.Error))
+                    expect(resultDictionary == [ErrorKey: [""]]).to(beTrue())
+                    expect(localCaprice.getVerbosityLevel()).to(equal(VerbosityLevel.error))
                     expect(localCaprice.getReporters()).to(beEmpty())
                     expect(localCaprice.getRuleThresholds()).to(beEmpty())
                 }
@@ -133,9 +133,11 @@ class CapriceTests: QuickSpec {
             
             it("should return error dictionary if error occures") {
                 let inputArguments = [currentPath, ExcludesFileLong, "errorFile.txt"]
-                expect(forceProcessArguments(inputArguments)).to(equal([ErrorKey: [""]]))
+                expect(forceProcessArguments(inputArguments) == [ErrorKey: [""]]).to(beTrue())
             }
             
         }
     }
 }
+
+

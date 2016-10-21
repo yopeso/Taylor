@@ -11,10 +11,10 @@ import Foundation
 extension ExtendedComponent {
     
     /**
-        Recursively applies *block* over each node in tree starting
-        from a level deeper.
-    */
-    func forEach(@noescape block: ExtendedComponent -> ()) {
+     Recursively applies *block* over each node in tree starting
+     from a level deeper.
+     */
+    func forEach(_ block: (ExtendedComponent) -> ()) {
         components.forEach {
             block($0)
             $0.forEach(block)
@@ -22,36 +22,37 @@ extension ExtendedComponent {
     }
     
     /**
-        Recursively applies *block* over each node in tree starting
-        from the end of tree.
-    */
-    func forEachReversed(@noescape block: ExtendedComponent -> ()) {
+     Recursively applies *block* over each node in tree starting
+     from the end of tree.
+     */
+    func forEachReversed(_ block: (ExtendedComponent) -> ()) {
         components.forEach { $0.forEachReversed(block) }
         block(self)
     }
     
-    func isA(otherType: ComponentType) -> Bool { return self.type.isA(otherType) }
+    func isA(_ otherType: ComponentType) -> Bool { return self.type.isA(otherType) }
     
-    var isElseIfOrIf: Bool { return isA(.If) || isA(.ElseIf) }
+    var isElseIfOrIf: Bool { return isA(.if) || isA(.elseIf) }
     var children: Int { return self.components.count }
     var containsClosure: Bool {
-        return self.components.filter { $0.isA(.Closure) }.count > 0
+        return self.components.filter { $0.isA(.closure) }.count > 0
     }
     
     var isCorrectParameter: Bool {
-        guard isA(.Parameter) else { return true }
-        guard name != nil else { return true }
-        let startsWithDollar = name![name!.startIndex] == "$"
+        guard isA(.parameter) else { return true }
+        guard let name = name else { return true }
+        let startsWithDollar = name[name.startIndex] == "$"
         
-        if typeName == nil {
-            return !startsWithDollar || parent!.isA(.Closure)
+        if typeName != nil {
+            return !startsWithDollar || parent!.isA(.closure)
         } else {
-            return (!startsWithDollar && name != typeName) || parent!.isA(.Closure)
+            guard let parent = parent else { return false }
+            return (!startsWithDollar && name != typeName) || parent.isA(.closure)
         }
     }
     
     var containsParameter: Bool {
-        return self.components.filter { $0.type.isA(.Parameter) }.count > 0
+        return self.components.filter { $0.type.isA(.parameter) }.count > 0
     }
     
     var hasSignificantChildren: Bool {
@@ -66,51 +67,54 @@ extension ExtendedComponent {
         guard self.components.count > 0 else {
             return false
         }
-        return self.components[0].type == .Brace
+        
+        return self.components.first?.type == .brace
     }
     
-    func insert(components: [ExtendedComponent]) {
+    func insert(_ components: [ExtendedComponent]) {
         components.forEach { self.insert($0) }
     }
     
-    func isElseIf(type: ComponentType) -> Bool {
-        return type == .If && self.isElseIfOrIf
+    func isElseIf(_ type: ComponentType) -> Bool {
+        return type == .if && self.isElseIfOrIf
     }
     
-    func isElse(type: ComponentType) -> Bool {
-        return type == .Brace && self.isElseIfOrIf
+    func isElse(_ type: ComponentType) -> Bool {
+        return type == .brace && self.isElseIfOrIf
     }
     
-    func changeChildToParent(index: Int) {
+    func changeChildToParent(_ index: Int) {
         parent?.addChild(components[index])
-        components.removeAtIndex(index)
+        components.remove(at: index)
     }
     
-    func takeChildrenOfChild(index: Int) {
+    func takeChildrenOfChild(_ index: Int) {
         for child in components[index].components {
             addChild(child)
         }
     }
     
-    func addChild(child: ExtendedComponent) -> ExtendedComponent {
+    @discardableResult
+    func addChild(_ child: ExtendedComponent) -> ExtendedComponent {
         self.components.append(child)
         child.parent = self
         return child
     }
     
-    func addChild(type: ComponentType, range: OffsetRange, name: String? = nil) -> ExtendedComponent {
+    @discardableResult
+    func addChild(_ type: ComponentType, range: OffsetRange, name: String? = nil) -> ExtendedComponent {
         let child = ExtendedComponent(type: type, range: range, names: (name, nil))
         child.parent = self
         self.components.append(child)
         return child
     }
     
-    func contains(node: ExtendedComponent) -> Bool {
+    func contains(_ node: ExtendedComponent) -> Bool {
         return (node.offsetRange.start >= self.offsetRange.start)
             && (node.offsetRange.end <= self.offsetRange.end)
     }
     
-    func insert(node: ExtendedComponent) {
+    func insert(_ node: ExtendedComponent) {
         for child in self.components {
             if child.contains(node) {
                 child.insert(node)
@@ -125,7 +129,7 @@ extension ExtendedComponent {
     
     func processParameters() {
         for child in components {
-            if isA(.Parameter) && child.isA(.Parameter) {
+            if isA(.parameter) && child.isA(.parameter) {
                 if offsetRange == child.offsetRange {
                     remove(child)
                     parent?.addChild(child)
@@ -146,7 +150,7 @@ extension ExtendedComponent {
     
     func removeRedundantClosuresInSelf() {
         components = components.filter {
-            !($0.type == .Closure && $0.components.isEmpty)
+            !($0.type == .closure && $0.components.isEmpty)
         }
     }
     
@@ -154,7 +158,7 @@ extension ExtendedComponent {
         forEach { if !$0.isCorrectParameter { remove($0) } }
     }
     
-    func remove(component: ExtendedComponent) {
+    func remove(_ component: ExtendedComponent) {
         components = components.filter { $0 != component }
     }
 }

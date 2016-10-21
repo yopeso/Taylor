@@ -24,10 +24,10 @@ final class NumberOfLinesInMethodRule: Rule {
             }
         }
     }
-    private var linesCount = 0
+    fileprivate var linesCount = 0
     
-    func checkComponent(component: Component) -> Result {
-        if component.type != ComponentType.Function { return (true, nil, nil) }
+    func checkComponent(_ component: Component) -> Result {
+        if component.type != ComponentType.function { return (true, nil, nil) }
         linesCount = component.range.length
         deleteLinesFromComponent(component)
         if linesCount > limit {
@@ -39,11 +39,11 @@ final class NumberOfLinesInMethodRule: Rule {
         return (true, nil, linesCount)
     }
     
-    func formatMessage(name: String, value: Int) -> String {
+    func formatMessage(_ name: String, value: Int) -> String {
         return "Method '\(name)' has too many lines: \(value). The allowed number of lines in a method is \(limit)"
     }
     
-    private func deleteLinesFromComponent(component: Component) {
+    fileprivate func deleteLinesFromComponent(_ component: Component) {
         let _ = component.components.map({ (component: Component) -> Void in
             if component.isRedundantLine {
                 linesCount -= component.range.length + 1

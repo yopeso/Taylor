@@ -10,29 +10,29 @@ import Foundation
 
 final class PMDCoordinator: WritingCoordinator {
     
-    func writeViolations(violations: [Violation], atPath path: String) {
-        NSFileManager().removeFileAtPath(path)
+    func writeViolations(_ violations: [Violation], atPath path: String) {
+        FileManager().removeFileAtPath(path)
         let xml = generateXML(violations)
-        let xmlData = xml.XMLDataWithOptions(NSXMLNodePrettyPrint)
+        let xmlData = xml.xmlData(withOptions: Int(XMLNode.Options.nodePrettyPrint.rawValue))
         do {
-            try xmlData.writeToFile(path, options: NSDataWritingOptions.DataWritingWithoutOverwriting)
+            try xmlData.write(to: URL(fileURLWithPath: path), options: NSData.WritingOptions.withoutOverwriting)
         } catch {
             print("Error while writing the XML object to file.")
         }
     }
     
-    private func generateXML(violations: [Violation]) -> NSXMLDocument {
-        let xml = NSXMLDocument(rootElement: NSXMLElement(name: "pmd"))
+    fileprivate func generateXML(_ violations: [Violation]) -> XMLDocument {
+        let xml = XMLDocument(rootElement: XMLElement(name: "pmd"))
         xml.version = "1.0"
         xml.characterEncoding = "UTF-8"
         addElementsToXML(xml, fromViolations: violations)
         return xml
     }
     
-    private func addElementsToXML(xml: NSXMLDocument, fromViolations violations: [Violation]) {
+    fileprivate func addElementsToXML(_ xml: XMLDocument, fromViolations violations: [Violation]) {
         for filePath in filePathsFromViolations(violations) {
-            let fileElement = NSXMLElement(name: "file")
-            let attributeNode = NSXMLNode.attributeWithName("name", stringValue: filePath) as? NSXMLNode
+            let fileElement = XMLElement(name: "file")
+            let attributeNode = XMLNode.attribute(withName: "name", stringValue: filePath) as? XMLNode
             guard let attribute = attributeNode else {
                 return
             }
@@ -44,7 +44,7 @@ final class PMDCoordinator: WritingCoordinator {
         }
     }
     
-    private func filePathsFromViolations(violations: [Violation]) -> [String] {
+    fileprivate func filePathsFromViolations(_ violations: [Violation]) -> [String] {
         return violations.map({ $0.path }).unique
     }
 }

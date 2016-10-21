@@ -10,15 +10,15 @@ import Quick
 import Nimble
 import TaylorFramework
 
-enum IntegrationTestsError: ErrorType {
-    case FileNotFount(String)
-    case BundleResourceNotFount(String)
+enum IntegrationTestsError: Error {
+    case fileNotFound(String)
+    case bundleResourceNotFound(String)
 }
 
 class TaylorIntegrationTests: QuickSpec {
     
     var runTaskPath : String {
-        let testBundle = NSBundle(forClass: self.dynamicType)
+        let testBundle = Bundle(for: type(of: self))
         let bundlePath = testBundle.bundlePath
         return bundlePath.stringWithoutLastComponent().stringByAppendingPathComponent("Taylor.app/Contents/MacOS/Taylor")
     }
@@ -31,60 +31,60 @@ class TaylorIntegrationTests: QuickSpec {
 
     
     func cleanOrDestroyResources() throws {
-        if NSFileManager.defaultManager().fileExistsAtPath(analyzeFilesPath) {
-            try NSFileManager.defaultManager().removeItemAtPath(analyzeFilesPath)
+        if FileManager.default.fileExists(atPath: analyzeFilesPath) {
+            try FileManager.default.removeItem(atPath: analyzeFilesPath)
         }
-        if NSFileManager.defaultManager().fileExistsAtPath(resultFilePath.stringWithoutLastComponent()) {
-            try NSFileManager.defaultManager().removeItemAtPath(resultFilePath.stringWithoutLastComponent())
+        if FileManager.default.fileExists(atPath: resultFilePath.stringWithoutLastComponent()) {
+            try FileManager.default.removeItem(atPath: resultFilePath.stringWithoutLastComponent())
         }
     }
     
     
     func initializePaths() throws {
-        let mainBundle = NSBundle(forClass: self.dynamicType)
+        let mainBundle = Bundle(for: type(of: self))
         if let resourcesPath = mainBundle.resourcePath {
             analyzeFilesPath = resourcesPath.stringByAppendingPathComponent("AnalyzeFiles")
             resultFilePath = resourcesPath.stringByAppendingPathComponent("Result")
         } else {
-            throw IntegrationTestsError.BundleResourceNotFount(mainBundle.bundlePath)
+            throw IntegrationTestsError.bundleResourceNotFound(mainBundle.bundlePath)
         }
     }
     
     
     func createResources() throws {
-        let mainBundle = NSBundle(forClass: self.dynamicType)
-        if let path = mainBundle.pathForResource("TaylorIntegrationTestResources", ofType: "bundle"), let bundle = NSBundle(path: path) {
-            if !NSFileManager.defaultManager().fileExistsAtPath(analyzeFilesPath) {
-                try NSFileManager.defaultManager().createDirectoryAtPath(analyzeFilesPath, withIntermediateDirectories: false, attributes: nil)
+        let mainBundle = Bundle(for: type(of: self))
+        if let path = mainBundle.path(forResource: "TaylorIntegrationTestResources", ofType: "bundle"), let bundle = Bundle(path: path) {
+            if !FileManager.default.fileExists(atPath: analyzeFilesPath) {
+                try FileManager.default.createDirectory(atPath: analyzeFilesPath, withIntermediateDirectories: false, attributes: nil)
             }
-            if !NSFileManager.defaultManager().fileExistsAtPath(resultFilePath) {
-                try NSFileManager.defaultManager().createDirectoryAtPath(resultFilePath, withIntermediateDirectories: false, attributes: nil)
+            if !FileManager.default.fileExists(atPath: resultFilePath) {
+                try FileManager.default.createDirectory(atPath: resultFilePath, withIntermediateDirectories: false, attributes: nil)
             }
             try createFiles(bundle)
             try createResultFile(bundle)
         } else {
-            throw IntegrationTestsError.BundleResourceNotFount("TaylorIntegrationTestResources")
+            throw IntegrationTestsError.bundleResourceNotFound("TaylorIntegrationTestResources")
         }
     }
     
     
-    private func createFiles(sourceBundle: NSBundle) throws {
+    fileprivate func createFiles(_ sourceBundle: Bundle) throws {
         for fileName in fileNames {
-            if let path = sourceBundle.pathForResource(fileName.stringByTrimmingTheExtension, ofType: fileName.fileExtension) {
-                try NSFileManager.defaultManager().copyItemAtPath(path, toPath: self.analyzeFilesPath.stringByAppendingPathComponent(path.lastPathComponent))
+            if let path = sourceBundle.path(forResource: fileName.stringByTrimmingTheExtension, ofType: fileName.fileExtension) {
+                try FileManager.default.copyItem(atPath: path, toPath: self.analyzeFilesPath.stringByAppendingPathComponent(path.lastPathComponent))
             } else {
-                throw IntegrationTestsError.BundleResourceNotFount("fileName")
+                throw IntegrationTestsError.bundleResourceNotFound("fileName")
             }
         }
     }
     
     
-    private func createResultFile(sourceBundle: NSBundle) throws {
-        if let path = sourceBundle.pathForResource(resultFileName.stringByTrimmingTheExtension, ofType: resultFileName.fileExtension) {
+    fileprivate func createResultFile(_ sourceBundle: Bundle) throws {
+        if let path = sourceBundle.path(forResource: resultFileName.stringByTrimmingTheExtension, ofType: resultFileName.fileExtension) {
             resultFilePath = resultFilePath.stringByAppendingPathComponent(resultFileName)
-            try NSFileManager.defaultManager().copyItemAtPath(path, toPath: self.resultFilePath)
+            try FileManager.default.copyItem(atPath: path, toPath: self.resultFilePath)
         } else {
-            throw IntegrationTestsError.BundleResourceNotFount(resultFileName)
+            throw IntegrationTestsError.bundleResourceNotFound(resultFileName)
         }
     }
     
@@ -117,7 +117,7 @@ class TaylorIntegrationTests: QuickSpec {
             }
             
             it("should generate correct reports") {
-                let runTask = NSTask()
+                let runTask = Process()
                 runTask.launchPath = self.runTaskPath
                 runTask.arguments = ["-p", self.analyzeFilesPath, "-r", "json:taylor_report.json"]
                 runTask.launch()
@@ -125,8 +125,8 @@ class TaylorIntegrationTests: QuickSpec {
                 let reporterPath = self.analyzeFilesPath.stringByAppendingPathComponent("taylor_report.json")
                 expect(ReporterComparator().compareReporters(self.resultFilePath, secondReporterPath: reporterPath)).to(beTrue())
                 do {
-                    if NSFileManager.defaultManager().fileExistsAtPath(reporterPath) {
-                        try NSFileManager.defaultManager().removeItemAtPath(reporterPath)
+                    if FileManager.default.fileExists(atPath: reporterPath) {
+                        try FileManager.default.removeItem(atPath: reporterPath)
                     }
                 } catch let error {
                     print(error)

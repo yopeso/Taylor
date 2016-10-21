@@ -12,7 +12,7 @@ struct Parameters {
     let files: [String]
     let type: String
     
-    private init(parameters: (path: String, excludes: [String], files: [String], type: String)) {
+    fileprivate init(parameters: (path: String, excludes: [String], files: [String], type: String)) {
         rootPath = parameters.path
         excludes = parameters.excludes
         files = parameters.files

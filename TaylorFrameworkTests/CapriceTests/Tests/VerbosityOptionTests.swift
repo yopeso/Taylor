@@ -26,7 +26,7 @@ class VerbosityOptionTests: QuickSpec {
             
             it("should return verbosity level error if option argument does not match aby abother") {
                 verbosity.optionArgument = "something"
-                expect(verbosity.verbosityLevelFromOption()).to(equal(VerbosityLevel.Error))
+                expect(verbosity.verbosityLevelFromOption()).to(equal(VerbosityLevel.error))
             }
             
             it("should return error if given components have no first element") {

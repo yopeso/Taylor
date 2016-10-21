@@ -41,26 +41,26 @@ class PacmanTests: QuickSpec {
         describe("pacman") {
             context("when working with map file") {
                 it("should create temporary subdirectory correctly") {
-                    if NSFileManager.defaultManager().fileExistsAtPath(tempPath) {
-                        NSFileManager.defaultManager().removeFileAtPath(tempPath)
+                    if FileManager.default.fileExists(atPath: tempPath) {
+                        FileManager.default.removeFileAtPath(tempPath)
                     }
-                    pacman.createMap()
-                    expect(NSFileManager.defaultManager().fileExistsAtPath(tempPath)).to(beTrue())
+                    _ = pacman.createMap()
+                    expect(FileManager.default.fileExists(atPath: tempPath)).to(beTrue())
                 }
                 it("should create it in the right place") {
-                    pacman.createMap()
-                    expect(NSFileManager.defaultManager().fileExistsAtPath(tempPath + "/map.dat")).to(beTrue())
+                    _ = pacman.createMap()
+                    expect(FileManager.default.fileExists(atPath: tempPath + "/map.dat")).to(beTrue())
                     pacman.removeMap()
                 }
                 it("should remove it if asked to") {
-                    pacman.createMap()
+                    _ = pacman.createMap()
                     pacman.removeMap()
-                    expect(NSFileManager.defaultManager().fileExistsAtPath(tempPath + "/map.dat")).to(beFalse())
+                    expect(FileManager.default.fileExists(atPath: tempPath + "/map.dat")).to(beFalse())
                 }
                 it("should recreate it if already exists") {
-                    pacman.createMap()
-                    pacman.createMap()
-                    expect(NSFileManager.defaultManager().fileExistsAtPath(tempPath + "/map.dat")).to(beTrue())
+                    _ = pacman.createMap()
+                    _ = pacman.createMap()
+                    expect(FileManager.default.fileExists(atPath: tempPath + "/map.dat")).to(beTrue())
                     pacman.removeMap()
                 }
             }
@@ -69,7 +69,7 @@ class PacmanTests: QuickSpec {
                 it("should early return if array is empty") {
                     let pacman = Pacman(paths: [])
                     pacman.start()
-                    expect(NSFileManager.defaultManager().fileExistsAtPath(tempPath)).to(beFalse())
+                    expect(FileManager.default.fileExists(atPath: tempPath)).to(beFalse())
                 }
             }
         }

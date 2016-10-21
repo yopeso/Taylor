@@ -13,7 +13,7 @@ import Nimble
 class PathFormatterTests: QuickSpec {
     override func spec() {
         describe("PathFormatter") {
-            let currentPath = NSFileManager.defaultManager().currentDirectoryPath
+            let currentPath = FileManager.default.currentDirectoryPath
             
             it("should return absolutePath if it is indicated") {
                 expect(currentPath.absolutePath()).to(equal(currentPath))
@@ -53,7 +53,7 @@ class PathFormatterTests: QuickSpec {
             
             it("should return path created from home directory + path if path has tilde prefix") {
                 let path = "~/somePath"
-                let editedPath = path.stringByReplacingOccurrencesOfString("~", withString: "")
+                let editedPath = path.replacingOccurrences(of: "~", with: "")
                 expect(path.absolutePath()).to(equal(NSHomeDirectory() + editedPath))
             }
             

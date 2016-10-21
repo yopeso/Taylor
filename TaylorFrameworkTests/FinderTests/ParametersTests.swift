@@ -16,7 +16,7 @@ class ParametersTests: QuickSpec {
         var printer: ErrorPrinter!
         
         beforeEach {
-            printer = ErrorPrinter(printer: Printer(verbosityLevel: .Error))
+            printer = ErrorPrinter(printer: Printer(verbosityLevel: .error))
         }
         
         afterEach {

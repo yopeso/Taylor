@@ -14,9 +14,9 @@ class ComponentExtensionsTests: QuickSpec {
     
     override func spec() {
         
-        let nonClassComponent = Component(type: ComponentType.Function, range: ComponentRange(sl: 10, el: 30), name: "function")
-        let classComponent = Component(type: ComponentType.Class, range: ComponentRange(sl: 10, el: 30), name: "class")
-        let classChildComponent = classComponent.makeComponent(type: ComponentType.Comment, range: ComponentRange(sl: 10, el: 30))
+        let nonClassComponent = Component(type: ComponentType.function, range: ComponentRange(sl: 10, el: 30), name: "function")
+        let classComponent = Component(type: ComponentType.class, range: ComponentRange(sl: 10, el: 30), name: "class")
+        let classChildComponent = classComponent.makeComponent(type: ComponentType.comment, range: ComponentRange(sl: 10, el: 30))
         
         it("should find the parent component of class type, or nil") {
             expect(nonClassComponent.classComponent()).to(beNil())
@@ -24,10 +24,10 @@ class ComponentExtensionsTests: QuickSpec {
             expect(classChildComponent.classComponent()).toNot(beNil())
         }
         it("should find the next component") {
-            let component = Component(type: ComponentType.If, range: ComponentRange(sl: 1, el: 1))
-            let component1 = component.makeComponent(type: ComponentType.If, range: ComponentRange(sl: 1, el: 1))
-            let component2 = component.makeComponent(type: ComponentType.If, range: ComponentRange(sl: 1, el: 1))
-            let component3 = component.makeComponent(type: ComponentType.If, range: ComponentRange(sl: 1, el: 1))
+            let component = Component(type: ComponentType.if, range: ComponentRange(sl: 1, el: 1))
+            let component1 = component.makeComponent(type: ComponentType.if, range: ComponentRange(sl: 1, el: 1))
+            let component2 = component.makeComponent(type: ComponentType.if, range: ComponentRange(sl: 1, el: 1))
+            let component3 = component.makeComponent(type: ComponentType.if, range: ComponentRange(sl: 1, el: 1))
             expect(component.nextComponent()).to(beNil())
             expect(component1.nextComponent()).to(equal(component2))
             expect(component2.nextComponent()).to(equal(component3))
@@ -37,10 +37,10 @@ class ComponentExtensionsTests: QuickSpec {
         describe("deserializer") {
             context("when given wrong dict") {
                 it("should return nil when no startLine key present") {
-                    expect(ComponentRange.deserialize(["endline": 12])).to(beNil())
+                    expect(ComponentRange.deserialize(["endline": 12 as AnyObject])).to(beNil())
                 }
                 it("should return nil when no endLine key present") {
-                    expect(ComponentRange.deserialize(["path": "somepath"])).to(beNil())
+                    expect(ComponentRange.deserialize(["path": "somepath" as AnyObject])).to(beNil())
                 }
             }
         }

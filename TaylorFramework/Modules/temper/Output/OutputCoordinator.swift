@@ -16,16 +16,16 @@ final class OutputCoordinator {
         self.filePath = filePath
     }
     
-    func writeTheOutput(violations: [Violation], reporters: [Reporter]) {
+    func writeTheOutput(_ violations: [Violation], reporters: [Reporter]) {
         self.reporters = reporters
         for reporter in reporters {
             if reporter.fileName.isEmpty && (reporter.concreteReporter as? XcodeReporter) == nil { continue }
-            let path = (filePath as NSString).stringByAppendingPathComponent(reporter.fileName)
+            let path = (filePath as NSString).appendingPathComponent(reporter.fileName)
             reporter.coordinator().writeViolations(violations, atPath: path)
         }
     }
 }
 
 protocol WritingCoordinator {
-    func writeViolations(violations: [Violation], atPath path: String)
+    func writeViolations(_ violations: [Violation], atPath path: String)
 }

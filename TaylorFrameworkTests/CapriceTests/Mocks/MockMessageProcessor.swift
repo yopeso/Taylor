@@ -20,7 +20,7 @@ class MockMessageProcessor : MessageProcessor {
     }
     
     
-    override func setDefaultExcludesIfExistsToDictionary(inout dictionary: Options) {
+    override func setDefaultExcludesIfExistsToDictionary(_ dictionary: inout Options) {
         let fileManager = MockFileManager()
         let pathToDefaultExcludesFile = fileManager.testFile("excludes", fileType: "yml")
         
@@ -38,11 +38,11 @@ class MockMessageProcessor : MessageProcessor {
     }
     
     
-    override func processMultipleArguments(arguments:[String]) -> Options {
+    override func processMultipleArguments(_ arguments:[String]) -> Options {
         
         if arguments.count.isOdd {
             let optionsProcessor = MockOptionsProcessor()
-            return try! optionsProcessor.processOptions(arguments) // We want this to crash here if arguments are invalid
+            return try! optionsProcessor.processOptions(arguments: arguments) // We want this to crash here if arguments are invalid
         } else if arguments.containFlags {
             FlagBuilder().flag(arguments.second!).execute()
             return [FlagKey : [FlagKeyValue]]

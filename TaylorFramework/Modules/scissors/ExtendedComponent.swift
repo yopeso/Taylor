@@ -43,61 +43,61 @@ final class ExtendedComponent {
     
     init(dict: [String: AnyObject]) {
         if let type = dict["type"] as? String,
-            startOffset = dict["offset"] as? Int,
-            length = dict["length"] as? Int {
+            let startOffset = dict["offset"] as? Int,
+            let length = dict["length"] as? Int {
             let endOffset = startOffset + length
             self.type = ComponentType(rawValue: type)
             self.offsetRange = OffsetRange(start: startOffset, end: endOffset - 1)
         } else {
-            self.type = .Other
+            self.type = .other
             self.offsetRange = OffsetRange(start: 0, end: 0)
         }
         self.names = (nil, nil)
         self.components = []
     }
     
-    func appendComponents(array: [SourceKitRepresentable], components: NSMutableArray = []) -> [ExtendedComponent] {
+    func appendComponents(_ array: [SourceKitRepresentable], components: NSMutableArray = []) -> [ExtendedComponent] {
         var braces = 0
-        array.enumerate().forEach { childIndex, structure in
+        array.enumerated().forEach { childIndex, structure in
             let hashedStructure = structure.dictionaryValue
             var offsetRange = hashedStructure.offsetRange
             let type = getComponentType(hashedStructure.type, bracesCount: braces, isLast: childIndex == array.count - 1)
-            if type.isA(.Other) { return }
-            if type.isA(.Brace) { braces += 1 }
-            if type.isA(.Variable) {
+            if type.isA(.other) { return }
+            if type.isA(.brace) { braces += 1 }
+            if type.isA(.variable) {
                 let bodyOffsetEnd = hashedStructure.bodyLength + hashedStructure.bodyOffset
                 if bodyOffsetEnd != 0 { offsetRange.end = bodyOffsetEnd }
             }
             let child = ExtendedComponent(type: type, range: offsetRange, names: (hashedStructure.name, hashedStructure.typeName))
-            components.addObject(child)
-            child.appendComponents(hashedStructure.substructure, components: components)
+            components.add(child)
+            _ = child.appendComponents(hashedStructure.substructure, components: components)
         }
         
         // Safe to unwrap, all objects are `ExtendedComponent`
         return components as NSArray as! [ExtendedComponent]
     }
     
-    func getComponentType(type: String, bracesCount: Int, isLast: Bool) -> ComponentType {
+    func getComponentType(_ type: String, bracesCount: Int, isLast: Bool) -> ComponentType {
         let type = ComponentType(rawValue: type)
         if isElseIf(type) {
-            return .ElseIf
+            return .elseIf
         }
         if isElse(type) && isLast && bracesCount > 0 {
-            return .Else
+            return .else
         }
         return type
     }
     
     func variablesToFunctions() {
         forEach { component in
-            guard component.hasSignificantChildren && component.isA(.Variable) else {
-                if component.isA(.Brace) && component.containsParameter {
-                    component.type = .Closure
+            guard component.hasSignificantChildren && component.isA(.variable) else {
+                if component.isA(.brace) && component.containsParameter {
+                    component.type = .closure
                 }
                 return
             }
-            component.type = .Function
-            if let firstChild = component.components.first where component.isActuallyClosure {
+            component.type = .function
+            if let firstChild = component.components.first , component.isActuallyClosure {
                 firstChild.name = component.name
                 component.parent?.components.append(firstChild)
                 component.parent?.remove(component)
@@ -105,7 +105,7 @@ final class ExtendedComponent {
         }
     }
     
-    func filter(types: [ComponentType]) {
+    func filter(_ types: [ComponentType]) {
         forEach {
             $0.components = $0.components.filter { component in
                 for type in types { if component.isA(type) { return false } }
@@ -119,10 +119,10 @@ final class ExtendedComponent {
             changeChildToParent(1)
         }
         self.takeChildrenOfChild(0)
-        if type != .Repeat {
+        if type != .repeat {
             offsetRange.end = components[0].offsetRange.end
         }
-        components.removeAtIndex(0)
+        components.remove(at: 0)
     }
 }
 
@@ -152,6 +152,6 @@ extension ExtendedComponent {
     }
     
     func sort() {
-        forEach { $0.parent?.components.sortInPlace { $0.offsetRange < $1.offsetRange } }
+        forEach { $0.parent?.components.sort { $0.offsetRange < $1.offsetRange } }
     }
 }

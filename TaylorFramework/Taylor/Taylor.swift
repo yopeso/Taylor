@@ -34,24 +34,24 @@ public struct Taylor {
     func processArguments() -> Arguments? {
         do {
             return try Arguments()
-        } catch CommandLineError.InvalidArguments(let errorMessage) {
+        } catch CommandLineError.invalidArguments(let errorMessage) {
             handleError(errorMessage)
-        } catch CommandLineError.InvalidInformationalOption(let errorMessage) {
+        } catch CommandLineError.invalidInformationalOption(let errorMessage) {
             handleError(errorMessage)
-        } catch CommandLineError.InvalidOption(let errorMessage) {
+        } catch CommandLineError.invalidOption(let errorMessage) {
             handleError(errorMessage)
-        } catch CommandLineError.AbuseOfOptions(let errorMessage) {
+        } catch CommandLineError.abuseOfOptions(let errorMessage) {
             handleError(errorMessage)
         } catch { }
         return nil
     }
     
-    func handleError(errorMessage: String) {
+    func handleError(_ errorMessage: String) {
         print(errorMessage)
         PacmanRunner().runEasterEggPrompt()
     }
     
-    func generateTimeReport(rootPath: String, printer: Printer, arguments: Arguments) {
+    func generateTimeReport(_ rootPath: String, printer: Printer, arguments: Arguments) {
         let timer = Timer()
         timer.start()
         generateReportOnPath(rootPath, arguments: arguments, printer: printer)
@@ -59,19 +59,19 @@ public struct Taylor {
         printer.printInfo("Running time: \(time) seconds")
     }
     
-    func generateReportOnPath(path: Path, arguments: Arguments, printer: Printer) {
+    func generateReportOnPath(_ path: Path, arguments: Arguments, printer: Printer) {
         let fileContents = getFileContents(arguments)
         let reportGenerator = ReportGenerator(arguments: arguments, printer: printer)
         reportGenerator.generateReport(path, fileContents: fileContents)
     }
     
-    func getFileContents(arguments: Arguments) -> [FileContent] {
+    func getFileContents(_ arguments: Arguments) -> [FileContent] {
         let paths = Finder().findFilePaths(parameters: arguments.finderParameters)
         
         return parallelizeTokenization(paths)
     }
     
-    func parallelizeTokenization(paths: [String]) -> [FileContent] {
+    func parallelizeTokenization(_ paths: [String]) -> [FileContent] {
         let scissors = Scissors()
         return paths.pmap { scissors.tokenizeFileAtPath($0) }
     }

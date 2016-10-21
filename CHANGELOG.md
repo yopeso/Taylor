@@ -1,3 +1,28 @@
+## 0.2.0: Newer and faster
+
+* Migrated to Swift 3.0.1. 
+  [Andrei Vacaruc](https://github.com/sunnypro)
+
+## 0.1.3: No Troubles At All
+
+* Updated the codebase to Xcode 7.3 [#26](https://github.com/yopeso/Taylor/pull/26). 
+  [Alex Culeva](https://github.com/S2dentik)
+
+* Slightly improved the performance (it was very fast, now it's lightning fast).
+  [Alex Culeva](https://github.com/S2dentik)
+
+* When running make install, now it uses xcpretty if available.  
+  [Alex Culeva](https://github.com/S2dentik)
+
+* Made Easter egg great again.
+  [Alex Culeva](https://github.com/S2dentik)
+
+* Now it prints running time with two decimal places.  
+  [Andrei Raifura](https://github.com/thelvis4)
+
+* Slightly changed rules warning messages.  
+  [Alex Culeva](https://github.com/S2dentik)
+
 ## 0.1.2: Taylor gets smarter
 
 * Fixed the bug when closure parameters were recognized as simple parameters
@@ -26,7 +51,6 @@
 
 * Prepared Makefile for Homebrew integration.  
   [Andrei Raifura](https://github.com/thelvis4)
-
 
 ## 0.1.0: Brand New First Version
 

@@ -28,21 +28,21 @@ struct CLIReporter {
             } + getBorderString(totalChars) + getStatisticsString()
     }
     
-    private func getBorderString(size: Int) -> String {
+    fileprivate func getBorderString(_ size: Int) -> String {
         return "=" * size + "\n"
     }
     
-    private func getResultOutputString(resultOutput: ResultOutput, numberOfCharacters charNum: Int) -> String {
+    fileprivate func getResultOutputString(_ resultOutput: ResultOutput, numberOfCharacters charNum: Int) -> String {
         let missingSpacesString = " " * (charNum - resultOutput.path.characters.count)
-        let warningsString = "|".stringByAppendingString(getResultsString(resultOutput.warnings) + " |")
+        let warningsString = "|" + (getResultsString(resultOutput.warnings) + " |")
         return warningsString + resultOutput.path + missingSpacesString + "|"
     }
     
-    private func getStatisticsString() -> String {
+    fileprivate func getStatisticsString() -> String {
         return "Found \(results.reduce(0) { $0 + $1.warnings }) violations in \(results.count) files."
     }
     
-    private func getResultsString(warnings: Int) -> String {
+    fileprivate func getResultsString(_ warnings: Int) -> String {
         let checkmark = "\u{001B}[0;32m✓\u{001B}[0m"
         let warning = "⚠️"
         let explosion = "\u{1F4A5}"
@@ -51,7 +51,7 @@ struct CLIReporter {
             return "  \(checkmark) "
         } else if warnings < 100 {
             let string = " \(warnings)" + warning
-            return string.stringByPaddingToLength(5, withString: " ", startingAtIndex: 0)
+            return string.padding(toLength: 5, withPad: " ", startingAt: 0)
         } else {
             return "  \(explosion) "
         }
@@ -60,6 +60,6 @@ struct CLIReporter {
 
 extension Array where Element: StringType {
     var maxLength: Int {
-        return self.reduce(0) { max($0, String($1).characters.count) }
+        return self.reduce(0) { Swift.max($0, String(describing: $1).characters.count) }
     }
 }

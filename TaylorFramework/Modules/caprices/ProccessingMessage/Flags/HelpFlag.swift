@@ -27,16 +27,16 @@ final class HelpFlag: Flag {
         }
     }
     
-    func printHelp(path: String, _ ext: String) throws {
-        let bundle = NSBundle(forClass: self.dynamicType)
-        guard let helpFile = bundle.pathForResource(path, ofType: ext) else {
-            throw CommandLineError.CannotReadFromHelpFile
+    func printHelp(_ path: String, _ ext: String) throws {
+        let bundle = Bundle(for: type(of: self))
+        guard let helpFile = bundle.path(forResource: path, ofType: ext) else {
+            throw CommandLineError.cannotReadFromHelpFile
         }
         do {
             let helpMessage = try String(contentsOfFile: helpFile)
-            let infoPrinter = Printer(verbosityLevel: .Info)
+            let infoPrinter = Printer(verbosityLevel: .info)
             infoPrinter.printInfo(helpMessage)
-        } catch { throw CommandLineError.CannotReadFromHelpFile }
+        } catch { throw CommandLineError.cannotReadFromHelpFile }
     }
     
 }

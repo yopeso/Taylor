@@ -15,28 +15,28 @@ class NSFileManagerTests: QuickSpec {
     override func spec() {
         describe("NSFileManager") {
             it("should remove file at path") {
-                let manager = NSFileManager.defaultManager()
+                let manager = FileManager.default
                 let path = manager.currentDirectoryPath as NSString
-                let filePath = path.stringByAppendingPathComponent("file.txt") as String
+                let filePath = path.appendingPathComponent("file.txt") as String
                 let content = "ia ibu"
                 do {
-                    try content.writeToFile(filePath, atomically: true, encoding: NSUTF8StringEncoding)
+                    try content.write(toFile: filePath, atomically: true, encoding: String.Encoding.utf8)
                 } catch _ { }
-                expect(manager.fileExistsAtPath(filePath)).to(beTrue())
+                expect(manager.fileExists(atPath: filePath)).to(beTrue())
                 manager.removeFileAtPath(filePath)
-                expect(manager.fileExistsAtPath(filePath)).to(beFalse())
+                expect(manager.fileExists(atPath: filePath)).to(beFalse())
             }
             it("should't remove directory at path") {
-                let manager = NSFileManager.defaultManager()
-                expect(manager.fileExistsAtPath(manager.currentDirectoryPath)).to(beTrue())
-                if manager.fileExistsAtPath((manager.currentDirectoryPath as NSString).stringByAppendingPathComponent("blablabla")) {
+                let manager = FileManager.default
+                expect(manager.fileExists(atPath: manager.currentDirectoryPath)).to(beTrue())
+                if manager.fileExists(atPath: (manager.currentDirectoryPath as NSString).appendingPathComponent("blablabla")) {
                     do {
-                        try manager.removeItemAtPath((manager.currentDirectoryPath as NSString).stringByAppendingPathComponent("blablabla"))
+                        try manager.removeItem(atPath: (manager.currentDirectoryPath as NSString).appendingPathComponent("blablabla"))
                     } catch let error {
                         print(error)
                     }
                 }
-                expect(manager.fileExistsAtPath((manager.currentDirectoryPath as NSString).stringByAppendingPathComponent("blablabla"))).to(beFalse())
+                expect(manager.fileExists(atPath: (manager.currentDirectoryPath as NSString).appendingPathComponent("blablabla"))).to(beFalse())
             }
         }
     }

@@ -14,11 +14,11 @@ extension File {
         return startOffset + size + 1
     }
     
-    static func numberOfCharacters(m m: Double, b: Double, numberOfLines: Int) -> Int {
+    static func numberOfCharacters(m: Double, b: Double, numberOfLines: Int) -> Int {
         return Double(numberOfLines).linearFunction(slope: m, intercept: b).intValue
     }
     
-    func chunkSize(numberOfLines: Int) -> Int {
+    func chunkSize(_ numberOfLines: Int) -> Int {
         if numberOfLines < 500 { return contents.characters.count }
         if numberOfLines < 1000 { return File.numberOfCharacters(m: 4, b: -500, numberOfLines: numberOfLines) }
         if numberOfLines < 2000 { return File.numberOfCharacters(m: 1.5, b: 2000, numberOfLines: numberOfLines) }
@@ -37,7 +37,7 @@ extension File {
         
         for lines in chunks {
             let offset = (files.lastObject as? File)?.startOffset ?? 0
-            files.addObject(File(lines: lines.map { $0.content },
+            files.add(File(lines: lines.map { $0.content },
                 startLine: lines[0].index,
                 startOffset: offset))
         }
@@ -45,7 +45,7 @@ extension File {
         return files as AnyObject as! [File] // Safe to unwrap, all objects are `File`
     }
     
-    func getLineRange(offset: Int) -> Int {
-        return startLine + getLineByOffset(offset - startOffset, length: 0).0 - 1
+    func getLineRange(_ offset: Int) -> Int {
+        return startLine + getLineByOffset(offset: offset - startOffset, length: 0).0 - 1
     }
 }

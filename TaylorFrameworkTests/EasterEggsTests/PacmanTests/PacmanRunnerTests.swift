@@ -15,7 +15,7 @@ class MockPacmanRunner: PacmanRunner {
     
     override func input() -> String { return (play) ? "Y" : "N" }
     
-    override func runEasterEgg(paths: [Path]) { }
+    override func runEasterEgg(_ paths: [Path]) { }
 }
 
 class PacmanRunnerTests: QuickSpec {

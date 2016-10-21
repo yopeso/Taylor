@@ -32,30 +32,30 @@ struct Violation {
         self.rule = rule
         self.message = violationData.message
         self.value = violationData.value
-        self.path = violationData.path.stringByReplacingOccurrencesOfString("\\", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        self.path = violationData.path.replacingOccurrences(of: "\\", with: "", options: NSString.CompareOptions.literal, range: nil)
     }
     
     func toDictionary() -> Dictionary<String, AnyObject> {
         var violationDictionary = Dictionary<String, AnyObject>()
-        violationDictionary["path"] = path
-        violationDictionary["rule"] = rule.rule
-        violationDictionary["message"] = message
-        violationDictionary["priority"] = rule.priority
+        violationDictionary["path"] = path as AnyObject?
+        violationDictionary["rule"] = rule.rule as AnyObject?
+        violationDictionary["message"] = message as AnyObject?
+        violationDictionary["priority"] = rule.priority as AnyObject?
         if let classComponent = component.classComponent() {
             if let name = classComponent.name {
-                violationDictionary["class"] = name
+                violationDictionary["class"] = name as AnyObject?
             }
         }
-        if component.type == .Function {
-            violationDictionary["method"] = component.name
+        if component.type == .function {
+            violationDictionary["method"] = component.name as AnyObject?
         }
-        violationDictionary["value"] = value
-        violationDictionary["externalInfoUrl"] = rule.externalInfoUrl
+        violationDictionary["value"] = value as AnyObject?
+        violationDictionary["externalInfoUrl"] = rule.externalInfoUrl as AnyObject?
         violationDictionary += component.range.serialize()
         return violationDictionary
     }
     
-    private func XMLNodes() -> [NSXMLNode] {
+    fileprivate func XMLNodes() -> [XMLNode] {
         var attributes = component.range.XMLAttributes()
         attributes = addNodeWithName("rule", stringValue: rule.rule, toAttributes: attributes)
         if let classComponent = component.classComponent() {
@@ -63,7 +63,7 @@ struct Violation {
                 attributes = addNodeWithName("class", stringValue: name, toAttributes: attributes)
             }
         }
-        if component.type == ComponentType.Function {
+        if component.type == ComponentType.function {
             if let name = component.name {
                 attributes = addNodeWithName("method", stringValue: name, toAttributes: attributes)
             }
@@ -75,9 +75,9 @@ struct Violation {
         return attributes
     }
     
-    private func addNodeWithName(name: String, stringValue: String, toAttributes attributes: [NSXMLNode]) -> [NSXMLNode] {
+    fileprivate func addNodeWithName(_ name: String, stringValue: String, toAttributes attributes: [XMLNode]) -> [XMLNode] {
         var newArray = attributes
-        if let node = NSXMLNode.attributeWithName(name, stringValue: stringValue) as? NSXMLNode {
+        if let node = XMLNode.attribute(withName: name, stringValue: stringValue) as? XMLNode {
             newArray.append(node)
             return newArray
         }
@@ -85,8 +85,8 @@ struct Violation {
         return attributes
     }
     
-    func toXMLElement() -> NSXMLElement {
-        let violationElement = NSXMLElement(name: "violation", stringValue: message)
+    func toXMLElement() -> XMLElement {
+        let violationElement = XMLElement(name: "violation", stringValue: message)
         return XMLNodes().reduce(violationElement) {
             $0.addAttribute($1)
             return $0

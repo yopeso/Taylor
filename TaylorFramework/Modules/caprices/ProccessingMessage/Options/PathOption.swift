@@ -12,16 +12,16 @@ let PathLong = "--path"
 let PathShort = "-p"
 
 struct PathOption: ExecutableOption {
-    var analyzePath = NSFileManager.defaultManager().currentDirectoryPath
+    var analyzePath = FileManager.default.currentDirectoryPath
     var optionArgument: Path
     let name = "PathOption"
     
-    init(argument: Path = String.Empty) {
+    init(argument: Path = "") {
         optionArgument = argument
     }
     
     
-    func executeOnDictionary(inout dictionary: Options) {
+    func executeOnDictionary(_ dictionary: inout Options) {
         dictionary[ResultDictionaryPathKey] = [optionArgument.absolutePath()]
     }
     

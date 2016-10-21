@@ -17,7 +17,7 @@ let VerbosityLevelError = "error"
 
 struct VerbosityOption: InformationalOption {
     var isValid = Bool(false)
-    var analyzePath = NSFileManager.defaultManager().currentDirectoryPath
+    var analyzePath = FileManager.default.currentDirectoryPath
     var optionArgument: String
     let name = "VerbosityOption"
     
@@ -35,20 +35,20 @@ struct VerbosityOption: InformationalOption {
     func verbosityLevelFromOption() -> VerbosityLevel {
         switch optionArgument {
         case VerbosityLevelInfo:
-            return VerbosityLevel.Info
+            return .info
         case VerbosityLevelWarning:
-            return VerbosityLevel.Warning
+            return .warning
         default:
-            return VerbosityLevel.Error
+            return .error
         }
     }
     
-    func validateArgumentComponents(components: [String]) throws {
+    func validateArgumentComponents(_ components: [String]) throws {
         guard let firstElement = components.first else {
-            throw CommandLineError.InvalidInformationalOption("\nNo verbosity option specified")
+            throw CommandLineError.invalidInformationalOption("\nNo verbosity option specified")
         }
         guard [VerbosityLevelError, VerbosityLevelInfo, VerbosityLevelWarning].contains(firstElement) else {
-            throw CommandLineError.InvalidInformationalOption("\nInvalid verbosity argument was indicated")
+            throw CommandLineError.invalidInformationalOption("\nInvalid verbosity argument was indicated")
         }
     }
     

@@ -9,23 +9,23 @@
 import Foundation
 
 final class Timer {
-    var startDate: NSDate?
+    var startDate: Date?
     
     init() {}
     
     func start() {
-        startDate = NSDate()
+        startDate = Date()
     }
     
-    func stop() -> NSTimeInterval {
+    func stop() -> TimeInterval {
         guard let startDate = self.startDate else { return 0 }
         
-        let timeInterval = NSDate().timeIntervalSinceDate(startDate)
+        let timeInterval = Date().timeIntervalSince(startDate)
         self.startDate = nil
         return timeInterval
     }
     
-    func profile(block: () -> ()) -> NSTimeInterval {
+    func profile(_ block: () -> ()) -> TimeInterval {
         start()
         block()
         return stop()

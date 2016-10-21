@@ -6,7 +6,7 @@
 //  Copyright © 2015 YOPESO. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
 extension Array {
     /**
@@ -15,21 +15,21 @@ extension Array {
     The `transform` operation is parralelized to take advantage of all the
     proccessor cores.
     */
-    func pmap<T>(transform: (Element -> T)) -> [T] {
+    func pmap<T>(_ transform: @escaping ((Element) -> T)) -> [T] {
         guard !self.isEmpty else { return [] }
         
         var result: [(Int, [T])] = []
         
-        let group = dispatch_group_create()
-        let lock = dispatch_queue_create("com.queue.swift.extensions.pmap", DISPATCH_QUEUE_SERIAL)
+        let group = DispatchGroup()
+        let lock = DispatchQueue(label: "com.queue.swift.extensions.pmap", attributes: [])
         
-        let step: Int = max(1, self.count / NSProcessInfo.processInfo().activeProcessorCount) // step can never be 0
+        let step = Swift.max(1, self.count / ProcessInfo.processInfo.activeProcessorCount) // step can never be 0
         
-        0.stride(to: self.count, by: 1).forEach { stepIndex in
+        stride(from: 0, to: self.count, by: 1).forEach { stepIndex in
             let capturedStepIndex = stepIndex
             
             var stepResult: [T] = []
-            dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async(group: group) {
                 for i in (capturedStepIndex * step)..<((capturedStepIndex + 1) * step) {
                     if i < self.count {
                         let mappedElement = transform(self[i])
@@ -37,13 +37,13 @@ extension Array {
                     }
                 }
                 
-                dispatch_group_async(group, lock) { result += [(capturedStepIndex, stepResult)] }
+                lock.async(group: group) { result += [(capturedStepIndex, stepResult)] }
             }
         }
         
-        dispatch_group_wait(group, DISPATCH_TIME_FOREVER)
+        _ = group.wait(timeout: DispatchTime.distantFuture)
         
-        return result.sort { $0.0 < $1.0 }.flatMap { $0.1 }
+        return result.sorted { $0.0 < $1.0 }.flatMap { $0.1 }
     }
 }
 

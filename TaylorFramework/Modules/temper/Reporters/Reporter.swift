@@ -147,8 +147,8 @@ struct Reporter: Reporting {
  * XCODE
  */
 
-func reporterWithName(string: String) -> Reporting {
-    switch string.uppercaseString {
+func reporterWithName(_ string: String) -> Reporting {
+    switch string.uppercased() {
     case "JSON": return JSONReporter()
     case "PMD": return PMDReporter()
     case "XCODE": return XcodeReporter()

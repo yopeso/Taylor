@@ -2,7 +2,9 @@ language: objective-c
 xcode_project: Taylor.xcodeproj
 xcode_scheme: Taylor
 xcode_sdk: macosx
-osx_image: xcode7.3
-script: ./test.sh
+osx_image: xcode8.1
+script: 
+  - ./build.sh
+  - ./test.sh
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash) -J 'TaylorFramework'
