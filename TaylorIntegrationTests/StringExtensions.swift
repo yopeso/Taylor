@@ -11,17 +11,17 @@ import Foundation
 extension String {
     
     public func stringWithoutLastComponent() -> String {
-        let components = self.componentsSeparatedByString("/")
+        let components = self.components(separatedBy: "/")
         if components.count == 0 || components.count == 1 {
             return self
         }
         
-        return components[0..<components.count - 1].joinWithSeparator("/")
+        return components[0..<components.count - 1].joined(separator: "/")
     }
 
     public var fileExtension : String {
-        let components = self.componentsSeparatedByString(".")
-        if let lastComponent = components.last where components.count > 1 {
+        let components = self.components(separatedBy: ".")
+        if let lastComponent = components.last , components.count > 1 {
             return lastComponent
         }
         
@@ -30,17 +30,17 @@ extension String {
 
 
     public var stringByTrimmingTheExtension : String {
-        let components = self.componentsSeparatedByString(".")
+        let components = self.components(separatedBy: ".")
         if components.count > 2 {
-            return components[0..<components.count - 1].joinWithSeparator(".")
+            return components[0..<components.count - 1].joined(separator: ".")
         }
         
         return components.first!
     }
     
     
-    public func stringByAppendingPathComponent(component: String) -> String {
-        return (self as NSString).stringByAppendingPathComponent(component)
+    public func stringByAppendingPathComponent(_ component: String) -> String {
+        return (self as NSString).appendingPathComponent(component)
     }
     
     

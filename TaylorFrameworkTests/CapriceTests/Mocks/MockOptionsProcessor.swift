@@ -11,20 +11,20 @@ import ExcludesFileReader
 
 class MockOptionsProcessor: OptionsProcessor {
     
-    override func setDefaultValuesToResultDictionary(inout dictionary: Options) {
+    override func setDefaultValuesToResultDictionary(_ dictionary: inout Options) {
         setDefaultPathAndTypeToDictionary(&dictionary)
         if !isExcludesFileIndicated { setDefaultExcludesToDictionary(&dictionary) }
     }
     
     
-    private func setDefaultPathAndTypeToDictionary(inout dictionary: Options) {
+    fileprivate func setDefaultPathAndTypeToDictionary(_ dictionary: inout Options) {
         let defaultDictionary = MockMessageProcessor().defaultDictionaryWithPathAndType()
         dictionary.setIfNotExist(defaultDictionary[ResultDictionaryPathKey] ?? [], forKey: ResultDictionaryPathKey)
         dictionary.setIfNotExist(defaultDictionary[ResultDictionaryTypeKey] ?? [], forKey: ResultDictionaryTypeKey)
     }
     
     
-    private func setDefaultExcludesToDictionary(inout dictionary: Options) {
+    fileprivate func setDefaultExcludesToDictionary(_ dictionary: inout Options) {
         var excludePaths = [String]()
         do {
             let excludesFilePath = MessageProcessor().defaultExcludesFilePathForDictionary(dictionary)
@@ -36,7 +36,7 @@ class MockOptionsProcessor: OptionsProcessor {
     }
     
     
-    private func addExcludePathsToDictionary(inout dictionary: Options, excludePaths:[String]) {
+    fileprivate func addExcludePathsToDictionary(_ dictionary: inout Options, excludePaths:[String]) {
         if excludePaths.isEmpty { return }
         dictionary.add(excludePaths, toKey: ResultDictionaryExcludesKey)
     }

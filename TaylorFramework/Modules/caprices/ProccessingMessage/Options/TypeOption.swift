@@ -12,16 +12,16 @@ let TypeLong = "--type"
 let TypeShort = "-t"
 
 struct TypeOption: ExecutableOption {
-    var analyzePath = NSFileManager.defaultManager().currentDirectoryPath
+    var analyzePath = FileManager.default.currentDirectoryPath
     var optionArgument: String
     let name = "TypeOption"
     
-    init(argument: String = String.Empty) {
+    init(argument: String = "") {
         optionArgument = argument
     }
     
     
-    func executeOnDictionary(inout dictionary: Options) {
+    func executeOnDictionary(_ dictionary: inout Options) {
         dictionary[ResultDictionaryTypeKey] = [optionArgument]
     }
     

@@ -44,7 +44,7 @@ protocol Rule {
         :returns: Int? value The value of the violation, if the component is violation the rule
     */
     
-    func checkComponent(component: Component) -> Result
+    func checkComponent(_ component: Component) -> Result
     
     /**
         The method format the message for reporters
@@ -55,5 +55,5 @@ protocol Rule {
         :returns: String The formatted message for reporters
     */
     
-    func formatMessage(name: String, value: Int) -> String
+    func formatMessage(_ name: String, value: Int) -> String
 }

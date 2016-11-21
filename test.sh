@@ -1,12 +1,6 @@
 #! /bin/bash
 
-TEST_CMD="xcodebuild -scheme Taylor -sdk macosx10.11 build test"
+TEST_CMD="xcodebuild test -scheme Taylor -sdk macosx -enableCodeCoverage YES"
 
-which -s xcpretty
-XCPRETTY_INSTALLED=$?
-
-if [[ $TRAVIS || $XCPRETTY_INSTALLED == 0 ]]; then
-  eval "${TEST_CMD} | xcpretty"
-else
-  eval "$TEST_CMD"
-fi
+# Run without xcpretty due to a bug that leads to incorrect coverage data ¯\_(ツ)_/¯
+eval "$TEST_CMD"

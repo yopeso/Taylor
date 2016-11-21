@@ -15,7 +15,7 @@ class NumberOfMethodsInClassRuleTests: QuickSpec {
     override func spec() {
         describe("Number Of Methods In Class Rule") {
             it("should not check the non-class components") {
-                let component = Component(type: .For, range: ComponentRange(sl: 0, el: 0), name: "blabla")
+                let component = Component(type: .for, range: ComponentRange(sl: 0, el: 0), name: "blabla")
                 let result = self.rule.checkComponent(component)
                 expect(result.isOk).to(beTrue())
                 expect(result.message).to(beNil())

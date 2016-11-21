@@ -17,7 +17,7 @@ struct InformationalOptionsFactory {
     var infoOptions: [InformationalOption]
     var reporterTypes = [OutputReporter]()
     var customizationRules = CustomizationRule()
-    var verbosityLevel = VerbosityLevel.Error
+    var verbosityLevel = VerbosityLevel.error
     
     init() {
         self.init(infoOptions: [])
@@ -30,7 +30,7 @@ struct InformationalOptionsFactory {
         verbosityLevel = getVerbosityLevel()
     }
     
-    func filterClassesOfType(name: String) -> [InformationalOption] {
+    func filterClassesOfType(_ name: String) -> [InformationalOption] {
         return infoOptions.filter { $0.name == name }
     }
     
@@ -53,7 +53,7 @@ struct InformationalOptionsFactory {
             $0 as! VerbosityOption
         }
         guard verbosityOptions.count == 1 else {
-            return VerbosityLevel.Error
+            return .error
         }
         return verbosityOptions[0].verbosityLevelFromOption()
     }

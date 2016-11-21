@@ -13,10 +13,9 @@ import SourceKittenFramework
 @testable import TaylorFramework
 
 class MockFileReader {
-    let testEmptyArray = []
-    func pathForFile(fileName: String, fileType: String) -> String {
-        let testBundle = NSBundle(forClass: self.dynamicType)
-        return testBundle.pathForResource(fileName, ofType: fileType)!
+    func pathForFile(_ fileName: String, fileType: String) -> String {
+        let testBundle = Bundle(for: type(of: self))
+        return testBundle.path(forResource: fileName, ofType: fileType)!
     }
 }
 
@@ -33,7 +32,7 @@ class TokenizerTests: QuickSpec {
             it("should build the tree from a given array of components") {
                 let components = arrayComponents()
                 let expectedTree = componentsForArrayComponents()
-                let root = ExtendedComponent(type: .Class, range: OffsetRange(start: 0, end: 11))
+                let root = ExtendedComponent(type: .class, range: OffsetRange(start: 0, end: 11))
                 let returnTree = Tree(file: File(contents: "")).arrayToTree(components, root: root)
                 expect(returnTree).to(equal(expectedTree))
             }

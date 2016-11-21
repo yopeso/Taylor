@@ -10,7 +10,7 @@ let Flags = [HelpShort, HelpLong, VersionLong, VersionShort]
 
 final class FlagBuilder {
     
-    func flag(flag: String) -> Flag {
+    func flag(_ flag: String) -> Flag {
         switch flag {
         case HelpShort, HelpLong:
             return HelpFlag()

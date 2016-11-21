@@ -10,13 +10,20 @@ import Foundation
 import SourceKittenFramework
 
 extension ComponentType {
-    func isA(type: ComponentType) -> Bool { return self == type }
+    func isA(_ type: ComponentType) -> Bool { return self == type }
 }
 
 //MARK: SwiftXPC extensions
 
 protocol StringType {}
-extension String: StringType {}
+extension String: StringType {
+        func substring(with r: Range<Int>) -> String {
+            let start = self.index(self.startIndex, offsetBy: r.lowerBound)
+            let end = self.index(self.startIndex, offsetBy: r.upperBound)
+            
+            return self[start...end]
+        }
+}
 
 extension SourceKitRepresentable {
     var dictionaryValue: [String: SourceKitRepresentable] {
@@ -30,17 +37,17 @@ protocol XPCType {
 
 extension Dictionary where Key: StringType {
     var offsetRange: OffsetRange {
-        let startOffset = SwiftDocKey.publicGetOffset(dictionaryValue) ?? 0
-        let length = SwiftDocKey.publicGetLength(dictionaryValue) ?? 0
+        let startOffset = SwiftDocKey.publicGetOffset(dictionary: dictionaryValue) ?? 0
+        let length = SwiftDocKey.publicGetLength(dictionary: dictionaryValue) ?? 0
         let endOffset = Int(startOffset + length)
         return OffsetRange(start: Int(startOffset), end: endOffset)
     }
-    var typeName: String? { return SwiftDocKey.publicGetTypeName(dictionaryValue) }
-    var name: String? { return SwiftDocKey.getName(dictionaryValue) }
-    var substructure: [SourceKitRepresentable] { return SwiftDocKey.publicGetSubstructure(dictionaryValue) ?? [] }
-    var type: String { return SwiftDocKey.publicGetKind(dictionaryValue) ?? "" }
-    var bodyLength: Int { return Int(SwiftDocKey.publicGetBodyLength(dictionaryValue) ?? 0) }
-    var bodyOffset: Int { return Int(SwiftDocKey.publicGetBodyOffset(dictionaryValue) ?? 0) }
+    var typeName: String? { return SwiftDocKey.publicGetTypeName(dictionary: dictionaryValue) }
+    var name: String? { return SwiftDocKey.getName(dictionary: dictionaryValue) }
+    var substructure: [SourceKitRepresentable] { return SwiftDocKey.publicGetSubstructure(dictionary: dictionaryValue) ?? [] }
+    var type: String { return SwiftDocKey.publicGetKind(dictionary: dictionaryValue) ?? "" }
+    var bodyLength: Int { return Int(SwiftDocKey.publicGetBodyLength(dictionary: dictionaryValue) ?? 0) }
+    var bodyOffset: Int { return Int(SwiftDocKey.publicGetBodyOffset(dictionary: dictionaryValue) ?? 0) }
 }
 
 extension Array {
@@ -50,10 +57,10 @@ extension Array {
     /// :param array to chunk
     /// :param size size of each chunk
     /// :return array elements chunked
-    func chunk(size: Int = 1) -> [[Element]] {
+    func chunk(_ size: Int = 1) -> [[Element]] {
         var result = [[Element]]()
         var chunk = -1
-        for (index, elem) in self.enumerate() {
+        for (index, elem) in self.enumerated() {
             if index % size == 0 {
                 result.append([Element]())
                 chunk += 1
@@ -71,7 +78,7 @@ struct FileInfo {
 }
 
 extension Component {
-    func isA(otherType: ComponentType) -> Bool { return self.type.isA(otherType) }
+    func isA(_ otherType: ComponentType) -> Bool { return self.type.isA(otherType) }
 }
 
 //MARK: Linear function on double x
@@ -81,7 +88,7 @@ extension Double {
         return Int(self)
     }
     
-    func linearFunction(slope slope: Double, intercept: Double) -> Double {
+    func linearFunction(slope: Double, intercept: Double) -> Double {
         return slope * self + intercept
     }
 }
@@ -104,31 +111,31 @@ protocol RangeType {
 }
 
 extension String {
-    func findMatchRanges<T: RangeType>(pattern: String) -> [T] {
+    func findMatchRanges<T: RangeType>(_ pattern: String) -> [T] {
         do {
-            let regex = try NSRegularExpression(pattern: pattern, options: [.DotMatchesLineSeparators])
-            return regex.matchesInString(self, options: [], range: NSMakeRange(0, characters.count)).map {
+            let regex = try NSRegularExpression(pattern: pattern, options: [.dotMatchesLineSeparators])
+            return regex.matches(in: self, options: [], range: NSMakeRange(0, characters.count)).map {
                 T(range: $0.range)
             }
         } catch { return [] }
     }
 }
 
-extension CollectionType {
+extension Collection {
     /// Return a copy of `self` with its elements shuffled
-    func shuffle() -> [Generator.Element] {
+    func shuffle() -> [Iterator.Element] {
         var list = Array(self)
         list.shuffleInPlace()
         return list
     }
 }
 
-extension MutableCollectionType where Index == Int {
+extension MutableCollection where Index == Int {
     mutating func shuffleInPlace() {
         if count < 2 { return }
         
-        for i in 0..<count - 1 {
-            let j = Int(arc4random_uniform(UInt32(count - i))) + i
+        for i in startIndex ..< endIndex - 1 {
+            let j = Int(arc4random_uniform(UInt32(endIndex - i))) + i
             guard i != j else { continue }
             swap(&self[i], &self[j])
         }

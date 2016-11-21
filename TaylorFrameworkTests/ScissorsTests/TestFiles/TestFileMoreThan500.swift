@@ -513,7 +513,7 @@ extension Dictionary where Key: StringType {
 extension File {
     
     func chunkSize(numberOfLines: Int) -> Int {
-        func numberOfCharacters(m m: Double, b: Double) -> Int {
+        func numberOfCharacters(m: Double, b: Double) -> Int {
             return Double(numberOfLines).linearFunction(slope: m, intercept: b).intValue
         }
         
@@ -622,7 +622,7 @@ func ==(lhs: OffsetRange, rhs: OffsetRange) -> Bool {
 //MARK: Linear function on double x
 
 extension Double {
-    func linearFunction(slope slope: Double, intercept: Double) -> Double {
+    func linearFunction(slope: Double, intercept: Double) -> Double {
         return slope * self + intercept
     }
     var intValue: Int {

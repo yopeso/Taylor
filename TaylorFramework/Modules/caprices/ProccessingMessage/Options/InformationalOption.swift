@@ -10,5 +10,5 @@ import Foundation
 
 protocol InformationalOption: Option {
     var argumentSeparator: String { get }
-    func validateArgumentComponents(components: [String]) throws
+    func validateArgumentComponents(_ components: [String]) throws
 }

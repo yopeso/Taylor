@@ -21,7 +21,7 @@ class ComponentTests: QuickSpec {
             var component: Component!
             
             beforeEach {
-                component = Component(type: .Class, range: getTestRange(), name: "Test")
+                component = Component(type: .class, range: getTestRange(), name: "Test")
             }
             
             afterEach {
@@ -46,7 +46,7 @@ class ComponentTests: QuickSpec {
             context("when initialized with type, range, components and name") {
                 
                 it("should contain given type, range, components and name") {
-                    expect(component.type).to(equal(ComponentType.Class))
+                    expect(component.type).to(equal(ComponentType.class))
                     expect(component.range).to(equal(getTestRange()))
                     expect(component.name).to(equal("Test"))
                     expect(component.components).to(equal([]))
@@ -54,22 +54,22 @@ class ComponentTests: QuickSpec {
             }
             
             context("when initialized with type and range") {
-                let componentWithNoName = Component(type: .Class, range: getTestRange())
+                let componentWithNoName = Component(type: .class, range: getTestRange())
                 
                 it("should not contain a name") {
                     expect(componentWithNoName.name).to(beNil())
                 }
                 
                 it("should contain given type, range and components") {
-                    expect(componentWithNoName.type).to(equal(ComponentType.Class))
+                    expect(componentWithNoName.type).to(equal(ComponentType.class))
                     expect(componentWithNoName.range).to(equal(getTestRange()))
                     expect(componentWithNoName.components).to(equal([]))
                 }
             }
             
             context("when makes a child component") {
-                let parent = Component(type: .Class, range: getTestRange())
-                let child = parent.makeComponent(type: .If, range: getTestRange())
+                let parent = Component(type: .class, range: getTestRange())
+                let child = parent.makeComponent(type: .if, range: getTestRange())
                 
                 it("should add the child component to components") {
                     expect(parent.components).to(contain(child))
@@ -82,8 +82,8 @@ class ComponentTests: QuickSpec {
                 context("with type and range") {
                     
                     it("child component should contain type and range") {
-                        let child = component.makeComponent(type: .If, range: getTestRange())
-                        expect(child.type).to(equal(ComponentType.If))
+                        let child = component.makeComponent(type: .if, range: getTestRange())
+                        expect(child.type).to(equal(ComponentType.if))
                         expect(child.range).to(equal(getTestRange()))
                     }
                 }
@@ -92,8 +92,8 @@ class ComponentTests: QuickSpec {
                     
                     it("child component should contain type and range") {
                         let name = "Test"
-                        let childWithName = parent.makeComponent(type: .Function, range: getTestRange(), name: name)
-                        expect(childWithName.type).to(equal(ComponentType.Function))
+                        let childWithName = parent.makeComponent(type: .function, range: getTestRange(), name: name)
+                        expect(childWithName.type).to(equal(ComponentType.function))
                         expect(childWithName.range).to(equal(getTestRange()))
                         expect(childWithName.name).to(equal(name))
                     }
@@ -104,32 +104,32 @@ class ComponentTests: QuickSpec {
             context("when compared with another component") {
 
                 it("should be equal to an identical component with the same parent") {
-                    let component1 = component.makeComponent(type: .Class, range: getTestRange(), name: "Test")
-                    let component2 = component.makeComponent(type: .Class, range: getTestRange(), name: "Test")
+                    let component1 = component.makeComponent(type: .class, range: getTestRange(), name: "Test")
+                    let component2 = component.makeComponent(type: .class, range: getTestRange(), name: "Test")
                     expect(component2).to(equal(component1))
                 }
                 
                 it("should not be equal with a diffent component") {
-                    let functionComponent = Component(type: .Function, range: getTestRange(), name: "Test")
+                    let functionComponent = Component(type: .function, range: getTestRange(), name: "Test")
                     expect(component).toNot(equal(functionComponent))
                     
-                    let componentWithNoName = Component(type: .Function, range: getTestRange())
+                    let componentWithNoName = Component(type: .function, range: getTestRange())
                     expect(component).toNot(equal(componentWithNoName))
                     
                     let range = ComponentRange(sl: 0, el: 1)
-                    let componentWithDifferentRange = Component(type: .Class, range: range)
+                    let componentWithDifferentRange = Component(type: .class, range: range)
                     expect(component).notTo(equal(componentWithDifferentRange))
                 }
                 
                 it("should be equal if they have same components but in different order") {
-                    let component1 = Component(type: .Function, range: getTestRange(), name: "Test")
-                    let component2 = Component(type: .Class, range: getTestRange(), name: "Test")
-                    component.makeComponent(type: component1.type, range: component1.range)
-                    component.makeComponent(type: component2.type, range: component2.range)
+                    let component1 = Component(type: .function, range: getTestRange(), name: "Test")
+                    let component2 = Component(type: .class, range: getTestRange(), name: "Test")
+                    _ = component.makeComponent(type: component1.type, range: component1.range)
+                    _ = component.makeComponent(type: component2.type, range: component2.range)
                     
-                    let testComponent = Component(type: .Class, range: getTestRange())
-                    testComponent.makeComponent(type: component2.type, range: component2.range)
-                    testComponent.makeComponent(type: component1.type, range: component1.range)
+                    let testComponent = Component(type: .class, range: getTestRange(), name: "Test")
+                    _ = testComponent.makeComponent(type: component2.type, range: component2.range)
+                    _ = testComponent.makeComponent(type: component1.type, range: component1.range)
                     
                     expect(testComponent).to(equal(component))
                 }

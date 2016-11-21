@@ -9,5 +9,5 @@
 import Foundation
 
 protocol ExecutableOption: Option {
-    func executeOnDictionary(inout dictionary: Options)
+    func executeOnDictionary(_ dictionary: inout Options)
 }

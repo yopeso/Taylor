@@ -6,8 +6,8 @@
 //  Copyright © 2015 YOPESO. All rights reserved.
 //
 
-enum FinderError: ErrorType {
-    case WrongFilePath(path: String)
+enum FinderError: Error {
+    case wrongFilePath(path: String)
 }
 
 enum ParameterKey: String {

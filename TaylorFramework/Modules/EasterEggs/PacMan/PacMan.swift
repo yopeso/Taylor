@@ -17,7 +17,7 @@ let POINT = Character(".")
 
 final class Pacman {
     let paths: [String]
-    let fileManager = NSFileManager.defaultManager()
+    let fileManager = FileManager.default
     
     /**
     Initialize Pacman with an array of paths
@@ -33,19 +33,29 @@ final class Pacman {
     If no paths were given, no game instance will run.
     */
     func start() {
+        //TODO: Review/redo pacman execution
+        removeMap()
         guard !paths.isEmpty && createMap() else {
             print("An unexpected error occured when launching Pacman.")
             return
         }
+        let task = Process()
         let path = getGamePath()
-        system("cd " + path)
-        system("python " + path + "/pacman.py")
+        
+        task.launchPath = "/usr/bin/open"
+        task.arguments = ["-a", "Terminal.app", path.stringByAppendingPathComponent("pacman.py")]
+        task.launch()
+        sleep(4)
         removeMap()
     }
     
     func getGamePath() -> String {
-        let path =  NSBundle(forClass: self.dynamicType).pathForResource("pacman", ofType: "py")
-        return (path ?? "" as NSString).stringByDeletingLastPathComponent
+        guard let path =  Bundle(for: type(of: self)).path(forResource: "pacman", ofType: "py") else {
+            print("Can't find game path for Easter Egg :o")
+            return ""
+        }
+        
+        return (path as NSString).deletingLastPathComponent
     }
     
     /**
@@ -60,17 +70,17 @@ final class Pacman {
         let mapText = generator.generateMapString(generator.getText()) ?? mapFile.contents
         let dataPath = "\(NSHomeDirectory())" + "/tmp"
         do {
-            if !fileManager.fileExistsAtPath(dataPath) {
-                try fileManager.createDirectoryAtPath(dataPath, withIntermediateDirectories: true, attributes: nil)
+            if !fileManager.fileExists(atPath: dataPath) {
+                try fileManager.createDirectory(atPath: dataPath, withIntermediateDirectories: true, attributes: nil)
             }
-            try mapText.writeToFile(dataPath + "/map.dat", atomically: true, encoding: NSUTF8StringEncoding)
+            try mapText.write(toFile: dataPath + "/map.dat", atomically: true, encoding: String.Encoding.utf8)
             return true
         } catch { return false }
     }
     
     func removeMap() {
         let dataPath = "\(NSHomeDirectory())" + "/tmp"
-        _ = try? fileManager.removeItemAtPath(dataPath)
+        _ = try? fileManager.removeItem(atPath: dataPath)
     }
 }
 
@@ -87,24 +97,24 @@ struct Generator {
         return mapString.characters.filter { $0 == WALL_CONST }.count
     }
     
-    func generateMapString(text: String) -> String? {
+    func generateMapString(_ text: String) -> String? {
         if text.isEmpty || text.characters.count < mapString.characters.count { return nil }
         let endIndex = mapString.characters.count + Int(arc4random_uniform(UInt32(text.characters.count - mapString.characters.count)))
-        let textRange = text.startIndex.advancedBy(endIndex - mapString.characters.count)..<text.startIndex.advancedBy(endIndex)
-        var charactersGenerator = text.substringWithRange(textRange).characters.generate()
+        let textRange = text.characters.index(text.startIndex, offsetBy: endIndex - mapString.characters.count)..<text.characters.index(text.startIndex, offsetBy: endIndex)
+        var charactersGenerator = text.substring(with: textRange).characters.makeIterator()
         let restrictedChars = [PLAYER, GHOST, "\n", POINT]
         return String(mapString.characters.map { character in
             if character != WALL_VAR { return character }
-            guard let replaceChar = charactersGenerator.next() where !restrictedChars.contains(replaceChar) else { return Character(" ") }
+            guard let replaceChar = charactersGenerator.next() , !restrictedChars.contains(replaceChar) else { return Character(" ") }
             return replaceChar
         })
     }
     
     func getText() -> String {
-        var pathsGenerator = paths.shuffle().generate()
+        var pathsGenerator = paths.shuffle().makeIterator()
         let charNumber = countWallCharacters()
         while let path = pathsGenerator.next() {
-            if let file = File(path: path) where charNumber < file.contents.characters.count {
+            if let file = File(path: path), charNumber < file.contents.characters.count {
                 return file.contents
             }
         }

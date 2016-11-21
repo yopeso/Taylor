@@ -24,8 +24,8 @@ final class ExcessiveParameterListRule: Rule {
             }
         }
     }
-    func checkComponent(component: Component) -> Result {
-        if component.type != ComponentType.Function { return (true, nil, nil) }
+    func checkComponent(_ component: Component) -> Result {
+        if component.type != ComponentType.function { return (true, nil, nil) }
         let parametersCount = parametersCountForFunction(component)
         if parametersCount > limit {
             let name = component.name ?? "unknown"
@@ -35,11 +35,11 @@ final class ExcessiveParameterListRule: Rule {
         return (true, nil, parametersCount)
     }
     
-    func formatMessage(name: String, value: Int) -> String {
+    func formatMessage(_ name: String, value: Int) -> String {
         return "Method '\(name)' has \(value) parameters. The allowed number of parameters is \(limit)"
     }
     
-    private func parametersCountForFunction(component: Component) -> Int {
-        return component.components.filter { $0.isA(.Parameter) }.count
+    fileprivate func parametersCountForFunction(_ component: Component) -> Int {
+        return component.components.filter { $0.isA(.parameter) }.count
     }
 }

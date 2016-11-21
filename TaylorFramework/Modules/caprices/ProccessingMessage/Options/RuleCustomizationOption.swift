@@ -20,7 +20,7 @@ let NPathComplexity = "NPathComplexity"
 let ExcessiveParameterList = "ExcessiveParameterList"
 
 struct RuleCustomizationOption: InformationalOption {
-    var analyzePath = NSFileManager.defaultManager().currentDirectoryPath
+    var analyzePath = FileManager.default.currentDirectoryPath
     var optionArgument: String
     let name = "RuleCustomizationOption"
     
@@ -30,9 +30,9 @@ struct RuleCustomizationOption: InformationalOption {
         optionArgument = argument
     }
     
-    func setRuleToDictionary(dictionary: CustomizationRule) -> CustomizationRule {
+    func setRuleToDictionary(_ dictionary: CustomizationRule) -> CustomizationRule {
         var newDictionary = dictionary
-        let ruleComponents = optionArgument.componentsSeparatedByString(argumentSeparator)
+        let ruleComponents = optionArgument.components(separatedBy: argumentSeparator)
         if ruleComponents.count < 2 { return CustomizationRule() }
         let key = ruleComponents.first!
         let value = ruleComponents.second!
@@ -41,20 +41,20 @@ struct RuleCustomizationOption: InformationalOption {
         return newDictionary
     }
     
-    func validateArgumentComponents(components: [String]) throws {
+    func validateArgumentComponents(_ components: [String]) throws {
         if components.isEmpty { return }
         if components.count != 2 {
-            throw CommandLineError.InvalidInformationalOption("\nRule customization argument contains too many \"=\" symbols")
+            throw CommandLineError.invalidInformationalOption("\nRule customization argument contains too many \"=\" symbols")
         }
         if ruleCustomizationTypeDoesNotMatchPosibleTypes(components.first!) {
-            throw CommandLineError.InvalidInformationalOption("\nInvalid rule customization type was indicated")
+            throw CommandLineError.invalidInformationalOption("\nInvalid rule customization type was indicated")
         }
         guard let _ = Int(components.second!) else {
-            throw CommandLineError.InvalidInformationalOption("\nValue for customization rule must be a number")
+            throw CommandLineError.invalidInformationalOption("\nValue for customization rule must be a number")
         }
     }
     
-    private func ruleCustomizationTypeDoesNotMatchPosibleTypes(type: String) -> Bool {
+    fileprivate func ruleCustomizationTypeDoesNotMatchPosibleTypes(_ type: String) -> Bool {
         return ![ExcessiveClassLength, ExcessiveMethodLength, TooManyMethods,
             CyclomaticComplexity, NestedBlockDepth, NPathComplexity, ExcessiveParameterList].contains(type)
     }

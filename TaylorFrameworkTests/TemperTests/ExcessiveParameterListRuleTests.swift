@@ -22,7 +22,7 @@ class TooManyParametersRuleTests: QuickSpec {
                 expect(badResult.message).toNot(beNil())
             }
             it("should return true, nil and nil when there are 3 or less parameters") {
-                component.components = [Component(type: .Parameter, range: ComponentRange(sl: 10, el: 10))]
+                component.components = [Component(type: .parameter, range: ComponentRange(sl: 10, el: 10))]
                 let goodResult = rule.checkComponent(component)
                 expect(goodResult.isOk).to(beTrue())
                 expect(goodResult.value).to(equal(1))

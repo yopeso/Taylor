@@ -32,7 +32,7 @@ class RuleCustomizationOptionTests: QuickSpec {
             it("should throw error if the value for rule is not convertible into int") {
                 let rule = "ExcessiveClassLength=someValue"
                 expect{
-                    try ruleCustomization.validateArgumentComponents(rule.componentsSeparatedByString("="))
+                    try ruleCustomization.validateArgumentComponents(rule.components(separatedBy: "="))
                 }.to(throwError())
             }
             

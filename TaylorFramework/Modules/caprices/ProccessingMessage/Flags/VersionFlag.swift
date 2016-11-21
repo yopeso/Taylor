@@ -14,7 +14,7 @@ struct VersionFlag: Flag {
     let name = "VersionFlag"
     
     func execute() {
-        let infoPrinter = Printer(verbosityLevel: .Info)
+        let infoPrinter = Printer(verbosityLevel: .info)
         infoPrinter.printInfo("Taylor \(version)")
     }
     

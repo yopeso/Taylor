@@ -18,7 +18,7 @@ class FinderTests: QuickSpec {
         
         beforeEach {
             mockFileManager = MockFileManager()
-            finder = Finder(fileManager: mockFileManager, printer: Printer(verbosityLevel: .Error))
+            finder = Finder(fileManager: mockFileManager, printer: Printer(verbosityLevel: .error))
         }
         afterEach {
             mockFileManager = nil

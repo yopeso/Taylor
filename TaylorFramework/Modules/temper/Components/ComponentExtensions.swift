@@ -13,18 +13,18 @@ protocol Serialization {
 }
 
 protocol Deserialization {
-    associatedtype Type
-    static func deserialize(dictionary: [String:AnyObject]) -> Type?
+    associatedtype `Type`
+    static func deserialize(_ dictionary: [String:AnyObject]) -> Type?
 }
 
 extension ComponentRange : Serialization, Deserialization {
-    typealias Type = ComponentRange
+    typealias `Type` = ComponentRange
     
     func serialize() -> [String:AnyObject] {
-        return ["startLine" : startLine, "endLine" : endLine]
+        return ["startLine" : startLine as AnyObject, "endLine" : endLine as AnyObject]
     }
     
-    static func deserialize(dictionary: [String:AnyObject]) -> ComponentRange? {
+    static func deserialize(_ dictionary: [String:AnyObject]) -> ComponentRange? {
         guard let startLine = dictionary["startLine"] as? Int else {
             return nil
         }
@@ -52,11 +52,11 @@ extension ComponentRange {
         :returns: [NSXMLNode] An array with 2 objects: the begin line node and the end line node
     */
     
-    func XMLAttributes() -> [NSXMLNode] {
-        guard let beginLineNode = (NSXMLNode.attributeWithName("beginline", stringValue: String(startLine)) as? NSXMLNode) else {
+    func XMLAttributes() -> [XMLNode] {
+        guard let beginLineNode = (XMLNode.attribute(withName: "beginline", stringValue: String(startLine)) as? XMLNode) else {
             return []
         }
-        guard let endLineNode = (NSXMLNode.attributeWithName("endline", stringValue: String(endLine)) as? NSXMLNode) else {
+        guard let endLineNode = (XMLNode.attribute(withName: "endline", stringValue: String(endLine)) as? XMLNode) else {
             return [beginLineNode]
         }
         
@@ -74,7 +74,7 @@ extension ComponentRange {
     :param: right The dictionary with source keys and values
 */
 
-func +=<KeyType, KeyValue>(inout left: Dictionary<KeyType, KeyValue>, right: Dictionary<KeyType, KeyValue>) {
+func +=<KeyType, KeyValue>(left: inout Dictionary<KeyType, KeyValue>, right: Dictionary<KeyType, KeyValue>) {
     for (key, value) in right {
         left.updateValue(value, forKey: key)
     }
@@ -83,7 +83,7 @@ func +=<KeyType, KeyValue>(inout left: Dictionary<KeyType, KeyValue>, right: Dic
 extension Component {
     
     var isRedundantLine: Bool {
-        return type.isA(.Comment) || type.isA(.EmptyLines)
+        return type.isA(.comment) || type.isA(.emptyLines)
     }
     
     /**
@@ -93,7 +93,7 @@ extension Component {
     */
     
     var isConstructType: Bool {
-        return type.isA(.Class) || type.isA(.Struct) || type.isA(.Enum) || type.isA(.Extension)
+        return type.isA(.class) || type.isA(.struct) || type.isA(.enum) || type.isA(.extension)
     }
     
     /**
@@ -126,7 +126,7 @@ extension Component {
             return nil
         }
         let components = parent.components
-        for (index, value) in components.enumerate() {
+        for (index, value) in components.enumerated() {
             if value === self && index < components.count - 1 {
                 return components[index + 1]
             }

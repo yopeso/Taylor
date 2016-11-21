@@ -9,25 +9,25 @@
 import Foundation
 
 enum ComponentType {
-    case Function, Operator, Subscript, Accessor, Variable
-    case Module
-    case Class, Struct, Enum, EnumElement, Protocol, Extension
-    case AssociatedType, Typealias, Parameter
-    case For, While, Repeat, If, Guard, Switch, Case, Brace, Closure
-    case Array, Dictionary, Object, Element, Init, ConditionalExpression, Pattern, TypeReference
+    case function, `operator`, `subscript`, accessor, variable
+    case module
+    case `class`, `struct`, `enum`, enumElement, `protocol`, `extension`
+    case associatedType, `typealias`, parameter
+    case `for`, `while`, `repeat`, `if`, `guard`, `switch`, `case`, brace, closure
+    case array, dictionary, object, element, `Init`, conditionalExpression, pattern, typeReference
     
-    case And, Or, NilCoalescing, EmptyLines, Comment, Ternary, ElseIf, Else
-    case Other
+    case and, or, nilCoalescing, emptyLines, comment, ternary, elseIf, `else`
+    case other
     
     init(rawValue: String) {
-        self = componentTypeUIDs[rawValue] ?? .Other
+        self = componentTypeUIDs[rawValue] ?? .other
     }
-    
+
     static let ParentComponents = [
-        ComponentType.Function, .Class, .Struct, .Enum, .Protocol, .Extension, .For, .Parameter,
-                    .For, .While, .Repeat, .If, .Guard, .Switch, .Case, .Brace, .Closure
+        ComponentType.function, .class, .struct, .enum, .protocol, .extension, .for, .parameter,
+                    .for, .while, .repeat, .if, .guard, .switch, .case, .brace, .closure
     ]
-    static let BracedComponents = [ComponentType.If, .ElseIf, .For, .While, .Repeat, .Closure, .Guard]
+    static let BracedComponents = [ComponentType.if, .elseIf, .for, .while, .repeat, .closure, .guard]
     
     var isBraced: Bool { return ComponentType.BracedComponents.contains(self) }
     
@@ -36,109 +36,109 @@ enum ComponentType {
 
 let componentTypeUIDs = [
     
-    "source.lang.swift.decl.function.free": ComponentType.Function,
-    "source.lang.swift.ref.function.free": .Function,
-    "source.lang.swift.decl.function.method.instance": .Function,
-    "source.lang.swift.ref.function.method.instance": .Function,
-    "source.lang.swift.decl.function.method.static": .Function,
-    "source.lang.swift.ref.function.method.static": .Function,
-    "source.lang.swift.decl.function.method.class": .Function,
-    "source.lang.swift.ref.function.method.class": .Function,
+    "source.lang.swift.decl.function.free": ComponentType.function,
+    "source.lang.swift.ref.function.free": .function,
+    "source.lang.swift.decl.function.method.instance": .function,
+    "source.lang.swift.ref.function.method.instance": .function,
+    "source.lang.swift.decl.function.method.static": .function,
+    "source.lang.swift.ref.function.method.static": .function,
+    "source.lang.swift.decl.function.method.class": .function,
+    "source.lang.swift.ref.function.method.class": .function,
     
-    "source.lang.swift.decl.function.constructor": .Function,
-    "source.lang.swift.ref.function.constructor": .Function,
-    "source.lang.swift.decl.function.destructor": .Function,
-    "source.lang.swift.ref.function.destructor": .Function,
+    "source.lang.swift.decl.function.constructor": .function,
+    "source.lang.swift.ref.function.constructor": .function,
+    "source.lang.swift.decl.function.destructor": .function,
+    "source.lang.swift.ref.function.destructor": .function,
     
-    "source.lang.swift.decl.function.operator.prefix": .Operator,
-    "source.lang.swift.decl.function.operator.postfix": .Operator,
-    "source.lang.swift.decl.function.operator.infix": .Operator,
-    "source.lang.swift.ref.function.operator.prefix": .Operator,
-    "source.lang.swift.ref.function.operator.postfix": .Operator,
-    "source.lang.swift.ref.function.operator.infix": .Operator,
+    "source.lang.swift.decl.function.operator.prefix": .operator,
+    "source.lang.swift.decl.function.operator.postfix": .operator,
+    "source.lang.swift.decl.function.operator.infix": .operator,
+    "source.lang.swift.ref.function.operator.prefix": .operator,
+    "source.lang.swift.ref.function.operator.postfix": .operator,
+    "source.lang.swift.ref.function.operator.infix": .operator,
     
-    "source.lang.swift.decl.function.subscript": .Subscript,
-    "source.lang.swift.ref.function.subscript": .Subscript,
+    "source.lang.swift.decl.function.subscript": .subscript,
+    "source.lang.swift.ref.function.subscript": .subscript,
     
-    "source.lang.swift.decl.function.accessor.getter": .Accessor,
-    "source.lang.swift.ref.function.accessor.getter": .Accessor,
-    "source.lang.swift.decl.function.accessor.setter": .Accessor,
-    "source.lang.swift.ref.function.accessor.setter": .Accessor,
-    "source.lang.swift.decl.function.accessor.willset": .Accessor,
-    "source.lang.swift.ref.function.accessor.willset": .Accessor,
-    "source.lang.swift.decl.function.accessor.didset": .Accessor,
-    "source.lang.swift.ref.function.accessor.didset": .Accessor,
-    "source.lang.swift.decl.function.accessor.address": .Accessor,
-    "source.lang.swift.ref.function.accessor.address": .Accessor,
-    "source.lang.swift.decl.function.accessor.mutableaddress": .Accessor,
-    "source.lang.swift.ref.function.accessor.mutableaddress": .Accessor,
+    "source.lang.swift.decl.function.accessor.getter": .accessor,
+    "source.lang.swift.ref.function.accessor.getter": .accessor,
+    "source.lang.swift.decl.function.accessor.setter": .accessor,
+    "source.lang.swift.ref.function.accessor.setter": .accessor,
+    "source.lang.swift.decl.function.accessor.willset": .accessor,
+    "source.lang.swift.ref.function.accessor.willset": .accessor,
+    "source.lang.swift.decl.function.accessor.didset": .accessor,
+    "source.lang.swift.ref.function.accessor.didset": .accessor,
+    "source.lang.swift.decl.function.accessor.address": .accessor,
+    "source.lang.swift.ref.function.accessor.address": .accessor,
+    "source.lang.swift.decl.function.accessor.mutableaddress": .accessor,
+    "source.lang.swift.ref.function.accessor.mutableaddress": .accessor,
     
-    "source.lang.swift.decl.var.global": .Variable,
-    "source.lang.swift.ref.var.global": .Variable,
-    "source.lang.swift.decl.var.instance": .Variable,
-    "source.lang.swift.ref.var.instance": .Variable,
-    "source.lang.swift.decl.var.static": .Variable,
-    "source.lang.swift.ref.var.static": .Variable,
-    "source.lang.swift.decl.var.class": .Variable,
-    "source.lang.swift.ref.var.class": .Variable,
-    "source.lang.swift.decl.var.local": .Variable,
-    "source.lang.swift.ref.var.local": .Variable,
+    "source.lang.swift.decl.var.global": .variable,
+    "source.lang.swift.ref.var.global": .variable,
+    "source.lang.swift.decl.var.instance": .variable,
+    "source.lang.swift.ref.var.instance": .variable,
+    "source.lang.swift.decl.var.static": .variable,
+    "source.lang.swift.ref.var.static": .variable,
+    "source.lang.swift.decl.var.class": .variable,
+    "source.lang.swift.ref.var.class": .variable,
+    "source.lang.swift.decl.var.local": .variable,
+    "source.lang.swift.ref.var.local": .variable,
     
-    "source.lang.swift.decl.module": .Module,
-    "source.lang.swift.ref.module": .Module,
+    "source.lang.swift.decl.module": .module,
+    "source.lang.swift.ref.module": .module,
     
-    "source.lang.swift.decl.class": .Class,
-    "source.lang.swift.ref.class": .Class,
+    "source.lang.swift.decl.class": .class,
+    "source.lang.swift.ref.class": .class,
     
-    "source.lang.swift.decl.struct": .Struct,
-    "source.lang.swift.ref.struct": .Struct,
+    "source.lang.swift.decl.struct": .struct,
+    "source.lang.swift.ref.struct": .struct,
     
-    "source.lang.swift.decl.enum": .Enum,
-    "source.lang.swift.ref.enum": .Enum,
+    "source.lang.swift.decl.enum": .enum,
+    "source.lang.swift.ref.enum": .enum,
     
-    "source.lang.swift.decl.enumcase": .EnumElement,
-    "source.lang.swift.decl.enumelement": .EnumElement,
-    "source.lang.swift.ref.enumelement": .EnumElement,
+    "source.lang.swift.decl.enumcase": .enumElement,
+    "source.lang.swift.decl.enumelement": .enumElement,
+    "source.lang.swift.ref.enumelement": .enumElement,
     
-    "source.lang.swift.decl.protocol": .Protocol,
-    "source.lang.swift.ref.protocol": .Protocol,
+    "source.lang.swift.decl.protocol": .protocol,
+    "source.lang.swift.ref.protocol": .protocol,
     
-    "source.lang.swift.decl.extension": .Extension,
-    "source.lang.swift.decl.extension.struct": .Extension,
-    "source.lang.swift.decl.extension.class": .Extension,
-    "source.lang.swift.decl.extension.enum": .Extension,
-    "source.lang.swift.decl.extension.protocol": .Extension,
+    "source.lang.swift.decl.extension": .extension,
+    "source.lang.swift.decl.extension.struct": .extension,
+    "source.lang.swift.decl.extension.class": .extension,
+    "source.lang.swift.decl.extension.enum": .extension,
+    "source.lang.swift.decl.extension.protocol": .extension,
     
-    "source.lang.swift.decl.associatedtype": .AssociatedType,
-    "source.lang.swift.ref.associatedtype": .AssociatedType,
+    "source.lang.swift.decl.associatedtype": .associatedType,
+    "source.lang.swift.ref.associatedtype": .associatedType,
     
-    "source.lang.swift.decl.typealias": .Typealias,
-    "source.lang.swift.ref.typealias": .Typealias,
+    "source.lang.swift.decl.typealias": .typealias,
+    "source.lang.swift.ref.typealias": .typealias,
     
-    "source.lang.swift.decl.var.parameter": .Parameter,
-    "source.lang.swift.ref.generic_type_param": .Parameter,
+    "source.lang.swift.decl.var.parameter": .parameter,
+    "source.lang.swift.ref.generic_type_param": .parameter,
     
-    "source.lang.swift.stmt.foreach": .For,
-    "source.lang.swift.stmt.for": .For,
-    "source.lang.swift.stmt.while": .While,
-    "source.lang.swift.stmt.repeatwhile": .Repeat,
-    "source.lang.swift.stmt.if": .If,
-    "source.lang.swift.stmt.guard": .Guard,
-    "source.lang.swift.stmt.switch": .Switch,
-    "source.lang.swift.stmt.case": .Case,
-    "source.lang.swift.stmt.brace": .Brace,
-    "source.lang.swift.expr.call": .Closure,
-    "source.lang.swift.expr.array": .Array,
-    "source.lang.swift.expr.dictionary": .Dictionary,
-    "source.lang.swift.expr.object_literal": .Object,
+    "source.lang.swift.stmt.foreach": .for,
+    "source.lang.swift.stmt.for": .for,
+    "source.lang.swift.stmt.while": .while,
+    "source.lang.swift.stmt.repeatwhile": .repeat,
+    "source.lang.swift.stmt.if": .if,
+    "source.lang.swift.stmt.guard": .guard,
+    "source.lang.swift.stmt.switch": .switch,
+    "source.lang.swift.stmt.case": .case,
+    "source.lang.swift.stmt.brace": .brace,
+    "source.lang.swift.expr.call": .closure,
+    "source.lang.swift.expr.array": .array,
+    "source.lang.swift.expr.dictionary": .dictionary,
+    "source.lang.swift.expr.object_literal": .object,
     
-    "source.lang.swift.syntaxtype.comment": .Comment,
-    "source.lang.swift.syntaxtype.doccomment": .Comment,
+    "source.lang.swift.syntaxtype.comment": .comment,
+    "source.lang.swift.syntaxtype.doccomment": .comment,
     
-    "source.lang.swift.structure.elem.id": .Element,
-    "source.lang.swift.structure.elem.expr": .Element,
+    "source.lang.swift.structure.elem.id": .element,
+    "source.lang.swift.structure.elem.expr": .element,
     "source.lang.swift.structure.elem.init_expr": .Init,
-    "source.lang.swift.structure.elem.condition_expr": .ConditionalExpression,
-    "source.lang.swift.structure.elem.pattern": .Pattern,
-    "source.lang.swift.structure.elem.typeref": .TypeReference
+    "source.lang.swift.structure.elem.condition_expr": .conditionalExpression,
+    "source.lang.swift.structure.elem.pattern": .pattern,
+    "source.lang.swift.structure.elem.typeref": .typeReference
 ]

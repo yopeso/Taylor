@@ -10,33 +10,33 @@ import Foundation
 
 struct JSONCoordinator: WritingCoordinator {
     
-    func writeViolations(violations: [Violation], atPath path: String) {
-        NSFileManager().removeFileAtPath(path)
+    func writeViolations(_ violations: [Violation], atPath path: String) {
+        FileManager().removeFileAtPath(path)
         let json = generateJSON(violations)
-        var jsonData: NSData?  = nil
+        var jsonData: Data?  = nil
         do {
-            jsonData = try NSJSONSerialization.dataWithJSONObject(json, options: NSJSONWritingOptions.PrettyPrinted)
+            jsonData = try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted)
         } catch {
             print("Error while creating the JSON object.")
         }
         do {
-            try jsonData?.writeToFile(path, options: NSDataWritingOptions.DataWritingWithoutOverwriting)
+            try jsonData?.write(to: URL(fileURLWithPath: path), options: NSData.WritingOptions.withoutOverwriting)
         } catch {
             print("Error while writing the JSON object to file.")
         }
     }
     
-    private func generateJSON(violations: [Violation]) -> [String:[[String:AnyObject]]] {
+    fileprivate func generateJSON(_ violations: [Violation]) -> [String:[[String:AnyObject]]] {
         return ["violation" : violations.map() { $0.toDictionary() }]
     } 
 }
 
-extension NSFileManager {
-    func removeFileAtPath(path: String) {
+extension FileManager {
+    func removeFileAtPath(_ path: String) {
         var isDirectory: ObjCBool = false
-        if !NSFileManager.defaultManager().fileExistsAtPath(path, isDirectory: &isDirectory) && !isDirectory { return }
+        if !FileManager.default.fileExists(atPath: path, isDirectory: &isDirectory) && !isDirectory.boolValue { return }
         do {
-            try NSFileManager.defaultManager().removeItemAtPath(path)
+            try FileManager.default.removeItem(atPath: path)
         } catch { print("Error while removing item at path: \(path)") }
     }
 }

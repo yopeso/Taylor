@@ -43,7 +43,7 @@ class ViolationTests : QuickSpec {
                 expect(violation.component.range).to(equal(range))
             }
             it("should return the correct dictionary from function component") {
-                let classComponent = Component(type: .Class, range: ComponentRange(sl: 0, el: 0), name: "TheClass")
+                let classComponent = Component(type: .class, range: ComponentRange(sl: 0, el: 0), name: "TheClass")
                 let component = self.helper.ifComponent
                 component.parent = classComponent
                 let violation = Violation(component: component, rule: self.aRule, violationData: ViolationData(message: "msg", path: "path", value: 100))
@@ -62,21 +62,21 @@ class ViolationTests : QuickSpec {
                 let element = violation.toXMLElement()
                 expect(element.stringValue).to(equal("msg"))
                 let attributes = element.attributes
-                expect(attributes).to(contain(NSXMLNode.attributeWithName("rule", stringValue: violation.rule.rule) as? NSXMLNode))
+                expect(attributes).to(contain((XMLNode.attribute(withName: "rule", stringValue: violation.rule.rule) as? XMLNode)!))
                 if let classComponent = violation.component.classComponent() {
                     if let name = classComponent.name {
-                        expect(attributes).to(contain(NSXMLNode.attributeWithName("class", stringValue: name) as? NSXMLNode))
+                        expect(attributes).to(contain((XMLNode.attribute(withName: "class", stringValue: name) as? XMLNode)!))
                     }
                 }
-                expect(attributes).to(contain(NSXMLNode.attributeWithName("externalInfoUrl", stringValue: violation.rule.externalInfoUrl) as? NSXMLNode))
-                expect(attributes).to(contain(NSXMLNode.attributeWithName("priority", stringValue: String(violation.rule.priority)) as? NSXMLNode))
-                if self.aComponent.type == ComponentType.Function {
+                expect(attributes).to(contain((XMLNode.attribute(withName: "externalInfoUrl", stringValue: violation.rule.externalInfoUrl) as? XMLNode)!))
+                expect(attributes).to(contain((XMLNode.attribute(withName: "priority", stringValue: String(violation.rule.priority)) as? XMLNode)!))
+                if self.aComponent.type == ComponentType.function {
                     if let name = self.aComponent.name {
-                        expect(attributes).to(contain(NSXMLNode.attributeWithName("method", stringValue: name) as? NSXMLNode))
+                        expect(attributes).to(contain((XMLNode.attribute(withName: "method", stringValue: name) as? XMLNode)!))
                     }
                 }
-                expect(attributes).to(contain(NSXMLNode.attributeWithName("beginline", stringValue: String(self.aComponent.range.startLine)) as? NSXMLNode))
-                expect(attributes).to(contain(NSXMLNode.attributeWithName("endline", stringValue: String(self.aComponent.range.endLine)) as? NSXMLNode))
+                expect(attributes).to(contain((XMLNode.attribute(withName: "beginline", stringValue: String(self.aComponent.range.startLine)) as? XMLNode)!))
+                expect(attributes).to(contain((XMLNode.attribute(withName: "endline", stringValue: String(self.aComponent.range.endLine)) as? XMLNode)!))
             }
             it("should remove backslashes from path when creating the violation") {
                 var containsBackslash = false

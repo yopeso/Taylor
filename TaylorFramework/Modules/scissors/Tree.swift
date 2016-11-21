@@ -26,7 +26,7 @@ struct Tree {
     //MARK: Dictionary to tree methods
     
     func makeTree() -> Component {
-        let root = ExtendedComponent(type: .Other, range: dictionary.offsetRange, names: (nil, nil))
+        let root = ExtendedComponent(type: .other, range: dictionary.offsetRange, names: (nil, nil))
         let noStringsText = replaceStringsWithSpaces(parts.map() { $0.contents })
         let finder = ComponentFinder(text: noStringsText, syntaxMap: syntaxMap)
         let sourcekitComponents = root.appendComponents(dictionary.substructure)
@@ -36,7 +36,7 @@ struct Tree {
         root.processBraces()
         root.insert(finder.additionalComponents)
         root.process()
-        root.filter([.Array, .Dictionary, .Object, .EnumElement])
+        root.filter([.array, .dictionary, .object, .enumElement])
         
         return convertTree(root)
     }
@@ -45,14 +45,14 @@ struct Tree {
     
     //MARK: Conversion to Component type
     
-    func convertTree(root: ExtendedComponent) -> Component {
+    func convertTree(_ root: ExtendedComponent) -> Component {
         let rootComponent = Component(type: root.type, range: ComponentRange(sl: 1, el: file.lines.count))
         convertToComponent(root, componentNode: rootComponent)
         
         return rootComponent
     }
     
-    func convertToComponent(node: ExtendedComponent, componentNode: Component) {
+    func convertToComponent(_ node: ExtendedComponent, componentNode: Component) {
         for component in node.components {
             let child = componentNode.makeComponent(type: component.type,
                 range: offsetToLine(component.offsetRange))
@@ -61,14 +61,14 @@ struct Tree {
         }
     }
     
-    func offsetToLine(offsetRange: OffsetRange) -> ComponentRange {
+    func offsetToLine(_ offsetRange: OffsetRange) -> ComponentRange {
         let startIndex = parts.filter { $0.startOffset <= offsetRange.start }.count - 1
         let endIndex = parts.filter { $0.startOffset <= offsetRange.end }.count - 1
         
         return ComponentRange(sl: parts[startIndex].getLineRange(offsetRange.start), el: parts[endIndex].getLineRange(offsetRange.end))
     }
     
-    func arrayToTree(components: [ExtendedComponent], root: ExtendedComponent) -> ExtendedComponent {
+    func arrayToTree(_ components: [ExtendedComponent], root: ExtendedComponent) -> ExtendedComponent {
         let parent = root
         parent.insert(components)
         
@@ -77,11 +77,11 @@ struct Tree {
     
     //MARK: Text filtering methods
     
-    func replaceStringsWithSpaces(text: [String]) -> String {
+    func replaceStringsWithSpaces(_ text: [String]) -> String {
         do {
-            let regex = try NSRegularExpression(pattern: "\\\".*?\\\"", options: [.DotMatchesLineSeparators])
+            let regex = try NSRegularExpression(pattern: "\\\".*?\\\"", options: [.dotMatchesLineSeparators])
             return text.filter { !$0.isEmpty }.reduce("") {
-                let matchRanges = regex.matchesInString($1, options: [], range: NSMakeRange(0, $1.characters.count)).map { $0.range }
+                let matchRanges = regex.matches(in: $1, options: [], range: NSMakeRange(0, $1.characters.count)).map { $0.range }
                 return $0 + ($1 as NSString).stringByReplacingCharactersInRangesWithSpaces(matchRanges) + "\n"
             }
         } catch { return "" }
@@ -89,9 +89,9 @@ struct Tree {
 }
 
 extension NSString {
-    func stringByReplacingCharactersInRangesWithSpaces(ranges: [NSRange]) -> String {
+    func stringByReplacingCharactersInRangesWithSpaces(_ ranges: [NSRange]) -> String {
         var string = self
-        ranges.forEach { string = string.stringByReplacingCharactersInRange($0, withString: " " * $0.length) }
+        ranges.forEach { string = string.replacingCharacters(in: $0, with: " " * $0.length) as NSString }
         return string as String
     }
 }

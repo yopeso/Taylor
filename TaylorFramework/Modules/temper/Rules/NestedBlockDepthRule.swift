@@ -17,7 +17,7 @@ final class NestedBlockDepthRule: Rule {
         }
     }
     let externalInfoUrl = "http://docs.oclint.org/en/dev/rules/size.html#nestedblockdepth"
-    let admissibleComponents = [ComponentType.If, .While, .For, .Case, .Brace, .Repeat, .Switch, .Brace, .Guard]
+    let admissibleComponents = [ComponentType.if, .while, .for, .case, .brace, .repeat, .switch, .brace, .guard]
     var limit: Int = 3 {
         willSet {
             if newValue > 0 {
@@ -26,8 +26,8 @@ final class NestedBlockDepthRule: Rule {
         }
     }
     
-    func checkComponent(component: Component) -> Result {
-        if component.type != ComponentType.Function { return (true, nil, nil) }
+    func checkComponent(_ component: Component) -> Result {
+        if component.type != ComponentType.function { return (true, nil, nil) }
         let depth = findMaxDepthForComponent(component)
         if depth > limit {
             let name = component.name ?? "unknown"
@@ -38,25 +38,25 @@ final class NestedBlockDepthRule: Rule {
         return (true, nil, depth)
     }
     
-    func formatMessage(name: String, value: Int) -> String {
+    func formatMessage(_ name: String, value: Int) -> String {
         return "Method '\(name)' has a block depth of \(value). The allowed block depth is \(limit)"
     }
     
-    private func findMaxDepthForComponent(component: Component) -> Int {
+    fileprivate func findMaxDepthForComponent(_ component: Component) -> Int {
         if !checkForAdmisibleComponents(component.components) || component.components.count == 0 {
             return 0
         }
         
         let depths = component.components.map { findMaxDepthForComponent($0) }
-        if let maxElement = depths.maxElement() {
+        if let maxElement = depths.max() {
             return maxElement + 1
         }
         
         return 0
     }
     
-    private func checkForAdmisibleComponents(components: [Component]) -> Bool {
-        let commonTypes = Set(components.map({ $0.type })).intersect(Set(admissibleComponents))
+    fileprivate func checkForAdmisibleComponents(_ components: [Component]) -> Bool {
+        let commonTypes = Set(components.map({ $0.type })).intersection(Set(admissibleComponents))
         
         return !commonTypes.isEmpty
     }

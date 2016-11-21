@@ -1,0 +1,10 @@
+coverage:
+  status:
+    patch:
+      framework:  # declare a new status context "framework"
+        threshold: null
+        paths: "TaylorFramework/"  # only include coverage in "TaylorFramework/" folder
+    project:
+      framework: 
+        target: 90%  # we always want 90% coverage here
+        paths: "TaylorFramework/"

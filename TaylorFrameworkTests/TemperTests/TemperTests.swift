@@ -15,15 +15,15 @@ class TemperTests : QuickSpec {
     let helper = TestsHelper()
     override func spec() {
         afterEach {
-            let path = NSFileManager.defaultManager().currentDirectoryPath as NSString
-            let filePath = path.stringByAppendingPathComponent(JSONReporter().defaultFileName())
-            NSFileManager().removeFileAtPath(filePath)
+            let path = FileManager.default.currentDirectoryPath as NSString
+            let filePath = path.appendingPathComponent(JSONReporter().defaultFileName())
+            FileManager().removeFileAtPath(filePath)
         }
         it("should detect the violations and create the file/files") {
             let aComponent = TestsHelper().aComponent
             let anotherComponent = TestsHelper().anotherComponent
             let path =  NSHomeDirectory() as NSString
-            let filePath = path.stringByAppendingPathComponent(JSONReporter().defaultFileName())
+            let filePath = path.appendingPathComponent(JSONReporter().defaultFileName())
             let temper = Temper(outputPath: (path as String))
             aComponent.components = [anotherComponent]
             let content = FileContent(path: "blablabla", components: [aComponent])
@@ -31,13 +31,13 @@ class TemperTests : QuickSpec {
             temper.setReporters([Reporter(reporter)])
             temper.checkContent(content)
             temper.finishTempering()
-            let jsonData = NSData(contentsOfFile: filePath)
+            let jsonData = try? Data(contentsOf: URL(string: filePath)!)
             guard let data = jsonData else {
                 return
             }
             var jsonResult : NSDictionary? = nil
             do {
-                jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary
+                jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary
             } catch {
                 print("Error while creating the JSON object.")
             }
@@ -58,7 +58,7 @@ class TemperTests : QuickSpec {
             }
         }
         it("should set the rules limits") {
-            let temper = Temper(outputPath: NSFileManager.defaultManager().currentDirectoryPath)
+            let temper = Temper(outputPath: FileManager.default.currentDirectoryPath)
             let limits = ["ExcessiveClassLength" : 500, "ExcessiveMethodLength" : 500, "TooManyMethods" : 500,
                           "CyclomaticComplexity" : 500, "NestedBlockDepth" : 500, "NPathComplexity" : 500, "ExcessiveParameterList" : 500]
             temper.setLimits(limits)
@@ -73,7 +73,7 @@ class TemperTests : QuickSpec {
         }
         it("should check the path when initialize the temper") {
             let temper = Temper(outputPath: "gdahdshdsh")
-            expect(temper.path).to(equal(NSFileManager.defaultManager().currentDirectoryPath))
+            expect(temper.path).to(equal(FileManager.default.currentDirectoryPath))
         }
         it("should count the violations by priorities") {
             let rule1 = NPathComplexityRule()

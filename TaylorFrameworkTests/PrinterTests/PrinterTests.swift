@@ -16,7 +16,7 @@ class FakeReporter : Printing {
     
     init() {}
     
-    func printMessage(text: String) {
+    func printMessage(_ text: String) {
         printedText = text
     }
 }
@@ -25,9 +25,9 @@ class VerbosityLevelTests: QuickSpec {
     override func spec() {
         describe("Verbosity Level") {
             it("should contain Info, Warning and Error") {
-                expect(VerbosityLevel.Info).toNot(beNil())
-                expect(VerbosityLevel.Warning).toNot(beNil())
-                expect(VerbosityLevel.Error).toNot(beNil())
+                expect(VerbosityLevel.info).toNot(beNil())
+                expect(VerbosityLevel.warning).toNot(beNil())
+                expect(VerbosityLevel.error).toNot(beNil())
             }
         }
     }
@@ -44,14 +44,14 @@ class PrinterTests: QuickSpec {
             
             context("when initialized with verbosity level and a reporter") {
                 
-                let printer = Printer(verbosityLevel:.Info, reporter: FakeReporter())
+                let printer = Printer(verbosityLevel:.info, reporter: FakeReporter())
                 
                 it("should not be nil") {
                     expect(printer).toNot(beNil())
                 }
                 
                 it("should remember the verbosity level") {
-                    expect(printer.verbosity).to(equal(VerbosityLevel.Info))
+                    expect(printer.verbosity).to(equal(VerbosityLevel.info))
                 }
             }
             
@@ -61,7 +61,7 @@ class PrinterTests: QuickSpec {
                 
                 beforeEach {
                     reporter = FakeReporter()
-                    printer = Printer(verbosityLevel:.Info, reporter: reporter)
+                    printer = Printer(verbosityLevel:.info, reporter: reporter)
                 }
                 
                 it("should output the info messages") {
@@ -87,7 +87,7 @@ class PrinterTests: QuickSpec {
                 
                 beforeEach {
                     reporter = FakeReporter()
-                    printer = Printer(verbosityLevel:.Warning, reporter: reporter)
+                    printer = Printer(verbosityLevel:.warning, reporter: reporter)
                 }
                 
                 it("should not output the info messages") {
@@ -113,7 +113,7 @@ class PrinterTests: QuickSpec {
                 
                 beforeEach {
                     reporter = FakeReporter()
-                    printer = Printer(verbosityLevel:.Error, reporter: reporter)
+                    printer = Printer(verbosityLevel:.error, reporter: reporter)
                 }
                 
                 it("should not output the info messages") {

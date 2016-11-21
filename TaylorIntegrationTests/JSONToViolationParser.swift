@@ -11,18 +11,18 @@ import TaylorFramework
 
 class JSONToViolationParser {
     
-    func parseFile(filePath: String) -> [[String:AnyObject]] {
+    func parseFile(_ filePath: String) -> [[String:AnyObject]] {
         guard filePath.lastPathComponent.fileExtension == "json" else { return [] }
         return getViolationDictionariesFromFile(filePath)
     }
     
     
-    private func getViolationDictionariesFromFile(filePath: String) -> [[String:AnyObject]] {
-        let jsonData = NSData(contentsOfFile: filePath)
+    fileprivate func getViolationDictionariesFromFile(_ filePath: String) -> [[String:AnyObject]] {
+        let jsonData = try? Data(contentsOf: URL(fileURLWithPath: filePath))
         guard let data = jsonData else { return [] }
         var jsonResult : NSDictionary? = nil
         do {
-            jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary
+            jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary
         }
         catch {
             print("Error while creating the JSON object.")

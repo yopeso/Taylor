@@ -8,7 +8,7 @@
 
 import Foundation
 
-let defaultErrorDictionary = [ResultDictionaryErrorKey : [String.Empty]]
+let defaultErrorDictionary = [ResultDictionaryErrorKey : [""]]
 
 extension Int {
     var isEven: Bool { return self % 2 == 0 }
@@ -16,7 +16,7 @@ extension Int {
 }
 
 extension Dictionary where Key: Hashable {
-    mutating func setIfNotExist(value: Value, forKey key: Key) {
+    mutating func setIfNotExist(_ value: Value, forKey key: Key) {
         if self[key] == nil {
             self[key] = value
         }
@@ -24,7 +24,7 @@ extension Dictionary where Key: Hashable {
 }
 
 extension Dictionary where Key: Hashable, Value: Summable {
-    mutating func add(value: Value, toKey key: Key) {
+    mutating func add(_ value: Value, toKey key: Key) {
         if let currentValue = self[key] {
             self[key] = currentValue + value
         } else {
@@ -35,7 +35,7 @@ extension Dictionary where Key: Hashable, Value: Summable {
 
 
 protocol Summable {
-    func +(lhs: Self, rhs: Self) -> Self
+    static func +(lhs: Self, rhs: Self) -> Self
 }
 
 extension Array: Summable { }
@@ -47,17 +47,15 @@ extension Array {
 }
 
 extension Array where Element: StringType {
-    
     var containFlags: Bool {
-        return self.count == 2 && Flags.contains(String(self[1]))
-    }
-    
+        return self.count == 2 && Flags.contains(String(describing: self[1]))
+    }    
 }
 
-extension NSFileManager {
-    func isDirectory(path: String) -> Bool {
+extension FileManager {
+    func isDirectory(_ path: String) -> Bool {
         var isDirectory = ObjCBool(false)
-        self.fileExistsAtPath(path, isDirectory: &isDirectory)
-        return Bool(isDirectory)
+        fileExists(atPath: path, isDirectory: &isDirectory)
+        return isDirectory.boolValue
     }
 }

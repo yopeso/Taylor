@@ -13,12 +13,12 @@ internal typealias Result = (isOk: Bool, message: String?, value: Int?)
 final class Temper {
     
     var rules: [Rule]
-    private let outputPath: String
-    private var violations: [Violation]
-    private var output: OutputCoordinator
-    private var currentPath: String?
-    private var reporters: [Reporter]
-    private var fileWasChecked = false
+    fileprivate let outputPath: String
+    fileprivate var violations: [Violation]
+    fileprivate var output: OutputCoordinator
+    fileprivate var currentPath: String?
+    fileprivate var reporters: [Reporter]
+    fileprivate var fileWasChecked = false
     static var statistics = TemperStatistics()
     var resultsOutput = [ResultOutput]()
     
@@ -40,9 +40,9 @@ final class Temper {
      */
     
     init(outputPath: String) {
-        if !NSFileManager.defaultManager().fileExistsAtPath(outputPath) {
+        if !FileManager.default.fileExists(atPath: outputPath) {
             print("Temper: Wrong output path! The current directory path will be used as output path!")
-            self.outputPath = NSFileManager.defaultManager().currentDirectoryPath
+            self.outputPath = FileManager.default.currentDirectoryPath
         } else {
             self.outputPath = outputPath
         }
@@ -60,7 +60,7 @@ final class Temper {
      :param: content The content of file parsed in components
      */
     
-    func checkContent(content: FileContent) {
+    func checkContent(_ content: FileContent) {
         Temper.statistics.totalFiles += 1
         fileWasChecked = false
         currentPath = content.path
@@ -70,9 +70,9 @@ final class Temper {
         resultsForFile(currentPath, violations: violations.count - initialViolations)
     }
     
-    func resultsForFile(currentPath: String?, violations: Int) {
-        guard let path = currentPath where path.characters.count > outputPath.characters.count else { return }
-        let relativePath: String = (path as NSString).substringFromIndex(outputPath.characters.count + 1)
+    func resultsForFile(_ currentPath: String?, violations: Int) {
+        guard let path = currentPath , path.characters.count > outputPath.characters.count else { return }
+        let relativePath: String = (path as NSString).substring(from: outputPath.characters.count + 1)
         resultsOutput.append(ResultOutput(path: relativePath,
             warnings: violations))
     }
@@ -87,7 +87,7 @@ final class Temper {
      * Plain (text file)
      */
     
-    func setReporters(reporters: [Reporter]) {
+    func setReporters(_ reporters: [Reporter]) {
         self.reporters = reporters
     }
     
@@ -105,7 +105,7 @@ final class Temper {
      :param: limits A dictionary with the rule name as key and unsigned int as value(the limit)
      */
     
-    func setLimits(limits: [String:Int]) {
+    func setLimits(_ limits: [String:Int]) {
         rules = rules.map({ ( rule: Rule) -> Rule in
             var mutableRule = rule
             if let limit = limits[rule.rule] {
@@ -117,7 +117,7 @@ final class Temper {
     
     // Private methods
     
-    private func startAnalazy(components: [Component]) {
+    fileprivate func startAnalazy(_ components: [Component]) {
         for component in components {
             for rule in rules {
                 checkPair(rule: rule, component: component)
@@ -128,7 +128,7 @@ final class Temper {
         }
     }
     
-    private func checkPair(rule rule: Rule, component: Component) {
+    fileprivate func checkPair(rule: Rule, component: Component) {
         guard let path = currentPath else { return }
         let result = rule.checkComponent(component)
         guard !result.isOk else { return }
@@ -141,7 +141,7 @@ final class Temper {
         }
     }
     
-    private func updateStatisticsWithViolation(violation: Violation) {
+    fileprivate func updateStatisticsWithViolation(_ violation: Violation) {
         if !fileWasChecked {
             fileWasChecked = true
             Temper.statistics.filesWithViolations += 1

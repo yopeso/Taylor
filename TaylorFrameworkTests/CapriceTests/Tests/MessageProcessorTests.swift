@@ -14,9 +14,9 @@ class MessageProcessorTests: QuickSpec {
     override func spec() {
         describe("MessageProcesor") {
             var messageProcessor : MessageProcessor!
-            let currentPath = NSFileManager.defaultManager().currentDirectoryPath
+            let currentPath = FileManager.default.currentDirectoryPath
             
-            func forceProcessArguments(options: [String]) -> Options {
+            func forceProcessArguments(_ options: [String]) -> Options {
                 return try! messageProcessor.processArguments(options)
             }
             
@@ -30,7 +30,7 @@ class MessageProcessorTests: QuickSpec {
             
             it("should return current path and type for empty arguments, excludes file does not exists so excludes are not setted") {
                 let inputArguments = [currentPath]
-                expect(forceProcessArguments(inputArguments)).to(equal(["path" : [currentPath], "type" : ["swift"]]))
+                expect(forceProcessArguments(inputArguments) == ["path" : [currentPath], "type" : ["swift"]]).to(beTrue())
             }
             
             it("should return empty dictionary for invalid number of arguments") {
@@ -42,9 +42,9 @@ class MessageProcessorTests: QuickSpec {
                 let pathArgument = "somePath"
                 var inputArguments = [currentPath, PathLong, pathArgument]
                 let absolutePath = currentPath + "/" + pathArgument
-                expect(forceProcessArguments(inputArguments)).to(equal(["path" : [absolutePath], "type" : ["swift"]]))
+                expect(forceProcessArguments(inputArguments) == ["path" : [absolutePath], "type" : ["swift"]]).to(beTrue())
                 inputArguments = [currentPath, PathShort, pathArgument]
-                expect(forceProcessArguments(inputArguments)).to(equal(["path" : [absolutePath], "type" : ["swift"]]))
+                expect(forceProcessArguments(inputArguments) == ["path" : [absolutePath], "type" : ["swift"]]).to(beTrue())
             }
             
             it("should set path and type if they are indicated") {
@@ -52,29 +52,29 @@ class MessageProcessorTests: QuickSpec {
                 let typeArgument = "someType"
                 let inputArguments = [currentPath, PathLong, pathArgument, TypeLong, typeArgument]
                 let absolutePath = currentPath + "/" + pathArgument
-                expect(forceProcessArguments(inputArguments)).to(equal(["path" : [absolutePath], "type" : [typeArgument]]))
+                expect(forceProcessArguments(inputArguments) == ["path" : [absolutePath], "type" : [typeArgument]]).to(beTrue())
             }
             
             it("should persist default path if only type is indicated") {
                 let typeArgument = "someType"
                 var inputArguments = [currentPath, TypeLong, typeArgument]
-                expect(forceProcessArguments(inputArguments)).to(equal(["path" : [currentPath], "type" : [typeArgument]]))
+                expect(forceProcessArguments(inputArguments) == ["path" : [currentPath], "type" : [typeArgument]]).to(beTrue())
                 inputArguments = [currentPath, TypeShort, typeArgument]
-                expect(forceProcessArguments(inputArguments)).to(equal(["path" : [currentPath], "type" : [typeArgument]]))
+                expect(forceProcessArguments(inputArguments) == ["path" : [currentPath], "type" : [typeArgument]]).to(beTrue())
             }
             
             it("should add files") {
                 let fileArgument = "someFile"
                 let inputArguments = [currentPath, FileLong, fileArgument, FileShort, fileArgument]
                 let absolutePathToFile = currentPath + "/" + fileArgument
-                expect(forceProcessArguments(inputArguments)).to(equal(["path" : [currentPath], "files" : [absolutePathToFile, absolutePathToFile], "type" : ["swift"]]))
+                expect(forceProcessArguments(inputArguments) == ["path" : [currentPath], "files" : [absolutePathToFile, absolutePathToFile], "type" : ["swift"]]).to(beTrue())
             }
             
             it("should add exclude paths") {
                 let excludeArgument = "someExcludePath"
                 let inputArguments = [currentPath, ExcludeLong, excludeArgument, ExcludeShort, excludeArgument]
                 let absolutePathToExclude = currentPath + "/" + excludeArgument
-                expect(forceProcessArguments(inputArguments)).to(equal(["path" : [currentPath], "type" : ["swift"], "excludes" : [absolutePathToExclude, absolutePathToExclude]]))
+                expect(forceProcessArguments(inputArguments) == ["path" : [currentPath], "type" : ["swift"], "excludes" : [absolutePathToExclude, absolutePathToExclude]]).to(beTrue())
             }
             
             it("should throw if option does not contain prefix") {
@@ -115,7 +115,7 @@ class MessageProcessorTests: QuickSpec {
                 it("should return same exclude argument if it have .* prefix and sufix") {
                     let excludeArgument = ".*someExcludeFile.*"
                     let inputArguments = [currentPath, ExcludeLong, excludeArgument, ExcludeShort, excludeArgument]
-                    expect(forceProcessArguments(inputArguments)).to(equal(["path" : [currentPath], "type" : ["swift"], "excludes" : [excludeArgument, excludeArgument]]))
+                    expect(forceProcessArguments(inputArguments) == ["path" : [currentPath], "type" : ["swift"], "excludes" : [excludeArgument, excludeArgument]]).to(beTrue())
                 }
                 
                 it("should return empty dictioanry if excludes path contains .* prefix or sufix") {
@@ -143,7 +143,7 @@ class MessageProcessorTests: QuickSpec {
                     let mockMessageProcessor = MockMessageProcessor()
                     let inputArguments = [currentPath]
                     let resultsArrayOfExcludes = ["file.txt".formattedExcludePath(currentPath), "path/to/file.txt".formattedExcludePath(currentPath), "folder".formattedExcludePath(currentPath), "path/to/folder".formattedExcludePath(currentPath)]
-                    expect(try! mockMessageProcessor.processArguments(inputArguments)).to(equal(["path" : [currentPath], "type" : ["swift"], "excludes" : resultsArrayOfExcludes]))
+                    expect(try! mockMessageProcessor.processArguments(inputArguments) == ["path" : [currentPath], "type" : ["swift"], "excludes" : resultsArrayOfExcludes]).to(beTrue())
                 }
                 
                 it("should set exclude path and paths from excludeFile together") {
@@ -153,7 +153,7 @@ class MessageProcessorTests: QuickSpec {
                     let resultsArrayOfExcludes = [somePath, "file.txt".formattedExcludePath(currentPath), "path/to/file.txt".formattedExcludePath(currentPath), "folder".formattedExcludePath(currentPath), "path/to/folder".formattedExcludePath(currentPath)]
                     let inputArguments = [currentPath, ExcludeLong, somePath, ExcludesFileLong, pathToExcludesFile]
                     let dictionary = try! mockMessageProcessor.processArguments(inputArguments)
-                    expect(dictionary).to(equal(["path" : [currentPath], "type" : ["swift"], "excludes" : resultsArrayOfExcludes]))
+                    expect(dictionary == ["path" : [currentPath], "type" : ["swift"], "excludes" : resultsArrayOfExcludes]).to(beTrue())
                 }
                 
                 it("should set only exclude path if excludesFile does not exists at current path (we don't change path of default excludesFile path to one from bundle)") {
@@ -161,7 +161,7 @@ class MessageProcessorTests: QuickSpec {
                     let somePath = "somePath"
                     let inputArguments = [currentPath, PathShort, currentPath, ExcludeLong, somePath]
                     let dictionary = try! mockMessageProcessor.processArguments(inputArguments)
-                    expect(dictionary).to(equal(["path" : [currentPath], "type" : ["swift"], "excludes" : [currentPath + "/" + somePath]]))
+                    expect(dictionary == ["path" : [currentPath], "type" : ["swift"], "excludes" : [currentPath + "/" + somePath]]).to(beTrue())
                 }
                 
             }
@@ -183,13 +183,13 @@ class MessageProcessorTests: QuickSpec {
             context("when getReporters is called") {
                 
                 it("should return an empty array if no reporters was passed as parameters") {
-                    forceProcessArguments([currentPath])
+                    _ = forceProcessArguments([currentPath])
                     expect(messageProcessor.getReporters()).to(beEmpty())
                 }
                 
                 it("should return array with specific dictionaries if reporter was passed") {
-                    forceProcessArguments([currentPath, ReporterLong, "plain:/path/to/plain-output.txt"])
-                    expect(messageProcessor.getReporters()).to(equal([["type" : "plain", "fileName" : "/path/to/plain-output.txt"]]))
+                    _ = forceProcessArguments([currentPath, ReporterLong, "plain:/path/to/plain-output.txt"])
+                    expect(messageProcessor.getReporters() == [["type" : "plain", "fileName" : "/path/to/plain-output.txt"]]).to(beTrue())
                 }
             }
             
@@ -201,12 +201,12 @@ class MessageProcessorTests: QuickSpec {
             context("when getRuleThresholds is called") {
                 
                 it("shoul return an empty dictionary if no rules was indicated") {
-                    forceProcessArguments([currentPath])
+                    _ = forceProcessArguments([currentPath])
                     expect(messageProcessor.getRuleThresholds()).to(beEmpty())
                 }
                 
                 it("should return dictionary with rules if they were indicated") {
-                    forceProcessArguments([currentPath, RuleCustomizationShort, "ExcessiveMethodLength=10"])
+                    _ = forceProcessArguments([currentPath, RuleCustomizationShort, "ExcessiveMethodLength=10"])
                     expect(messageProcessor.getRuleThresholds()).to(equal(["ExcessiveMethodLength" : 10]))
                 }
                 
@@ -220,13 +220,13 @@ class MessageProcessorTests: QuickSpec {
             context("when getVerbosityLevel is called") {
                 
                 it("should return default(error) verbosity if no verbosity was indicated") {
-                    forceProcessArguments([currentPath])
-                    expect(messageProcessor.getVerbosityLevel()).to(equal(VerbosityLevel.Error))
+                    _ = forceProcessArguments([currentPath])
+                    expect(messageProcessor.getVerbosityLevel()).to(equal(VerbosityLevel.error))
                 }
                 
                 it("should return rigth verbosity if that was indicated") {
-                    forceProcessArguments([currentPath, VerbosityLong, "info"])
-                    expect(messageProcessor.getVerbosityLevel()).to(equal(VerbosityLevel.Info))
+                    _ = forceProcessArguments([currentPath, VerbosityLong, "info"])
+                    expect(messageProcessor.getVerbosityLevel()).to(equal(VerbosityLevel.info))
                 }
                 
             }

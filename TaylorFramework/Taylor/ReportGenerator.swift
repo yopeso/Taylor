@@ -19,18 +19,18 @@ final class ReportGenerator {
         self.printer = printer
     }
     
-    func generateReport(rootPath: Path, fileContents: [FileContent]) {
+    func generateReport(_ rootPath: Path, fileContents: [FileContent]) {
         configureTemper(rootPath)
         checkFileContents(fileContents)
     }
     
-    func configureTemper(rootPath: Path) {
+    func configureTemper(_ rootPath: Path) {
         temper = Temper(outputPath: rootPath)
         temper!.setLimits(arguments.thresholds)
         setReporters(temper!)
     }
     
-    func checkFileContents(contents: [FileContent]) {
+    func checkFileContents(_ contents: [FileContent]) {
         guard let temper = temper else { return }
         for content in contents {
             temper.checkContent(content)
@@ -39,7 +39,7 @@ final class ReportGenerator {
         temper.finishTempering()
     }
     
-    func setReporters(temper: Temper) {
+    func setReporters(_ temper: Temper) {
         let reporters = createReporters(arguments.reporterRepresentations)
         if !reporters.isEmpty {
             temper.setReporters(reporters)
@@ -48,11 +48,11 @@ final class ReportGenerator {
         }
     }
     
-    func createReporters(dictionaryRepresentations: [OutputReporter]) -> [Reporter] {
+    func createReporters(_ dictionaryRepresentations: [OutputReporter]) -> [Reporter] {
         return dictionaryRepresentations.map { makeReporterFromRepresentation($0) }
     }
     
-    func makeReporterFromRepresentation(representation: OutputReporter) -> Reporter {
+    func makeReporterFromRepresentation(_ representation: OutputReporter) -> Reporter {
         guard let typeAsString = representation[ReporterTypeKey] else {
             printer.printError("Reporters: No type was indicated.")
             exit(EXIT_FAILURE)
@@ -61,7 +61,7 @@ final class ReportGenerator {
         return reporterWithType(typeAsString, withRepresentation: representation)
     }
     
-    func reporterWithType(type: String, withRepresentation representation: OutputReporter) -> Reporter {
+    func reporterWithType(_ type: String, withRepresentation representation: OutputReporter) -> Reporter {
         if let fileName = representation[ReporterFileNameKey] {
             return Reporter(type: type, fileName: fileName)
         }
