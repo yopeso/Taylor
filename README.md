@@ -6,7 +6,7 @@ A tool aimed to increase Swift code quality, by checking for conformance to code
 
 [![Build Status](https://travis-ci.org/yopeso/Taylor.svg?branch=master)](https://travis-ci.org/yopeso/Taylor)
 [![codecov.io](https://codecov.io/github/yopeso/Taylor/coverage.svg?branch=master)](https://codecov.io/github/yopeso/Taylor?branch=master)
-[![Release version](https://img.shields.io/badge/release-0.2.0-blue.svg)](https://github.com/yopeso/Taylor/releases/tag/0.2.0)
+[![Release version](https://img.shields.io/badge/release-0.2.1-blue.svg)](https://github.com/yopeso/Taylor/releases/tag/0.2.1)
 [![Swift Code](https://img.shields.io/badge/language-swift-orange.svg)](https://github.com/yopeso/Taylor)
 [![Platform](https://img.shields.io/badge/platform-osx-yellow.svg)](https://github.com/yopeso/Taylor)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/yopeso/Taylor/blob/master/LICENSE)

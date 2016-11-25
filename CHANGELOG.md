@@ -1,3 +1,11 @@
+## 0.2.1: Make the wish again
+
+* Fixed dependency issue.
+  [Andrei Raifura](https://github.com/thelvis4)
+  
+* Added a sanity check after Travis build
+  [Andrei Raifura](https://github.com/thelvis4)
+
 ## 0.2.0: Newer and faster
 
 * Migrated to Swift 3.0.1. 
