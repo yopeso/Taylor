@@ -425,8 +425,6 @@
 		69B4DD361BED1FE0005EA7D5 /* TestsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsHelper.swift; sourceTree = "<group>"; };
 		69B4DD371BED1FE0005EA7D5 /* ViolationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViolationTests.swift; sourceTree = "<group>"; };
 		69EA54F81BEE209C007713A6 /* Taylor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Taylor.swift; sourceTree = "<group>"; };
-		9410B72E1DBA053F00F6050E /* SourceKitten.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourceKitten.h; sourceTree = "<group>"; };
-		9410B72F1DBA053F00F6050E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9415BBE31DCCBD930010A813 /* SourceKittenFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SourceKittenFramework.framework; sourceTree = "<group>"; };
 		947250C41DBA1C1600AF6A26 /* ExcludesFileReader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ExcludesFileReader.framework; sourceTree = "<group>"; };
 		94972FDD1DD232DD004625F1 /* PropertyComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyComponents.swift; sourceTree = "<group>"; };
@@ -935,15 +933,6 @@
 			path = TemperTests;
 			sourceTree = "<group>";
 		};
-		9410B72D1DBA053F00F6050E /* SourceKitten */ = {
-			isa = PBXGroup;
-			children = (
-				9410B72E1DBA053F00F6050E /* SourceKitten.h */,
-				9410B72F1DBA053F00F6050E /* Info.plist */,
-			);
-			path = SourceKitten;
-			sourceTree = "<group>";
-		};
 		A327502C1C62833600F7DFA2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -961,7 +950,6 @@
 				69B4DCEC1BED1FE0005EA7D5 /* TaylorFrameworkTests */,
 				542EF2611C076F7F004C7477 /* TaylorIntegrationTests */,
 				692FCBF01BED2E2A00DB5F16 /* Resources */,
-				9410B72D1DBA053F00F6050E /* SourceKitten */,
 				A36B2EF71B98244F0049F590 /* Products */,
 			);
 			sourceTree = "<group>";
