@@ -158,6 +158,7 @@
 		A32750341C62836200F7DFA2 /* Quick.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = A327502E1C62835900F7DFA2 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A32750351C62836600F7DFA2 /* Nimble.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = A327502D1C62835900F7DFA2 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A32750361C62836600F7DFA2 /* Quick.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = A327502E1C62835900F7DFA2 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A327562C1E0417A400517782 /* ParallelizedMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A327562B1E0417A400517782 /* ParallelizedMap.swift */; };
 		B10CAD761C4FC5E500769323 /* Exceptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10CAD751C4FC5E500769323 /* Exceptions.swift */; };
 		B143B20F1BF33B98009BFC99 /* FlagsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B143B20E1BF33B98009BFC99 /* FlagsTests.swift */; };
 		B143B2151BF381D8009BFC99 /* pacman.py in Resources */ = {isa = PBXBuildFile; fileRef = B143B2121BF381D8009BFC99 /* pacman.py */; };
@@ -432,6 +433,7 @@
 		94A444B51DC74B0600D9C6D5 /* Yaml.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Yaml.framework; sourceTree = "<group>"; };
 		A327502D1C62835900F7DFA2 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/Mac/Nimble.framework; sourceTree = SOURCE_ROOT; };
 		A327502E1C62835900F7DFA2 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/Mac/Quick.framework; sourceTree = SOURCE_ROOT; };
+		A327562B1E0417A400517782 /* ParallelizedMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParallelizedMap.swift; sourceTree = "<group>"; };
 		A36B2F001B98244F0049F590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B10CAD751C4FC5E500769323 /* Exceptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exceptions.swift; sourceTree = "<group>"; };
 		B143B20E1BF33B98009BFC99 /* FlagsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlagsTests.swift; sourceTree = "<group>"; };
@@ -757,6 +759,7 @@
 				69B4DC3E1BED169B005EA7D5 /* Timer.swift */,
 				69B4DC3F1BED169B005EA7D5 /* Version.swift */,
 				69517A191BF25C31000B3F1B /* CLIReporter.swift */,
+				A327562B1E0417A400517782 /* ParallelizedMap.swift */,
 			);
 			name = Taylor;
 			path = ../Taylor;
@@ -1313,6 +1316,7 @@
 				69B4DC951BED1BF6005EA7D5 /* Component.swift in Sources */,
 				69B4DC961BED1BF6005EA7D5 /* ComponentRange.swift in Sources */,
 				FF5DF6AA1CBD24B300768DFE /* FileExtensions.swift in Sources */,
+				A327562C1E0417A400517782 /* ParallelizedMap.swift in Sources */,
 				69B4DC971BED1BF6005EA7D5 /* FileContent.swift in Sources */,
 				FF5DF6A81CBD23FE00768DFE /* OffsetRange.swift in Sources */,
 				69B4DC9A1BED1BF6005EA7D5 /* CapricesExtensions.swift in Sources */,
