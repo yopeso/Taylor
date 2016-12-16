@@ -8,25 +8,21 @@
 
 import Quick
 import Nimble
-import Foundation
 @testable import TaylorFramework
 
-class ArrayExtensionsTests : QuickSpec {
+class ParallelizedMapTests : QuickSpec {
     
     override func spec() {
-        describe("Array") {
-            it("should parralelized map an array") {
+        describe("Collection") {
+            it("should map the elements") {
                 let anArray = ["1", "2", "3", "4", "5"]
-                let mappedArray = anArray.pmap({ (element: String) -> Int in
-                    return Int(element)!
-                })
-                for i in 0..<mappedArray.count {
-                    expect(mappedArray[i]).to(equal(Int(anArray[i])))
-                }
+                let mappedArray = anArray.pmap { Int($0)! }
+                
+                expect(mappedArray).to(equal([1, 2, 3, 4, 5]))
             }
-            it("should return empty array") {
+            it("should map an empty array") {
                 let anArray = [String]()
-                let mappedArray = anArray.pmap({ return $0 })
+                let mappedArray = anArray.pmap { return $0 }
                 expect(mappedArray).to(beEmpty())
             }
         }
