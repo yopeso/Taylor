@@ -10,7 +10,7 @@ import Quick
 import Nimble
 @testable import TaylorFramework
 
-class ParallelizedMapTests : QuickSpec {
+class ParallelizedMapTests: QuickSpec {
     
     override func spec() {
         describe("Collection") {
