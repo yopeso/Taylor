@@ -31,16 +31,15 @@ func !=(lhs: [String:AnyObject], rhs: [String:AnyObject]) -> Bool {
     return !(lhs == rhs)
 }
 
-class ReporterComparator {
-    
-    func compareReporters(_ firstReporterPath: String, secondReporterPath: String) -> Bool {
-        var violations1 = JSONToViolationParser().parseFile(firstReporterPath)
+class JSONReportComparator {
+    func compareReport(atPath path1: String, withReportAtPath path2: String) -> Bool {
+        var violations1 = JSONToViolationParser().parseFile(path1)
         violations1 = violations1.map { ( violation: [String:AnyObject]) -> [String:AnyObject] in
             var violationCopy = violation
             violationCopy["path"] = "" as AnyObject?
             return violationCopy
         }
-        var violations2 = JSONToViolationParser().parseFile(secondReporterPath)
+        var violations2 = JSONToViolationParser().parseFile(path2)
         violations2 = violations2.map { (violation: [String:AnyObject]) -> [String:AnyObject] in
             var violationCopy = violation
             violationCopy["path"] = "" as AnyObject?

@@ -21,10 +21,13 @@ options:
         Path to recursive analyse (default current path).
         Must be maximum one path option
 
-    -r, --reporter  type:file_name
-        Saves report in file with given "file_name" and "type" at analyze path.
-        Each "type" must be indicated no more than one time.
-        Supported types : json, pmd, plain, xcode(without path).
+    -r, --reporter  type:output_path
+        Types of reports to be created after analyzing.
+        Currently we support "json", "pmd", "plain" and "xcode" (without "output_path") types or reports.
+        Each "type" must be indicated only once.
+        "output_path" can be a relative path to analyze path, see -p/--path option,
+        or an absolute path, and should also contain reporter name.
+        E.g: "-r json:report.json" or "-r pmd:~/Desktop/Taylor/report.pmd"
 
     -rc, --ruleCustomization rule=value
         Rules for code analisys.

@@ -11,6 +11,16 @@ import Nimble
 import Quick
 @testable import TaylorFramework
 
+fileprivate final class MockFileManagerNotRemovable: FileManager {
+    enum FileManagerError: Error {
+        case notRemovable
+    }
+    
+    override func removeItem(atPath path: String) throws {
+        throw FileManagerError.notRemovable
+    }
+}
+
 class NSFileManagerTests: QuickSpec {
     override func spec() {
         describe("NSFileManager") {
@@ -26,7 +36,19 @@ class NSFileManagerTests: QuickSpec {
                 manager.removeFileAtPath(filePath)
                 expect(manager.fileExists(atPath: filePath)).to(beFalse())
             }
-            it("should't remove directory at path") {
+            
+            it("shouldn't remove file at path if it's not removable") {
+                let manager = MockFileManagerNotRemovable()
+                let path = manager.currentDirectoryPath as NSString
+                let filePath = path.appendingPathComponent("file.txt") as String
+                manager.createFile(atPath: filePath, contents: nil, attributes: nil)
+                expect(manager.fileExists(atPath: filePath)).to(beTrue())
+                manager.removeFileAtPath(filePath)
+                expect(manager.fileExists(atPath: filePath)).to(beTrue())
+                FileManager.default.removeFileAtPath(filePath)
+            }
+            
+            it("shouldn't remove directory at path") {
                 let manager = FileManager.default
                 expect(manager.fileExists(atPath: manager.currentDirectoryPath)).to(beTrue())
                 if manager.fileExists(atPath: (manager.currentDirectoryPath as NSString).appendingPathComponent("blablabla")) {

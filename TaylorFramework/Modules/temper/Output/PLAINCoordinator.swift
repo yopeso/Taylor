@@ -13,9 +13,11 @@ final class PLAINCoordinator: WritingCoordinator {
         FileManager().removeFileAtPath(path)
         let content = generateFileContentFromViolations(violations)
         do {
-            try content.write(toFile: path, atomically: true, encoding: String.Encoding.utf8)
-        } catch _ {
-            print("Error while trying to write the content of string in file.")
+            try content.write(toFile: path, atomically: true, encoding: .utf8)
+        } catch let error {
+            let message = "Error while writing content of string at path: " + path + "\n" +
+                          "Reason: " + error.localizedDescription
+            Printer(verbosityLevel: .error).printError(message)
         }
     }
     
