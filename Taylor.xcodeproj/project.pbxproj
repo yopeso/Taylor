@@ -134,20 +134,11 @@
 		69B4DDA81BED209C005EA7D5 /* emptyExcludes.yml in Copy Files (23 items) */ = {isa = PBXBuildFile; fileRef = 69B4DCF71BED1FE0005EA7D5 /* emptyExcludes.yml */; };
 		69B4DDA91BED209C005EA7D5 /* excludes.yml in Copy Files (23 items) */ = {isa = PBXBuildFile; fileRef = 69B4DCF81BED1FE0005EA7D5 /* excludes.yml */; };
 		69EA54F91BEE209C007713A6 /* Taylor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EA54F81BEE209C007713A6 /* Taylor.swift */; };
-		9415BBE41DCCBD930010A813 /* SourceKittenFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9415BBE31DCCBD930010A813 /* SourceKittenFramework.framework */; };
 		947250C51DBA1C1600AF6A26 /* ExcludesFileReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 947250C41DBA1C1600AF6A26 /* ExcludesFileReader.framework */; };
 		9475A3231DC8EF630081695B /* TaylorFramework.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 69B4DC891BED1BD3005EA7D5 /* TaylorFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9475A3241DC8F2DA0081695B /* SWXMLHash.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 94A444B41DC74B0600D9C6D5 /* SWXMLHash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		94972FDE1DD232DD004625F1 /* PropertyComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94972FDD1DD232DD004625F1 /* PropertyComponents.swift */; };
-		94A444B71DC74B0600D9C6D5 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94A444B41DC74B0600D9C6D5 /* SWXMLHash.framework */; };
-		94A444B81DC74B0600D9C6D5 /* Yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94A444B51DC74B0600D9C6D5 /* Yaml.framework */; };
 		94A444BC1DC75FF600D9C6D5 /* TaylorFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B4DC891BED1BD3005EA7D5 /* TaylorFramework.framework */; };
 		94EAD53A1DBA6F0B004A7801 /* ExcludesFileReader.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 947250C41DBA1C1600AF6A26 /* ExcludesFileReader.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A32355AA1DE83A9C0046EE63 /* SourceKittenFramework.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 9415BBE31DCCBD930010A813 /* SourceKittenFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A32355AB1DE83AA20046EE63 /* Yaml.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 94A444B51DC74B0600D9C6D5 /* Yaml.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A32355AC1DE83AF00046EE63 /* SourceKittenFramework.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 9415BBE31DCCBD930010A813 /* SourceKittenFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A32355AD1DE83AF00046EE63 /* SWXMLHash.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 94A444B41DC74B0600D9C6D5 /* SWXMLHash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A32355AE1DE83AF00046EE63 /* Yaml.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 94A444B51DC74B0600D9C6D5 /* Yaml.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A32355AF1DE83AF00046EE63 /* ExcludesFileReader.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 947250C41DBA1C1600AF6A26 /* ExcludesFileReader.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A32355B01DE83C370046EE63 /* TaylorFramework.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 69B4DC891BED1BD3005EA7D5 /* TaylorFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A327502F1C62835900F7DFA2 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A327502D1C62835900F7DFA2 /* Nimble.framework */; };
@@ -159,6 +150,12 @@
 		A32750351C62836600F7DFA2 /* Nimble.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = A327502D1C62835900F7DFA2 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A32750361C62836600F7DFA2 /* Quick.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = A327502E1C62835900F7DFA2 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A327562C1E0417A400517782 /* ParallelizedMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A327562B1E0417A400517782 /* ParallelizedMap.swift */; };
+		A38166421E1558570046AAD4 /* SourceKittenFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A381663F1E1558570046AAD4 /* SourceKittenFramework.framework */; };
+		A38166431E1558570046AAD4 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A38166401E1558570046AAD4 /* SWXMLHash.framework */; };
+		A38166441E1558570046AAD4 /* Yams.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A38166411E1558570046AAD4 /* Yams.framework */; };
+		A38166451E15587A0046AAD4 /* SourceKittenFramework.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = A381663F1E1558570046AAD4 /* SourceKittenFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A38166461E15587A0046AAD4 /* SWXMLHash.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = A38166401E1558570046AAD4 /* SWXMLHash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A38166471E15587A0046AAD4 /* Yams.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = A38166411E1558570046AAD4 /* Yams.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B10CAD761C4FC5E500769323 /* Exceptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10CAD751C4FC5E500769323 /* Exceptions.swift */; };
 		B143B20F1BF33B98009BFC99 /* FlagsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B143B20E1BF33B98009BFC99 /* FlagsTests.swift */; };
 		B143B2151BF381D8009BFC99 /* pacman.py in Resources */ = {isa = PBXBuildFile; fileRef = B143B2121BF381D8009BFC99 /* pacman.py */; };
@@ -227,9 +224,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A32355AC1DE83AF00046EE63 /* SourceKittenFramework.framework in Copy Frameworks */,
-				A32355AD1DE83AF00046EE63 /* SWXMLHash.framework in Copy Frameworks */,
-				A32355AE1DE83AF00046EE63 /* Yaml.framework in Copy Frameworks */,
+				A38166451E15587A0046AAD4 /* SourceKittenFramework.framework in Copy Frameworks */,
+				A38166461E15587A0046AAD4 /* SWXMLHash.framework in Copy Frameworks */,
+				A38166471E15587A0046AAD4 /* Yams.framework in Copy Frameworks */,
 				A32355AF1DE83AF00046EE63 /* ExcludesFileReader.framework in Copy Frameworks */,
 				9475A3231DC8EF630081695B /* TaylorFramework.framework in Copy Frameworks */,
 			);
@@ -280,9 +277,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				A32355B01DE83C370046EE63 /* TaylorFramework.framework in Copy Files */,
-				A32355AB1DE83AA20046EE63 /* Yaml.framework in Copy Files */,
-				A32355AA1DE83A9C0046EE63 /* SourceKittenFramework.framework in Copy Files */,
-				9475A3241DC8F2DA0081695B /* SWXMLHash.framework in Copy Files */,
 				94EAD53A1DBA6F0B004A7801 /* ExcludesFileReader.framework in Copy Files */,
 				A32750351C62836600F7DFA2 /* Nimble.framework in Copy Files */,
 				A32750361C62836600F7DFA2 /* Quick.framework in Copy Files */,
@@ -426,15 +420,15 @@
 		69B4DD361BED1FE0005EA7D5 /* TestsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsHelper.swift; sourceTree = "<group>"; };
 		69B4DD371BED1FE0005EA7D5 /* ViolationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViolationTests.swift; sourceTree = "<group>"; };
 		69EA54F81BEE209C007713A6 /* Taylor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Taylor.swift; sourceTree = "<group>"; };
-		9415BBE31DCCBD930010A813 /* SourceKittenFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SourceKittenFramework.framework; sourceTree = "<group>"; };
 		947250C41DBA1C1600AF6A26 /* ExcludesFileReader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ExcludesFileReader.framework; sourceTree = "<group>"; };
 		94972FDD1DD232DD004625F1 /* PropertyComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyComponents.swift; sourceTree = "<group>"; };
-		94A444B41DC74B0600D9C6D5 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SWXMLHash.framework; sourceTree = "<group>"; };
-		94A444B51DC74B0600D9C6D5 /* Yaml.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Yaml.framework; sourceTree = "<group>"; };
 		A327502D1C62835900F7DFA2 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/Mac/Nimble.framework; sourceTree = SOURCE_ROOT; };
 		A327502E1C62835900F7DFA2 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/Mac/Quick.framework; sourceTree = SOURCE_ROOT; };
 		A327562B1E0417A400517782 /* ParallelizedMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParallelizedMap.swift; sourceTree = "<group>"; };
 		A36B2F001B98244F0049F590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A381663F1E1558570046AAD4 /* SourceKittenFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SourceKittenFramework.framework; path = Carthage/Build/Mac/SourceKittenFramework.framework; sourceTree = SOURCE_ROOT; };
+		A38166401E1558570046AAD4 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/Mac/SWXMLHash.framework; sourceTree = SOURCE_ROOT; };
+		A38166411E1558570046AAD4 /* Yams.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Yams.framework; path = Carthage/Build/Mac/Yams.framework; sourceTree = SOURCE_ROOT; };
 		B10CAD751C4FC5E500769323 /* Exceptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exceptions.swift; sourceTree = "<group>"; };
 		B143B20E1BF33B98009BFC99 /* FlagsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlagsTests.swift; sourceTree = "<group>"; };
 		B143B2121BF381D8009BFC99 /* pacman.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = pacman.py; sourceTree = "<group>"; };
@@ -482,10 +476,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9415BBE41DCCBD930010A813 /* SourceKittenFramework.framework in Frameworks */,
+				A38166441E1558570046AAD4 /* Yams.framework in Frameworks */,
 				947250C51DBA1C1600AF6A26 /* ExcludesFileReader.framework in Frameworks */,
-				94A444B81DC74B0600D9C6D5 /* Yaml.framework in Frameworks */,
-				94A444B71DC74B0600D9C6D5 /* SWXMLHash.framework in Frameworks */,
+				A38166421E1558570046AAD4 /* SourceKittenFramework.framework in Frameworks */,
+				A38166431E1558570046AAD4 /* SWXMLHash.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1054,9 +1048,9 @@
 		FF967AB31CBC025900A42BDB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9415BBE31DCCBD930010A813 /* SourceKittenFramework.framework */,
-				94A444B41DC74B0600D9C6D5 /* SWXMLHash.framework */,
-				94A444B51DC74B0600D9C6D5 /* Yaml.framework */,
+				A381663F1E1558570046AAD4 /* SourceKittenFramework.framework */,
+				A38166401E1558570046AAD4 /* SWXMLHash.framework */,
+				A38166411E1558570046AAD4 /* Yams.framework */,
 				947250C41DBA1C1600AF6A26 /* ExcludesFileReader.framework */,
 			);
 			path = Frameworks;

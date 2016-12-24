@@ -17,12 +17,12 @@ extension ComponentType {
 
 protocol StringType {}
 extension String: StringType {
-        func substring(with r: Range<Int>) -> String {
-            let start = self.index(self.startIndex, offsetBy: r.lowerBound)
-            let end = self.index(self.startIndex, offsetBy: r.upperBound)
-            
-            return self[start...end]
-        }
+    func substring(with r: Range<Int>) -> String {
+        let start = self.index(self.startIndex, offsetBy: r.lowerBound)
+        let end = self.index(self.startIndex, offsetBy: r.upperBound)
+        
+        return self[start...end]
+    }
 }
 
 extension SourceKitRepresentable {
@@ -44,7 +44,11 @@ extension Dictionary where Key: StringType {
     }
     var typeName: String? { return SwiftDocKey.publicGetTypeName(dictionary: dictionaryValue) }
     var name: String? { return SwiftDocKey.getName(dictionary: dictionaryValue) }
-    var substructure: [SourceKitRepresentable] { return SwiftDocKey.publicGetSubstructure(dictionary: dictionaryValue) ?? [] }
+    var substructure: [SourceKitRepresentable] {
+        var dictionary = dictionaryValue
+        guard let _ = dictionary[SwiftDocKey.substructure.rawValue] as? [SourceKitRepresentable] else { return [] }
+        return SwiftDocKey.publicGetSubstructure(dictionary: dictionary) ?? []
+    }
     var type: String { return SwiftDocKey.publicGetKind(dictionary: dictionaryValue) ?? "" }
     var bodyLength: Int { return Int(SwiftDocKey.publicGetBodyLength(dictionary: dictionaryValue) ?? 0) }
     var bodyOffset: Int { return Int(SwiftDocKey.publicGetBodyOffset(dictionary: dictionaryValue) ?? 0) }
@@ -96,12 +100,12 @@ extension Double {
 //MARK: Operators overloading
 
 /**
-Returns new string consisting of rhs copies of lhs concatenated.
-
-- parameter lhs: string to be repeated.
-
-- parameter rhs: number of times of *lhs* to be concatenated.
-*/
+ Returns new string consisting of rhs copies of lhs concatenated.
+ 
+ - parameter lhs: string to be repeated.
+ 
+ - parameter rhs: number of times of *lhs* to be concatenated.
+ */
 func *(lhs: String, rhs: Int) -> String {
     return (0..<rhs).reduce("") { (string, _) in string + lhs }
 }

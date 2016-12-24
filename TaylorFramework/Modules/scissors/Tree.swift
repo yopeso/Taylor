@@ -9,6 +9,8 @@
 import Foundation
 import SourceKittenFramework
 
+private let sourcekitRequestLock = NSLock()
+
 struct Tree {
     let file: File
     let dictionary: [String: SourceKitRepresentable]
@@ -16,11 +18,15 @@ struct Tree {
     let parts: [File]
     
     init(file: File) {
+        // Requests to sourcekitd stuck when sent simultaneously from multiple threads
+        sourcekitRequestLock.lock()
         let structure = Structure(file: file)
+        sourcekitRequestLock.unlock()
+        
         self.file = file
         dictionary = structure.dictionary
         syntaxMap = structure.syntaxMap
-        self.parts = file.divideByLines()
+        parts = file.divideByLines()
     }
     
     //MARK: Dictionary to tree methods

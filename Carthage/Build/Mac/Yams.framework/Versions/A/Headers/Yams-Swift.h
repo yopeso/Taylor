@@ -115,75 +115,8 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # define SWIFT_UNAVAILABLE __attribute__((unavailable))
 #endif
 #if defined(__has_feature) && __has_feature(modules)
-@import Foundation;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
-
-@interface NSString (SWIFT_EXTENSION(SourceKittenFramework))
-- (NSString * _Nonnull)bridge;
-@end
-
-
-@interface NSString (SWIFT_EXTENSION(SourceKittenFramework))
-- (NSString * _Nonnull)stringByTrimmingTrailingCharactersInSet:(NSCharacterSet * _Nonnull)characterSet;
-- (NSString * _Nonnull)absolutePathRepresentation:(NSString * _Nonnull)rootDirectory;
-@end
-
-
-@interface NSString (SWIFT_EXTENSION(SourceKittenFramework))
-/**
-  Returns a copy of \code
-  self
-  \endcode with the trailing contiguous characters belonging to \code
-  characterSet
-  \endcode
-  removed.
-  \param characterSet Character set to check for membership.
-
-*/
-- (NSString * _Nonnull)trimmingTrailingCharactersIn:(NSCharacterSet * _Nonnull)characterSet;
-/**
-  Returns self represented as an absolute path.
-  \param rootDirectory Absolute parent path if not already an absolute path.
-
-*/
-- (NSString * _Nonnull)absolutePathRepresentationWithRootDirectory:(NSString * _Nonnull)rootDirectory;
-/**
-  Returns a substring with the provided byte range.
-  \param start Starting byte offset.
-
-  \param length Length of bytes to include in range.
-
-*/
-- (NSString * _Nullable)substringWithByteRangeWithStart:(NSInteger)start length:(NSInteger)length;
-/**
-  Returns a substring starting at the beginning of \code
-  start
-  \endcode’s line and ending at the end of \code
-  end
-  \endcode’s
-  line. Returns \code
-  start
-  \endcode’s entire line if \code
-  end
-  \endcode is nil.
-  \param start Starting byte offset.
-
-  \param length Length of bytes to include in range.
-
-*/
-- (NSString * _Nullable)substringLinesWithByteRangeWithStart:(NSInteger)start length:(NSInteger)length;
-- (NSString * _Nullable)substringStartingLinesWithByteRangeWithStart:(NSInteger)start length:(NSInteger)length;
-/**
-  Returns true if self is an Objective-C header file.
-*/
-- (BOOL)isObjectiveCHeaderFile;
-/**
-  Returns true if self is a Swift file.
-*/
-- (BOOL)isSwiftFile;
-@end
-
 #pragma clang diagnostic pop
