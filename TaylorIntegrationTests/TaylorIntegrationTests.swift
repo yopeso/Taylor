@@ -17,7 +17,7 @@ enum IntegrationTestsError: Error {
 
 class TaylorIntegrationTests: QuickSpec {
     
-    var runTaskPath : String {
+    var executableFilePath : String {
         let testBundle = Bundle(for: type(of: self))
         let bundlePath = testBundle.bundlePath
         return bundlePath.stringWithoutLastComponent().stringByAppendingPathComponent("Taylor.app/Contents/MacOS/Taylor")
@@ -88,6 +88,23 @@ class TaylorIntegrationTests: QuickSpec {
         }
     }
     
+    fileprivate func runWithArguments(_ arguments: String...) {
+        let runTask = Process()
+        runTask.launchPath = executableFilePath
+        runTask.arguments = arguments
+        runTask.launch()
+        runTask.waitUntilExit()
+    }
+    
+    fileprivate func removeFile(atPath path: String) {
+        do {
+            if FileManager.default.fileExists(atPath: path) {
+                try FileManager.default.removeItem(atPath: path)
+            }
+        } catch let error {
+            print(error)
+        }
+    }
     
     override func spec() {
         
@@ -116,20 +133,27 @@ class TaylorIntegrationTests: QuickSpec {
                 }
             }
             
-            it("should generate correct reports") {
-                let runTask = Process()
-                runTask.launchPath = self.runTaskPath
-                runTask.arguments = ["-p", self.analyzeFilesPath, "-r", "json:taylor_report.json"]
-                runTask.launch()
-                runTask.waitUntilExit()
-                let reporterPath = self.analyzeFilesPath.stringByAppendingPathComponent("taylor_report.json")
-                expect(ReporterComparator().compareReporters(self.resultFilePath, secondReporterPath: reporterPath)).to(beTrue())
-                do {
-                    if FileManager.default.fileExists(atPath: reporterPath) {
-                        try FileManager.default.removeItem(atPath: reporterPath)
-                    }
-                } catch let error {
-                    print(error)
+            context("when specify report with relative path") {
+                it("should generate reports") {
+                    self.runWithArguments("-p", self.analyzeFilesPath,
+                                          "-r", "json:taylor_report.json")
+                    let reporterPath = self.analyzeFilesPath.stringByAppendingPathComponent("taylor_report.json")
+                    let comparisonResult = JSONReportComparator().compareReport(atPath: self.resultFilePath,
+                                                                                withReportAtPath: reporterPath)
+                    expect(comparisonResult).to(beTrue())
+                    self.removeFile(atPath: reporterPath)
+                }
+            }
+            
+            context("when specify report with absolute path") {
+                it("should generate reports") {
+                    let reporterAbsolutePath = self.analyzeFilesPath.stringByAppendingPathComponent("taylor_report.json")
+                    self.runWithArguments("-p", self.analyzeFilesPath,
+                                          "-r", "json:\(reporterAbsolutePath)")
+                    let comparisonResult = JSONReportComparator().compareReport(atPath: self.resultFilePath,
+                                                                                withReportAtPath: reporterAbsolutePath)
+                    expect(comparisonResult).to(beTrue())
+                    self.removeFile(atPath: reporterAbsolutePath)
                 }
             }
             

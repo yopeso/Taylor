@@ -19,10 +19,14 @@ final class OutputCoordinator {
     func writeTheOutput(_ violations: [Violation], reporters: [Reporter]) {
         self.reporters = reporters
         for reporter in reporters {
-            if reporter.fileName.isEmpty && (reporter.concreteReporter as? XcodeReporter) == nil { continue }
-            let path = (filePath as NSString).appendingPathComponent(reporter.fileName)
-            reporter.coordinator().writeViolations(violations, atPath: path)
+            write(violations: violations, with: reporter)
         }
+    }
+    
+    private func write(violations: [Violation], with reporter: Reporter) {
+        if reporter.fileName.isEmpty && (reporter.concreteReporter as? XcodeReporter) == nil { return }
+        let outputPath = reporter.fileName.absolutePath(filePath)
+        reporter.coordinator().writeViolations(violations, atPath: outputPath)
     }
 }
 

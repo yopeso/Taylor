@@ -22,45 +22,46 @@ class TemperTests : QuickSpec {
         it("should detect the violations and create the file/files") {
             let aComponent = TestsHelper().aComponent
             let anotherComponent = TestsHelper().anotherComponent
-            let path =  NSHomeDirectory() as NSString
-            let filePath = path.appendingPathComponent(JSONReporter().defaultFileName())
-            let temper = Temper(outputPath: (path as String))
             aComponent.components = [anotherComponent]
-            let content = FileContent(path: "blablabla", components: [aComponent])
-            let reporter = JSONReporter()
-            temper.setReporters([Reporter(reporter)])
-            temper.checkContent(content)
+
+            let filePath = (NSHomeDirectory() as NSString).appendingPathComponent(JSONReporter().defaultFileName())
+            let fileContent = FileContent(path: "blablabla", components: [aComponent])
+            
+            // Tempering
+            let temper = Temper(outputPath: NSHomeDirectory())
+            temper.setReporters([Reporter(JSONReporter())])
+            temper.checkContent(fileContent)
             temper.finishTempering()
-            let jsonData = try? Data(contentsOf: URL(string: filePath)!)
-            guard let data = jsonData else {
-                return
+
+            // Read report
+            guard let content = try? String(contentsOfFile: filePath) else { return fail() }
+            guard let data = content.data(using: .utf8) else { return fail() }
+            guard let jsonResult = try? JSONSerialization.jsonObject(with: data,
+                                                                     options: JSONSerialization.ReadingOptions.mutableContainers)
+                as? [String: AnyObject] else { return fail() }
+            guard let result = jsonResult else { return fail() }
+            guard let violations = result["violation"] as? [[String: AnyObject]] else { return fail() }
+            
+            // Check violations
+            for violation in violations {
+                expect(violation["message"] as? String).toNot(beNil())
+                expect(violation["rule"] as? String).toNot(beNil())
+                expect(violation["path"] as? String).toNot(beNil())
+                expect(violation["priority"] as? Int).toNot(beNil())
+                expect(violation["externalInfoUrl"] as? String).toNot(beNil())
+                expect(violation["value"] as? Int).toNot(beNil())
+                expect(violation["class"] as? String).toNot(beNil())
+                expect(ComponentRange.deserialize(violation)).toNot(beNil())
             }
-            var jsonResult : NSDictionary? = nil
-            do {
-                jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary
-            } catch {
-                print("Error while creating the JSON object.")
-            }
-            guard let result = jsonResult else {
-                return
-            }
-            if let violations = result["violation"] as? [Dictionary<String, AnyObject>] {
-                for violation in violations {
-                    expect(violation["message"] as? String).toNot(beNil())
-                    expect(violation["rule"] as? String).toNot(beNil())
-                    expect(violation["path"] as? String).toNot(beNil())
-                    expect(violation["priority"] as? Int).toNot(beNil())
-                    expect(violation["externalInfoUrl"] as? String).toNot(beNil())
-                    expect(violation["value"] as? Int).toNot(beNil())
-                    expect(violation["class"] as? String).toNot(beNil())
-                    expect(ComponentRange.deserialize(violation)).toNot(beNil())
-                }
-            }
+            
+            // Cleanup
+            FileManager.default.removeFileAtPath(filePath)
         }
         it("should set the rules limits") {
             let temper = Temper(outputPath: FileManager.default.currentDirectoryPath)
             let limits = ["ExcessiveClassLength" : 500, "ExcessiveMethodLength" : 500, "TooManyMethods" : 500,
-                          "CyclomaticComplexity" : 500, "NestedBlockDepth" : 500, "NPathComplexity" : 500, "ExcessiveParameterList" : 500]
+                          "CyclomaticComplexity" : 500, "NestedBlockDepth" : 500, "NPathComplexity" : 500,
+                          "ExcessiveParameterList" : 500]
             temper.setLimits(limits)
             let rules = temper.rules
             for rule in rules {
