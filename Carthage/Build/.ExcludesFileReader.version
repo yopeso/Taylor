@@ -1,0 +1,10 @@
+{
+  "xcodeVersion" : "Xcode 8.3.1\nBuild version 8E1000a",
+  "commitish" : "0.1",
+  "Mac" : [
+    {
+      "hash" : "b627bf3c4737493194fb5ceaa0fafa91320476a14de80a54994dc00b872c29f0",
+      "name" : "ExcludesFileReader"
+    }
+  ]
+}

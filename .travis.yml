@@ -1,8 +1,8 @@
-language: objective-c
+language: swift
 xcode_project: Taylor.xcodeproj
 xcode_scheme: Taylor
 xcode_sdk: macosx
-osx_image: xcode8.1
+osx_image: xcode8.3
 script: 
   - ./build.sh
   - ./test.sh

@@ -1,0 +1,10 @@
+{
+  "xcodeVersion" : "Xcode 8.3.1\nBuild version 8E1000a",
+  "commitish" : "87f3bfdcfb17b43b5e3c0b5d31efe45d74576325",
+  "Mac" : [
+    {
+      "hash" : "f2f2d199bb9c88130e28c3349b9d403762a509a238263dd2595c8b88be07468b",
+      "name" : "SourceKittenFramework"
+    }
+  ]
+}

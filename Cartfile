@@ -1,1 +1,2 @@
 github "yopeso/SourceKitten" "master"
+github "yopeso/ExcludesFileReader"
