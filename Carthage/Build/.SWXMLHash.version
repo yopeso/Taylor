@@ -1,0 +1,10 @@
+{
+  "xcodeVersion" : "Xcode 8.3.1\nBuild version 8E1000a",
+  "commitish" : "3.0.4",
+  "Mac" : [
+    {
+      "hash" : "198f1c5c2f3fe130f9b7508716f5bd69e5e752d826214d7ac84ae0e4981e6fe6",
+      "name" : "SWXMLHash"
+    }
+  ]
+}
