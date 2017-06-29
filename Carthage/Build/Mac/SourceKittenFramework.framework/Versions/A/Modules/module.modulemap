@@ -7,4 +7,5 @@ framework module SourceKittenFramework {
 
 module SourceKittenFramework.Swift {
     header "SourceKittenFramework-Swift.h"
+    requires objc
 }

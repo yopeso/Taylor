@@ -7,4 +7,5 @@ framework module SWXMLHash {
 
 module SWXMLHash.Swift {
     header "SWXMLHash-Swift.h"
+    requires objc
 }

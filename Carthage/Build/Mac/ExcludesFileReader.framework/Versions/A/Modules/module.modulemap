@@ -1,3 +1,4 @@
 framework module ExcludesFileReader {
     header "ExcludesFileReader-Swift.h"
+    requires objc
 }

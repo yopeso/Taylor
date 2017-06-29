@@ -15,7 +15,7 @@ extension Int {
     var isOdd: Bool { return self % 2 == 1 }
 }
 
-extension Dictionary where Key: Hashable {
+extension Dictionary {
     mutating func setIfNotExist(_ value: Value, forKey key: Key) {
         if self[key] == nil {
             self[key] = value
@@ -23,7 +23,7 @@ extension Dictionary where Key: Hashable {
     }
 }
 
-extension Dictionary where Key: Hashable, Value: Summable {
+extension Dictionary where Value: Summable {
     mutating func add(_ value: Value, toKey key: Key) {
         if let currentValue = self[key] {
             self[key] = currentValue + value
