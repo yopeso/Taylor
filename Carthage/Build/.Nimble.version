@@ -1,9 +1,8 @@
 {
-  "xcodeVersion" : "Xcode 8.3.1\nBuild version 8E1000a",
-  "commitish" : "v5.1.1",
+  "commitish" : "v7.0.1",
   "Mac" : [
     {
-      "hash" : "876783dbf40e786cce4bc8ad57131babcb5e13288a618684fd45e095230e24b4",
+      "hash" : "37080786e96cca78f8459ced7b3eca6e62a941ea22a17aaa86f1fe5b0e5127dd",
       "name" : "Nimble"
     }
   ]

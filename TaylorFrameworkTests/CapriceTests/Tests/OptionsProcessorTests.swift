@@ -293,7 +293,7 @@ class OptionsProcessorTests: QuickSpec {
     }
 }
 
-func ==<U: Hashable, T: Sequence>(lhs: [U: T], rhs: [U: T]) -> Bool where T.Iterator.Element: Equatable {
+func ==<U, T: Sequence>(lhs: [U: T], rhs: [U: T]) -> Bool where T.Iterator.Element: Equatable {
     guard lhs.count == rhs.count else { return false }
     for (key, lValue) in lhs {
         guard let rValue = rhs[key], Array(lValue) == Array(rValue) else {
@@ -303,7 +303,7 @@ func ==<U: Hashable, T: Sequence>(lhs: [U: T], rhs: [U: T]) -> Bool where T.Iter
     return true
 }
 
-func ==<T: Hashable, U: Equatable>(lhs: [[T: U]], rhs: [[T: U]]) -> Bool {
+func ==<T, U: Equatable>(lhs: [[T: U]], rhs: [[T: U]]) -> Bool {
     guard lhs.count == rhs.count else { return false }
     for (index, dictionary) in lhs.enumerated() {
         if dictionary != rhs[index] { return false }

@@ -7,4 +7,5 @@ framework module Yams {
 
 module Yams.Swift {
     header "Yams-Swift.h"
+    requires objc
 }
