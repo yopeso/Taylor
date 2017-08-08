@@ -18,6 +18,10 @@ struct OffsetRange {
     }
 }
 
+extension OffsetRange {
+    static let zero = OffsetRange(start: 0, end: 0)
+}
+
 extension OffsetRange: Comparable { }
 
 func ==(lhs: OffsetRange, rhs: OffsetRange) -> Bool {
@@ -39,4 +43,9 @@ extension OffsetRange {
     func toEmptyLineRange() -> OffsetRange {
         return OffsetRange(start: self.start + 1, end: self.end - 1)
     }
+}
+
+/// Returns true if **left** range contains **right** range.
+func ~= (_ lhs: OffsetRange, _ rhs: OffsetRange) -> Bool {
+    return lhs.start <= rhs.start && lhs.end >= rhs.end
 }

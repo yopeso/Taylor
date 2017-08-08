@@ -47,8 +47,6 @@ struct Tree {
         return convertTree(root)
     }
     
-    
-    
     //MARK: Conversion to Component type
     
     func convertTree(_ root: ExtendedComponent) -> Component {

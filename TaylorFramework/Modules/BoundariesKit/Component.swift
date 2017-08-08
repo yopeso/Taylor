@@ -18,7 +18,8 @@ final class Component {
         self.range = range
         self.name = name
     }
-    
+
+    @discardableResult
     func makeComponent(type: ComponentType, range: ComponentRange, name: String? = nil) -> Component {
         let component = Component(type: type, range: range, name: name)
         
