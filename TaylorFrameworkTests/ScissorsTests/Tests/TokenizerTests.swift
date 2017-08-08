@@ -151,6 +151,24 @@ class TokenizerTests: QuickSpec {
                 let expectedContent = FileContent(path: path, components: componentsForBraceWithParameters())
                 expect(returnContent).to(equal(expectedContent))
             }
+            it("should compute correctly number of parameters") {
+                let path = reader.pathForFile("TestFileNumberOfParameters", fileType: "swift")
+                let returnContent = scissors.tokenizeFileAtPath(path)
+                let expectedContent = FileContent(path: path, components: componentsForNumberOfParameters())
+                expect(returnContent).to(equal(expectedContent))
+            }
+            it("should distinguish function parameters from shorthand closure ones") {
+                let path = reader.pathForFile("TestFileClosureParameters", fileType: "txt")
+                let returnContent = scissors.tokenizeFileAtPath(path)
+                let expectedContent = FileContent(path: path, components: componentsForClosureParameters())
+                expect(returnContent).to(equal(expectedContent))
+            }
+            it("should recognize guard statements") {
+                let path = reader.pathForFile("TestFileGuard", fileType: "txt")
+                let returnContent = scissors.tokenizeFileAtPath(path)
+                let expectedContent = FileContent(path: path, components: componentsForGuard())
+                expect(returnContent).to(equal(expectedContent))
+            }
             it("should run for files with 500 lines") {
                 let path = reader.pathForFile("TestFileMoreThan500", fileType: "swift")
                 _ = scissors.tokenizeFileAtPath(path)
@@ -166,18 +184,6 @@ class TokenizerTests: QuickSpec {
             it("should run for files more than 3K lines") {
                 let path = reader.pathForFile("TestFileMoreThan3K", fileType: "swift")
                 _ = scissors.tokenizeFileAtPath(path)
-            }
-            it("should distinguish function parameters from shorthand closure ones") {
-                let path = reader.pathForFile("TestFileClosureParameters", fileType: "txt")
-                let returnContent = scissors.tokenizeFileAtPath(path)
-                let expectedContent = FileContent(path: path, components: componentsForClosureParameters())
-                expect(returnContent).to(equal(expectedContent))
-            }
-            it("should recognize guard statements") {
-                let path = reader.pathForFile("TestFileGuard", fileType: "txt")
-                let returnContent = scissors.tokenizeFileAtPath(path)
-                let expectedContent = FileContent(path: path, components: componentsForGuard())
-                expect(returnContent).to(equal(expectedContent))
             }
         }
     }

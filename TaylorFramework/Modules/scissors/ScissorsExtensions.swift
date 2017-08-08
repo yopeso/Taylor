@@ -42,6 +42,12 @@ extension Dictionary where Key: StringType {
         let endOffset = Int(startOffset + length)
         return OffsetRange(start: Int(startOffset), end: endOffset)
     }
+    var bodyRange: OffsetRange {
+        let start = SwiftDocKey.publicGetBodyOffset(dictionary: dictionaryValue) ?? 0
+        let length = SwiftDocKey.publicGetBodyLength(dictionary: dictionaryValue) ?? 0
+
+        return OffsetRange(start: Int(start), end: Int(start + length - 1))
+    }
     var typeName: String? { return SwiftDocKey.publicGetTypeName(dictionary: dictionaryValue) }
     var name: String? { return SwiftDocKey.getName(dictionary: dictionaryValue) }
     var substructure: [SourceKitRepresentable] {

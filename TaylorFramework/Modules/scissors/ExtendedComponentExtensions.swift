@@ -102,8 +102,8 @@ extension ExtendedComponent {
     }
     
     @discardableResult
-    func addChild(_ type: ComponentType, range: OffsetRange, name: String? = nil) -> ExtendedComponent {
-        let child = ExtendedComponent(type: type, range: range, names: (name, nil))
+    func addChild(_ type: ComponentType, range: OffsetRange, bodyRange: OffsetRange? = nil, name: String? = nil) -> ExtendedComponent {
+        let child = ExtendedComponent(type: type, range: range, bodyRange: bodyRange, names: (name, nil))
         child.parent = self
         self.components.append(child)
         return child
@@ -139,6 +139,9 @@ extension ExtendedComponent {
                     child.processParameters()
                     break
                 }
+            }
+            if let bodyRange = bodyRange, bodyRange ~= child.offsetRange, child.isA(.parameter) && isA(.function) {
+                remove(child)
             }
             child.processParameters()
         }
