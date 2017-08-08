@@ -177,6 +177,7 @@
 		FF5DF6A81CBD23FE00768DFE /* OffsetRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5DF6A71CBD23FE00768DFE /* OffsetRange.swift */; };
 		FF5DF6AA1CBD24B300768DFE /* FileExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5DF6A91CBD24B300768DFE /* FileExtensions.swift */; };
 		FFDEE7FD1EA56F4200D8A81F /* ExcludesFileReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFDEE7FC1EA56F4200D8A81F /* ExcludesFileReader.framework */; };
+		FFFB45721F39BB8600096832 /* TestFileNumberOfParameters.swift in Copy Files (23 items) */ = {isa = PBXBuildFile; fileRef = FFFB45711F39BAF100096832 /* TestFileNumberOfParameters.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -236,6 +237,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				FFFB45721F39BB8600096832 /* TestFileNumberOfParameters.swift in Copy Files (23 items) */,
 				6943F84D1C38205A00208BBC /* TestFileGuard.txt in Copy Files (23 items) */,
 				69400EC81C32935B0065CDB0 /* TestFileClosureParameters.txt in Copy Files (23 items) */,
 				69B4DDA81BED209C005EA7D5 /* emptyExcludes.yml in Copy Files (23 items) */,
@@ -448,6 +450,7 @@
 		FF5DF6A71CBD23FE00768DFE /* OffsetRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffsetRange.swift; sourceTree = "<group>"; };
 		FF5DF6A91CBD24B300768DFE /* FileExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileExtensions.swift; sourceTree = "<group>"; };
 		FFDEE7FC1EA56F4200D8A81F /* ExcludesFileReader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExcludesFileReader.framework; path = Carthage/Build/Mac/ExcludesFileReader.framework; sourceTree = SOURCE_ROOT; };
+		FFFB45711F39BAF100096832 /* TestFileNumberOfParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFileNumberOfParameters.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -890,6 +893,7 @@
 				69B4DD211BED1FE0005EA7D5 /* TestFileTernary.txt */,
 				69B4DD221BED1FE0005EA7D5 /* TestFileTernaryNilc.txt */,
 				6943F84B1C381E0000208BBC /* TestFileGuard.txt */,
+				FFFB45711F39BAF100096832 /* TestFileNumberOfParameters.swift */,
 			);
 			path = TestFiles;
 			sourceTree = "<group>";

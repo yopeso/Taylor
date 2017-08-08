@@ -2,7 +2,7 @@
   "commitish" : "0.1",
   "Mac" : [
     {
-      "hash" : "383a4b67690f453728442ec7b87564d6ad67a7aceb17bce973c092f1016db614",
+      "hash" : "69ac8418dbb4dc8d45c90a67d919402ddb7d04262c1070a371aab7a285e7e0e2",
       "name" : "ExcludesFileReader"
     }
   ]

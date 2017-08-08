@@ -14,9 +14,10 @@ typealias Names = (name: String?, typeName: String?)
 final class ExtendedComponent {
     
     var offsetRange: OffsetRange
+    var bodyRange: OffsetRange?
     var type: ComponentType
     var names: Names
-    var parent: ExtendedComponent? = nil
+    var parent: ExtendedComponent?
     var components: [ExtendedComponent]
     
     var name: String? {
@@ -34,24 +35,28 @@ final class ExtendedComponent {
         }
     }
     
-    init(type: ComponentType, range: OffsetRange, names: Names = (nil, nil)) {
+    init(type: ComponentType, range: OffsetRange, bodyRange: OffsetRange? = nil, names: Names = (nil, nil)) {
         self.type = type
+        self.bodyRange = bodyRange
         self.offsetRange = range
         self.components = []
         self.names = names
     }
     
     init(dict: [String: AnyObject]) {
-        if let type = dict["type"] as? String,
-            let startOffset = dict["offset"] as? Int,
-            let length = dict["length"] as? Int {
-            let endOffset = startOffset + length
-            self.type = ComponentType(rawValue: type)
-            self.offsetRange = OffsetRange(start: startOffset, end: endOffset - 1)
-        } else {
-            self.type = .other
-            self.offsetRange = OffsetRange(start: 0, end: 0)
-        }
+        self.type = (dict["type"] as? String).flatMap(ComponentType.init) ?? .other
+        self.offsetRange = {
+            guard let start = dict["offset"] as? Int, let length = dict["length"] as? Int else {
+                return .zero
+            }
+            return OffsetRange(start: start, end: start + length - 1)
+        }()
+        self.bodyRange = {
+            guard let start = dict["bodyoffset"] as? Int, let length = dict["bodylength"] as? Int else {
+                return .zero
+            }
+            return OffsetRange(start: start, end: start + length - 1)
+        }()
         self.names = (nil, nil)
         self.components = []
     }
@@ -61,6 +66,7 @@ final class ExtendedComponent {
         array.enumerated().forEach { childIndex, structure in
             let hashedStructure = structure.dictionaryValue
             var offsetRange = hashedStructure.offsetRange
+            let bodyOffsetRange = hashedStructure.bodyRange
             let type = getComponentType(hashedStructure.type, bracesCount: braces, isLast: childIndex == array.count - 1)
             if type.isA(.other) { return }
             if type.isA(.brace) { braces += 1 }
@@ -68,7 +74,8 @@ final class ExtendedComponent {
                 let bodyOffsetEnd = hashedStructure.bodyLength + hashedStructure.bodyOffset
                 if bodyOffsetEnd != 0 { offsetRange.end = bodyOffsetEnd }
             }
-            let child = ExtendedComponent(type: type, range: offsetRange, names: (hashedStructure.name, hashedStructure.typeName))
+            let child = ExtendedComponent(type: type, range: offsetRange, bodyRange: bodyOffsetRange,
+                                          names: (hashedStructure.name, hashedStructure.typeName))
             components.add(child)
             _ = child.appendComponents(hashedStructure.substructure, components: components)
         }
