@@ -64,7 +64,7 @@ class OutputCoordinatorTests : QuickSpec {
                 
                 // Read report
                 guard let content = try? String(contentsOfFile: filePath) else { return fail() }
-                guard let xml = try? XMLDocument(xmlString: content, options: 0) else { return fail() }
+                guard let xml = try? XMLDocument(xmlString: content, options: []) else { return fail() }
                 guard let root = xml.rootElement() else { return fail() }
                 
                 // Check report

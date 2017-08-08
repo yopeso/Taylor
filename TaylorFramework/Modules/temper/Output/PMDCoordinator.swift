@@ -16,7 +16,7 @@ final class PMDCoordinator: WritingCoordinator {
         FileManager().removeFileAtPath(path)
         let map = mapViolations(violations)
         let xml = generateXML(from: map)
-        let xmlData = xml.xmlData(withOptions: Int(XMLNode.Options.nodePrettyPrint.rawValue))
+        let xmlData = xml.xmlData(options: .nodePrettyPrint)
         do {
             try xmlData.write(to: URL(fileURLWithPath: path), options: .atomic)
         } catch let error {

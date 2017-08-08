@@ -2,7 +2,7 @@
   "commitish" : "v7.0.1",
   "Mac" : [
     {
-      "hash" : "37080786e96cca78f8459ced7b3eca6e62a941ea22a17aaa86f1fe5b0e5127dd",
+      "hash" : "be3fc23c2b713323e2d48534fb2a2bddefb7b5f53f9c0629c3f553dcd6de2b1b",
       "name" : "Nimble"
     }
   ]

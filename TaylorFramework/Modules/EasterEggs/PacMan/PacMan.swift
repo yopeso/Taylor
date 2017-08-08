@@ -94,7 +94,8 @@ struct Generator {
     }
     
     func countWallCharacters() -> Int {
-        return mapString.characters.filter { $0 == WALL_CONST }.count
+        let characters: String.CharacterView = mapString.characters.filter { $0 == WALL_CONST }
+        return characters.count
     }
     
     func generateMapString(_ text: String) -> String? {
