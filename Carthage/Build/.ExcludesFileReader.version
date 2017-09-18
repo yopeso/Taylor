@@ -1,8 +1,8 @@
 {
-  "commitish" : "0.1",
+  "commitish" : "4205e1a5d55ac225b2aa632722404eb72c4abac9",
   "Mac" : [
     {
-      "hash" : "383a4b67690f453728442ec7b87564d6ad67a7aceb17bce973c092f1016db614",
+      "hash" : "e32525fa714d10e27cf70ce58cc131d151c785b8f3f9c6374479ed1544cc11fe",
       "name" : "ExcludesFileReader"
     }
   ]

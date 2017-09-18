@@ -1,8 +1,8 @@
 {
-  "commitish" : "0.3.2",
+  "commitish" : "0.3.6",
   "Mac" : [
     {
-      "hash" : "43024bf6f5c454873e52151ca0e48b5bc3a95201cc7aefcedde84ac4d23da28e",
+      "hash" : "e926e9dfabaa3feb5c07728e37bf5453aa8cfe8c84f9501114cfd9889d74ab14",
       "name" : "Yams"
     }
   ]

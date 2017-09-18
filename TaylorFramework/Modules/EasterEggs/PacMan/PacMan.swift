@@ -94,14 +94,14 @@ struct Generator {
     }
     
     func countWallCharacters() -> Int {
-        return mapString.characters.filter { $0 == WALL_CONST }.count
+        return mapString.reduce(0) { $1 == WALL_CONST ? $0 + 1 : $0 }
     }
     
     func generateMapString(_ text: String) -> String? {
         if text.isEmpty || text.characters.count < mapString.characters.count { return nil }
         let endIndex = mapString.characters.count + Int(arc4random_uniform(UInt32(text.characters.count - mapString.characters.count)))
         let textRange = text.characters.index(text.startIndex, offsetBy: endIndex - mapString.characters.count)..<text.characters.index(text.startIndex, offsetBy: endIndex)
-        var charactersGenerator = text.substring(with: textRange).characters.makeIterator()
+        var charactersGenerator = text[textRange].characters.makeIterator()
         let restrictedChars = [PLAYER, GHOST, "\n", POINT]
         return String(mapString.characters.map { character in
             if character != WALL_VAR { return character }
