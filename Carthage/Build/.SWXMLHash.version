@@ -1,8 +1,8 @@
 {
-  "commitish" : "4.1.0",
+  "commitish" : "4.2.1",
   "Mac" : [
     {
-      "hash" : "b0dd73b141fd43f23b3e2bbcdf6a7c3c2eb87e16982622004bae693f8a1c0841",
+      "hash" : "b3e6572bd1e6a6b066d05091a600bbc4431917ded6fe78591c489ffc418f42ed",
       "name" : "SWXMLHash"
     }
   ]
