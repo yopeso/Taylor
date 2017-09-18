@@ -1,3 +1,11 @@
+## 0.2.3: Watch your words
+
+* Updated to Swift 4 [#60](https://github.com/yopeso/Taylor/pull/60)  
+  [Alex Culeva](https://github.com/S2dentik)
+
+* Fixed the bug when Taylor couldn't read unquoted excludes [#3](https://github.com/S2dentik/ExcludesFileReader/pull/3)  
+  [Alex Culeva](https://github.com/S2dentik)
+
 ## 0.2.2: Don't get stuck
 
 * Fixed the bug when Taylor got stuck [#51](https://github.com/yopeso/Taylor/pull/51)  

@@ -176,6 +176,7 @@
 		FF5DF6A61CBD23CD00768DFE /* ExtendedComponentExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5DF6A51CBD23CD00768DFE /* ExtendedComponentExtensions.swift */; };
 		FF5DF6A81CBD23FE00768DFE /* OffsetRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5DF6A71CBD23FE00768DFE /* OffsetRange.swift */; };
 		FF5DF6AA1CBD24B300768DFE /* FileExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5DF6A91CBD24B300768DFE /* FileExtensions.swift */; };
+		FF5F4E521F70197300F4EA33 /* ExcludesFileReader.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = FFDEE7FC1EA56F4200D8A81F /* ExcludesFileReader.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FFDEE7FD1EA56F4200D8A81F /* ExcludesFileReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFDEE7FC1EA56F4200D8A81F /* ExcludesFileReader.framework */; };
 /* End PBXBuildFile section */
 
@@ -225,6 +226,7 @@
 				A38166451E15587A0046AAD4 /* SourceKittenFramework.framework in Copy Frameworks */,
 				A38166461E15587A0046AAD4 /* SWXMLHash.framework in Copy Frameworks */,
 				A38166471E15587A0046AAD4 /* Yams.framework in Copy Frameworks */,
+				FF5F4E521F70197300F4EA33 /* ExcludesFileReader.framework in Copy Frameworks */,
 				9475A3231DC8EF630081695B /* TaylorFramework.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
