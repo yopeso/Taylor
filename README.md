@@ -2,6 +2,8 @@
 
 # Taylor
 
+⚠️ **Taylor is DEPRECATED. Use [SwiftLint](https://github.com/realm/SwiftLint) instead.**
+
 A tool aimed to increase Swift code quality, by checking for conformance to code metrics.
 
 [![Build Status](https://travis-ci.org/yopeso/Taylor.svg?branch=master)](https://travis-ci.org/yopeso/Taylor)
